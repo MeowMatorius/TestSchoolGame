@@ -17,6 +17,22 @@ extends CharacterBody3D
 ## The speed that the character moves at when crouching.
 @export var crouch_speed : float = 1.0
 
+
+@export var walk_fov : float = 75.0
+## Miltiplies FOV while sprinting
+@export var sprint_fov_mod : float = 5.0
+## Changes blend speed of FOV changes
+@export var fov_smoothing : float = 0.1
+## Changes the headbob animation speed while sprinting
+@export var headbob_multiplier : float = 1.5
+
+## Changes smoothness of headbob animation
+@export var headbob_anim_blend : float = 1.0
+## Changes smoothness of jump animation
+@export var jump_anim_blend : float = 1.0
+## Changes smoothness of crouch animation
+@export var crouch_anim_blend : float = 1.0
+
 ## How fast the character speeds up and slows down when Motion Smoothing is on.
 @export var acceleration : float = 10.0
 ## How high the player jumps.
@@ -98,7 +114,7 @@ extends CharacterBody3D
 ## Enables or disables crouching.
 @export var crouch_enabled : bool = true
 ## Toggles the crouch state when button is pressed or requires the player to hold the button down to remain crouched.
-@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 0
+@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 1
 ## Wether sprinting should effect FOV.
 @export var dynamic_fov : bool = true
 ## If the player holds down the jump button, should the player keep hopping.
@@ -142,6 +158,9 @@ var mouseInput : Vector2 = Vector2(0,0)
 #region Main Control Flow
 
 func _ready():
+	
+	CAMERA.fov = walk_fov
+	
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -211,12 +230,12 @@ func handle_jumping():
 		if continuous_jumping: # Hold down the jump button
 			if Input.is_action_pressed(controls.JUMP) and is_on_floor() and !low_ceiling:
 				if jump_animation:
-					JUMP_ANIMATION.play("jump", 0.25)
+					JUMP_ANIMATION.play("jump", jump_anim_blend)
 				velocity.y += jump_velocity # Adding instead of setting so jumping on slopes works properly
 		else:
 			if Input.is_action_just_pressed(controls.JUMP) and is_on_floor() and !low_ceiling:
 				if jump_animation:
-					JUMP_ANIMATION.play("jump", 0.25)
+					JUMP_ANIMATION.play("jump", jump_anim_blend)
 				velocity.y += jump_velocity
 
 
@@ -390,8 +409,8 @@ func play_headbob_animation(moving):
 		if HEADBOB_ANIMATION.current_animation == use_headbob_animation:
 			was_playing = true
 
-		HEADBOB_ANIMATION.play(use_headbob_animation, 0.25)
-		HEADBOB_ANIMATION.speed_scale = (current_speed / base_speed) * 1.75
+		HEADBOB_ANIMATION.play(use_headbob_animation, headbob_anim_blend)
+		HEADBOB_ANIMATION.speed_scale = (current_speed / base_speed) * headbob_multiplier
 		if !was_playing:
 			HEADBOB_ANIMATION.seek(float(randi() % 2)) # Randomize the initial headbob direction
 			# Let me explain that piece of code because it looks like it does the opposite of what it actually does.
@@ -402,7 +421,7 @@ func play_headbob_animation(moving):
 	else:
 		if HEADBOB_ANIMATION.current_animation == "sprint" or HEADBOB_ANIMATION.current_animation == "walk":
 			HEADBOB_ANIMATION.speed_scale = 1
-			HEADBOB_ANIMATION.play("RESET", 1)
+			HEADBOB_ANIMATION.play("RESET", headbob_anim_blend)
 
 func play_jump_animation():
 	if !was_on_floor and is_on_floor(): # The player just landed
@@ -414,11 +433,11 @@ func play_jump_animation():
 		var side_landed : int = round(velocity_2D.dot(facing_direction_2D))
 
 		if side_landed > 0:
-			JUMP_ANIMATION.play("land_right", 0.25)
+			JUMP_ANIMATION.play("land_right", jump_anim_blend)
 		elif side_landed < 0:
-			JUMP_ANIMATION.play("land_left", 0.25)
+			JUMP_ANIMATION.play("land_left", jump_anim_blend)
 		else:
-			JUMP_ANIMATION.play("land_center", 0.25)
+			JUMP_ANIMATION.play("land_center", jump_anim_blend)
 
 #endregion
 
@@ -472,9 +491,9 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 
 func update_camera_fov():
 	if state == "sprinting":
-		CAMERA.fov = lerp(CAMERA.fov, 85.0, 0.3)
+		CAMERA.fov = lerp(CAMERA.fov, walk_fov + sprint_fov_mod, fov_smoothing)
 	else:
-		CAMERA.fov = lerp(CAMERA.fov, 75.0, 0.3)
+		CAMERA.fov = lerp(CAMERA.fov, walk_fov, fov_smoothing)
 
 func handle_pausing():
 	if Input.is_action_just_pressed(controls.PAUSE):
