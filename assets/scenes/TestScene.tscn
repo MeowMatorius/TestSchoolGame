@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_n3600"]
 [ext_resource type="Material" uid="uid://bentrll6xnlth" path="res://assets/materials/FloorMat2.tres" id="2_a7twm"]
 [ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="3_6p1vh"]
-[ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://assets/scenes/cube.tscn" id="4_nav8a"]
+[ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://assets/scenes/button.tscn" id="4_nav8a"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://assets/scenes/door.tscn" id="5_eppyl"]
+[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://assets/scenes/pickup.tscn" id="6_hx8f1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
 
@@ -32,14 +33,15 @@ material_override = ExtResource("2_a7twm")
 mesh = SubResource("BoxMesh_cguwc")
 
 [node name="Door" parent="." unique_id=819968924 instance=ExtResource("5_eppyl")]
-transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 8, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 7.011198, 1.4999995, 0.9094217)
 
-[node name="InteractCube" parent="." unique_id=243040129 instance=ExtResource("4_nav8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.789, 0, 0)
-prompt_message = "актимель"
+[node name="Pickup" parent="." unique_id=1248861911 instance=ExtResource("6_hx8f1")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.697992, -0.4, 6.5270443)
 
-[node name="PickUpCube" parent="." unique_id=1558856129 instance=ExtResource("4_nav8a")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.5300179, 0, 5.847823)
-prompt_message = "Поднять"
+[node name="Button" parent="." unique_id=243040129 instance=ExtResource("4_nav8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.778445, 4.7683716e-07, -1.8744471)
 
-[connection signal="is_interacting" from="InteractCube" to="Door" method="open"]
+[node name="Button2" parent="." unique_id=1341585786 instance=ExtResource("4_nav8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.261567, 0, -3.6295924)
+
+[connection signal="is_interacting" from="Button" to="Door" method="open"]

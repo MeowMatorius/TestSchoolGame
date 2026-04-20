@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://duuhjykupjx8t"]
+
+[ext_resource type="Script" uid="uid://d4jnoq4tfkr6q" path="res://scripts/Interactable.gd" id="1_t68ga"]
+[ext_resource type="Material" uid="uid://cfs5q8utb16ag" path="res://assets/materials/BoxMat3.tres" id="2_1r4u8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mncer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
+
+[node name="Pickup" type="StaticBody3D" unique_id=243040129]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+collision_layer = 2
+script = ExtResource("1_t68ga")
+prompt_message = "Поднять"
+object_type = "Pickup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
+material_override = ExtResource("2_1r4u8")
+mesh = SubResource("BoxMesh_mncer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=362366221]
+shape = SubResource("BoxShape3D_cguwc")

@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://kmmor3equpx6"]
 
 [ext_resource type="Script" uid="uid://d4jnoq4tfkr6q" path="res://scripts/Interactable.gd" id="1_at8sk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at8sk"]
+[ext_resource type="Material" uid="uid://b2lhwchb2dmmd" path="res://assets/materials/BoxMat4.tres" id="2_31r73"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mncer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
 
-[node name="Cube" type="StaticBody3D" unique_id=243040129]
-collision_layer = 2
+[node name="Button" type="StaticBody3D" unique_id=243040129]
+collision_layer = 3
 script = ExtResource("1_at8sk")
+prompt_message = "Использовать"
+object_type = "Activate"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_at8sk")
+material_override = ExtResource("2_31r73")
 mesh = SubResource("BoxMesh_mncer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=362366221]

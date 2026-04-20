@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bjlw3u768ihqh"]
 
-[ext_resource type="Script" path="res://scripts/door.gd" id="1_u1njh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1njh"]
+[ext_resource type="Script" uid="uid://ddd6nklucwcjf" path="res://scripts/door.gd" id="1_u1njh"]
+[ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="2_0mwg7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxdn"]
 
@@ -11,9 +10,10 @@
 [node name="Door" type="StaticBody3D" unique_id=819968924]
 transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_u1njh")
+prompt_message = ""
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_u1njh")
+material_override = ExtResource("2_0mwg7")
 mesh = SubResource("BoxMesh_1vxdn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1813992751]
