@@ -6,53 +6,9 @@
 extends CharacterBody3D
 
 
-#region Character Export Group
-
-## The settings for the character's movement and feel.
-@export_category("Character")
-## The speed that the character moves at without crouching or sprinting.
-@export var base_speed : float = 3.0
-## The speed that the character moves at when sprinting.
-@export var sprint_speed : float = 6.0
-## The speed that the character moves at when crouching.
-@export var crouch_speed : float = 1.0
-
-
-@export var walk_fov : float = 75.0
-## Miltiplies FOV while sprinting
-@export var sprint_fov_mod : float = 5.0
-## Changes blend speed of FOV changes
-@export var fov_smoothing : float = 0.1
-## Changes the headbob animation speed while sprinting
-@export var headbob_multiplier : float = 1.5
-
-## Changes smoothness of headbob animation
-@export var headbob_anim_blend : float = 1.0
-## Changes smoothness of jump animation
-@export var jump_anim_blend : float = 1.0
-## Changes smoothness of crouch animation
-@export var crouch_anim_blend : float = 1.0
-
-## How fast the character speeds up and slows down when Motion Smoothing is on.
-@export var acceleration : float = 10.0
-## How high the player jumps.
-@export var jump_velocity : float = 4.5
-## How far the player turns when the mouse is moved.
-@export var mouse_sensitivity : float = 0.1
-## Invert the X axis input for the camera.
-@export var invert_camera_x_axis : bool = false
-## Invert the Y axis input for the camera.
-@export var invert_camera_y_axis : bool = false
-## Whether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
-@export var immobile : bool = false
-## The reticle file to import at runtime. By default are in res://addons/fpc/reticles/. Set to an empty string to remove.
-@export_file var default_reticle
-
-#endregion
-
 #region Nodes Export Group
 
-@export_group("Nodes")
+@export_group("Controller Nodes")
 ## A reference to the camera for use in the character script. This is the parent node to the camera and is rotated instead of the camera for mouse input.
 @export var HEAD : Node3D
 ## A reference to the camera for use in the character script.
@@ -68,10 +24,95 @@ extends CharacterBody3D
 
 #endregion
 
+
+#region Character Export Group
+
+@export_category("Movement Settings")
+## The speed that the character moves at without crouching or sprinting.
+@export var base_speed : float = 3.0
+## The speed that the character moves at when sprinting.
+@export var sprint_speed : float = 6.0
+## The speed that the character moves at when crouching.
+@export var crouch_speed : float = 2.0
+## How fast the character speeds up and slows down when Motion Smoothing is on.
+@export var acceleration : float = 10.0
+## Enables or disables sprinting.
+@export var sprint_enabled : bool = true
+## Enables or disables crouching.
+@export var crouch_enabled : bool = true
+## Smooths the feel of walking.
+@export var motion_smoothing : bool = true
+
+
+#region Feature Settings Export Group
+
+@export_category("Jump Settings")
+## How high the player jumps.
+@export var jump_velocity : float = 4.5
+## Enable or disable jumping. Useful for restrictive storytelling environments.
+@export var jumping_enabled : bool = true
+## Enables an immersive animation when the player jumps and hits the ground.
+@export var jump_animation : bool = true
+## If the player holds down the jump button, should the player keep hopping.
+@export var continuous_jumping : bool = true
+## Whether the player can move in the air or not.
+@export var in_air_momentum : bool = true
+## Use with caution.
+@export var gravity_enabled : bool = true
+## If your game changes the gravity value during gameplay, check this property to allow the player to experience the change in gravity.
+@export var dynamic_gravity : bool = false
+
+#endregion
+
+
+@export_category("Fov Settings")
+@export var default_fov : float = 75.0
+## Wether sprinting should effect FOV.
+@export var dynamic_fov : bool = true
+## Miltiplies FOV while sprinting
+@export var dinamic_fov_mod : float = 5.0
+## Changes blend speed of FOV changes
+@export var fov_smoothing : float = 0.1
+
+@export_category("Animation Settings")
+## Enables the view bobbing animation.
+@export var view_bobbing : bool = true
+## Changes headbob animation speed while sprinting
+@export var headbob_multiplier : float = 1.5
+## Changes smoothness of headbob animation
+@export var headbob_anim_blend : float = 0.5
+## Changes smoothness of jump animation
+@export var jump_anim_blend : float = 0.5
+## Changes smoothness of crouch animation
+@export var crouch_anim_blend : float = 0.5
+
+@export_category("Input Settings")
+## This determines wether the player can use the pause button, not wether the game will actually pause.
+@export var pausing_enabled : bool = true
+## Toggles the sprinting state when button is pressed or requires the player to hold the button down to remain sprinting.
+@export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
+## Toggles the crouch state when button is pressed or requires the player to hold the button down to remain crouched.
+@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 1
+
+@export_subgroup("Mouse")
+## How far the player turns when the mouse is moved.
+@export var mouse_sensitivity : float = 0.1
+## Invert the X axis input for the camera.
+@export var invert_camera_x_axis : bool = false
+## Invert the Y axis input for the camera.
+@export var invert_camera_y_axis : bool = false
+## Whether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
+@export var immobile : bool = false
+## The reticle file to import at runtime. By default are in res://addons/fpc/reticles/. Set to an empty string to remove.
+@export_file var default_reticle
+
+#endregion
+
+
 #region Controls Export Group
 
 # We are using UI controls because they are built into Godot Engine so they can be used right away
-@export_group("Controls")
+#@export_group("Controls")
 ## Use the Input Map to map a mouse/keyboard input to an action and add a reference to it to this dictionary to be used in the script.
 @export var controls : Dictionary = {
 	LEFT = "left",
@@ -83,7 +124,7 @@ extends CharacterBody3D
 	SPRINT = "sprint",
 	PAUSE = "pause"
 	}
-@export_subgroup("Controller Specific")
+@export_subgroup("Controller")
 ## This only affects how the camera is handled, the rest should be covered by adding controller inputs to the existing actions in the Input Map.
 @export var controller_support : bool = false
 ## Use the Input Map to map a controller input to an action and add a reference to it to this dictionary to be used in the script.
@@ -98,39 +139,6 @@ extends CharacterBody3D
 
 #endregion
 
-#region Feature Settings Export Group
-
-@export_group("Feature Settings")
-## Enable or disable jumping. Useful for restrictive storytelling environments.
-@export var jumping_enabled : bool = true
-## Whether the player can move in the air or not.
-@export var in_air_momentum : bool = true
-## Smooths the feel of walking.
-@export var motion_smoothing : bool = true
-## Enables or disables sprinting.
-@export var sprint_enabled : bool = true
-## Toggles the sprinting state when button is pressed or requires the player to hold the button down to remain sprinting.
-@export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
-## Enables or disables crouching.
-@export var crouch_enabled : bool = true
-## Toggles the crouch state when button is pressed or requires the player to hold the button down to remain crouched.
-@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 1
-## Wether sprinting should effect FOV.
-@export var dynamic_fov : bool = true
-## If the player holds down the jump button, should the player keep hopping.
-@export var continuous_jumping : bool = true
-## Enables the view bobbing animation.
-@export var view_bobbing : bool = true
-## Enables an immersive animation when the player jumps and hits the ground.
-@export var jump_animation : bool = true
-## This determines wether the player can use the pause button, not wether the game will actually pause.
-@export var pausing_enabled : bool = true
-## Use with caution.
-@export var gravity_enabled : bool = true
-## If your game changes the gravity value during gameplay, check this property to allow the player to experience the change in gravity.
-@export var dynamic_gravity : bool = false
-
-#endregion
 
 #region Member Variable Initialization
 
@@ -159,7 +167,7 @@ var mouseInput : Vector2 = Vector2(0,0)
 
 func _ready():
 	
-	CAMERA.fov = walk_fov
+	CAMERA.fov = default_fov
 	
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -491,9 +499,9 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 
 func update_camera_fov():
 	if state == "sprinting":
-		CAMERA.fov = lerp(CAMERA.fov, walk_fov + sprint_fov_mod, fov_smoothing)
+		CAMERA.fov = lerp(CAMERA.fov, default_fov + dinamic_fov_mod, fov_smoothing)
 	else:
-		CAMERA.fov = lerp(CAMERA.fov, walk_fov, fov_smoothing)
+		CAMERA.fov = lerp(CAMERA.fov, default_fov, fov_smoothing)
 
 func handle_pausing():
 	if Input.is_action_just_pressed(controls.PAUSE):
