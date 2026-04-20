@@ -3,11 +3,13 @@ extends RayCast3D
 @export var text_prompt: Label
 var last_object = null
 var last_object_mesh = null
+var last_object_collision = null
 
 
 func _ready() -> void:
 	last_object = null
 	last_object_mesh = null
+	last_object_collision = null
 	
 	text_prompt.text = ""
 
@@ -22,7 +24,7 @@ func _physics_process(_delta):
 		last_object.highlight(last_object_mesh, last_object.name)
 		
 		if Input.is_action_just_pressed("interact"):
-			last_object.interact()
+			last_object.interact(last_object)
 	else:
 		text_prompt.text = ''
 		if last_object != null:

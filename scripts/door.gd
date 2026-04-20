@@ -1,14 +1,14 @@
 extends Interactable
 
 @onready var mesh = $MeshInstance3D
-var is_opened: bool = false
-
 signal opened_door
+
 
 func _ready() -> void:
 	is_opened = false
 
-func open():
+
+func open_by_switch():
 	is_opened = !is_opened
 	print(name, " открыт: ", is_opened)
 	if is_opened:

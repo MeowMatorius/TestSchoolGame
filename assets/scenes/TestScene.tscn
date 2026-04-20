@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_n3600"]
 [ext_resource type="Material" uid="uid://bentrll6xnlth" path="res://assets/materials/FloorMat2.tres" id="2_a7twm"]
 [ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="3_6p1vh"]
-[ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://assets/scenes/button.tscn" id="4_nav8a"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://assets/scenes/door.tscn" id="5_eppyl"]
-[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://assets/scenes/pickup.tscn" id="6_hx8f1"]
+[ext_resource type="Script" uid="uid://d4jnoq4tfkr6q" path="res://scripts/Interactable.gd" id="5_n3600"]
+[ext_resource type="PackedScene" path="res://assets/scenes/pickup.tscn" id="6_hx8f1"]
+[ext_resource type="PackedScene" path="res://assets/scenes/button.tscn" id="6_n3600"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
 
@@ -35,13 +36,22 @@ mesh = SubResource("BoxMesh_cguwc")
 [node name="Door" parent="." unique_id=819968924 instance=ExtResource("5_eppyl")]
 transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 7.011198, 1.4999995, 0.9094217)
 
+[node name="Door2" parent="." unique_id=158919516 instance=ExtResource("5_eppyl")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 14.022396, 1.4999976, 1.8188434)
+collision_layer = 3
+script = ExtResource("5_n3600")
+prompt_message = "Открыть"
+object_type = "Switch"
+
 [node name="Pickup" parent="." unique_id=1248861911 instance=ExtResource("6_hx8f1")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.697992, -0.4, 6.5270443)
 
-[node name="Button" parent="." unique_id=243040129 instance=ExtResource("4_nav8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.778445, 4.7683716e-07, -1.8744471)
+[node name="Button" parent="." unique_id=243040129 instance=ExtResource("6_n3600")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4128675, 2.3841858e-07, -0.8212452)
+object_type = "Switch"
 
-[node name="Button2" parent="." unique_id=1341585786 instance=ExtResource("4_nav8a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.261567, 0, -3.6295924)
+[node name="Button2" parent="." unique_id=1486638443 instance=ExtResource("6_n3600")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6090913, 0, -2.214377)
+prompt_message = "Активировать"
 
-[connection signal="is_interacting" from="Button" to="Door" method="open"]
+[connection signal="is_switching" from="Button" to="Door" method="open_by_switch"]
