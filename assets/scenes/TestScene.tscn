@@ -32,6 +32,7 @@ mesh = SubResource("BoxMesh_cguwc")
 
 [node name="Cube" parent="." unique_id=243040129 instance=ExtResource("4_nav8a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.789, 0, 0)
+prompt_message = "актимель"
 
 [node name="Door" parent="." unique_id=819968924 instance=ExtResource("5_eppyl")]
 transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 1, 0)

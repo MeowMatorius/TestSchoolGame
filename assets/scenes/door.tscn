@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjlw3u768ihqh"]
 
-[ext_resource type="Script" uid="uid://ddd6nklucwcjf" path="res://door.gd" id="1_u1njh"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_u1njh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1njh"]
 

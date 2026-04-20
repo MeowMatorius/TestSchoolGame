@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hutuis63hgev" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="2_bx7cj"]
-[ext_resource type="Script" uid="uid://cv51immeinjva" path="res://addons/fpc/interaction_ray_cast.gd" id="3_qaoyu"]
+[ext_resource type="Script" uid="uid://cv51immeinjva" path="res://scripts/interaction_ray_cast.gd" id="3_qaoyu"]
 [ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 
@@ -414,7 +414,6 @@ JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
 look_sensitivity = 0.05
-crouch_mode = 1
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=359317445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
