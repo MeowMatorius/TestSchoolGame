@@ -3,6 +3,7 @@ class_name Interactable
 
 @export var prompt_message = "Interact"
 signal is_interacting
+signal is_picking
 var is_highlighted: bool = false
 
 func _ready() -> void:
@@ -11,6 +12,11 @@ func _ready() -> void:
 func interact(body):
 	is_interacting.emit()
 	print(body.name, " interacted with ", name)
+	return true
+	
+func pickup(body):
+	is_picking.emit()
+	print(body.name, " поднял ", name)
 	
 func highlight(mesh):
 	if mesh is MeshInstance3D and !is_highlighted:

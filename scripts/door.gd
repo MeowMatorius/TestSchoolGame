@@ -3,6 +3,8 @@ extends Interactable
 @onready var mesh = $MeshInstance3D
 var is_opened: bool = false
 
+signal opened_door
+
 func open():
 	if !is_opened:
 		var mat = mesh.get_active_material(0)
@@ -12,6 +14,7 @@ func open():
 			mat.emission = Color(1.0, 0.0, 0.0, 1.0) # Зеленая подсветка
 			mat.emission_energy_multiplier = 2.0
 		is_opened = true
+		opened_door.emit()
 	else:
 		var mat = mesh.get_active_material(0)
 			# print(mat)

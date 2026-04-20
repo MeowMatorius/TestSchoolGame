@@ -19,6 +19,7 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="Character" parent="." unique_id=342963380 instance=ExtResource("1_n3600")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.1949248, 0, 0)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=888598047]
 transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, -1, 0)
@@ -30,11 +31,15 @@ shape = SubResource("BoxShape3D_mncer")
 material_override = ExtResource("2_a7twm")
 mesh = SubResource("BoxMesh_cguwc")
 
-[node name="Cube" parent="." unique_id=243040129 instance=ExtResource("4_nav8a")]
+[node name="Door" parent="." unique_id=819968924 instance=ExtResource("5_eppyl")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 8, 1, 2)
+
+[node name="InteractCube" parent="." unique_id=243040129 instance=ExtResource("4_nav8a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.789, 0, 0)
 prompt_message = "актимель"
 
-[node name="Door" parent="." unique_id=819968924 instance=ExtResource("5_eppyl")]
-transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 1, 0)
+[node name="PickUpCube" parent="." unique_id=1558856129 instance=ExtResource("4_nav8a")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.5300179, 0, 5.847823)
+prompt_message = "Поднять"
 
-[connection signal="is_interacting" from="Cube" to="Door" method="open"]
+[connection signal="is_interacting" from="InteractCube" to="Door" method="open"]
