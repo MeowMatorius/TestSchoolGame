@@ -434,14 +434,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 environment = SubResource("Environment_bupmj")
 fov = 55.0
 
-[node name="InteractionRayCast" type="RayCast3D" parent="Head/Camera" unique_id=1017175662 node_paths=PackedStringArray("prompt")]
+[node name="InteractionRayCast" type="RayCast3D" parent="Head/Camera" unique_id=1017175662 node_paths=PackedStringArray("text_prompt")]
 target_position = Vector3(0, 0, -2)
 collision_mask = 2
 hit_back_faces = false
 debug_shape_custom_color = Color(0, 0.93333334, 0, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_qaoyu")
-prompt = NodePath("../../../UserInterface/Label")
+text_prompt = NodePath("../../../UserInterface/Label")
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head" unique_id=418260792]
 libraries/ = SubResource("AnimationLibrary_o0unb")

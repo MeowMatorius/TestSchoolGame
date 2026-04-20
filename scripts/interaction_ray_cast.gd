@@ -1,44 +1,30 @@
 extends RayCast3D
 
-@export var prompt: Label
-var can_interact: bool = true
-var can_focus: bool = true
+@export var text_prompt: Label
 var last_object = null
-var mesh = null
-var door
+var last_object_mesh = null
+
 
 func _ready() -> void:
-	prompt.text = ""
-	can_interact = true
-	can_focus = true
 	last_object = null
-	mesh = null
-	door = true
+	last_object_mesh = null
 	
+	text_prompt.text = ""
+
+
 func _physics_process(_delta):
 	
-	if is_colliding():
-		var collider = get_collider()
-		last_object = collider
+	if is_colliding() and get_collider() is Interactable:
+		last_object = get_collider()
+		last_object_mesh = last_object.get_node("MeshInstance3D")
 		
-		if collider is Interactable:
-			if can_focus:
-				#collider.is_interacting.connect(write_text)
-				mesh = collider.get_child(0) # по индексу получила mesh
-				collider.highlight(mesh)
-				prompt.text = collider.prompt_message
-				can_focus = false
-			
-			if door:
-				if Input.is_action_pressed("interact") :	
-					if can_interact:
-						door = collider.interact(self)
-				
-				
+		text_prompt.text = last_object.prompt_message
+		last_object.highlight(last_object_mesh, last_object.name)
+		
+		if Input.is_action_just_pressed("interact"):
+			last_object.interact()
 	else:
-		prompt.text = ''
+		text_prompt.text = ''
 		if last_object != null:
-			can_focus = true
-			
-			last_object.disable_highlight(last_object.get_child(0))
+			last_object.disable_highlight(last_object.get_child(0), last_object.name)
 		

@@ -5,19 +5,20 @@ var is_opened: bool = false
 
 signal opened_door
 
+func _ready() -> void:
+	is_opened = false
+
 func open():
-	if !is_opened:
+	is_opened = !is_opened
+	print(name, " открыт: ", is_opened)
+	if is_opened:
+		opened_door.emit()
 		var mat = mesh.get_active_material(0)
-			# print(mat)
 		if mat is StandardMaterial3D:
 			mat.emission_enabled = true
 			mat.emission = Color(1.0, 0.0, 0.0, 1.0) # Зеленая подсветка
 			mat.emission_energy_multiplier = 2.0
-		is_opened = true
-		opened_door.emit()
 	else:
 		var mat = mesh.get_active_material(0)
-			# print(mat)
 		if mat is StandardMaterial3D:
 			mat.emission_enabled = false
-		is_opened = false
