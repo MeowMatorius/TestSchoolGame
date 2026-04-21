@@ -67,12 +67,12 @@ extends CharacterBody3D
 
 @export_category("Fov Settings")
 @export var default_fov : float = 75.0
-## Wether sprinting should effect FOV.
+## Wether sprinting should effect FOV
 @export var dynamic_fov : bool = true
 ## Miltiplies FOV while sprinting
 @export var dinamic_fov_mod : float = 5.0
 ## Changes blend speed of FOV changes
-@export var fov_smoothing : float = 0.1
+@export var fov_smoothing : float = 0.8
 
 @export_category("Animation Settings")
 ## Enables the view bobbing animation.
@@ -80,7 +80,7 @@ extends CharacterBody3D
 ## Changes headbob animation speed while sprinting
 @export var headbob_multiplier : float = 1.5
 ## Changes smoothness of headbob animation
-@export var headbob_anim_blend : float = 0.5
+@export var headbob_anim_blend : float = 2
 ## Changes smoothness of jump animation
 @export var jump_anim_blend : float = 0.5
 ## Changes smoothness of crouch animation
@@ -499,9 +499,9 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 
 func update_camera_fov():
 	if state == "sprinting":
-		CAMERA.fov = lerp(CAMERA.fov, default_fov + dinamic_fov_mod, fov_smoothing)
+		CAMERA.fov = lerp(CAMERA.fov, default_fov + dinamic_fov_mod, fov_smoothing / 10)
 	else:
-		CAMERA.fov = lerp(CAMERA.fov, default_fov, fov_smoothing)
+		CAMERA.fov = lerp(CAMERA.fov, default_fov, fov_smoothing / 10)
 
 func handle_pausing():
 	if Input.is_action_just_pressed(controls.PAUSE):
