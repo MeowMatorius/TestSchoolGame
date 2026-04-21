@@ -28,5 +28,5 @@ func _physics_process(_delta):
 	else:
 		text_prompt.text = ''
 		if last_object != null:
-			last_object.disable_highlight(last_object.get_child(0), last_object.name)
+			last_object.disable_highlight(last_object_mesh, last_object.name)
 		

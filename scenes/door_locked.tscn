@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bwtbiakoqxgeg"]
+
+[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/door.tscn" id="1_ejrh5"]
+[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://assets/textures/GreyboxTextures/greybox_green_grid.png" id="2_dj30l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8i13"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_dj30l")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nl0tj"]
+
+[node name="Door" unique_id=819968924 instance=ExtResource("1_ejrh5")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_j8i13")
+mesh = SubResource("BoxMesh_nl0tj")

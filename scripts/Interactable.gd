@@ -1,9 +1,13 @@
 extends CollisionObject3D
 class_name Interactable
 
+@export_enum("Switch", "Pickup", "Activate") var object_type: String
 @export var prompt_message = "Interact"
 
-signal is_picking
+@export_category("Двери/Контейнеры")
+@export var locked = false
+@export_enum("blue_key", "green_key") var item_needed: String
+
 signal is_switching
 signal is_activated
 
@@ -12,10 +16,6 @@ var highlighted: bool = false
 var activated: bool = false
 var is_opened: bool = false
 
-
-
-@export_enum("Switch", "Pickup", "Activate") var object_type: String
-
 func _ready() -> void:
 	highlighted = false
 	switching = false
@@ -23,12 +23,16 @@ func _ready() -> void:
 	is_opened = false
 
 func interact(object_collision):
-	if object_type == 'Switch':
-		switch()
+	if !locked:
+		if object_type == 'Switch':
+			switch()
+		if object_type == 'Activate':
+			activate(object_collision)
+	else:
+		prompt_message = 'Нужен ключ'
+		unlock()
 	if object_type == 'Pickup':
 		pickup()
-	if object_type == 'Activate':
-		activate(object_collision)
 
 
 func switch():
@@ -43,9 +47,16 @@ func switch():
 
 
 func pickup():
-	is_picking.emit()
+	signal_bus.is_picking.emit(name)
 	print("Игрок поднял ", name)
 	queue_free()
+
+
+func unlock():
+	if item_needed in Inventory.items["keys"]:
+		locked = false
+		prompt_message = 'Открыто'
+		print('Разблокировано')
 
 
 func activate(object_collision):

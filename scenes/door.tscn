@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="2_0mwg7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxdn"]
+resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1njh"]
 

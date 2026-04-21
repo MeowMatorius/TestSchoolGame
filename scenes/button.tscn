@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://kmmor3equpx6"]
 
 [ext_resource type="Script" uid="uid://d4jnoq4tfkr6q" path="res://scripts/Interactable.gd" id="1_at8sk"]
-[ext_resource type="Material" uid="uid://b2lhwchb2dmmd" path="res://assets/materials/BoxMat4.tres" id="2_31r73"]
+[ext_resource type="Script" uid="uid://dvrhdkv6bsmew" path="res://scripts/test_entered.gd" id="2_odqew"]
+[ext_resource type="Material" uid="uid://dshdom31wrtsl" path="res://assets/materials/BoxMat1.tres" id="2_u3tpu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mncer"]
 
@@ -14,8 +15,12 @@ prompt_message = "Использовать"
 object_type = "Activate"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
-material_override = ExtResource("2_31r73")
+material_override = ExtResource("2_u3tpu")
 mesh = SubResource("BoxMesh_mncer")
+script = ExtResource("2_odqew")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=362366221]
 shape = SubResource("BoxShape3D_cguwc")
+
+[connection signal="mouse_entered" from="." to="MeshInstance3D" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="MeshInstance3D" method="_on_button_mouse_exited"]

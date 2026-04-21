@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="SchoolGame"
-run/main_scene="res://assets/scenes/TestScene.tscn"
+run/main_scene="res://scenes/TestScene.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
+
+[autoload]
+
+signal_bus="*uid://y0w4uau18ga4"
+Inventory="*uid://b7cuxa1vwya85"
 
 [input]
 

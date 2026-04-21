@@ -412,6 +412,7 @@ HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
+default_fov = 90.0
 default_reticle = "uid://coqpusufa8a6k"
 look_sensitivity = 0.05
 
