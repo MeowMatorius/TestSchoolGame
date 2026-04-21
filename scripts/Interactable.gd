@@ -6,7 +6,14 @@ class_name Interactable
 
 @export_category("Двери/Контейнеры")
 @export var locked: bool = false
-@export_enum("KeyRed", "KeyBlue") var item_needed: String
+@export_enum("Red Key", "Blue Key") var item_needed: String
+
+@export_category("Подбираемое")
+@export var pickup_item_name: String = "Item"
+@export_enum("Key", "Collectable", "Money") var pickup_item_type: String
+@export var pickup_item_quantity: int = 1
+@export var pickup_item_uniq: bool = false
+@export var pickup_item_icon: Texture2D
 
 signal is_switching
 signal is_activated
@@ -49,13 +56,13 @@ func switch(object):
 
 
 func pickup():
-	signal_bus.is_picking.emit(name)
+	signal_bus.is_picking.emit(name, pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_uniq, pickup_item_type)
 	print("Игрок поднял ", name)
 	queue_free()
 
 
 func unlock():
-	if item_needed in Inventory.items["keys"]:
+	if item_needed in Inventory.items:
 		locked = false
 		prompt_message = 'Открыто'
 		print('Разблокировано')

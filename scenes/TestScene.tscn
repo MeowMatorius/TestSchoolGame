@@ -2,14 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_n3600"]
 [ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="3_6p1vh"]
-[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/Door.tscn" id="5_eppyl"]
-[ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://scenes/Button.tscn" id="6_xpysu"]
+[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/door.tscn" id="5_eppyl"]
+[ext_resource type="Texture2D" uid="uid://isjsflxq3134" path="res://assets/icons/jimmys-room-key.png" id="6_5l70m"]
+[ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://scenes/button.tscn" id="6_xpysu"]
 [ext_resource type="Texture2D" uid="uid://ht5bgdh7kv6v" path="res://assets/textures/GreyboxTextures/greybox_red_grid.png" id="6_yhikq"]
 [ext_resource type="Texture2D" uid="uid://d244v1nvp8wrr" path="res://assets/textures/GreyboxTextures/greybox_orange_grid.png" id="7_c7u1e"]
-[ext_resource type="Script" uid="uid://ddd6nklucwcjf" path="res://scripts/remote_activate.gd" id="7_epq12"]
+[ext_resource type="Script" path="res://scripts/remote_activate.gd" id="7_epq12"]
 [ext_resource type="Texture2D" uid="uid://bc5jyejbsyd5r" path="res://assets/textures/GreyboxTextures/greybox_teal_grid.png" id="7_fvp5t"]
+[ext_resource type="Texture2D" uid="uid://7nk0qmihpk0f" path="res://assets/icons/drawer-key.png" id="8_v6sup"]
 [ext_resource type="Texture2D" uid="uid://bic0efeupyxaq" path="res://assets/textures/GreyboxTextures/greybox_blue_grid.png" id="10_c7u1e"]
-[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/Pickup.tscn" id="10_yhikq"]
+[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/pickup.tscn" id="10_yhikq"]
 [ext_resource type="PackedScene" uid="uid://c3mg4of0mi1ht" path="res://assets/models/boombox_4k.blend" id="11_fvp5t"]
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://assets/music/Rostislav Khalikov - Falling Snow.mp3" id="12_fvp5t"]
 
@@ -18,49 +20,54 @@
 [sub_resource type="BoxMesh" id="BoxMesh_cguwc"]
 material = ExtResource("3_6p1vh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvp5t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l70m"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("10_c7u1e")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_plcqr"]
+[sub_resource type="BoxMesh" id="BoxMesh_v6sup"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l70m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjal3"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("6_yhikq")
 uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6sup"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("6_yhikq")
-uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cjal3"]
-resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4svi"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("7_fvp5t")
+albedo_texture = ExtResource("6_yhikq")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7hgn"]
+[sub_resource type="BoxMesh" id="BoxMesh_i7hgn"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmhls"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("7_fvp5t")
 uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pmhls"]
-resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyltb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_fvp5t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kskt"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_fvp5t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmfq1"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uiy2"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("7_c7u1e")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_2kskt"]
+[sub_resource type="BoxMesh" id="BoxMesh_ng8pb"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmfq1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjqhs"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("10_c7u1e")
 uv1_scale = Vector3(5, 5, 5)
@@ -95,17 +102,21 @@ transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 3.1074197, 1.75, 2.4215
 object_type = "Activate"
 
 [node name="MeshInstance3D" parent="OneTimeDoor/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_fvp5t")
-mesh = SubResource("BoxMesh_plcqr")
+material_override = SubResource("StandardMaterial3D_5l70m")
+mesh = SubResource("BoxMesh_v6sup")
 
 [node name="SwitchDoor" parent="." unique_id=706364462 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 1.1074197, 1.75, 2.4215965)
 
 [node name="KeyRed" parent="." unique_id=1214769650 instance=ExtResource("10_yhikq")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.75, 0.6, 1)
+pickup_item_name = "Red Key"
+pickup_item_type = "Key"
+pickup_item_uniq = true
+pickup_item_icon = ExtResource("6_5l70m")
 
 [node name="MeshInstance3D" parent="KeyRed" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_5l70m")
+material_override = SubResource("StandardMaterial3D_cjal3")
 
 [node name="SwitchDoorRedKey" parent="." unique_id=825200455 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -0.8925803, 1.75, 2.4215965)
@@ -113,17 +124,29 @@ transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -0.8925803, 1.75, 2.421
 [node name="DoorObject" parent="SwitchDoorRedKey" index="0" unique_id=606871235]
 prompt_message = "Закрыто"
 locked = true
-item_needed = "KeyRed"
+item_needed = "Red Key"
 
 [node name="MeshInstance3D" parent="SwitchDoorRedKey/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_v6sup")
-mesh = SubResource("BoxMesh_cjal3")
+material_override = SubResource("StandardMaterial3D_o4svi")
+mesh = SubResource("BoxMesh_i7hgn")
 
 [node name="KeyBlue" parent="." unique_id=1600296916 instance=ExtResource("10_yhikq")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.75, 0.6, 1)
+pickup_item_name = "Blue Key"
+pickup_item_type = "Key"
+pickup_item_icon = ExtResource("8_v6sup")
 
 [node name="MeshInstance3D" parent="KeyBlue" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_o4svi")
+material_override = SubResource("StandardMaterial3D_pmhls")
+
+[node name="KeyBlue2" parent="." unique_id=243040129 instance=ExtResource("10_yhikq")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.2584548, 0.6, 1)
+pickup_item_name = "Blue Key"
+pickup_item_type = "Key"
+pickup_item_icon = ExtResource("8_v6sup")
+
+[node name="MeshInstance3D" parent="KeyBlue2" index="0" unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_uyltb")
 
 [node name="ActivateDoorBlueKey" parent="." unique_id=1458739684 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -2.89258, 1.75, 2.4215965)
@@ -132,13 +155,13 @@ transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -2.89258, 1.75, 2.42159
 object_type = "Activate"
 prompt_message = "Закрыто"
 locked = true
-item_needed = "KeyBlue"
+item_needed = "Blue Key"
 
 [node name="MeshInstance3D" parent="ActivateDoorBlueKey/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_i7hgn")
-mesh = SubResource("BoxMesh_pmhls")
+material_override = SubResource("StandardMaterial3D_2kskt")
+mesh = SubResource("BoxMesh_hmfq1")
 
-[node name="Button" parent="." unique_id=243040129 instance=ExtResource("6_xpysu")]
+[node name="Button" parent="." unique_id=2121461548 instance=ExtResource("6_xpysu")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -6.8607616, 2.1172037, 2.3215966)
 
 [node name="DoorWButton" parent="." unique_id=1340845945 instance=ExtResource("5_eppyl")]
@@ -149,8 +172,8 @@ collision_layer = 1
 script = ExtResource("7_epq12")
 
 [node name="MeshInstance3D" parent="DoorWButton/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_uyltb")
-mesh = SubResource("BoxMesh_2kskt")
+material_override = SubResource("StandardMaterial3D_1uiy2")
+mesh = SubResource("BoxMesh_ng8pb")
 
 [node name="🏀--- Объекты ---🧊" type="Node" parent="." unique_id=1128602655]
 
@@ -164,8 +187,8 @@ material_override = ExtResource("3_6p1vh")
 [node name="Radio" parent="🏀--- Объекты ---🧊/Cube" unique_id=1982684124 instance=ExtResource("11_fvp5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027296543, 0.5, -0.068679094)
 
-[node name="boombox" parent="🏀--- Объекты ---🧊/Cube/Radio" index="0" unique_id=935625720]
-material_override = SubResource("StandardMaterial3D_hmfq1")
+[node name="boombox" parent="🏀--- Объекты ---🧊/Cube/Radio" index="0" unique_id=1897745195]
+material_override = SubResource("StandardMaterial3D_rjqhs")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Cube/Radio" unique_id=1662517576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
@@ -180,6 +203,7 @@ max_distance = 5.0
 [editable path="KeyRed"]
 [editable path="SwitchDoorRedKey"]
 [editable path="KeyBlue"]
+[editable path="KeyBlue2"]
 [editable path="ActivateDoorBlueKey"]
 [editable path="DoorWButton"]
 [editable path="🏀--- Объекты ---🧊/Cube"]
