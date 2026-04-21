@@ -66,7 +66,7 @@ extends CharacterBody3D
 
 
 @export_category("Fov Settings")
-@export var default_fov : float = 75.0
+@export var default_fov : float = 65.0
 ## Wether sprinting should effect FOV
 @export var dynamic_fov : bool = true
 ## Miltiplies FOV while sprinting
