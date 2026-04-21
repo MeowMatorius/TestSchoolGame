@@ -1,0 +1,40 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://cqq4qhl0el65u"]
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_j3pel"]
+resource_name = "Chorus"
+wet = 0.2
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_j3pel"]
+resource_name = "Filter"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
+resource_name = "Distortion"
+mode = 2
+pre_gain = -6.0
+keep_hf_hz = 800.0
+drive = 0.5
+post_gain = -6.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
+resource_name = "Compressor"
+threshold = -6.0
+ratio = 26.3
+attack_us = 411.0
+release_ms = 947.0
+
+[sub_resource type="AudioEffectRecord" id="AudioEffectRecord_j3pel"]
+resource_name = "Record"
+format = 0
+
+[resource]
+bus/0/volume_db = -29.225784
+bus/0/effect/0/effect = SubResource("AudioEffectChorus_j3pel")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectFilter_j3pel")
+bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource("AudioEffectDistortion_j3pel")
+bus/0/effect/2/enabled = true
+bus/0/effect/3/effect = SubResource("AudioEffectCompressor_j3pel")
+bus/0/effect/3/enabled = true
+bus/0/effect/4/effect = SubResource("AudioEffectRecord_j3pel")
+bus/0/effect/4/enabled = true

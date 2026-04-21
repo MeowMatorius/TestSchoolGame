@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2yqd7j4alq47"
+path="res://.godot/imported/Rostislav Khalikov - Falling Snow.mp3-62cef56e5f3b08daf25edd6f6afed999.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Rostislav Khalikov - Falling Snow.mp3"
+dest_files=["res://.godot/imported/Rostislav Khalikov - Falling Snow.mp3-62cef56e5f3b08daf25edd6f6afed999.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

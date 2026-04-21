@@ -21,12 +21,14 @@ func _physics_process(_delta):
 		last_object_mesh = last_object.get_node("MeshInstance3D")
 		
 		text_prompt.text = last_object.prompt_message
+		text_prompt.visible = true
 		last_object.highlight(last_object_mesh, last_object.name)
 		
 		if Input.is_action_just_pressed("interact"):
 			last_object.interact(last_object)
 	else:
 		text_prompt.text = ''
+		text_prompt.visible = false
 		if last_object != null:
 			last_object.disable_highlight(last_object_mesh, last_object.name)
 		
