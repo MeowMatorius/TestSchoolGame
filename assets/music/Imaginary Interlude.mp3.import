@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bisrjdry01kks"
+path="res://.godot/imported/Imaginary Interlude.mp3-3bad8c65d65e029c26213af25349aa8b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Imaginary Interlude.mp3"
+dest_files=["res://.godot/imported/Imaginary Interlude.mp3-3bad8c65d65e029c26213af25349aa8b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
