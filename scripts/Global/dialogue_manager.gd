@@ -19,7 +19,6 @@ func load_all_data(internal_name, dialogue_stage):
 func start_dialogue(dialogue_stage: String):
 	if all_dialogues.has(dialogue_stage):
 		current_dialogue_key = dialogue_stage
-		current_step = 0
 		show_step()
 	else:
 		print("Диалог не найден:", dialogue_stage)
