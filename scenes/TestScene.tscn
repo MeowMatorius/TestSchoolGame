@@ -218,49 +218,49 @@ script = null
 [node name="MeshInstance3D" parent="🏀--- Объекты ---🧊/Cube" index="0" unique_id=1214280325]
 material_override = ExtResource("3_6p1vh")
 
-[node name="Radio" parent="🏀--- Объекты ---🧊" unique_id=1231804140 instance=ExtResource("11_fvp5t")]
+[node name="Radio (Song 1)" parent="🏀--- Объекты ---🧊" unique_id=1231804140 instance=ExtResource("11_fvp5t")]
 transform = Transform3D(0.9795085, 0, 0.20140274, 0, 1, 0, -0.20140274, 0, 0.9795085, -2.373861, 1.5, -1.1818023)
 collision_layer = 3
 object_type = "Switch"
 object_state = "Deactivated"
 
-[node name="boombox" parent="🏀--- Объекты ---🧊/Radio" index="0" unique_id=2132592768]
+[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 1)" index="0" unique_id=2132592768]
 material_override = SubResource("StandardMaterial3D_4dify")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio" unique_id=1564457993]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=1564457993]
 transform = Transform3D(0.815, 0, 0, 0, 0.52, 0, 0, 0, 0.23, 0, 0.14999998, 0.029999733)
 shape = SubResource("BoxShape3D_5l70m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio" unique_id=1662517576]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=1662517576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
 stream = ExtResource("12_fvp5t")
 max_distance = 10.0
 panning_strength = 3.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio" unique_id=873132126]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=873132126]
 libraries/ = SubResource("AnimationLibrary_cjal3")
 
-[node name="Radio2" parent="🏀--- Объекты ---🧊" unique_id=1798560912 instance=ExtResource("11_fvp5t")]
+[node name="Radio (Song 2)" parent="🏀--- Объекты ---🧊" unique_id=1798560912 instance=ExtResource("11_fvp5t")]
 transform = Transform3D(0.93988943, 0, -0.34147885, 0, 1, 0, 0.34147885, 0, 0.93988943, -1.098832, 1.5, -1.2767804)
 collision_layer = 3
 object_type = "Switch"
 object_state = "Activated"
 
-[node name="boombox" parent="🏀--- Объекты ---🧊/Radio2" index="0" unique_id=2132592768]
+[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 2)" index="0" unique_id=2132592768]
 material_override = SubResource("StandardMaterial3D_swn04")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio2" unique_id=1381996159]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=1381996159]
 transform = Transform3D(0.815, 0, 0, 0, 0.52, 0, 0, 0, 0.23, 0, 0.14999998, 0.029999733)
 shape = SubResource("BoxShape3D_5l70m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio2" unique_id=339706740]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=339706740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
 stream = ExtResource("18_i7hgn")
 autoplay = true
 max_distance = 10.0
 panning_strength = 3.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio2" unique_id=1245625952]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=1245625952]
 libraries/ = SubResource("AnimationLibrary_cjal3")
 
 [connection signal="is_switching" from="🚪--- Двери  ---🚪/Button" to="🚪--- Двери  ---🚪/DoorWButton/Door" method="open_by_switch"]
@@ -274,5 +274,5 @@ libraries/ = SubResource("AnimationLibrary_cjal3")
 [editable path="🚪--- Двери  ---🚪/ActivateDoorBlueKey"]
 [editable path="🚪--- Двери  ---🚪/DoorWButton"]
 [editable path="🏀--- Объекты ---🧊/Cube"]
-[editable path="🏀--- Объекты ---🧊/Radio"]
-[editable path="🏀--- Объекты ---🧊/Radio2"]
+[editable path="🏀--- Объекты ---🧊/Radio (Song 1)"]
+[editable path="🏀--- Объекты ---🧊/Radio (Song 2)"]

@@ -21,7 +21,6 @@ signal is_switching
 signal is_activated
 
 var prompt_message: String
-var switching: bool = false
 var highlighted: bool = false
 var activated: bool = false
 var is_opened: bool = false
@@ -29,7 +28,6 @@ var is_opened: bool = false
 
 func _ready() -> void:
 	highlighted = false
-	switching = false
 	activated = false
 	is_opened = false
 
@@ -54,8 +52,7 @@ func activate(object):
 
 
 func switch(object):
-	switching = !switching
-	if switching:
+	if object_state == "Deactivated":
 		is_switching.emit()
 		switch_on(object)
 	else:
