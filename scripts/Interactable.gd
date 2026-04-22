@@ -65,7 +65,7 @@ func switch(object):
 
 func pickup():
 	signal_bus.is_picking.emit(pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_uniq, pickup_item_type)
-	print("\n", get_script().resource_path.get_file(), ":\n", "Игрок поднял ", name)
+	print("\n", get_script().resource_path.get_file(), ":\n", "Игрок подобрал ", name)
 	queue_free()
 
 

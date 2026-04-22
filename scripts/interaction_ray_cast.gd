@@ -40,7 +40,7 @@ func _physics_process(_delta):
 						elif target_object.object_state == "Activated":
 							text_prompt.text = str(target_object.name, "\n", target_object.deactivate_prompt_message)
 			"Pickup":
-				text_prompt.text = str("Взять\n", target_object.pickup_item_name)
+				text_prompt.text = str(target_object.pickup_item_name, "\nПодобрать" )
 			_:
 				pass
 		
