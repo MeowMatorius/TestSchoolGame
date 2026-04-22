@@ -4,18 +4,18 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c3mg4of0mi1ht"
-path="res://.godot/imported/boombox_4k.blend-01197481655e961a000a10a81bfea6bc.scn"
+path="res://.godot/imported/Radio.blend-44d4d8093bf269d286c4500d68e6f49c.scn"
 
 [deps]
 
-source_file="res://assets/models/boombox_4k.blend"
-dest_files=["res://.godot/imported/boombox_4k.blend-01197481655e961a000a10a81bfea6bc.scn"]
+source_file="res://assets/models/Radio.blend"
+dest_files=["res://.godot/imported/Radio.blend-44d4d8093bf269d286c4500d68e6f49c.scn"]
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
-nodes/root_script=null
+nodes/root_type="StaticBody3D"
+nodes/root_name="Radio"
+nodes/root_script=Resource("uid://d4jnoq4tfkr6q", "res://scripts/Interactable.gd")
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

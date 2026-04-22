@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7nk0qmihpk0f"
-path="res://.godot/imported/drawer-key.png-171eb08c62d749d55ecc6d9a0805378c.ctex"
+path="res://.godot/imported/white-key.png-1faed230b1077f5d6af075851522eb02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/drawer-key.png"
-dest_files=["res://.godot/imported/drawer-key.png-171eb08c62d749d55ecc6d9a0805378c.ctex"]
+source_file="res://assets/icons/white-key.png"
+dest_files=["res://.godot/imported/white-key.png-1faed230b1077f5d6af075851522eb02.ctex"]
 
 [params]
 

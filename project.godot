@@ -13,7 +13,11 @@ config_version=5
 config/name="SchoolGame"
 run/main_scene="res://scenes/TestScene.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://assets/icons/icon.svg"
+config/icon="res://assets/icons/godot-icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://cqq4qhl0el65u"
 
 [autoload]
 

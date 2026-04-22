@@ -22,4 +22,4 @@ func add_item(name, pickup_item_name, pickup_item_icon, pickup_item_quantity, pi
 			"icon": pickup_item_icon
 			}
 	is_adding_to_inventory.emit(items)
-	print(items)
+	print("\n", get_script().resource_path.get_file(), ":\n", "Инвентарь обновлен: \n", items)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://isjsflxq3134"
-path="res://.godot/imported/jimmys-room-key.png-b270b8fc2656c0ce4d58403db507cb83.ctex"
+uid="uid://dxh0hi4ma5t84"
+path="res://.godot/imported/yellow-key.png-08dac4e7ee6b4c110b143bae2549dc9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/jimmys-room-key.png"
-dest_files=["res://.godot/imported/jimmys-room-key.png-b270b8fc2656c0ce4d58403db507cb83.ctex"]
+source_file="res://assets/icons/yellow-key.png"
+dest_files=["res://.godot/imported/yellow-key.png-08dac4e7ee6b4c110b143bae2549dc9b.ctex"]
 
 [params]
 

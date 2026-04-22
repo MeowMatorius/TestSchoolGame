@@ -46,7 +46,6 @@ func interact(object):
 
 func switch(object):
 	switching = !switching
-	print(name, " активен: ", switching)
 	if switching:
 		is_switching.emit()
 		switch_on(object)
@@ -57,7 +56,7 @@ func switch(object):
 
 func pickup():
 	signal_bus.is_picking.emit(name, pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_uniq, pickup_item_type)
-	print("Игрок поднял ", name)
+	print("\n", get_script().resource_path.get_file(), ":\n", "Игрок поднял ", name)
 	queue_free()
 
 
@@ -65,20 +64,20 @@ func unlock():
 	if item_needed in Inventory.items:
 		locked = false
 		prompt_message = 'Открыто'
-		print('Разблокировано')
+		print("\n", get_script().resource_path.get_file(), ":\n", 'Разблокировано')
 
 
 func activate(object):
 	is_activated.emit()
 	object.get_node("AnimationPlayer").play("activate")
 	object.set_collision_layer_value(2, false)
-	print("Игрок активировал ", name)
+	print("\n", get_script().resource_path.get_file(), ":\n", "Игрок активировал ", name)
 
 
 func highlight(object_mesh, object_name):
 	if object_mesh is MeshInstance3D and !highlighted:
 		highlighted = true
-		print(object_name, ' Подсветка: ', highlighted)
+		# print("\n", get_script().resource_path.get_file(), ":\n", object_name, ' Подсветка: ', highlighted)
 		
 		var mat = object_mesh.get_active_material(0)
 		if mat is StandardMaterial3D:
@@ -90,7 +89,7 @@ func highlight(object_mesh, object_name):
 func disable_highlight(object_mesh, object_name):
 	if object_mesh is MeshInstance3D and highlighted:
 		highlighted = false
-		print(object_name, ' Подсветка: ', highlighted)
+		# print("\n", get_script().resource_path.get_file(), ":\n", object_name, ' Подсветка: ', highlighted)
 		
 		var mat = object_mesh.get_active_material(0)
 		if mat is StandardMaterial3D:
@@ -98,12 +97,16 @@ func disable_highlight(object_mesh, object_name):
 
 
 func switch_on(object):
-	if object.get_node("AnimationPlayer") != null:
+	if object.get_node("AnimationPlayer"):
 		object.get_node("AnimationPlayer").play("activate")
-	print(name, " Включен")
+	if object.get_node("AudioStreamPlayer3D"):
+		object.get_node("AudioStreamPlayer3D").playing = true
+	print("\n", get_script().resource_path.get_file(), ":\n", name, " Включен")
 
 
 func switch_off(object):
-	if object.get_node("AnimationPlayer") != null:
+	if object.get_node("AnimationPlayer"):
 		object.get_node("AnimationPlayer").play("deactivate")
-	print(name, " Выключен")
+	if object.get_node("AudioStreamPlayer3D"):
+		object.get_node("AudioStreamPlayer3D").playing = false
+	print("\n", get_script().resource_path.get_file(), ":\n", name, " Выключен")
