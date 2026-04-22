@@ -5,8 +5,7 @@
 [ext_resource type="Script" uid="uid://cv51immeinjva" path="res://scripts/interaction_ray_cast.gd" id="3_qaoyu"]
 [ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
-[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://addons/fpc/player_items.gd" id="5_4fv23"]
-[ext_resource type="Texture2D" uid="uid://d1qxknlfg57ty" path="res://assets/icons/icon.svg" id="5_gv6je"]
+[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://scripts/player_items.gd" id="5_4fv23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -410,6 +409,17 @@ colors = PackedColorArray(0, 0, 0, 0.5882353, 0, 0, 0, 0.5882353)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_gv6je"]
 gradient = SubResource("Gradient_qaoyu")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv6je"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
 [node name="Player" type="CharacterBody3D" unique_id=2031011971 node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_0t4e8")
@@ -495,10 +505,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = 37.48999
-offset_right = 128.0
-offset_bottom = 78.98999
+offset_left = -57.5
+offset_top = 48.0
+offset_right = 57.5
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Использовать"
@@ -517,16 +527,18 @@ texture = SubResource("GradientTexture1D_gv6je")
 
 [node name="Items" type="HBoxContainer" parent="UserInterface" unique_id=185640082 node_paths=PackedStringArray("ui_items")]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 309.0
-offset_top = -80.0
-offset_right = -309.0
-offset_bottom = -28.0
+offset_left = -237.5
+offset_top = -89.82001
+offset_right = 237.5
+offset_bottom = -29.820007
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 35
 alignment = 1
 script = ExtResource("5_4fv23")
 ui_items = NodePath(".")
@@ -536,21 +548,18 @@ ui_items_array = [null]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
 
 [node name="Icon" type="TextureRect" parent="UserInterface/Items/Item1" unique_id=891001478]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="UserInterface/Items/Item1" unique_id=1401148712]
 layout_mode = 1
@@ -566,21 +575,18 @@ vertical_alignment = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
 
 [node name="Icon" type="TextureRect" parent="UserInterface/Items/Item2" unique_id=2054121668]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 2
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="UserInterface/Items/Item2" unique_id=12244101]
 layout_mode = 1
@@ -596,23 +602,18 @@ vertical_alignment = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
 
 [node name="Icon" type="TextureRect" parent="UserInterface/Items/Item3" unique_id=832765124]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_gv6je")
 expand_mode = 2
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="UserInterface/Items/Item3" unique_id=1614521346]
 layout_mode = 1
@@ -628,23 +629,18 @@ vertical_alignment = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
 
 [node name="Icon" type="TextureRect" parent="UserInterface/Items/Item4" unique_id=2025943976]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_gv6je")
 expand_mode = 2
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="UserInterface/Items/Item4" unique_id=1567249542]
 layout_mode = 1
@@ -660,25 +656,47 @@ vertical_alignment = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
 
 [node name="Icon" type="TextureRect" parent="UserInterface/Items/Item5" unique_id=1571346658]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_gv6je")
 expand_mode = 2
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="UserInterface/Items/Item5" unique_id=943858297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Item6" type="Panel" parent="UserInterface/Items" unique_id=1927454157]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+
+[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item6" unique_id=2077722202]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="UserInterface/Items/Item6" unique_id=1346610692]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

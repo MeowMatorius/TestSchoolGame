@@ -8,7 +8,7 @@ func _ready():
 	signal_bus.is_picking.connect(add_item) 
 
 
-func add_item(name, pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_uniq, pickup_item_type):
+func add_item(pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_uniq, pickup_item_type):
 	if items.has(pickup_item_name) and pickup_item_uniq:
 		pass
 	elif items.has(pickup_item_name) and !pickup_item_uniq:

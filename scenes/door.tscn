@@ -60,28 +60,30 @@ _data = {
 &"deactivate": SubResource("Animation_83dcw")
 }
 
-[node name="Door" type="Node3D" unique_id=1458739684]
+[node name="DoorObject" type="Node3D" unique_id=1458739684]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 0, 1.25, 0)
 
-[node name="DoorObject" type="StaticBody3D" parent="." unique_id=606871235]
+[node name="Door" type="StaticBody3D" parent="." unique_id=606871235]
 transform = Transform3D(15, 0, 0, 0, 1.0000001, 0, 0, 0, 1, -7.490095, 0, 0)
 collision_layer = 3
 script = ExtResource("1_uvdjg")
 object_type = "Switch"
-prompt_message = "Открыть"
+object_state = "Deactivated"
+activate_prompt_message = "Открыть"
+deactivate_prompt_message = "Закрыть"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorObject" unique_id=1126159426]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1126159426]
 transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0)
 material_override = ExtResource("2_uvdjg")
 mesh = SubResource("BoxMesh_1vxdn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorObject" unique_id=1813992751]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1813992751]
 transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0)
 shape = SubResource("BoxShape3D_u1njh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorObject" unique_id=1681731813]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door" unique_id=1681731813]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_18pbm")
 playback_default_blend_time = 1.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="DoorObject" unique_id=1994890589]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Door" unique_id=1994890589]

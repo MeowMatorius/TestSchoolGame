@@ -27,7 +27,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 collision_layer = 3
 script = ExtResource("1_at8sk")
 object_type = "Switch"
-prompt_message = "Переключить"
+object_state = "Deactivated"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
 material_override = SubResource("StandardMaterial3D_ywcaw")

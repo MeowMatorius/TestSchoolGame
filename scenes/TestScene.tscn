@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_n3600"]
 [ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="3_6p1vh"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/Door.tscn" id="5_eppyl"]
+[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://assets/textures/GreyboxTextures/greybox_green_grid.png" id="5_v6sup"]
 [ext_resource type="Texture2D" uid="uid://isjsflxq3134" path="res://assets/icons/red-key.png" id="6_5l70m"]
 [ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://scenes/Button.tscn" id="6_xpysu"]
 [ext_resource type="Texture2D" uid="uid://ht5bgdh7kv6v" path="res://assets/textures/GreyboxTextures/greybox_red_grid.png" id="6_yhikq"]
@@ -20,22 +21,17 @@
 [sub_resource type="BoxMesh" id="BoxMesh_cguwc"]
 material = ExtResource("3_6p1vh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l70m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6sup"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("10_c7u1e")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_v6sup"]
+[sub_resource type="BoxMesh" id="BoxMesh_cjal3"]
 resource_local_to_scene = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjal3"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("6_yhikq")
-uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4svi"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("6_yhikq")
+albedo_texture = ExtResource("5_v6sup")
 uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i7hgn"]
@@ -43,31 +39,44 @@ resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmhls"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("7_fvp5t")
+albedo_texture = ExtResource("6_yhikq")
 uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyltb"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("7_fvp5t")
+albedo_texture = ExtResource("6_yhikq")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kskt"]
+[sub_resource type="BoxMesh" id="BoxMesh_2kskt"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmfq1"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("7_fvp5t")
 uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hmfq1"]
-resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uiy2"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_fvp5t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ng8pb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_fvp5t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjqhs"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lo1sl"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("7_c7u1e")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ng8pb"]
+[sub_resource type="BoxMesh" id="BoxMesh_y5k1c"]
 resource_local_to_scene = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjqhs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d23v3"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("10_c7u1e")
 uv1_scale = Vector3(5, 5, 5)
@@ -112,15 +121,20 @@ mesh = SubResource("BoxMesh_cguwc")
 [node name="OneTimeDoor" parent="." unique_id=277844827 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 3.1074197, 1.75, 2.4215965)
 
-[node name="DoorObject" parent="OneTimeDoor" index="0" unique_id=606871235]
+[node name="Door" parent="OneTimeDoor" index="0" unique_id=606871235]
 object_type = "Activate"
+lock_state = "Broken"
 
-[node name="MeshInstance3D" parent="OneTimeDoor/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_5l70m")
-mesh = SubResource("BoxMesh_v6sup")
+[node name="MeshInstance3D" parent="OneTimeDoor/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_v6sup")
+mesh = SubResource("BoxMesh_cjal3")
 
 [node name="SwitchDoor" parent="." unique_id=706364462 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 1.1074197, 1.75, 2.4215965)
+
+[node name="MeshInstance3D" parent="SwitchDoor/Door" parent_id_path=PackedInt32Array(706364462, 606871235) index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_o4svi")
+mesh = SubResource("BoxMesh_i7hgn")
 
 [node name="KeyRed" parent="." unique_id=1214769650 instance=ExtResource("10_yhikq")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.75, 0.6, 1)
@@ -130,52 +144,48 @@ pickup_item_uniq = true
 pickup_item_icon = ExtResource("6_5l70m")
 
 [node name="MeshInstance3D" parent="KeyRed" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_cjal3")
+material_override = SubResource("StandardMaterial3D_pmhls")
 
 [node name="SwitchDoorRedKey" parent="." unique_id=825200455 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -0.8925803, 1.75, 2.4215965)
 
-[node name="DoorObject" parent="SwitchDoorRedKey" index="0" unique_id=606871235]
-prompt_message = "Закрыто"
-locked = true
-item_needed = "Red Key"
+[node name="Door" parent="SwitchDoorRedKey" index="0" unique_id=606871235]
+lock_state = "Locked"
+item_needed_to_open = "Red Key"
 
-[node name="MeshInstance3D" parent="SwitchDoorRedKey/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_o4svi")
-mesh = SubResource("BoxMesh_i7hgn")
+[node name="MeshInstance3D" parent="SwitchDoorRedKey/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_uyltb")
+mesh = SubResource("BoxMesh_2kskt")
 
 [node name="KeyBlue" parent="." unique_id=1600296916 instance=ExtResource("10_yhikq")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.75, 0.6, 1)
 pickup_item_name = "Blue Key"
 pickup_item_type = "Key"
-pickup_item_uniq = true
 pickup_item_icon = ExtResource("8_v6sup")
 
 [node name="MeshInstance3D" parent="KeyBlue" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_pmhls")
+material_override = SubResource("StandardMaterial3D_hmfq1")
 
 [node name="KeyBlue2" parent="." unique_id=243040129 instance=ExtResource("10_yhikq")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.2584548, 0.6, 1)
 pickup_item_name = "Blue Key"
 pickup_item_type = "Key"
-pickup_item_uniq = true
 pickup_item_icon = ExtResource("8_v6sup")
 
 [node name="MeshInstance3D" parent="KeyBlue2" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_uyltb")
+material_override = SubResource("StandardMaterial3D_1uiy2")
 
 [node name="ActivateDoorBlueKey" parent="." unique_id=1458739684 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -2.89258, 1.75, 2.4215965)
 
-[node name="DoorObject" parent="ActivateDoorBlueKey" index="0" unique_id=606871235]
+[node name="Door" parent="ActivateDoorBlueKey" index="0" unique_id=606871235]
 object_type = "Activate"
-prompt_message = "Закрыто"
-locked = true
-item_needed = "Blue Key"
+lock_state = "Locked"
+item_needed_to_open = "Blue Key"
 
-[node name="MeshInstance3D" parent="ActivateDoorBlueKey/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_2kskt")
-mesh = SubResource("BoxMesh_hmfq1")
+[node name="MeshInstance3D" parent="ActivateDoorBlueKey/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_ng8pb")
+mesh = SubResource("BoxMesh_rjqhs")
 
 [node name="Button" parent="." unique_id=2121461548 instance=ExtResource("6_xpysu")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -6.8607616, 2.1172037, 2.3215966)
@@ -183,48 +193,49 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -6.8607616, 2.1172037, 
 [node name="DoorWButton" parent="." unique_id=1340845945 instance=ExtResource("5_eppyl")]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -4.89258, 1.75, 2.4215965)
 
-[node name="DoorObject" parent="DoorWButton" index="0" unique_id=606871235]
+[node name="Door" parent="DoorWButton" index="0" unique_id=606871235]
 collision_layer = 1
 script = ExtResource("7_epq12")
 
-[node name="MeshInstance3D" parent="DoorWButton/DoorObject" index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_1uiy2")
-mesh = SubResource("BoxMesh_ng8pb")
+[node name="MeshInstance3D" parent="DoorWButton/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_lo1sl")
+mesh = SubResource("BoxMesh_y5k1c")
 
 [node name="🏀--- Объекты ---🧊" type="Node" parent="." unique_id=1128602655]
 
 [node name="Cube" parent="🏀--- Объекты ---🧊" unique_id=1431956072 instance=ExtResource("6_xpysu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1, -3)
 script = null
 
 [node name="MeshInstance3D" parent="🏀--- Объекты ---🧊/Cube" index="0" unique_id=1214280325]
 material_override = ExtResource("3_6p1vh")
 
-[node name="Radio" parent="🏀--- Объекты ---🧊" unique_id=1231804140 instance=ExtResource("11_fvp5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7772965, 1.5, -8.068679)
+[node name="Radio" parent="🏀--- Объекты ---🧊/Cube" unique_id=1231804140 instance=ExtResource("11_fvp5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027296543, 0.5, -0.068678856)
 collision_layer = 3
 object_type = "Switch"
-prompt_message = "Включить"
+object_state = "Deactivated"
 
-[node name="boombox" parent="🏀--- Объекты ---🧊/Radio" index="0" unique_id=2132592768]
-material_override = SubResource("StandardMaterial3D_rjqhs")
+[node name="boombox" parent="🏀--- Объекты ---🧊/Cube/Radio" index="0" unique_id=2132592768]
+material_override = SubResource("StandardMaterial3D_d23v3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio" unique_id=1564457993]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Cube/Radio" unique_id=1564457993]
 transform = Transform3D(0.815, 0, 0, 0, 0.52, 0, 0, 0, 0.23, 0, 0.14999998, 0.029999733)
 shape = SubResource("BoxShape3D_5l70m")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio" unique_id=1662517576]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Cube/Radio" unique_id=1662517576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
 stream = ExtResource("12_fvp5t")
 max_distance = 10.0
 panning_strength = 3.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio" unique_id=873132126]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Cube/Radio" unique_id=873132126]
 libraries/ = SubResource("AnimationLibrary_cjal3")
 
-[connection signal="is_switching" from="Button" to="DoorWButton/DoorObject" method="open_by_switch"]
+[connection signal="is_switching" from="Button" to="DoorWButton/Door" method="open_by_switch"]
 
 [editable path="OneTimeDoor"]
+[editable path="SwitchDoor"]
 [editable path="KeyRed"]
 [editable path="SwitchDoorRedKey"]
 [editable path="KeyBlue"]
@@ -232,4 +243,4 @@ libraries/ = SubResource("AnimationLibrary_cjal3")
 [editable path="ActivateDoorBlueKey"]
 [editable path="DoorWButton"]
 [editable path="🏀--- Объекты ---🧊/Cube"]
-[editable path="🏀--- Объекты ---🧊/Radio"]
+[editable path="🏀--- Объекты ---🧊/Cube/Radio"]
