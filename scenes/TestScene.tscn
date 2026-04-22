@@ -104,7 +104,7 @@ transform = Transform3D(0.9686028, -0.10517265, -0.22527151, 0.2158256, 0.805471
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=342963380 instance=ExtResource("1_n3600")]
-transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -1.75, 0, -1)
+transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -1.75, 0, -3)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=888598047]
 transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
@@ -137,7 +137,7 @@ material_override = SubResource("StandardMaterial3D_o4svi")
 mesh = SubResource("BoxMesh_i7hgn")
 
 [node name="KeyRed" parent="." unique_id=1214769650 instance=ExtResource("10_yhikq")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.75, 0.6, 1)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.3623245, 1.6031036, -1.346065)
 pickup_item_name = "Red Key"
 pickup_item_type = "Key"
 pickup_item_uniq = true
@@ -158,7 +158,7 @@ material_override = SubResource("StandardMaterial3D_uyltb")
 mesh = SubResource("BoxMesh_2kskt")
 
 [node name="KeyBlue" parent="." unique_id=1600296916 instance=ExtResource("10_yhikq")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.75, 0.6, 1)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.0633452, 1.5931083, -1.2039194)
 pickup_item_name = "Blue Key"
 pickup_item_type = "Key"
 pickup_item_icon = ExtResource("8_v6sup")
@@ -167,7 +167,7 @@ pickup_item_icon = ExtResource("8_v6sup")
 material_override = SubResource("StandardMaterial3D_hmfq1")
 
 [node name="KeyBlue2" parent="." unique_id=243040129 instance=ExtResource("10_yhikq")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.2584548, 0.6, 1)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.6923736, 1.6101971, -1.1138437)
 pickup_item_name = "Blue Key"
 pickup_item_type = "Key"
 pickup_item_icon = ExtResource("8_v6sup")
@@ -204,14 +204,14 @@ mesh = SubResource("BoxMesh_y5k1c")
 [node name="🏀--- Объекты ---🧊" type="Node" parent="." unique_id=1128602655]
 
 [node name="Cube" parent="🏀--- Объекты ---🧊" unique_id=1431956072 instance=ExtResource("6_xpysu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1, -1)
 script = null
 
 [node name="MeshInstance3D" parent="🏀--- Объекты ---🧊/Cube" index="0" unique_id=1214280325]
 material_override = ExtResource("3_6p1vh")
 
 [node name="Radio" parent="🏀--- Объекты ---🧊/Cube" unique_id=1231804140 instance=ExtResource("11_fvp5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027296543, 0.5, -0.068678856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027296543, 0.5, 0.2404561)
 collision_layer = 3
 object_type = "Switch"
 object_state = "Deactivated"
