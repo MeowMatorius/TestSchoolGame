@@ -10,6 +10,18 @@ albedo_texture = ExtResource("2_rtit6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
 
+[sub_resource type="Animation" id="Animation_rtit6"]
+resource_name = "activate"
+
+[sub_resource type="Animation" id="Animation_ywcaw"]
+resource_name = "deactivate"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sejoc"]
+_data = {
+&"activate": SubResource("Animation_rtit6"),
+&"deactivate": SubResource("Animation_ywcaw")
+}
+
 [node name="Button" type="StaticBody3D" unique_id=243040129]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 collision_layer = 3
@@ -23,3 +35,8 @@ mesh = SubResource("BoxMesh_mncer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=362366221]
 shape = SubResource("BoxShape3D_cguwc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1764596096]
+libraries/ = SubResource("AnimationLibrary_sejoc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1317493151]
