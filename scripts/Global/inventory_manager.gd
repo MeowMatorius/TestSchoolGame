@@ -1,6 +1,6 @@
 extends Node
 
-signal is_adding_to_inventory
+signal update_inventory
 @export var items = {}
 
 
@@ -21,5 +21,13 @@ func add_item(pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_i
 			"unique": pickup_item_uniq,
 			"icon": pickup_item_icon
 			}
-	is_adding_to_inventory.emit(items)
+	update_inventory.emit(items)
+	print("\n", get_script().resource_path.get_file(), ":\n", "Инвентарь обновлен: \n", items)
+	
+func remove_item(pickup_item_name):
+	if items[pickup_item_name]["unique"] == true:
+		items.erase(pickup_item_name)
+	elif items[pickup_item_name]["unique"] == false and items[pickup_item_name]["quantity"] > 1:
+		items[pickup_item_name]["quantity"] -= 1
+	update_inventory.emit(items)
 	print("\n", get_script().resource_path.get_file(), ":\n", "Инвентарь обновлен: \n", items)

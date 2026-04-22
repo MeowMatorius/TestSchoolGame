@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://scripts/player_items.gd" id="5_4fv23"]
+[ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://addons/fpc/player_dialogues.gd" id="6_4fv23"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -705,6 +706,26 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Dialogues" type="VBoxContainer" parent="UserInterface" unique_id=949930771]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -71.0
+offset_bottom = 71.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("6_4fv23")
+
+[node name="SpeakerName" type="Label" parent="UserInterface/Dialogues" unique_id=600315167]
+layout_mode = 2
+
+[node name="SpeakerLine" type="Label" parent="UserInterface/Dialogues" unique_id=1010654446]
+layout_mode = 2
 
 [node name="EditorModule" type="Node" parent="." unique_id=323828916]
 script = ExtResource("3_v3ckk")

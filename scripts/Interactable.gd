@@ -112,3 +112,4 @@ func unlock():
 	if item_needed_to_open in Inventory.items:
 		lock_state = "Unlocked"
 		print("\n", get_script().resource_path.get_file(), ":\n", 'Разблокировано')
+		Inventory.remove_item(item_needed_to_open)

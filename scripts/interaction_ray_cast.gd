@@ -49,6 +49,17 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("interact") and target_object.lock_state != "Broken":
 			print("\n", get_script().resource_path.get_file(), "\n", "Нажали Interact на: ", target_object)
 			target_object.interact(target_object)
+	elif is_colliding() and get_collider() is NPC:
+		target_object = get_collider()
+		target_object_mesh = target_object.find_children("*", "MeshInstance3D")
+		text_prompt.visible = true
+		text_prompt.text = str(target_object.name, "\nПоговорить" )
+		
+		target_object.highlight(target_object_mesh[0], target_object.name)
+		
+		if Input.is_action_just_pressed("interact"):
+			print("\n", get_script().resource_path.get_file(), "\n", "Нажали Talk на: ", target_object)
+			target_object.talk()
 	else:
 		text_prompt.text = ''
 		text_prompt.visible = false
