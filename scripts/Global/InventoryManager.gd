@@ -25,9 +25,9 @@ func add_item(pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_i
 	print("\n", get_script().resource_path.get_file(), ":\n", "Инвентарь обновлен: \n", items)
 	
 func remove_item(pickup_item_name):
-	if items[pickup_item_name]["unique"] == true:
+	if items[pickup_item_name]["unique"] == true or items[pickup_item_name]["quantity"] == 1:
 		items.erase(pickup_item_name)
 	elif items[pickup_item_name]["unique"] == false and items[pickup_item_name]["quantity"] > 1:
-		items[pickup_item_name]["quantity"] -= 1
+		items[pickup_item_name]["quantity"] -= 1		
 	update_inventory.emit(items)
 	print("\n", get_script().resource_path.get_file(), ":\n", "Инвентарь обновлен: \n", items)

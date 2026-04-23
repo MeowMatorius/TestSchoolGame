@@ -27,5 +27,4 @@ shape = SubResource("BoxShape3D_cguwc")
 script = ExtResource("2_7cqbe")
 pickup_item_name = "Key"
 pickup_item_type = "Key"
-pickup_item_unique = true
 pickup_item_icon = ExtResource("3_gyxxy")

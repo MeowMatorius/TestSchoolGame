@@ -543,7 +543,6 @@ theme_override_constants/separation = 35
 alignment = 1
 script = ExtResource("5_4fv23")
 ui_items = NodePath(".")
-ui_items_array = [null]
 
 [node name="Item1" type="Panel" parent="UserInterface/Items" unique_id=692395278]
 custom_minimum_size = Vector2(50, 50)

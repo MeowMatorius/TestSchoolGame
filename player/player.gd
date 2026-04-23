@@ -42,6 +42,8 @@ extends CharacterBody3D
 @export var crouch_enabled : bool = true
 ## Smooths the feel of walking.
 @export var motion_smoothing : bool = true
+## Whether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
+@export var immobile : bool = false
 
 
 #region Feature Settings Export Group
@@ -87,8 +89,6 @@ extends CharacterBody3D
 @export var crouch_anim_blend : float = 0.5
 
 @export_category("Input Settings")
-## This determines wether the player can use the pause button, not wether the game will actually pause.
-@export var pausing_enabled : bool = true
 ## Toggles the sprinting state when button is pressed or requires the player to hold the button down to remain sprinting.
 @export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
 ## Toggles the crouch state when button is pressed or requires the player to hold the button down to remain crouched.
@@ -101,8 +101,6 @@ extends CharacterBody3D
 @export var invert_camera_x_axis : bool = false
 ## Invert the Y axis input for the camera.
 @export var invert_camera_y_axis : bool = false
-## Whether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
-@export var immobile : bool = false
 ## The reticle file to import at runtime. By default are in res://addons/fpc/reticles/. Set to an empty string to remove.
 @export_file var default_reticle
 
@@ -167,6 +165,8 @@ var mouseInput : Vector2 = Vector2(0,0)
 
 func _ready():
 	
+	#SignalBus.is_talking.connect()
+	
 	CAMERA.fov = default_fov
 	
 	#It is safe to comment this line if your game doesn't start with the mouse captured
@@ -188,9 +188,6 @@ func _ready():
 
 
 func _process(_delta):
-	if pausing_enabled:
-		handle_pausing()
-
 	update_debug_menu_per_frame()
 
 
@@ -315,7 +312,7 @@ func check_controls(): # If you add a control, you might want to add a check for
 		immobile = true
 	if !InputMap.has_action(controls.PAUSE):
 		push_error("No control mapped for pause. Please add an input map control. Disabling pausing.")
-		pausing_enabled = false
+		GameManager.pausing_enabled = false
 	if !InputMap.has_action(controls.CROUCH):
 		push_error("No control mapped for crouch. Please add an input map control. Disabling crouching.")
 		crouch_enabled = false
@@ -502,16 +499,5 @@ func update_camera_fov():
 		CAMERA.fov = lerp(CAMERA.fov, default_fov + dinamic_fov_mod, fov_smoothing / 10)
 	else:
 		CAMERA.fov = lerp(CAMERA.fov, default_fov, fov_smoothing / 10)
-
-func handle_pausing():
-	if Input.is_action_just_pressed(controls.PAUSE):
-		# You may want another node to handle pausing, because this player may get paused too.
-		match Input.mouse_mode:
-			Input.MOUSE_MODE_CAPTURED:
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-				#get_tree().paused = false
-			Input.MOUSE_MODE_VISIBLE:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-				#get_tree().paused = false
 
 #endregion

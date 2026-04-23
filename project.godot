@@ -25,6 +25,7 @@ SignalBus="*uid://y0w4uau18ga4"
 DialogueManager="*uid://bwrj1br3jonfi"
 InteractManager="*uid://d4jnoq4tfkr6q"
 InventoryManager="*uid://b7cuxa1vwya85"
+GameManager="*uid://b7p6c8qiux5pt"
 
 [input]
 
