@@ -1,9 +1,10 @@
 extends Control
 
 @export var ui_items: HBoxContainer
-@export var ui_items_array: Array
 
-var count_inventory = 0
+var ui_items_array: Array
+
+var count_inventory: int = 0
 func _ready() -> void:
 	InventoryManager.update_inventory.connect(add_to_inventory)
 	ui_items_array = ui_items.get_children()
