@@ -1,11 +1,11 @@
 extends Node
 
-var game_paused : bool = false
 enum game_state {Default, Mouse, Pause}
+var game_paused : bool = false
+
 var current_game_state: int = 0
 var previous_game_state
 var state_before_pause
-var visible: bool = false
 
 var player
 var pause_menu_ui
@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 
 func _unhandled_input(event : InputEvent):
-	if Input.is_action_just_pressed("pause"):
+	if event.is_action_pressed("pause"):
 		previous_game_state = current_game_state
 		current_game_state = game_state.Pause
 		mouse_input_mode_switch()
@@ -56,7 +56,6 @@ func mouse_input_mode_on(visible: bool = false, pause_time: float = 1.0):
 	pause_menu_ui.visible = visible
 	Engine.time_scale = pause_time
 	player.immobile = true
-	player.jumping_enabled = false
 	
 	
 func mouse_input_mode_off(visible: bool = false):
@@ -64,6 +63,5 @@ func mouse_input_mode_off(visible: bool = false):
 	pause_menu_ui.visible = visible
 	Engine.time_scale = 1
 	player.immobile = false
-	player.jumping_enabled = true
 	
 	

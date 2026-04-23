@@ -14,10 +14,10 @@ func _ready() -> void:
 	SignalBus.is_talking.connect(load_all_data)
 
 
-func _input(event):
-	if Input.is_action_just_pressed("skip") and GameManager.current_game_state == GameManager.game_state.Mouse:
-		get_viewport().set_input_as_handled()
+func _unhandled_input(event : InputEvent):
+	if event.is_action_pressed("skip") and GameManager.current_game_state == GameManager.game_state.Mouse:
 		is_skiping.emit()
+		get_viewport().set_input_as_handled()
 
 
 func load_all_data(internal_name, dialogue_stage):

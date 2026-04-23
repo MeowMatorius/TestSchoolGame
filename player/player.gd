@@ -1,116 +1,44 @@
-# COPYRIGHT Colormatic Studios
-# MIT license
-# Quality Godot First Person Controller v2
-
-
 extends CharacterBody3D
 
-
-#region Nodes Export Group
-
-@export_group("Controller Nodes")
-## A reference to the camera for use in the character script. This is the parent node to the camera and is rotated instead of the camera for mouse input.
+@export_group("Player Nodes")
 @export var HEAD : Node3D
-## A reference to the camera for use in the character script.
 @export var CAMERA : Camera3D
-## A reference to the headbob animation for use in the character script.
 @export var HEADBOB_ANIMATION : AnimationPlayer
-## A reference to the jump animation for use in the character script.
 @export var JUMP_ANIMATION : AnimationPlayer
-## A reference to the crouch animation for use in the character script.
 @export var CROUCH_ANIMATION : AnimationPlayer
-## A reference to the the player's collision shape for use in the character script.
 @export var COLLISION_MESH : CollisionShape3D
 
-#endregion
-
-
-#region Character Export Group
-
 @export_category("Movement Settings")
-## The speed that the character moves at without crouching or sprinting.
 @export var base_speed : float = 3.0
-## The speed that the character moves at when sprinting.
 @export var sprint_speed : float = 6.0
-## The speed that the character moves at when crouching.
 @export var crouch_speed : float = 2.0
-## How fast the character speeds up and slows down when Motion Smoothing is on.
 @export var acceleration : float = 10.0
-## Enables or disables sprinting.
-@export var sprint_enabled : bool = true
-## Enables or disables crouching.
-@export var crouch_enabled : bool = true
-## Smooths the feel of walking.
 @export var motion_smoothing : bool = true
-## Whether the player can use movement inputs. Does not stop outside forces or jumping. See Jumping Enabled.
-@export var immobile : bool = false
 
-
-#region Feature Settings Export Group
 
 @export_category("Jump Settings")
-## How high the player jumps.
 @export var jump_velocity : float = 4.5
-## Enable or disable jumping. Useful for restrictive storytelling environments.
-@export var jumping_enabled : bool = true
-## Enables an immersive animation when the player jumps and hits the ground.
 @export var jump_animation : bool = true
-## If the player holds down the jump button, should the player keep hopping.
 @export var continuous_jumping : bool = true
-## Whether the player can move in the air or not.
 @export var in_air_momentum : bool = true
-## Use with caution.
 @export var gravity_enabled : bool = true
-## If your game changes the gravity value during gameplay, check this property to allow the player to experience the change in gravity.
 @export var dynamic_gravity : bool = false
-\
-#endregion
 
 
 @export_category("Fov Settings")
 @export var default_fov : float = 65.0
-## Wether sprinting should effect FOV
 @export var dynamic_fov : bool = true
-## Miltiplies FOV while sprinting
 @export var dinamic_fov_mod : float = 5.0
-## Changes blend speed of FOV changes
 @export var fov_smoothing : float = 0.8
 
 @export_category("Animation Settings")
-## Enables the view bobbing animation.
 @export var view_bobbing : bool = true
-## Changes headbob animation speed while sprinting
 @export var headbob_multiplier : float = 1.5
-## Changes smoothness of headbob animation
 @export var headbob_anim_blend : float = 2
-## Changes smoothness of jump animation
 @export var jump_anim_blend : float = 0.5
-## Changes smoothness of crouch animation
 @export var crouch_anim_blend : float = 0.5
 
 @export_category("Input Settings")
-## Toggles the sprinting state when button is pressed or requires the player to hold the button down to remain sprinting.
-@export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
-## Toggles the crouch state when button is pressed or requires the player to hold the button down to remain crouched.
-@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 1
-
-@export_subgroup("Mouse")
-## How far the player turns when the mouse is moved.
-@export var mouse_sensitivity : float = 0.1
-## Invert the X axis input for the camera.
-@export var invert_camera_x_axis : bool = false
-## Invert the Y axis input for the camera.
-@export var invert_camera_y_axis : bool = false
-## The reticle file to import at runtime. By default are in res://addons/fpc/reticles/. Set to an empty string to remove.
-@export_file var default_reticle
-
-#endregion
-
-
-#region Controls Export Group
-
-# We are using UI controls because they are built into Godot Engine so they can be used right away
-#@export_group("Controls")
 ## Use the Input Map to map a mouse/keyboard input to an action and add a reference to it to this dictionary to be used in the script.
 @export var controls : Dictionary = {
 	LEFT = "left",
@@ -119,10 +47,24 @@ extends CharacterBody3D
 	BACKWARD = "down",
 	JUMP = "jump",
 	CROUCH = "crouch",
-	SPRINT = "sprint",
-	PAUSE = "pause"
+	SPRINT = "sprint"
 	}
-@export_subgroup("Controller")
+@export var immobile : bool = false
+@export var sprint_enabled : bool = true
+@export var crouch_enabled : bool = true
+@export var jumping_enabled : bool = true
+@export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
+@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 1
+
+@export_subgroup("Mouse")
+@export var mouse_sensitivity : float = 0.1
+@export var invert_camera_x_axis : bool = false
+@export var invert_camera_y_axis : bool = false
+@export_file var default_reticle
+
+
+#region Controls Export Group
+@export_group("Controller")
 ## This only affects how the camera is handled, the rest should be covered by adding controller inputs to the existing actions in the Input Map.
 @export var controller_support : bool = false
 ## Use the Input Map to map a controller input to an action and add a reference to it to this dictionary to be used in the script.
@@ -134,9 +76,7 @@ extends CharacterBody3D
 	}
 ## The sensitivity of the analog stick that controls camera rotation. Lower is less sensitive and higher is more sensitive.
 @export_range(0.001, 1, 0.001) var look_sensitivity : float = 0.035
-
 #endregion
-
 
 #region Member Variable Initialization
 
@@ -159,10 +99,7 @@ var mouseInput : Vector2 = Vector2(0,0)
 
 #endregion
 
-
-
 #region Main Control Flow
-
 func _ready():
 	
 	#SignalBus.is_talking.connect()
@@ -224,9 +161,8 @@ func _physics_process(delta): # Most things happen here.
 		play_jump_animation()
 
 	# update_debug_menu_per_tick()
-
+	
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
-
 #endregion
 
 #region Input Handling
@@ -234,12 +170,12 @@ func _physics_process(delta): # Most things happen here.
 func handle_jumping():
 	if jumping_enabled:
 		if continuous_jumping: # Hold down the jump button
-			if Input.is_action_pressed(controls.JUMP) and is_on_floor() and !low_ceiling:
+			if Input.is_action_pressed(controls.JUMP) and is_on_floor() and !low_ceiling and !immobile:
 				if jump_animation:
 					JUMP_ANIMATION.play("jump", jump_anim_blend)
 				velocity.y += jump_velocity # Adding instead of setting so jumping on slopes works properly
 		else:
-			if Input.is_action_just_pressed(controls.JUMP) and is_on_floor() and !low_ceiling:
+			if Input.is_action_just_pressed(controls.JUMP) and is_on_floor() and !low_ceiling and !immobile:
 				if jump_animation:
 					JUMP_ANIMATION.play("jump", jump_anim_blend)
 				velocity.y += jump_velocity
@@ -279,7 +215,7 @@ func handle_head_rotation():
 		HEAD.rotation_degrees.x -= mouseInput.y * mouse_sensitivity
 
 	if controller_support:
-		var controller_view_rotation = Input.get_vector(controller_controls.LOOK_DOWN, controller_controls.LOOK_UP, controller_controls.LOOK_RIGHT, controller_controls.LOOK_LEFT) * look_sensitivity # These are inverted because of the nature of 3D rotation.
+		var controller_view_rotation: Vector2 = Input.get_vector(controller_controls.LOOK_DOWN, controller_controls.LOOK_UP, controller_controls.LOOK_RIGHT, controller_controls.LOOK_LEFT) * look_sensitivity # These are inverted because of the nature of 3D rotation.
 		if invert_camera_y_axis:
 			HEAD.rotation.x += controller_view_rotation.x * -1
 		else:
@@ -311,9 +247,6 @@ func check_controls(): # If you add a control, you might want to add a check for
 	if !InputMap.has_action(controls.BACKWARD):
 		push_error("No control mapped for move backward. Please add an input map control. Disabling movement.")
 		immobile = true
-	if !InputMap.has_action(controls.PAUSE):
-		push_error("No control mapped for pause. Please add an input map control. Disabling pausing.")
-		GameManager.pausing_enabled = false
 	if !InputMap.has_action(controls.CROUCH):
 		push_error("No control mapped for crouch. Please add an input map control. Disabling crouching.")
 		crouch_enabled = false
@@ -423,7 +356,6 @@ func play_headbob_animation(moving):
 			# The headbob animation has two starting positions. One is at 0 and the other is at 1.
 			# randi() % 2 returns either 0 or 1, and so the animation randomly starts at one of the starting positions.
 			# This code is extremely performant but it makes no sense.
-
 	else:
 		if HEADBOB_ANIMATION.current_animation == "sprint" or HEADBOB_ANIMATION.current_animation == "walk":
 			HEADBOB_ANIMATION.speed_scale = 1
@@ -448,7 +380,6 @@ func play_jump_animation():
 #endregion
 
 #region Debug Menu
-
 func update_debug_menu_per_frame():
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
 	var status : String = state
@@ -481,11 +412,9 @@ func _unhandled_input(event : InputEvent):
 			# Where we're going, we don't need InputMap
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
-
 #endregion
 
 #region Misc Functions
-
 func change_reticle(reticle): # Yup, this function is kinda strange
 	if RETICLE:
 		RETICLE.queue_free()
@@ -500,5 +429,4 @@ func update_camera_fov():
 		CAMERA.fov = lerp(CAMERA.fov, default_fov + dinamic_fov_mod, fov_smoothing / 10)
 	else:
 		CAMERA.fov = lerp(CAMERA.fov, default_fov, fov_smoothing / 10)
-
 #endregion

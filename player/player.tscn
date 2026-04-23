@@ -26,17 +26,23 @@ sky_material = SubResource("PanoramaSkyMaterial_bx7cj")
 
 [sub_resource type="Environment" id="Environment_bupmj"]
 background_mode = 2
-background_energy_multiplier = 2.0
+background_energy_multiplier = 3.0
 sky = SubResource("Sky_bupmj")
 ambient_light_source = 3
 reflected_light_source = 2
+tonemap_mode = 4
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
+glow_enabled = true
 volumetric_fog_density = 0.001
 adjustment_enabled = true
 adjustment_saturation = 1.3
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_boad6"]
+auto_exposure_enabled = true
+dof_blur_amount = 0.05
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -442,7 +448,7 @@ HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
-default_fov = 90.0
+default_fov = 75.0
 default_reticle = "uid://coqpusufa8a6k"
 look_sensitivity = 0.05
 
@@ -460,7 +466,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head" unique_id=1983804789]
 environment = SubResource("Environment_bupmj")
-fov = 55.0
+attributes = SubResource("CameraAttributesPractical_boad6")
+current = true
 
 [node name="InteractionRayCast" type="RayCast3D" parent="Head/Camera" unique_id=1017175662 node_paths=PackedStringArray("text_prompt")]
 target_position = Vector3(0, 0, -2)
@@ -787,6 +794,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 
 [node name="Background" type="TextureRect" parent="UserInterface/PauseMenu" unique_id=348319286]
 layout_mode = 1
