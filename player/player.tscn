@@ -421,6 +421,18 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="Gradient" id="Gradient_rgyib"]
+colors = PackedColorArray(0, 0, 0, 0.5882353, 0, 0, 0, 0.5882353)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hg6s5"]
+gradient = SubResource("Gradient_rgyib")
+
+[sub_resource type="Gradient" id="Gradient_boad6"]
+colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.78431374)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rgyib"]
+gradient = SubResource("Gradient_boad6")
+
 [node name="Player" type="CharacterBody3D" unique_id=2031011971 node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_0t4e8")
@@ -706,7 +718,8 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Dialogues" type="VBoxContainer" parent="UserInterface" unique_id=949930771]
+[node name="Dialogues" type="Control" parent="UserInterface" unique_id=390894934]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -715,16 +728,79 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -389.0
 offset_top = -71.0
-offset_bottom = 71.0
+offset_bottom = 146.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("6_gql8a")
 
-[node name="SpeakerName" type="Label" parent="UserInterface/Dialogues" unique_id=600315167]
-layout_mode = 2
+[node name="Background" type="TextureRect" parent="UserInterface/Dialogues" unique_id=141334547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_hg6s5")
 
-[node name="SpeakerLine" type="Label" parent="UserInterface/Dialogues" unique_id=1010654446]
+[node name="DialogContainer" type="VBoxContainer" parent="UserInterface/Dialogues" unique_id=1650053500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 18.0
+offset_right = -25.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="SpeakerName" type="Label" parent="UserInterface/Dialogues/DialogContainer" unique_id=600315167]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "NPC"
+
+[node name="SpeakerLine" type="Label" parent="UserInterface/Dialogues/DialogContainer" unique_id=1010654446]
+layout_mode = 2
+text = "Line"
+autowrap_mode = 3
+
+[node name="PauseMenu" type="Control" parent="UserInterface" unique_id=634695021]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UserInterface/PauseMenu" unique_id=348319286]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_rgyib")
+
+[node name="Label" type="Label" parent="UserInterface/PauseMenu" unique_id=20048164]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EditorModule" type="Node" parent="." unique_id=323828916]
 script = ExtResource("3_v3ckk")

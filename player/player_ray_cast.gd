@@ -47,7 +47,7 @@ func _physics_process(_delta):
 			_:
 				pass
 
-		if Input.is_action_just_pressed("interact") and !GameManager.game_paused:
+		if Input.is_action_just_pressed("interact") and GameManager.current_game_state != GameManager.game_state.Pause:
 			print("\n", get_script().resource_path.get_file(), "\n", "Нажали Interact на: ", target_object)
 			target_object_interact.interact(target_object)
 	else:

@@ -29,7 +29,7 @@ func load_all_data(internal_name, dialogue_stage):
 #Надо сделать переход в режим диалога и по кнопке переключать реплики в цилке for
 func start_dialogue(dialogue_stage: String):
 	GameManager.current_game_state = GameManager.game_state.Mouse
-	GameManager.mouse_input_mode_on()
+	GameManager.mouse_input_mode_switch()
 	if all_dialogues.has(dialogue_stage):
 		for i in range(all_dialogues[dialogue_stage].size()):
 			print(i)
@@ -39,7 +39,7 @@ func start_dialogue(dialogue_stage: String):
 	else:
 		print("Диалог не найден:", dialogue_stage)
 	GameManager.current_game_state = GameManager.game_state.Default
-	GameManager.mouse_input_mode_off()
+	GameManager.mouse_input_mode_switch()
 
 #func show_step():
 	## Берем массив по ключу и из него нужную строку по индексу
@@ -48,6 +48,6 @@ func start_dialogue(dialogue_stage: String):
 	#print(line)
 
 func handle_skip():
-	if Input.is_action_just_pressed("skip"):
+	if Input.is_action_just_pressed("skip") and GameManager.current_game_state != GameManager.game_state.Pause:
 		is_skiping.emit()
 		
