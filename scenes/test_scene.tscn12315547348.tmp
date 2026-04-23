@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cebxk55fsjy8k"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_3qnke"]
+[ext_resource type="PackedScene" uid="uid://bhb04m8x30qrb" path="res://scenes/cube.tscn" id="2_qjeyg"]
+[ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="2_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://scenes/radio.tscn" id="4_h3xc6"]
+[ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://scenes/hlopchik.tscn" id="5_s36qc"]
+[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/key.tscn" id="5_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/door.tscn" id="6_6qxox"]
+[ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/door_locked.tscn" id="8_rnaij"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cguwc"]
+material = ExtResource("2_wtsjf")
+
+[node name="TestScene" type="Node" unique_id=1532311243]
+
+[node name="🌳--- Сцена --- 🌳" type="Node" parent="." unique_id=215577381]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="🌳--- Сцена --- 🌳" unique_id=1622076130]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="🌳--- Сцена --- 🌳" unique_id=611937543]
+transform = Transform3D(0.96860284, -0.10517264, -0.22527155, 0.21582562, 0.80547184, 0.551937, 0.12340123, -0.5832271, 0.80288124, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="🌳--- Сцена --- 🌳" unique_id=888598047]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🌳--- Сцена --- 🌳/Floor" unique_id=573922480]
+shape = SubResource("BoxShape3D_mncer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="🌳--- Сцена --- 🌳/Floor" unique_id=1862156806]
+material_override = ExtResource("2_wtsjf")
+mesh = SubResource("BoxMesh_cguwc")
+
+[node name="🏀--- Объекты ---🧊" type="Node" parent="." unique_id=1128602655]
+
+[node name="Cube" parent="🏀--- Объекты ---🧊" unique_id=1552698575 instance=ExtResource("2_qjeyg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, 0)
+
+[node name="Cube2" parent="🏀--- Объекты ---🧊" unique_id=1452860932 instance=ExtResource("2_qjeyg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, -1)
+
+[node name="Radio" parent="🏀--- Объекты ---🧊" unique_id=1068241980 instance=ExtResource("4_h3xc6")]
+transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.5, 0, -0.30004957, 0, 0.3999628, 0.17311001, 1.75, -0.0994966)
+
+[node name="Key" parent="🏀--- Объекты ---🧊" unique_id=243040129 instance=ExtResource("5_wtsjf")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.044398665, 1.6, -1.0407205)
+
+[node name="Door" parent="🏀--- Объекты ---🧊" unique_id=1458739684 instance=ExtResource("6_6qxox")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -0.9814137, 1.75, 1.9652827)
+
+[node name="DoorLocked" parent="🏀--- Объекты ---🧊" unique_id=863302286 instance=ExtResource("8_rnaij")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -2.7747831, 1.75, 1.9560246)
+
+[node name="🧙‍♂️--- Персонажи  ---🕵️‍♂️" type="Node" parent="." unique_id=1511845288]
+
+[node name="Player" parent="🧙‍♂️--- Персонажи  ---🕵️‍♂️" unique_id=342963380 instance=ExtResource("1_3qnke")]
+transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -1.75, 0, -1)
+
+[node name="Hlopchik" parent="🧙‍♂️--- Персонажи  ---🕵️‍♂️" unique_id=1769752881 instance=ExtResource("5_s36qc")]
+transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, -4.89258, 1.5418601, -1.8273633)

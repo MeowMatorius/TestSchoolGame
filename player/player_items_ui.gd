@@ -1,13 +1,12 @@
-extends HBoxContainer
+extends Control
 
 @export var ui_items: HBoxContainer
 @export var ui_items_array: Array
 
 var count_inventory = 0
 func _ready() -> void:
-	Inventory.update_inventory.connect(add_to_inventory)
+	InventoryManager.update_inventory.connect(add_to_inventory)
 	ui_items_array = ui_items.get_children()
-	print("\n", get_script().resource_path.get_file(), ":\n", "Массив ui_items_array: \n", ui_items_array)
 
 
 func add_to_inventory(items):
@@ -21,7 +20,7 @@ func add_to_inventory(items):
 		ui_items_array[count_inventory].get_node("Icon").texture = items[i]["icon"]
 		count_inventory +=1
 	print("\n", get_script().resource_path.get_file(), ":\n", "UI Предметов обновлен")
-		
+
 func clear_inventory():
 	for i in ui_items_array:
 		i.get_node("Label").text = ''

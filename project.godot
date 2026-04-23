@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SchoolGame"
-run/main_scene="res://scenes/TestScene.tscn"
+run/main_scene="res://scenes/test_scene.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icons/godot-icon.svg"
 
@@ -21,9 +21,10 @@ buses/default_bus_layout="uid://cqq4qhl0el65u"
 
 [autoload]
 
-signal_bus="*uid://y0w4uau18ga4"
-Inventory="*uid://b7cuxa1vwya85"
-dialogue_manager="*uid://bwrj1br3jonfi"
+SignalBus="*uid://y0w4uau18ga4"
+DialogueManager="*uid://bwrj1br3jonfi"
+InteractManager="*uid://d4jnoq4tfkr6q"
+InventoryManager="*uid://b7cuxa1vwya85"
 
 [input]
 

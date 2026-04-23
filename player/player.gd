@@ -61,7 +61,7 @@ extends CharacterBody3D
 @export var gravity_enabled : bool = true
 ## If your game changes the gravity value during gameplay, check this property to allow the player to experience the change in gravity.
 @export var dynamic_gravity : bool = false
-
+\
 #endregion
 
 

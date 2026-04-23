@@ -1,29 +1,23 @@
-extends Node3D
+extends Node
+class_name Interact
 
-class_name NPC
+@export_category("Двери/Контейнеры")
 
-@export var internal_name: String = "NPC"
-@export var dialogue_stage: String = "dialogue_1"
-
-var highlighted: bool = false
 var prompt_message: String
-
+var highlighted: bool = false
 
 
 func _ready() -> void:
 	highlighted = false
+
+
+func interact(object): 
 	pass
 
 
-func talk():
-	signal_bus.is_talking.emit(internal_name, dialogue_stage)
-
-
-func highlight(object_mesh, object_name):
+func highlight(object_mesh):
 	if object_mesh is MeshInstance3D and !highlighted:
 		highlighted = true
-		# print("\n", get_script().resource_path.get_file(), ":\n", object_name, ' Подсветка: ', highlighted)
-		
 		var mat: Material = object_mesh.get_active_material(0)
 		if mat is StandardMaterial3D:
 			mat.emission_enabled = true
@@ -31,11 +25,9 @@ func highlight(object_mesh, object_name):
 			mat.emission_energy_multiplier = 0.05
 
 
-func disable_highlight(object_mesh, object_name):
+func disable_highlight(object_mesh):
 	if object_mesh is MeshInstance3D and highlighted:
 		highlighted = false
-		# print("\n", get_script().resource_path.get_file(), ":\n", object_name, ' Подсветка: ', highlighted)
-		
 		var mat: Material = object_mesh.get_active_material(0)
 		if mat is StandardMaterial3D:
 			mat.emission_enabled = false

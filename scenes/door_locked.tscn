@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bjlw3u768ihqh"]
+[gd_scene format=3 uid="uid://c42bnvqdrdffo"]
 
-[ext_resource type="Script" uid="uid://cca14tsrxfx3n" path="res://scripts/interact_switch.gd" id="1_eyv6f"]
-[ext_resource type="Material" uid="uid://cfs5q8utb16ag" path="res://assets/materials/BoxMat3.tres" id="2_uvdjg"]
+[ext_resource type="Material" uid="uid://dshdom31wrtsl" path="res://assets/materials/BoxMat1.tres" id="1_dj30l"]
+[ext_resource type="Script" uid="uid://cca14tsrxfx3n" path="res://scripts/interact_switch.gd" id="2_j8i13"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxdn"]
 resource_local_to_scene = true
@@ -60,7 +60,7 @@ _data = {
 &"deactivate": SubResource("Animation_83dcw")
 }
 
-[node name="Door" type="Node3D" unique_id=1458739684]
+[node name="DoorLocked" type="Node3D" unique_id=1458739684]
 transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 0, 1.25, 0)
 
 [node name="Door" type="StaticBody3D" parent="." unique_id=606871235]
@@ -69,7 +69,7 @@ collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1126159426]
 transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0)
-material_override = ExtResource("2_uvdjg")
+material_override = ExtResource("1_dj30l")
 mesh = SubResource("BoxMesh_1vxdn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1813992751]
@@ -85,4 +85,7 @@ playback_default_blend_time = 1.0
 
 [node name="InteractComponent" type="Node3D" parent="Door" unique_id=1162931946]
 transform = Transform3D(0.06666666, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.49933967, 0, 0)
-script = ExtResource("1_eyv6f")
+script = ExtResource("2_j8i13")
+one_time_use = true
+lock_state = "Locked"
+item_needed_to_open = "Key"

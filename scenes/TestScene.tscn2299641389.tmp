@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cuqauyf4g2pxj" path="res://assets/textures/GreyboxTextures/greybox_yellow_grid.png" id="12_uyltb"]
 [ext_resource type="AudioStream" uid="uid://bisrjdry01kks" path="res://assets/music/Imaginary Interlude.mp3" id="18_i7hgn"]
 [ext_resource type="Material" uid="uid://brae5luvbqpd2" path="res://assets/materials/BoxMat5.tres" id="19_pmhls"]
-[ext_resource type="Script" path="res://scripts/npc.gd" id="19_uyltb"]
+[ext_resource type="Script" uid="uid://cym7xnvqdr661" path="res://scripts/Npc.gd" id="19_uyltb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
 
@@ -234,7 +234,7 @@ collision_layer = 3
 object_type = "Switch"
 object_state = "Deactivated"
 
-[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 1)" index="0" unique_id=283846561]
+[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 1)" index="0" unique_id=2132592768]
 material_override = SubResource("StandardMaterial3D_3r4l5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=1564457993]
@@ -256,7 +256,7 @@ collision_layer = 3
 object_type = "Switch"
 object_state = "Activated"
 
-[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 2)" index="0" unique_id=283846561]
+[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 2)" index="0" unique_id=2132592768]
 material_override = SubResource("StandardMaterial3D_dgems")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=1381996159]

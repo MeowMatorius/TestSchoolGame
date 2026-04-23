@@ -5,20 +5,20 @@ signal update_inventory
 
 
 func _ready():
-	signal_bus.is_picking.connect(add_item) 
+	SignalBus.is_picking.connect(add_item) 
 
 
-func add_item(pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_uniq, pickup_item_type):
-	if items.has(pickup_item_name) and pickup_item_uniq:
+func add_item(pickup_item_name, pickup_item_icon, pickup_item_quantity, pickup_item_unique, pickup_item_type):
+	if items.has(pickup_item_name) and pickup_item_unique:
 		pass
-	elif items.has(pickup_item_name) and !pickup_item_uniq:
+	elif items.has(pickup_item_name) and !pickup_item_unique:
 		items[pickup_item_name]["quantity"] += pickup_item_quantity
 	else:
 		items[pickup_item_name] = {
 			"name": pickup_item_name, 
 			"type": pickup_item_type, 
 			"quantity": pickup_item_quantity, 
-			"unique": pickup_item_uniq,
+			"unique": pickup_item_unique,
 			"icon": pickup_item_icon
 			}
 	update_inventory.emit(items)

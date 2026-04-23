@@ -1,4 +1,5 @@
 extends Node
+
 var all_dialogues = {} # Здесь храним весь файл
 var current_dialogue_key = ""
 var dialogue_data = []
@@ -6,7 +7,7 @@ var current_step = 0
 var path: String
 
 func _ready() -> void:
-	signal_bus.is_talking.connect(load_all_data)
+	SignalBus.is_talking.connect(load_all_data)
 
 func load_all_data(internal_name, dialogue_stage):
 	path = "res://jsons/"+internal_name+".json"

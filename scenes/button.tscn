@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kmmor3equpx6"]
 
-[ext_resource type="Script" uid="uid://d4jnoq4tfkr6q" path="res://scripts/Interactable.gd" id="1_at8sk"]
+[ext_resource type="Script" uid="uid://cca14tsrxfx3n" path="res://scripts/interact_switch.gd" id="1_rhj8v"]
 [ext_resource type="Texture2D" uid="uid://d4ca5tq8k1jeh" path="res://assets/textures/GreyboxTextures/greybox_light_grid.png" id="2_rtit6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywcaw"]
@@ -25,9 +25,9 @@ _data = {
 [node name="Button" type="StaticBody3D" unique_id=243040129]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 collision_layer = 3
-script = ExtResource("1_at8sk")
-object_type = "Switch"
-object_state = "Deactivated"
+script = ExtResource("1_rhj8v")
+activate_prompt_message = "Включить"
+deactivate_prompt_message = "Выключить"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
 material_override = SubResource("StandardMaterial3D_ywcaw")

@@ -1,0 +1,305 @@
+[gd_scene format=3 uid="uid://cebxk55fsjy8k"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_n3600"]
+[ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="3_6p1vh"]
+[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/Door.tscn" id="5_eppyl"]
+[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://assets/textures/GreyboxTextures/greybox_green_grid.png" id="5_v6sup"]
+[ext_resource type="Texture2D" uid="uid://isjsflxq3134" path="res://assets/icons/red-key.png" id="6_5l70m"]
+[ext_resource type="PackedScene" uid="uid://kmmor3equpx6" path="res://scenes/Button.tscn" id="6_xpysu"]
+[ext_resource type="Texture2D" uid="uid://ht5bgdh7kv6v" path="res://assets/textures/GreyboxTextures/greybox_red_grid.png" id="6_yhikq"]
+[ext_resource type="Texture2D" uid="uid://d244v1nvp8wrr" path="res://assets/textures/GreyboxTextures/greybox_orange_grid.png" id="7_c7u1e"]
+[ext_resource type="Script" uid="uid://ddd6nklucwcjf" path="res://scripts/remote_activate.gd" id="7_epq12"]
+[ext_resource type="Texture2D" uid="uid://bc5jyejbsyd5r" path="res://assets/textures/GreyboxTextures/greybox_teal_grid.png" id="7_fvp5t"]
+[ext_resource type="Texture2D" uid="uid://7nk0qmihpk0f" path="res://assets/icons/white-key.png" id="8_v6sup"]
+[ext_resource type="Texture2D" uid="uid://bic0efeupyxaq" path="res://assets/textures/GreyboxTextures/greybox_blue_grid.png" id="10_c7u1e"]
+[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/Pickup.tscn" id="10_yhikq"]
+[ext_resource type="PackedScene" uid="uid://c3mg4of0mi1ht" path="res://assets/models/Radio.blend" id="11_fvp5t"]
+[ext_resource type="Texture2D" uid="uid://d1qxknlfg57ty" path="res://assets/icons/godot-icon.svg" id="11_o4svi"]
+[ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://assets/music/Falling Snow.mp3" id="12_fvp5t"]
+[ext_resource type="Texture2D" uid="uid://cuqauyf4g2pxj" path="res://assets/textures/GreyboxTextures/greybox_yellow_grid.png" id="12_uyltb"]
+[ext_resource type="AudioStream" uid="uid://bisrjdry01kks" path="res://assets/music/Imaginary Interlude.mp3" id="18_i7hgn"]
+[ext_resource type="Material" uid="uid://brae5luvbqpd2" path="res://assets/materials/BoxMat5.tres" id="19_pmhls"]
+[ext_resource type="Script" uid="uid://cym7xnvqdr661" path="res://scripts/Npc.gd" id="19_uyltb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cguwc"]
+material = ExtResource("3_6p1vh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyltb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("10_c7u1e")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2kskt"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmfq1"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_v6sup")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1uiy2"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ng8pb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("6_yhikq")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjqhs"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("6_yhikq")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lo1sl"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5k1c"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_fvp5t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d23v3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("12_uyltb")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dify"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_fvp5t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_swn04"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5b2j"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("7_c7u1e")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6x2gy"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r4l5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("10_c7u1e")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5l70m"]
+
+[sub_resource type="Animation" id="Animation_5l70m"]
+resource_name = "activate"
+
+[sub_resource type="Animation" id="Animation_v6sup"]
+resource_name = "deactivate"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjal3"]
+_data = {
+&"activate": SubResource("Animation_5l70m"),
+&"deactivate": SubResource("Animation_v6sup")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgems"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("5_v6sup")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uyltb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uyltb"]
+
+[node name="TestScene" type="Node" unique_id=1532311243]
+
+[node name="🌳--- Сцена --- 🌳" type="Node" parent="." unique_id=215577381]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="🌳--- Сцена --- 🌳" unique_id=1622076130]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="🌳--- Сцена --- 🌳" unique_id=611937543]
+transform = Transform3D(0.96860284, -0.10517264, -0.22527155, 0.21582562, 0.80547184, 0.551937, 0.12340123, -0.5832271, 0.80288124, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="🌳--- Сцена --- 🌳" unique_id=342963380 instance=ExtResource("1_n3600")]
+transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, -1.75, 0, -1)
+
+[node name="Floor" type="StaticBody3D" parent="🌳--- Сцена --- 🌳" unique_id=888598047]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🌳--- Сцена --- 🌳/Floor" unique_id=573922480]
+shape = SubResource("BoxShape3D_mncer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="🌳--- Сцена --- 🌳/Floor" unique_id=1862156806]
+material_override = ExtResource("3_6p1vh")
+mesh = SubResource("BoxMesh_cguwc")
+
+[node name="🚪--- Двери  ---🚪" type="Node" parent="." unique_id=1995717963]
+
+[node name="OneTimeDoor" parent="🚪--- Двери  ---🚪" unique_id=277844827 instance=ExtResource("5_eppyl")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 3.1074197, 1.75, 2.4215965)
+
+[node name="Door" parent="🚪--- Двери  ---🚪/OneTimeDoor" index="0" unique_id=606871235]
+object_type = "Activate"
+lock_state = "Broken"
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/OneTimeDoor/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_uyltb")
+mesh = SubResource("BoxMesh_2kskt")
+
+[node name="SwitchDoor" parent="🚪--- Двери  ---🚪" unique_id=706364462 instance=ExtResource("5_eppyl")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 1.1074197, 1.75, 2.4215965)
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/SwitchDoor/Door" parent_id_path=PackedInt32Array(706364462, 606871235) index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_hmfq1")
+mesh = SubResource("BoxMesh_1uiy2")
+
+[node name="KeyRed" parent="🚪--- Двери  ---🚪" unique_id=1214769650 instance=ExtResource("10_yhikq")]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0.17473829, 1.6031036, -0.6337482)
+pickup_item_name = "Red Key"
+pickup_item_type = "Key"
+pickup_item_uniq = true
+pickup_item_icon = ExtResource("6_5l70m")
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/KeyRed" index="0" unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_ng8pb")
+
+[node name="SwitchDoorRedKey" parent="🚪--- Двери  ---🚪" unique_id=825200455 instance=ExtResource("5_eppyl")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -0.8925803, 1.75, 2.4215965)
+
+[node name="Door" parent="🚪--- Двери  ---🚪/SwitchDoorRedKey" index="0" unique_id=606871235]
+lock_state = "Locked"
+item_needed_to_open = "Red Key"
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/SwitchDoorRedKey/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_rjqhs")
+mesh = SubResource("BoxMesh_lo1sl")
+
+[node name="KeyBlue" parent="🚪--- Двери  ---🚪" unique_id=1600296916 instance=ExtResource("10_yhikq")]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0.032592654, 1.5931083, -1.334769)
+pickup_item_name = "Blue Key"
+pickup_item_type = "Key"
+pickup_item_uniq = true
+pickup_item_icon = ExtResource("8_v6sup")
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/KeyBlue" index="0" unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_y5k1c")
+
+[node name="Money" parent="🚪--- Двери  ---🚪" unique_id=243040129 instance=ExtResource("10_yhikq")]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, -0.057483196, 1.6101971, -0.96379733)
+pickup_item_name = "Money"
+pickup_item_type = "Money"
+pickup_item_quantity = 11
+pickup_item_icon = ExtResource("11_o4svi")
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/Money" index="0" unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_d23v3")
+
+[node name="ActivateDoorBlueKey" parent="🚪--- Двери  ---🚪" unique_id=1458739684 instance=ExtResource("5_eppyl")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -2.89258, 1.75, 2.4215965)
+
+[node name="Door" parent="🚪--- Двери  ---🚪/ActivateDoorBlueKey" index="0" unique_id=606871235]
+object_type = "Activate"
+lock_state = "Locked"
+item_needed_to_open = "Blue Key"
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/ActivateDoorBlueKey/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_4dify")
+mesh = SubResource("BoxMesh_swn04")
+
+[node name="Button" parent="🚪--- Двери  ---🚪" unique_id=2121461548 instance=ExtResource("6_xpysu")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -6.8607616, 2.1172037, 2.3215966)
+
+[node name="DoorWButton" parent="🚪--- Двери  ---🚪" unique_id=1340845945 instance=ExtResource("5_eppyl")]
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -4.89258, 1.75, 2.4215965)
+
+[node name="Door" parent="🚪--- Двери  ---🚪/DoorWButton" index="0" unique_id=606871235]
+collision_layer = 1
+script = ExtResource("7_epq12")
+
+[node name="MeshInstance3D" parent="🚪--- Двери  ---🚪/DoorWButton/Door" index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_a5b2j")
+mesh = SubResource("BoxMesh_6x2gy")
+
+[node name="🏀--- Объекты ---🧊" type="Node" parent="." unique_id=1128602655]
+
+[node name="Cube" parent="🏀--- Объекты ---🧊" unique_id=1431956072 instance=ExtResource("6_xpysu")]
+transform = Transform3D(-1.05563004e-07, 0, -1, 0, 1, 0, 2.415, 0, -4.371139e-08, 0.28166413, 1, -0.95281005)
+script = null
+
+[node name="MeshInstance3D" parent="🏀--- Объекты ---🧊/Cube" index="0" unique_id=1214280325]
+material_override = ExtResource("3_6p1vh")
+
+[node name="Radio (Song 1)" parent="🏀--- Объекты ---🧊" unique_id=1231804140 instance=ExtResource("11_fvp5t")]
+transform = Transform3D(0.2014027, 0, -0.9795085, 0, 1, 0, 0.9795085, 0, 0.2014027, 0.4634664, 1.5, -1.5766711)
+collision_layer = 3
+object_type = "Switch"
+object_state = "Deactivated"
+
+[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 1)" index="0" unique_id=2132592768]
+material_override = SubResource("StandardMaterial3D_3r4l5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=1564457993]
+transform = Transform3D(0.815, 0, 0, 0, 0.52, 0, 0, 0, 0.23, 0, 0.14999998, 0.029999733)
+shape = SubResource("BoxShape3D_5l70m")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=1662517576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
+stream = ExtResource("12_fvp5t")
+max_distance = 10.0
+panning_strength = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio (Song 1)" unique_id=873132126]
+libraries/ = SubResource("AnimationLibrary_cjal3")
+
+[node name="Radio (Song 2)" parent="🏀--- Объекты ---🧊" unique_id=1798560912 instance=ExtResource("11_fvp5t")]
+transform = Transform3D(-0.34147894, 0, -0.93988955, 0, 1, 0, 0.93988955, 0, -0.34147894, 0.5584445, 1.5, -0.30164206)
+collision_layer = 3
+object_type = "Switch"
+object_state = "Activated"
+
+[node name="boombox" parent="🏀--- Объекты ---🧊/Radio (Song 2)" index="0" unique_id=2132592768]
+material_override = SubResource("StandardMaterial3D_dgems")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=1381996159]
+transform = Transform3D(0.815, 0, 0, 0, 0.52, 0, 0, 0, 0.23, 0, 0.14999998, 0.029999733)
+shape = SubResource("BoxShape3D_5l70m")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=339706740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
+stream = ExtResource("18_i7hgn")
+autoplay = true
+max_distance = 10.0
+panning_strength = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="🏀--- Объекты ---🧊/Radio (Song 2)" unique_id=1245625952]
+libraries/ = SubResource("AnimationLibrary_cjal3")
+
+[node name="Hlopchik" type="StaticBody3D" parent="." unique_id=612293616]
+transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, -4.89258, 1.5418601, -1.8273633)
+collision_layer = 3
+script = ExtResource("19_uyltb")
+internal_name = "Hlopchik"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hlopchik" unique_id=1002713059]
+material_override = ExtResource("19_pmhls")
+mesh = SubResource("CapsuleMesh_uyltb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hlopchik" unique_id=1736884979]
+transform = Transform3D(1, 0, 0, 0, 2.085, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_uyltb")
+
+[node name="DialogueComponent" type="Node3D" parent="Hlopchik" unique_id=1157434429]
+transform = Transform3D(0.9998477, 2.910383e-11, -0.017452406, 0.00030458646, 0.9998477, 0.017449748, 0.017449748, -0.017452406, 0.9996954, 0, 0, 0)
+
+[connection signal="is_switching" from="🚪--- Двери  ---🚪/Button" to="🚪--- Двери  ---🚪/DoorWButton/Door" method="open_by_switch"]
+
+[editable path="🚪--- Двери  ---🚪/OneTimeDoor"]
+[editable path="🚪--- Двери  ---🚪/SwitchDoor"]
+[editable path="🚪--- Двери  ---🚪/KeyRed"]
+[editable path="🚪--- Двери  ---🚪/SwitchDoorRedKey"]
+[editable path="🚪--- Двери  ---🚪/KeyBlue"]
+[editable path="🚪--- Двери  ---🚪/Money"]
+[editable path="🚪--- Двери  ---🚪/ActivateDoorBlueKey"]
+[editable path="🚪--- Двери  ---🚪/DoorWButton"]
+[editable path="🏀--- Объекты ---🧊/Cube"]
+[editable path="🏀--- Объекты ---🧊/Radio (Song 1)"]
+[editable path="🏀--- Объекты ---🧊/Radio (Song 2)"]

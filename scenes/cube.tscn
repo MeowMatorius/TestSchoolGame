@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bhb04m8x30qrb"]
+
+[ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/FloorMat1.tres" id="1_7ufek"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mncer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
+
+[node name="Cube" type="StaticBody3D" unique_id=1552698575]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2067498256]
+material_override = ExtResource("1_7ufek")
+mesh = SubResource("BoxMesh_mncer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1141853417]
+shape = SubResource("BoxShape3D_cguwc")
