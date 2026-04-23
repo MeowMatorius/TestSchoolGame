@@ -19,18 +19,13 @@ func find_all_descendants():
 				player = i.get_node("Player")
 
 
-func _ready() -> void:
+func _ready() -> void: 
 	find_all_descendants()
 	current_game_state = game_state.Default
 	pause_menu_ui = player.get_node("UserInterface").get_node('PauseMenu')
-
-
-func _process(_delta):
-	handle_pausing()
 	
 
-
-func handle_pausing():
+func _unhandled_input(event : InputEvent):
 	if Input.is_action_just_pressed("pause"):
 		previous_game_state = current_game_state
 		current_game_state = game_state.Pause
@@ -46,7 +41,7 @@ func mouse_input_mode_switch():
 		print("Нахожусь в состоянии Mouse")
 	elif current_game_state == game_state.Pause:
 		if previous_game_state != current_game_state:
-			mouse_input_mode_on(true)
+			mouse_input_mode_on(true, 0.0)
 			state_before_pause = previous_game_state
 			print("Нахожусь в состоянии Pause")
 		else:
@@ -56,21 +51,18 @@ func mouse_input_mode_switch():
 			mouse_input_mode_switch()
 			
 
-func mouse_input_mode_on(visible: bool = false):
-#	game_paused = true
-	
+func mouse_input_mode_on(visible: bool = false, pause_time: float = 1.0):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
 	pause_menu_ui.visible = visible
+	Engine.time_scale = pause_time
 	player.immobile = true
 	player.jumping_enabled = false
 	
 	
 func mouse_input_mode_off(visible: bool = false):
-#	game_paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	pause_menu_ui.visible = visible
+	Engine.time_scale = 1
 	player.immobile = false
 	player.jumping_enabled = true
 	

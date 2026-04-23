@@ -46,13 +46,18 @@ func _physics_process(_delta):
 				text_prompt.text = str(target_object.name, "\nПоговорить" )
 			_:
 				pass
-
-		if Input.is_action_just_pressed("interact") and GameManager.current_game_state != GameManager.game_state.Pause:
-			print("\n", get_script().resource_path.get_file(), "\n", "Нажали Interact на: ", target_object)
-			target_object_interact.interact(target_object)
 	else:
 		text_prompt.text = ''
 		text_prompt.visible = false
 		if target_object != null:
 			target_object_interact.disable_highlight(target_object_mesh[0])
-		
+			text_prompt.text = ""
+			target_object = null
+
+
+func _unhandled_input(event : InputEvent):
+	if is_colliding() and (GameManager.current_game_state == GameManager.game_state.Default):
+		if Input.is_action_just_pressed("interact"):
+			print("\n", get_script().resource_path.get_file(), "\n", "Нажали Interact на: ", target_object)
+			target_object_interact.interact(target_object)
+			get_viewport().set_input_as_handled()

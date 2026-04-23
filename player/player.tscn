@@ -497,6 +497,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="DebugPanel" type="PanelContainer" parent="UserInterface" unique_id=1561422435]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
@@ -718,8 +719,7 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Dialogues" type="Control" parent="UserInterface" unique_id=390894934]
-visible = false
+[node name="Dialogues" type="Control" parent="UserInterface" unique_id=390894934 node_paths=PackedStringArray("dialogue_ui", "speaker_name", "speaker_line")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -732,8 +732,20 @@ offset_bottom = 146.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("6_gql8a")
+dialogue_ui = NodePath("DialoguesUI")
+speaker_name = NodePath("DialoguesUI/DialogContainer/SpeakerName")
+speaker_line = NodePath("DialoguesUI/DialogContainer/SpeakerLine")
 
-[node name="Background" type="TextureRect" parent="UserInterface/Dialogues" unique_id=141334547]
+[node name="DialoguesUI" type="Control" parent="UserInterface/Dialogues" unique_id=1962556242]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UserInterface/Dialogues/DialoguesUI" unique_id=141334547]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -742,31 +754,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_hg6s5")
 
-[node name="DialogContainer" type="VBoxContainer" parent="UserInterface/Dialogues" unique_id=1650053500]
+[node name="DialogContainer" type="VBoxContainer" parent="UserInterface/Dialogues/DialoguesUI" unique_id=1650053500]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 18.0
-offset_right = -25.0
-offset_bottom = -23.0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = -26.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="SpeakerName" type="Label" parent="UserInterface/Dialogues/DialogContainer" unique_id=600315167]
+[node name="SpeakerName" type="Label" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer" unique_id=600315167]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "NPC"
 
-[node name="SpeakerLine" type="Label" parent="UserInterface/Dialogues/DialogContainer" unique_id=1010654446]
+[node name="SpeakerLine" type="Label" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer" unique_id=1010654446]
 layout_mode = 2
 text = "Line"
 autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="UserInterface" unique_id=634695021]
+process_mode = 3
 visible = false
 layout_mode = 1
 anchors_preset = 15

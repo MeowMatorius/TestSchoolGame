@@ -188,7 +188,8 @@ func _ready():
 
 
 func _process(_delta):
-	update_debug_menu_per_frame()
+	# update_debug_menu_per_frame()
+	pass
 
 
 func _physics_process(delta): # Most things happen here.
@@ -200,7 +201,7 @@ func _physics_process(delta): # Most things happen here.
 
 	handle_jumping()
 
-	var input_dir = Vector2.ZERO
+	var input_dir: Vector2 = Vector2.ZERO
 
 	if not immobile: # Immobility works by interrupting user input, so other forces can still be applied to the player
 		input_dir = Input.get_vector(controls.LEFT, controls.RIGHT, controls.FORWARD, controls.BACKWARD)
@@ -222,7 +223,7 @@ func _physics_process(delta): # Most things happen here.
 	if jump_animation:
 		play_jump_animation()
 
-	update_debug_menu_per_tick()
+	# update_debug_menu_per_tick()
 
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
 
