@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cc1m2a1obsyn4"]
 
-[ext_resource type="Script" uid="uid://hutuis63hgev" path="res://addons/fpc/character.gd" id="1_0t4e8"]
+[ext_resource type="Script" uid="uid://hutuis63hgev" path="res://player/player.gd" id="1_0t4e8"]
 [ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="2_bx7cj"]
 [ext_resource type="Script" uid="uid://cv51immeinjva" path="res://scripts/interaction_ray_cast.gd" id="3_qaoyu"]
-[ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
-[ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
-[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://scripts/player_items.gd" id="5_4fv23"]
-[ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://addons/fpc/player_dialogues.gd" id="6_4fv23"]
+[ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://player/EditorModule.gd" id="3_v3ckk"]
+[ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://player/debug.gd" id="3_x1wcc"]
+[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://player/player_items.gd" id="5_4fv23"]
+[ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://player/player_dialogues.gd" id="6_gql8a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -719,7 +719,7 @@ offset_top = -71.0
 offset_bottom = 71.0
 grow_horizontal = 0
 grow_vertical = 2
-script = ExtResource("6_4fv23")
+script = ExtResource("6_gql8a")
 
 [node name="SpeakerName" type="Label" parent="UserInterface/Dialogues" unique_id=600315167]
 layout_mode = 2
