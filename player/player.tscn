@@ -42,7 +42,6 @@ adjustment_saturation = 1.3
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_boad6"]
 auto_exposure_enabled = true
-dof_blur_amount = 0.05
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -727,7 +726,7 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Dialogues" type="Control" parent="UserInterface" unique_id=390894934 node_paths=PackedStringArray("dialogue_ui", "speaker_name", "speaker_line")]
+[node name="Dialogues" type="Control" parent="UserInterface" unique_id=390894934 node_paths=PackedStringArray("dialogue_ui", "speaker_name", "speaker_line", "choice_ui")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -743,6 +742,7 @@ script = ExtResource("6_gql8a")
 dialogue_ui = NodePath("DialoguesUI")
 speaker_name = NodePath("DialoguesUI/DialogContainer/SpeakerName")
 speaker_line = NodePath("DialoguesUI/DialogContainer/SpeakerLine")
+choice_ui = NodePath("DialoguesUI/DialogContainer/ChoiceContainer")
 
 [node name="DialoguesUI" type="Control" parent="UserInterface/Dialogues" unique_id=1962556242]
 visible = false
@@ -758,6 +758,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_hg6s5")
@@ -768,9 +770,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
-offset_top = 17.0
+offset_top = 11.5
 offset_right = -26.0
-offset_bottom = -20.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
@@ -785,6 +787,19 @@ text = "NPC"
 layout_mode = 2
 text = "Line"
 autowrap_mode = 3
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer" unique_id=418488667]
+layout_mode = 2
+
+[node name="Choice_1" type="Button" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer/ChoiceContainer" unique_id=1426323502]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Выбор 1"
+
+[node name="Choice_2" type="Button" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer/ChoiceContainer" unique_id=2051956395]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Выбор 2"
 
 [node name="PauseMenu" type="Control" parent="UserInterface" unique_id=634695021]
 process_mode = 2

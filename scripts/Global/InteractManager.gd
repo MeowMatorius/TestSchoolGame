@@ -1,8 +1,6 @@
 extends Node
 class_name Interact
 
-@export_category("Двери/Контейнеры")
-
 var prompt_message: String
 var highlighted: bool = false
 

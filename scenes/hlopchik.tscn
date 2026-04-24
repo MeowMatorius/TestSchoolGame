@@ -25,3 +25,4 @@ transform = Transform3D(0.9998477, 2.910383e-11, -0.017452406, 0.00030458646, 0.
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875]
 script = ExtResource("2_gmw5h")
 internal_name = "Hlopchik"
+dialogue_stage = "node_001"
