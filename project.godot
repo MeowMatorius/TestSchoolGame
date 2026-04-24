@@ -23,7 +23,7 @@ buses/default_bus_layout="uid://cqq4qhl0el65u"
 
 SignalBus="*uid://y0w4uau18ga4"
 DialogueManager="*uid://bwrj1br3jonfi"
-InteractManager="*uid://d4jnoq4tfkr6q"
+InteractManager="uid://d4jnoq4tfkr6q"
 InventoryManager="*uid://b7cuxa1vwya85"
 GameManager="*uid://b7p6c8qiux5pt"
 EventManager="*uid://c4v2fkh8igcag"
@@ -93,3 +93,4 @@ skip={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/use_taa=true

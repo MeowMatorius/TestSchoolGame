@@ -10,7 +10,7 @@ var current_game_state: GameState = GameState.DEFAULT:
 
 var previous_game_state: GameState
 var state_before_pause: GameState
-
+	
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var player_ui: Control = player.get_node("UserInterface")
 @onready var player_ui_pause: Control = player_ui.get_node("PauseMenu")
