@@ -438,7 +438,7 @@ colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.78431374)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_rgyib"]
 gradient = SubResource("Gradient_boad6")
 
-[node name="Player" type="CharacterBody3D" unique_id=2031011971 node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
+[node name="Player" type="CharacterBody3D" unique_id=2031011971 node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH") groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_0t4e8")
 HEAD = NodePath("Head")
@@ -733,9 +733,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -389.0
-offset_top = -71.0
-offset_bottom = 146.0
+offset_left = -422.12
+offset_top = -107.94501
+offset_right = -33.119995
+offset_bottom = 109.05548
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("6_gql8a")
@@ -758,8 +759,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -3.0
-offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_hg6s5")
@@ -771,8 +770,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 23.0
 offset_top = 11.5
-offset_right = -26.0
-offset_bottom = -7.0
+offset_right = -24.880005
+offset_bottom = -21.055481
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24

@@ -27,6 +27,11 @@ InteractManager="*uid://d4jnoq4tfkr6q"
 InventoryManager="*uid://b7cuxa1vwya85"
 GameManager="*uid://b7p6c8qiux5pt"
 EventManager="*uid://c4v2fkh8igcag"
+InputManager="*uid://gfnnernqc2m5"
+
+[global_group]
+
+player="Игрок"
 
 [input]
 

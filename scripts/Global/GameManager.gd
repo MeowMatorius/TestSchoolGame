@@ -1,72 +1,52 @@
 extends Node
 
-enum game_state {Default, Mouse, Pause}
-var game_paused : bool = false
+enum GameState {DEFAULT, DIALOGUE, PAUSE}
 
-var current_game_state: int = 0
-var previous_game_state
-var state_before_pause
+var current_game_state: GameState = GameState.DEFAULT:
+	set(value):
+		previous_game_state = current_game_state
+		current_game_state = value
+		_on_game_state_changed()
 
-var player
-var pause_menu_ui
+var previous_game_state: GameState
+var state_before_pause: GameState
 
-
-func find_all_descendants():
-	for child in get_parent().get_children():
-		for i in child.get_children():
-			if i.has_node("Player") == false:
-				pass
-			else:
-				player = i.get_node("Player")
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
+@onready var player_ui: Control = player.get_node("UserInterface")
+@onready var player_ui_pause: Control = player_ui.get_node("PauseMenu")
+@onready var player_ui_prompt: Control = player_ui.get_node("Prompt")
 
 
-func _ready() -> void: 
+func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	find_all_descendants()
-	current_game_state = game_state.Default
-	pause_menu_ui = player.get_node("UserInterface").get_node('PauseMenu')
-	
-
-func _unhandled_input(event : InputEvent):
-	if event.is_action_pressed("pause"):
-		previous_game_state = current_game_state
-		current_game_state = game_state.Pause
-		mouse_input_mode_switch()
+	InputManager.pause_requested.connect(_on_pause_requested)
 
 
-func mouse_input_mode_switch():
-	if current_game_state == game_state.Default:
-		mouse_input_mode_off()
-		print("Нахожусь в состоянии Default")
-	elif current_game_state == game_state.Mouse:
-		mouse_input_mode_on()
-		print("Нахожусь в состоянии Mouse")
-	elif current_game_state == game_state.Pause:
-		if previous_game_state != current_game_state:
-			mouse_input_mode_on(true, true)
-			state_before_pause = previous_game_state
-			print("Нахожусь в состоянии Pause")
-		else:
-			mouse_input_mode_off()
-			current_game_state = state_before_pause
-#			print("Нахожусь в состоянии ", current_game_state)
-			mouse_input_mode_switch()
-			
+func _on_pause_requested() -> void:
+	# Логика переключения состояния
+	if current_game_state == GameState.PAUSE:
+		current_game_state = state_before_pause
+	else:
+		state_before_pause = current_game_state
+		current_game_state = GameState.PAUSE
 
-func mouse_input_mode_on(visible: bool = false, pause_bool: bool = false, pause_time: float = 1.0):
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	pause_menu_ui.visible = visible
-	get_tree().paused = pause_bool
-	Engine.time_scale = pause_time
-	player.immobile = true
+
+func _on_game_state_changed() -> void:
+	match current_game_state:
+		GameState.DEFAULT:
+			_update_game_state(Input.MOUSE_MODE_CAPTURED, false, false, 1.0)
+		GameState.DIALOGUE:
+			_update_game_state(Input.MOUSE_MODE_VISIBLE, false, false, 1.0)
+		GameState.PAUSE:
+			_update_game_state(Input.MOUSE_MODE_VISIBLE, true, true, 0.0)
+
+
+func _update_game_state(mouse_mode, show_menu, pause_tree, time_scale) -> void:
+	Input.mouse_mode = mouse_mode
+	player_ui_pause.visible = show_menu
+	get_tree().paused = pause_tree
+	Engine.time_scale = time_scale
 	
-	
-func mouse_input_mode_off(visible: bool = false):
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	pause_menu_ui.visible = visible
-	get_tree().paused = false
-	#Engine.time_scale = 1
-	player.immobile = false
-	
-	
+	if player:
+		player.immobile = (current_game_state != GameState.DEFAULT)

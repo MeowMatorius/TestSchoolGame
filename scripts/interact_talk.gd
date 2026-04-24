@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func interact(object):
+	print("интерактнул жоска")
 	SignalBus.is_talking.emit(internal_name, dialogue_stage)
 
 

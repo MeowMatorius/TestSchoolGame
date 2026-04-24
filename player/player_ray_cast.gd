@@ -11,6 +11,12 @@ func _ready() -> void:
 	text_prompt.visible = false
 	target_object = null
 	target_object_mesh = null
+	InputManager.interaction_pressed.connect(_on_interaction_pressed)
+
+
+func _on_interaction_pressed() -> void:
+	if is_colliding():
+		target_object_interact.interact(target_object)
 
 
 func _physics_process(_delta):
@@ -45,11 +51,3 @@ func _clear_target():
 		target_object = null
 		text_prompt.text = ''
 		text_prompt.visible = false
-
-
-func _unhandled_input(event : InputEvent):
-	if is_colliding() and (GameManager.current_game_state == GameManager.game_state.Default):
-		if event.is_action_pressed("interact"):
-			print("\n", get_script().resource_path.get_file(), "\n", "Нажали Interact на: ", target_object)
-			target_object_interact.interact(target_object)
-			get_viewport().set_input_as_handled()
