@@ -72,3 +72,11 @@ func switch_off(object):
 		object.get_node("AnimationPlayer").play("deactivate")
 	if object.get_node("AudioStreamPlayer3D"):
 		object.get_node("AudioStreamPlayer3D").playing = false
+
+
+func get_prompt() -> String:
+	if lock_state == "Locked":
+		var has_item: bool = item_needed_to_open in InventoryManager.items
+		return "Закрыто. Требуется: " + item_needed_to_open if not has_item else "Открыть с помощью: " + item_needed_to_open
+	if lock_state == "Broken": return "Замок сломан"
+	return activate_prompt_message if object_state == "Deactivated" else deactivate_prompt_message

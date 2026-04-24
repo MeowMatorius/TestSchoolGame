@@ -786,7 +786,7 @@ text = "Line"
 autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="UserInterface" unique_id=634695021]
-process_mode = 3
+process_mode = 2
 visible = false
 layout_mode = 1
 anchors_preset = 15

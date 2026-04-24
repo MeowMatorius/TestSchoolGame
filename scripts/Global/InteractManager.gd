@@ -15,6 +15,10 @@ func interact(object):
 	pass
 
 
+func get_prompt():
+	pass
+
+
 func highlight(object_mesh):
 	if object_mesh is MeshInstance3D and !highlighted:
 		highlighted = true

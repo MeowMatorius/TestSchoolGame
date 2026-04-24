@@ -15,7 +15,6 @@ extends CharacterBody3D
 @export var acceleration : float = 10.0
 @export var motion_smoothing : bool = true
 
-
 @export_category("Jump Settings")
 @export var jump_velocity : float = 4.5
 @export var jump_animation : bool = true
@@ -23,7 +22,6 @@ extends CharacterBody3D
 @export var in_air_momentum : bool = true
 @export var gravity_enabled : bool = true
 @export var dynamic_gravity : bool = false
-
 
 @export_category("Fov Settings")
 @export var default_fov : float = 65.0
@@ -62,8 +60,6 @@ extends CharacterBody3D
 @export var invert_camera_y_axis : bool = false
 @export_file var default_reticle
 
-
-#region Controls Export Group
 @export_group("Controller")
 ## This only affects how the camera is handled, the rest should be covered by adding controller inputs to the existing actions in the Input Map.
 @export var controller_support : bool = false
@@ -76,10 +72,9 @@ extends CharacterBody3D
 	}
 ## The sensitivity of the analog stick that controls camera rotation. Lower is less sensitive and higher is more sensitive.
 @export_range(0.001, 1, 0.001) var look_sensitivity : float = 0.035
-#endregion
+
 
 #region Member Variable Initialization
-
 # These are variables used in this script that don't need to be exposed in the editor.
 var speed : float = base_speed
 var current_speed : float = 0.0
@@ -96,18 +91,13 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 
 # Stores mouse input for rotating the camera in the physics process
 var mouseInput : Vector2 = Vector2(0,0)
-
 #endregion
+
 
 #region Main Control Flow
 func _ready():
-	
-	#SignalBus.is_talking.connect()
-	
 	CAMERA.fov = default_fov
-	
-	#It is safe to comment this line if your game doesn't start with the mouse captured
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
 	HEAD.rotation.y = rotation.y
@@ -125,7 +115,7 @@ func _ready():
 
 
 func _process(_delta):
-	# update_debug_menu_per_frame()
+	#update_debug_menu_per_frame()
 	pass
 
 
@@ -160,13 +150,13 @@ func _physics_process(delta): # Most things happen here.
 	if jump_animation:
 		play_jump_animation()
 
-	# update_debug_menu_per_tick()
+	update_debug_menu_per_tick()
 	
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
 #endregion
 
-#region Input Handling
 
+#region Input Handling
 func handle_jumping():
 	if jumping_enabled:
 		if continuous_jumping: # Hold down the jump button
@@ -253,11 +243,10 @@ func check_controls(): # If you add a control, you might want to add a check for
 	if !InputMap.has_action(controls.SPRINT):
 		push_error("No control mapped for sprint. Please add an input map control. Disabling sprinting.")
 		sprint_enabled = false
-
 #endregion
 
-#region State Handling
 
+#region State Handling
 func handle_state(moving):
 	if sprint_enabled:
 		if sprint_mode == 0:
@@ -323,11 +312,10 @@ func enter_sprint_state():
 		CROUCH_ANIMATION.play_backwards("crouch")
 	state = "sprinting"
 	speed = sprint_speed
-
 #endregion
 
-#region Animation Handling
 
+#region Animation Handling
 func initialize_animations():
 	# Reset the camera position
 	# If you want to change the default head height, change these animations.
@@ -379,6 +367,7 @@ func play_jump_animation():
 
 #endregion
 
+
 #region Debug Menu
 func update_debug_menu_per_frame():
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
@@ -413,6 +402,7 @@ func _unhandled_input(event : InputEvent):
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
 #endregion
+
 
 #region Misc Functions
 func change_reticle(reticle): # Yup, this function is kinda strange

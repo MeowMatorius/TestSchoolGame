@@ -11,3 +11,7 @@ func _ready() -> void:
 
 func interact(object):
 	SignalBus.is_talking.emit(internal_name, dialogue_stage)
+
+
+func get_prompt() -> String:
+	return "Поговорить"

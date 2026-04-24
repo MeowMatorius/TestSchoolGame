@@ -10,6 +10,7 @@ signal is_skiping
 signal started_talking
 signal stoped_talking
 
+
 func _ready() -> void:
 	SignalBus.is_talking.connect(load_all_data)
 

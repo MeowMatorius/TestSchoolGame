@@ -4,55 +4,45 @@ extends RayCast3D
 var target_object = null
 var target_object_mesh = null
 var target_object_interact = null
-var target_object_script = null
 
 
 func _ready() -> void:
 	text_prompt.text = ""
+	text_prompt.visible = false
 	target_object = null
 	target_object_mesh = null
-	target_object_script = null
 
 
 func _physics_process(_delta):
+	var collider = get_collider() if is_colliding() else null
 	
-	if is_colliding():
-		target_object = get_collider()
-		target_object_mesh = target_object.find_children("*", "MeshInstance3D")
-		target_object_interact = target_object.get_node("InteractComponent")
-		target_object_script = target_object_interact.get_script().resource_path.get_file()
+	if collider:
+		if target_object != collider:
+			_update_target(collider)
 		
+		text_prompt.text = "%s\n%s" % [target_object.name, target_object_interact.get_prompt()]
 		text_prompt.visible = true
-		target_object_interact.highlight(target_object_mesh[0])
+	elif target_object:
+		_clear_target()
+
+
+func _update_target(new_target):
+	target_object = new_target
+	target_object_interact = target_object.get_node("InteractComponent")
+	
+	if target_object_interact.has_signal("object_removed"):
+		if not target_object_interact.object_removed.is_connected(_clear_target):
+			target_object_interact.object_removed.connect(_clear_target)
 		
-		match target_object_script:
-			"interact_switch.gd":
-				match target_object_interact.lock_state:
-					"Locked":
-						if target_object_interact.item_needed_to_open not in InventoryManager.items:
-							text_prompt.text = str(target_object.name, "\n Закрыто. Требуется: ", target_object_interact.item_needed_to_open)
-						else:
-							text_prompt.text = str(target_object.name, "\n Открыть с помощью: ", target_object_interact.item_needed_to_open)
-					"Broken":
-						text_prompt.text = str(target_object.name, "\n Замок сломан")
-					_:
-						if target_object_interact.object_state == "Deactivated":
-							text_prompt.text = str(target_object.name, "\n", target_object_interact.activate_prompt_message)
-						elif target_object_interact.object_state == "Activated":
-							text_prompt.text = str(target_object.name, "\n", target_object_interact.deactivate_prompt_message)
-			"interact_pickup.gd":
-				text_prompt.text = str(target_object_interact.pickup_item_name, "\nПодобрать" )
-			"interact_talk.gd":
-				text_prompt.text = str(target_object.name, "\nПоговорить" )
-			_:
-				pass
-	else:
-		text_prompt.text = ''
+	target_object_mesh = target_object.find_children("*", "MeshInstance3D")[0]
+	target_object_interact.highlight(target_object_mesh)
+
+
+func _clear_target():
+	if is_instance_valid(target_object_interact):
+		target_object_interact.disable_highlight(target_object_mesh)
+		target_object = null
 		text_prompt.visible = false
-		if target_object != null:
-			target_object_interact.disable_highlight(target_object_mesh[0])
-			text_prompt.text = ""
-			target_object = null
 
 
 func _unhandled_input(event : InputEvent):
