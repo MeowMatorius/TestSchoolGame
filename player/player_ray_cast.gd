@@ -39,10 +39,12 @@ func _update_target(new_target):
 
 
 func _clear_target():
-	#if is_instance_valid(target_object_interact):
-	target_object_interact.disable_highlight(target_object_mesh)
-	target_object = null
-	text_prompt.visible = false
+	if is_instance_valid(target_object_interact):
+		target_object_interact.disable_highlight(target_object_mesh)
+		target_object_mesh = []
+		target_object = null
+		text_prompt.text = ''
+		text_prompt.visible = false
 
 
 func _unhandled_input(event : InputEvent):
