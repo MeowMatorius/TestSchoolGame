@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://hutuis63hgev" path="res://player/player.gd" id="1_0t4e8"]
-[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="2_bx7cj"]
+[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="2_bx7cj"]
 [ext_resource type="Script" uid="uid://cv51immeinjva" path="res://player/player_raycast.gd" id="3_qaoyu"]
 [ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://player/ui/player_ui_items.gd" id="5_4fv23"]
 [ext_resource type="Script" uid="uid://qgq50dq2seym" path="res://player/ui/player_ui_item_slot.gd" id="5_g6k8r"]
@@ -943,11 +943,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="Choice_1" type="Button" parent="UserInterface/DialoguesContainer/Dialogue/ChoiceContainer" unique_id=1426323502]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 text = "Выбор 1"
 
 [node name="Choice_2" type="Button" parent="UserInterface/DialoguesContainer/Dialogue/ChoiceContainer" unique_id=2051956395]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 text = "Выбор 2"
