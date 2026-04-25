@@ -26,49 +26,43 @@ func load_all_data(internal_name, dialogue_stage):
 	
 	if all_dialogues.has(dialogue_stage):
 #		start_dialogue(dialogue_stage, internal_name)
-		start_dialogue_choice(dialogue_stage, internal_name)
+		start_dialogue_choice(dialogue_stage)
 	else:
 		print("Диалоги закончились")
 
 
-func start_dialogue_choice(dialogue_stage, internal_name):
-	GameManager.current_game_state = GameManager.GameState.DIALOGUE
+func start_dialogue_choice(dialogue_stage):
 	
-	for i in range(all_dialogues[dialogue_stage]["text"].size()):
+	choices_array = []
+	GameManager.current_game_state = GameManager.GameState.DIALOGUE
+	var dialogue_id = all_dialogues[dialogue_stage]
+	var speaker = dialogue_id["speaker"]
+	var text = dialogue_id["text"]
+	var choices = dialogue_id["choices"]
+	
+	for i in range(text.size()):
 		if i != 0:
 			await InputManager.skip_pressed
-		var speaker = all_dialogues[dialogue_stage]["speaker"]
-		var line = all_dialogues[dialogue_stage]["text"][i]
+		var line = text[i]
 		started_talking.emit(speaker, line)
-		
-		if i+1 == all_dialogues[dialogue_stage]["text"].size():
-			for j in range(all_dialogues[dialogue_stage]["choices"].size()):
-				choices_array.append(all_dialogues[dialogue_stage]["choices"][j]["text"])
-			start_choosing.emit(choices_array)
+
+		if i+1 == text.size():
+			for j in range(choices.size()):
+				choices_array.append(choices[j]["text"])
+			if choices_array.size() >= 1:
+				print("Да, я отправил ", choices)
+				start_choosing.emit(choices)
+			elif choices_array.size() == 0:
+				pass
 	await InputManager.skip_pressed
 	
 	stoped_talking.emit()
 	GameManager.current_game_state = GameManager.GameState.DEFAULT
 #	switch_dialogue_stage(dialogue_stage, internal_name)
-				
-				
-func start_dialogue(dialogue_stage: String, internal_name):
-	GameManager.current_game_state = GameManager.GameState.DIALOGUE
-	GameManager.mouse_input_mode_switch()
-	
-	for i in range(all_dialogues[dialogue_stage].size()):
-		if i != 0:
-			await InputManager.skip_pressed
-		var speaker = all_dialogues[dialogue_stage][i]["name"]
-		var line = all_dialogues[dialogue_stage][i]["text"]
-		print(speaker, ": ", line)
-		started_talking.emit(speaker, line)
-	await InputManager.skip_pressed
-	
-	stoped_talking.emit()
-	GameManager.current_game_state = GameManager.GameState.DEFAULT
-	GameManager.mouse_input_mode_switch()
-	switch_dialogue_stage(dialogue_stage, internal_name)
+			
+func _on_choice_selected(next_node_id):
+	start_dialogue_choice(next_node_id)
+	print("Игрок выбрал путь: ", next_node_id)			
 	
 	
 func switch_dialogue_stage(dialogue_stage, internal_name):

@@ -1,47 +1,55 @@
 {
-	"node_001": {
-		"speaker": "Хлопчик",
-		"text": [
-			"Привет.", "Хочешь пива?"
-		],
-		"choices": [
-			{
-				"text": "Да, конечно",
-				"speaker": "Игрок",
-				"next_node": "node_002",
-				"action": "remove_gold_10"
-			},
-			{
-				"text": "Нет, я не пью",
-				"speaker": "Игрок",
-				"next_node": "node_003"
-			}
-		]
-	},
-	"node_002": {
-		"speaker": "Хлопчик",
-		"text": [
-			"Вот, держи"
-		],
-		"choices": [
-			{
-				"text": "Спасибо",
-				"speaker": "Игрок",
-				"next_node": "node_end"
-			}
-		],
-		"set_flag": "knows_secret"
-	},
-	"node_003": {
-		"speaker": "Хлопчик",
-		"text": [
-			"Тогда проваливай, мы таких не любим!"
-		],
-		"choices": [
-			{
-				"text": "Уйти",
-				"next_node": "node_end"
-			}
-		]
-	}
+  "node_001": {
+	"speaker": "Хлопчик",
+	"text": [
+	  "Привет.",
+	  "Хочешь пива?"
+	],
+	"choices": [
+	  {
+		"text": "Да, конечно",
+		"speaker": "Игрок",
+		"next_node": "node_002",
+		"action": "remove_gold_10"
+	  },
+	  {
+		"text": "Нет, я не пью",
+		"speaker": "Игрок",
+		"next_node": "node_003"
+	  }
+	]
+  },
+  "node_002": {
+	"speaker": "Хлопчик",
+	"text": [
+	  "Вот, держи"
+	],
+	"choices": [
+	  {
+		"text": "Спасибо",
+		"speaker": "Игрок",
+		"next_node": "node_004"
+	  }
+	],
+	"set_flag": "knows_secret"
+  },
+  "node_003": {
+	"speaker": "Хлопчик",
+	"text": [
+	  "Тогда проваливай, мы таких не любим!"
+	],
+	"choices": [
+	  {
+		"text": "Уйти",
+		"next_node": "node_004"
+	  }
+	]
+  },
+  "node_004": {
+	"speaker": "Игрок",
+	"text": [
+	  "Пока Хлопчик"
+	],
+	"choices": []
+  }
 }

@@ -791,11 +791,13 @@ autowrap_mode = 3
 layout_mode = 2
 
 [node name="Choice_1" type="Button" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer/ChoiceContainer" unique_id=1426323502]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 text = "Выбор 1"
 
 [node name="Choice_2" type="Button" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer/ChoiceContainer" unique_id=2051956395]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 text = "Выбор 2"
