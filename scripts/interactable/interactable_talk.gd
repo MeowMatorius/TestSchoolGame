@@ -2,6 +2,7 @@ extends Interactable
 
 @export var internal_name: String = "NPC"
 @export var dialogue_stage: String = "dialogue_1"
+@export var dialogue_camera: Camera3D
 
 
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 func interact(object):
 	print("интерактнул жоска")
-	SignalBus.is_talking.emit(internal_name, dialogue_stage)
+	SignalBus.is_talking.emit(internal_name, dialogue_stage, dialogue_camera)
 
 
 func get_prompt() -> String:

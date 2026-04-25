@@ -1,0 +1,25 @@
+[gd_resource type="Environment" format=3 uid="uid://cuekvwuvrfdcf"]
+
+[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="1_ynwok"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bx7cj"]
+panorama = ExtResource("1_ynwok")
+
+[sub_resource type="Sky" id="Sky_bupmj"]
+sky_material = SubResource("PanoramaSkyMaterial_bx7cj")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 3.0
+sky = SubResource("Sky_bupmj")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 4
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_density = 0.001
+adjustment_enabled = true
+adjustment_saturation = 1.3

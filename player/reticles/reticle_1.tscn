@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://3mij3cjhkwsm"]
+[gd_scene format=3 uid="uid://3mij3cjhkwsm"]
 
 [sub_resource type="GDScript" id="GDScript_a8kpl"]
 script/source = "extends CenterContainer
@@ -73,7 +73,7 @@ func update_reticle_settings():
 	reticle_lines[3].points[1].y = line_length + line_distance
 "
 
-[node name="Reticle" type="CenterContainer" node_paths=PackedStringArray("reticle_lines")]
+[node name="Reticle" type="CenterContainer" unique_id=976947539 node_paths=PackedStringArray("reticle_lines")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -84,21 +84,21 @@ grow_vertical = 2
 script = SubResource("GDScript_a8kpl")
 reticle_lines = [NodePath("top"), NodePath("left"), NodePath("right"), NodePath("bottom")]
 
-[node name="dot" type="Polygon2D" parent="."]
+[node name="dot" type="Polygon2D" parent="." unique_id=1125521354]
 polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)
 
-[node name="top" type="Line2D" parent="."]
+[node name="top" type="Line2D" parent="." unique_id=471513425]
 points = PackedVector2Array(0, -5, 0, -15)
 width = 2.0
 
-[node name="left" type="Line2D" parent="."]
+[node name="left" type="Line2D" parent="." unique_id=762833615]
 points = PackedVector2Array(-5, 0, -15, 0)
 width = 2.0
 
-[node name="right" type="Line2D" parent="."]
+[node name="right" type="Line2D" parent="." unique_id=2082612657]
 points = PackedVector2Array(5, 0, 15, 0)
 width = 2.0
 
-[node name="bottom" type="Line2D" parent="."]
+[node name="bottom" type="Line2D" parent="." unique_id=355798520]
 points = PackedVector2Array(0, 5, 0, 15)
 width = 2.0

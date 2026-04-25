@@ -17,7 +17,7 @@ func _ready() -> void:
 	SignalBus.is_talking.connect(load_all_data)
 
 
-func load_all_data(internal_name, dialogue_stage):
+func load_all_data(internal_name, dialogue_stage, dialogue_camera):
 	path = "res://jsons/"+internal_name+".json"
 	print("path:", path)
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
@@ -26,15 +26,18 @@ func load_all_data(internal_name, dialogue_stage):
 	
 	if all_dialogues.has(dialogue_stage):
 #		start_dialogue(dialogue_stage, internal_name)
-		start_dialogue_choice(dialogue_stage)
+		enter_dialogue_state(dialogue_stage, dialogue_camera)
 	else:
 		print("Диалоги закончились")
 
 
-func start_dialogue_choice(dialogue_stage):
-	
-	choices_array = []
+func enter_dialogue_state(dialogue_stage, dialogue_camera):
 	GameManager.current_game_state = GameManager.GameState.DIALOGUE
+	GameManager.current_game_camera = dialogue_camera
+	start_dialogue_choice(dialogue_stage)
+
+func start_dialogue_choice(dialogue_stage):
+	choices_array = []
 	var dialogue_id = all_dialogues[dialogue_stage]
 	var speaker = dialogue_id["speaker"]
 	var text = dialogue_id["text"]
@@ -58,6 +61,7 @@ func start_dialogue_choice(dialogue_stage):
 	
 	stoped_talking.emit()
 	GameManager.current_game_state = GameManager.GameState.DEFAULT
+	GameManager.current_game_camera = GameManager.player_camera
 #	switch_dialogue_stage(dialogue_stage, internal_name)
 			
 func _on_choice_selected(next_node_id):

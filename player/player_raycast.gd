@@ -25,7 +25,8 @@ func _physics_process(_delta):
 			if target_object != collider:
 				_update_target(collider)
 			
-			text_prompt.text = "%s\n%s" % [target_object.name, target_object_interact.get_prompt()]
+			#text_prompt.text = "%s\n%s" % [target_object.name, target_object_interact.get_prompt()]
+			text_prompt.text = target_object_interact.get_prompt()
 			text_prompt.visible = true
 		elif target_object:
 			_clear_target()

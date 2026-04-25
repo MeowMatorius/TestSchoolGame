@@ -2,6 +2,8 @@
 
 [ext_resource type="Material" uid="uid://brae5luvbqpd2" path="res://assets/materials/box_mat_5.tres" id="2_664ey"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_gmw5h"]
+[ext_resource type="Environment" uid="uid://cuekvwuvrfdcf" path="res://resourses/Settings/npc_environment.tres" id="3_74uyl"]
+[ext_resource type="CameraAttributesPractical" uid="uid://dxd0crdx6irb8" path="res://resourses/Settings/npc_camera_attributes_practical.tres" id="4_x68is"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_uyltb"]
 
@@ -22,7 +24,15 @@ shape = SubResource("BoxShape3D_uyltb")
 [node name="DialogueComponent" type="Node3D" parent="." unique_id=612109534]
 transform = Transform3D(0.9998477, 2.910383e-11, -0.017452406, 0.00030458646, 0.9998477, 0.017449748, 0.017449748, -0.017452406, 0.9996954, 0, 0, 0)
 
-[node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875]
+[node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875 node_paths=PackedStringArray("dialogue_camera")]
 script = ExtResource("2_gmw5h")
 internal_name = "Hlopchik"
 dialogue_stage = "node_001"
+dialogue_camera = NodePath("../DialogueCamera")
+
+[node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]
+transform = Transform3D(0.95301837, -0.009379078, 0.3027674, -0.033079974, 0.9903201, 0.13480352, -0.30110097, -0.13848576, 0.9434829, 0.9972297, 0.8007791, 3.01216)
+keep_aspect = 0
+environment = ExtResource("3_74uyl")
+attributes = ExtResource("4_x68is")
+fov = 55.0

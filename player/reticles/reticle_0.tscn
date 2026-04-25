@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://coqpusufa8a6k"]
+[gd_scene format=3 uid="uid://coqpusufa8a6k"]
 
 [sub_resource type="GDScript" id="GDScript_10f85"]
 script/source = "extends CenterContainer
@@ -23,7 +23,7 @@ func update_reticle_settings():
 	$dot.color = dot_color
 "
 
-[node name="Reticle" type="CenterContainer"]
+[node name="Reticle" type="CenterContainer" unique_id=676808627]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,5 +33,5 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_10f85")
 
-[node name="dot" type="Polygon2D" parent="."]
+[node name="dot" type="Polygon2D" parent="." unique_id=131804576]
 polygon = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1)
