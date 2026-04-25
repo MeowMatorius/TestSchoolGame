@@ -13,7 +13,7 @@ config_version=5
 config/name="SchoolGame"
 run/main_scene="res://scenes/test_scene.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://assets/icons/godot-icon.svg"
+config/icon="res://assets/icons/godot_icon.svg"
 
 [audio]
 
@@ -21,17 +21,17 @@ buses/default_bus_layout="uid://cqq4qhl0el65u"
 
 [autoload]
 
-SignalBus="*uid://y0w4uau18ga4"
-DialogueManager="*uid://bwrj1br3jonfi"
-InteractManager="uid://d4jnoq4tfkr6q"
-InventoryManager="*uid://b7cuxa1vwya85"
-GameManager="*uid://b7p6c8qiux5pt"
-EventManager="*uid://c4v2fkh8igcag"
-InputManager="*uid://gfnnernqc2m5"
+DialogueManager="*uid://c2jwbm0wee7j6"
+EventManager="*uid://dl1lgen8y5dsu"
+GameManager="*uid://cmd1u5c4mp5gs"
+InputManager="*uid://8vassbp55tau"
+InventoryManager="*uid://bgltkoojbqj2i"
+SignalBus="*uid://ddt7dkbp124a8"
 
 [global_group]
 
 player="Игрок"
+collectable=""
 
 [input]
 

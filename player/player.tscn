@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://hutuis63hgev" path="res://player/player.gd" id="1_0t4e8"]
-[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="2_bx7cj"]
-[ext_resource type="Script" uid="uid://cv51immeinjva" path="res://player/player_ray_cast.gd" id="3_qaoyu"]
-[ext_resource type="Script" uid="uid://dgfl3skp075ft" path="res://player/EditorModule.gd" id="3_v3ckk"]
-[ext_resource type="Script" uid="uid://u5u7xxlvmcxx" path="res://player/debug.gd" id="3_x1wcc"]
-[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://player/player_items_ui.gd" id="5_4fv23"]
-[ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://player/player_dialogues_ui.gd" id="6_gql8a"]
+[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="2_bx7cj"]
+[ext_resource type="Script" uid="uid://cv51immeinjva" path="res://player/player_raycast.gd" id="3_qaoyu"]
+[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://player/ui/player_ui_items.gd" id="5_4fv23"]
+[ext_resource type="Script" uid="uid://qgq50dq2seym" path="res://player/ui/player_ui_item_slot.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://player/ui/player_ui_dialogues.gd" id="6_gql8a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -409,6 +408,30 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
+[sub_resource type="GDScript" id="GDScript_qjkh3"]
+script/source = "extends PanelContainer
+
+
+func _process(delta):
+	if visible:
+		pass
+
+func add_property(title : String, value, order : int): # This can either be called once for a static property or called every frame for a dynamic property
+	var target
+	target = $MarginContainer/VBoxContainer.find_child(title, true, false) # I have no idea what true and false does here, the function should be more specific
+	if !target:
+		target = Label.new() # Debug lines are of type Label
+		$MarginContainer/VBoxContainer.add_child(target)
+		target.name = title
+		target.text = title + \": \" + str(value)
+	elif visible:
+		target.text = title + \": \" + str(value)
+		var size = $MarginContainer/VBoxContainer.get_child_count()
+		if order > size:
+			order = size
+		$MarginContainer/VBoxContainer.move_child(target, order)
+"
+
 [sub_resource type="Gradient" id="Gradient_qaoyu"]
 colors = PackedColorArray(0, 0, 0, 0.5882353, 0, 0, 0, 0.5882353)
 
@@ -426,17 +449,69 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="Gradient" id="Gradient_boad6"]
+colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.78431374)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rgyib"]
+gradient = SubResource("Gradient_boad6")
+
 [sub_resource type="Gradient" id="Gradient_rgyib"]
 colors = PackedColorArray(0, 0, 0, 0.5882353, 0, 0, 0, 0.5882353)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hg6s5"]
 gradient = SubResource("Gradient_rgyib")
 
-[sub_resource type="Gradient" id="Gradient_boad6"]
-colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.78431374)
+[sub_resource type="GDScript" id="GDScript_g6k8r"]
+script/source = "@tool
+extends Node
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rgyib"]
-gradient = SubResource("Gradient_boad6")
+# This does not effect runtime yet but will in the future.
+
+@export_category(\"Controller Editor Module\")
+@export_range(-360.0, 360.0, 0.01, \"or_greater\", \"or_less\") var head_y_rotation : float = 0.0:
+	set(new_rotation):
+		if HEAD:
+			head_y_rotation = new_rotation
+			HEAD.rotation.y = deg_to_rad(head_y_rotation)
+			update_configuration_warnings()
+@export_range(-90.0, 90.0, 0.01, \"or_greater\", \"or_less\") var head_x_rotation : float = 0.0:
+	set(new_rotation):
+		if HEAD:
+			head_x_rotation = new_rotation
+			HEAD.rotation.x = deg_to_rad(head_x_rotation)
+			update_configuration_warnings()
+
+@export_group(\"Nodes\")
+@export var CHARACTER : CharacterBody3D
+@export var head_path : String = \"Head\" # Relative to the parent node
+#@export var CAMERA : Camera3D
+#@export var HEADBOB_ANIMATION : AnimationPlayer
+#@export var JUMP_ANIMATION : AnimationPlayer
+#@export var CROUCH_ANIMATION : AnimationPlayer
+#@export var COLLISION_MESH : CollisionShape3D
+
+@onready var HEAD = get_node(\"../\" + head_path)
+
+
+func _ready():
+	if !Engine.is_editor_hint():
+		#print(\"not editor\")
+		HEAD.rotation.y = deg_to_rad(head_y_rotation)
+		HEAD.rotation.x = deg_to_rad(head_x_rotation)
+
+
+func _get_configuration_warnings():
+	var warnings = []
+
+	if head_y_rotation > 360:
+		warnings.append(\"The head rotation is greater than 360\")
+	
+	if head_y_rotation < -360:
+		warnings.append(\"The head rotation is less than -360\")
+
+	# Returning an empty array gives no warnings
+	return warnings
+"
 
 [node name="Player" type="CharacterBody3D" unique_id=2031011971 node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH") groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -475,7 +550,7 @@ hit_back_faces = false
 debug_shape_custom_color = Color(0, 0.93333334, 0, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_qaoyu")
-text_prompt = NodePath("../../../UserInterface/Prompt")
+text_prompt = NodePath("../../../UserInterface/InteractPrompt")
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head" unique_id=418260792]
 libraries/ = SubResource("AnimationLibrary_o0unb")
@@ -510,7 +585,7 @@ offset_top = 10.0
 offset_right = 453.0
 offset_bottom = 50.0
 theme = SubResource("Theme_wdf0f")
-script = ExtResource("3_x1wcc")
+script = SubResource("GDScript_qjkh3")
 
 [node name="MarginContainer" type="MarginContainer" parent="UserInterface/DebugPanel" unique_id=277676755]
 layout_mode = 2
@@ -518,25 +593,21 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer" unique_id=1594879739]
 layout_mode = 2
 
-[node name="Prompt" type="Label" parent="UserInterface" unique_id=2006208957]
-visible = false
+[node name="InteractPrompt" type="Label" parent="UserInterface" unique_id=2006208957]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -57.5
-offset_top = 48.0
+offset_top = 14.36
 offset_right = 57.5
-offset_bottom = 71.0
+offset_bottom = 37.36
 grow_horizontal = 2
-grow_vertical = 2
 text = "Использовать"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface/Prompt" unique_id=1290611511]
+[node name="TextureRect" type="TextureRect" parent="UserInterface/InteractPrompt" unique_id=1290611511]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -546,7 +617,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_gv6je")
 
-[node name="Items" type="HBoxContainer" parent="UserInterface" unique_id=185640082 node_paths=PackedStringArray("ui_items")]
+[node name="ItemsContainer" type="HBoxContainer" parent="UserInterface" unique_id=185640082 node_paths=PackedStringArray("ui_items_container")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -562,16 +633,17 @@ grow_vertical = 0
 theme_override_constants/separation = 35
 alignment = 1
 script = ExtResource("5_4fv23")
-ui_items = NodePath(".")
+ui_items_container = NodePath(".")
 
-[node name="Item1" type="Panel" parent="UserInterface/Items" unique_id=692395278]
+[node name="ItemSlot1" type="Panel" parent="UserInterface/ItemsContainer" unique_id=692395278]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item1" unique_id=891001478]
+[node name="Icon" type="TextureRect" parent="UserInterface/ItemsContainer/ItemSlot1" unique_id=891001478]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -581,7 +653,15 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UserInterface/Items/Item1" unique_id=1401148712]
+[node name="Name" type="Label" parent="UserInterface/ItemsContainer/ItemSlot1" unique_id=496756315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quantity" type="Label" parent="UserInterface/ItemsContainer/ItemSlot1" unique_id=1401148712]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -591,14 +671,15 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Item2" type="Panel" parent="UserInterface/Items" unique_id=1419809447]
+[node name="ItemSlot2" type="Panel" parent="UserInterface/ItemsContainer" unique_id=1419809447]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item2" unique_id=2054121668]
+[node name="Icon" type="TextureRect" parent="UserInterface/ItemsContainer/ItemSlot2" unique_id=2054121668]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -608,7 +689,15 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UserInterface/Items/Item2" unique_id=12244101]
+[node name="Name" type="Label" parent="UserInterface/ItemsContainer/ItemSlot2" unique_id=1848534441]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quantity" type="Label" parent="UserInterface/ItemsContainer/ItemSlot2" unique_id=1182350622]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -618,14 +707,15 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Item3" type="Panel" parent="UserInterface/Items" unique_id=753629523]
+[node name="ItemSlot3" type="Panel" parent="UserInterface/ItemsContainer" unique_id=753629523]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item3" unique_id=832765124]
+[node name="Icon" type="TextureRect" parent="UserInterface/ItemsContainer/ItemSlot3" unique_id=832765124]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -635,7 +725,15 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UserInterface/Items/Item3" unique_id=1614521346]
+[node name="Name" type="Label" parent="UserInterface/ItemsContainer/ItemSlot3" unique_id=218741855]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quantity" type="Label" parent="UserInterface/ItemsContainer/ItemSlot3" unique_id=771919258]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -645,14 +743,15 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Item4" type="Panel" parent="UserInterface/Items" unique_id=566536092]
+[node name="ItemSlot4" type="Panel" parent="UserInterface/ItemsContainer" unique_id=566536092]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item4" unique_id=2025943976]
+[node name="Icon" type="TextureRect" parent="UserInterface/ItemsContainer/ItemSlot4" unique_id=2025943976]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -662,7 +761,15 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UserInterface/Items/Item4" unique_id=1567249542]
+[node name="Name" type="Label" parent="UserInterface/ItemsContainer/ItemSlot4" unique_id=1869032688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quantity" type="Label" parent="UserInterface/ItemsContainer/ItemSlot4" unique_id=729555996]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -672,14 +779,15 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Item5" type="Panel" parent="UserInterface/Items" unique_id=1944212073]
+[node name="ItemSlot5" type="Panel" parent="UserInterface/ItemsContainer" unique_id=1944212073]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item5" unique_id=1571346658]
+[node name="Icon" type="TextureRect" parent="UserInterface/ItemsContainer/ItemSlot5" unique_id=1571346658]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,7 +797,15 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UserInterface/Items/Item5" unique_id=943858297]
+[node name="Name" type="Label" parent="UserInterface/ItemsContainer/ItemSlot5" unique_id=1882136454]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quantity" type="Label" parent="UserInterface/ItemsContainer/ItemSlot5" unique_id=579507623]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -699,14 +815,15 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Item6" type="Panel" parent="UserInterface/Items" unique_id=1927454157]
+[node name="ItemSlot6" type="Panel" parent="UserInterface/ItemsContainer" unique_id=1927454157]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv6je")
+script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/Items/Item6" unique_id=2077722202]
+[node name="Icon" type="TextureRect" parent="UserInterface/ItemsContainer/ItemSlot6" unique_id=2077722202]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -716,7 +833,15 @@ grow_vertical = 2
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="UserInterface/Items/Item6" unique_id=1346610692]
+[node name="Name" type="Label" parent="UserInterface/ItemsContainer/ItemSlot6" unique_id=1565511422]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quantity" type="Label" parent="UserInterface/ItemsContainer/ItemSlot6" unique_id=885167749]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -726,81 +851,7 @@ grow_vertical = 2
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Dialogues" type="Control" parent="UserInterface" unique_id=390894934 node_paths=PackedStringArray("dialogue_ui", "speaker_name", "speaker_line", "choice_ui")]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -422.12
-offset_top = -107.94501
-offset_right = -33.119995
-offset_bottom = 109.05548
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("6_gql8a")
-dialogue_ui = NodePath("DialoguesUI")
-speaker_name = NodePath("DialoguesUI/DialogContainer/SpeakerName")
-speaker_line = NodePath("DialoguesUI/DialogContainer/SpeakerLine")
-choice_ui = NodePath("DialoguesUI/DialogContainer/ChoiceContainer")
-
-[node name="DialoguesUI" type="Control" parent="UserInterface/Dialogues" unique_id=1962556242]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="TextureRect" parent="UserInterface/Dialogues/DialoguesUI" unique_id=141334547]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture1D_hg6s5")
-
-[node name="DialogContainer" type="VBoxContainer" parent="UserInterface/Dialogues/DialoguesUI" unique_id=1650053500]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 11.5
-offset_right = -24.880005
-offset_bottom = -21.055481
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 24
-alignment = 1
-
-[node name="SpeakerName" type="Label" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer" unique_id=600315167]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "NPC"
-
-[node name="SpeakerLine" type="Label" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer" unique_id=1010654446]
-layout_mode = 2
-text = "Line"
-autowrap_mode = 3
-
-[node name="ChoiceContainer" type="VBoxContainer" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer" unique_id=418488667]
-layout_mode = 2
-
-[node name="Choice_1" type="Button" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer/ChoiceContainer" unique_id=1426323502]
-layout_mode = 2
-size_flags_vertical = 8
-text = "Выбор 1"
-
-[node name="Choice_2" type="Button" parent="UserInterface/Dialogues/DialoguesUI/DialogContainer/ChoiceContainer" unique_id=2051956395]
-layout_mode = 2
-size_flags_vertical = 8
-text = "Выбор 2"
-
-[node name="PauseMenu" type="Control" parent="UserInterface" unique_id=634695021]
+[node name="PauseMenuContainer" type="Control" parent="UserInterface" unique_id=634695021]
 process_mode = 2
 visible = false
 layout_mode = 1
@@ -811,7 +862,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
-[node name="Background" type="TextureRect" parent="UserInterface/PauseMenu" unique_id=348319286]
+[node name="Background" type="TextureRect" parent="UserInterface/PauseMenuContainer" unique_id=348319286]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -820,7 +871,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_rgyib")
 
-[node name="Label" type="Label" parent="UserInterface/PauseMenu" unique_id=20048164]
+[node name="Label" type="Label" parent="UserInterface/PauseMenuContainer" unique_id=20048164]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -838,5 +889,69 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EditorModule" type="Node" parent="." unique_id=323828916]
-script = ExtResource("3_v3ckk")
+[node name="DialoguesContainer" type="Control" parent="UserInterface" unique_id=1962556242 node_paths=PackedStringArray("speaker_name", "speaker_line", "choice_ui")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 729.88
+offset_top = 216.055
+offset_right = -33.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_gql8a")
+speaker_name = NodePath("Dialogue/SpeakerName")
+speaker_line = NodePath("Dialogue/SpeakerLine")
+choice_ui = NodePath("Dialogue/ChoiceContainer")
+
+[node name="Background" type="TextureRect" parent="UserInterface/DialoguesContainer" unique_id=141334547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_hg6s5")
+
+[node name="Dialogue" type="VBoxContainer" parent="UserInterface/DialoguesContainer" unique_id=1650053500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 11.5
+offset_right = -24.880005
+offset_bottom = -21.055481
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="SpeakerName" type="Label" parent="UserInterface/DialoguesContainer/Dialogue" unique_id=600315167]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "NPC"
+
+[node name="SpeakerLine" type="Label" parent="UserInterface/DialoguesContainer/Dialogue" unique_id=1010654446]
+layout_mode = 2
+text = "Line"
+autowrap_mode = 3
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="UserInterface/DialoguesContainer/Dialogue" unique_id=418488667]
+layout_mode = 2
+
+[node name="Choice_1" type="Button" parent="UserInterface/DialoguesContainer/Dialogue/ChoiceContainer" unique_id=1426323502]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Выбор 1"
+
+[node name="Choice_2" type="Button" parent="UserInterface/DialoguesContainer/Dialogue/ChoiceContainer" unique_id=2051956395]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Выбор 2"
+
+[node name="EditorModule" type="Node" parent="." unique_id=323828916 node_paths=PackedStringArray("CHARACTER")]
+script = SubResource("GDScript_g6k8r")
+CHARACTER = NodePath("..")

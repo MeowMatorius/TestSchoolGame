@@ -4,18 +4,18 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c3mg4of0mi1ht"
-path="res://.godot/imported/Radio.blend-44d4d8093bf269d286c4500d68e6f49c.scn"
+path="res://.godot/imported/radio.blend-2c82adc7c6579f5e0572525f7b3710e8.scn"
 
 [deps]
 
-source_file="res://assets/models/Radio.blend"
-dest_files=["res://.godot/imported/Radio.blend-44d4d8093bf269d286c4500d68e6f49c.scn"]
+source_file="res://assets/models/radio.blend"
+dest_files=["res://.godot/imported/radio.blend-2c82adc7c6579f5e0572525f7b3710e8.scn"]
 
 [params]
 
 nodes/root_type="StaticBody3D"
 nodes/root_name="Radio"
-nodes/root_script=Resource("uid://d4jnoq4tfkr6q", "res://scripts/Interactable.gd")
+nodes/root_script=Resource("uid://d4jnoq4tfkr6q", "res://Scripts/Interact/interact.gd")
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

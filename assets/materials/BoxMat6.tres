@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c5b2ngr1v0btp"]
-
-[ext_resource type="Texture2D" uid="uid://bc5jyejbsyd5r" path="res://assets/textures/GreyboxTextures/greybox_teal_grid.png" id="1_j7mal"]
-
-[resource]
-resource_local_to_scene = true
-albedo_texture = ExtResource("1_j7mal")
-uv1_scale = Vector3(5, 5, 5)
