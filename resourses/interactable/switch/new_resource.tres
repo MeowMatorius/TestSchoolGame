@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SwitchData" format=3 uid="uid://bjjw8eqlma7wn"]
+
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="1_kwcc3"]
+
+[resource]
+script = ExtResource("1_kwcc3")
+object_state = 0
+one_time_use = true
+activate_prompt_message = "Вытащить"
+deactivate_prompt_message = "Убрать"
+lock_state = 2
+metadata/_custom_type_script = "uid://b00l74oqq5jru"

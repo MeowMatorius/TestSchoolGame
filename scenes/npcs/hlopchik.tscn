@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://sabku4btyvak"]
+
+[ext_resource type="Material" uid="uid://brae5luvbqpd2" path="res://assets/materials/box_mat_5.tres" id="2_664ey"]
+[ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_gmw5h"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uyltb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uyltb"]
+
+[node name="Hlopchik" type="StaticBody3D" unique_id=1769752881]
+transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, 0, 0, 0)
+collision_layer = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1819891481]
+material_override = ExtResource("2_664ey")
+mesh = SubResource("CapsuleMesh_uyltb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=423383141]
+transform = Transform3D(1, 0, 0, 0, 2.085, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_uyltb")
+
+[node name="DialogueComponent" type="Node3D" parent="." unique_id=612109534]
+transform = Transform3D(0.9998477, 2.910383e-11, -0.017452406, 0.00030458646, 0.9998477, 0.017449748, 0.017449748, -0.017452406, 0.9996954, 0, 0, 0)
+
+[node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875]
+script = ExtResource("2_gmw5h")
+internal_name = "Hlopchik"
+dialogue_stage = "node_001"

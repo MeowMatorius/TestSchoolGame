@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://kmmor3equpx6"]
+
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="1_rhj8v"]
+[ext_resource type="Texture2D" uid="uid://d4ca5tq8k1jeh" path="res://assets/textures/greybox_textures/greybox_light_grid.png" id="2_rtit6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywcaw"]
+albedo_texture = ExtResource("2_rtit6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mncer"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
+
+[sub_resource type="Animation" id="Animation_rtit6"]
+resource_name = "activate"
+
+[sub_resource type="Animation" id="Animation_ywcaw"]
+resource_name = "deactivate"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sejoc"]
+_data = {
+&"activate": SubResource("Animation_rtit6"),
+&"deactivate": SubResource("Animation_ywcaw")
+}
+
+[node name="Button" type="StaticBody3D" unique_id=243040129]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+collision_layer = 3
+script = ExtResource("1_rhj8v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_ywcaw")
+mesh = SubResource("BoxMesh_mncer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=362366221]
+shape = SubResource("BoxShape3D_cguwc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1764596096]
+libraries/ = SubResource("AnimationLibrary_sejoc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1317493151]

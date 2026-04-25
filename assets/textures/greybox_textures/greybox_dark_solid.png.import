@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dup7wa6e2c8fo"
-path.bptc="res://.godot/imported/mountains.exr-613226979ee2a5a2df04ee72f6b36cc9.bptc.ctex"
+uid="uid://gvmo5d20fdmm"
+path.s3tc="res://.godot/imported/greybox_dark_solid.png-0ad41241dfff922cfd1be0e3fad881d9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/hdri/mountains.exr"
-dest_files=["res://.godot/imported/mountains.exr-613226979ee2a5a2df04ee72f6b36cc9.bptc.ctex"]
+source_file="res://assets/textures/greybox_textures/greybox_dark_solid.png"
+dest_files=["res://.godot/imported/greybox_dark_solid.png-0ad41241dfff922cfd1be0e3fad881d9.s3tc.ctex"]
 
 [params]
 
