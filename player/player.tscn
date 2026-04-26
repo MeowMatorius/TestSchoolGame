@@ -316,7 +316,6 @@ CAMERA = NodePath("Head/CameraTarget/PhantomCamera3D")
 camera_target = NodePath("Head/CameraTarget")
 COLLISION = NodePath("Collision")
 CEILING_CHECK = NodePath("CrouchCeilingDetection")
-acceleration = 5.0
 crouch_transition = 5.0
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=359317445]

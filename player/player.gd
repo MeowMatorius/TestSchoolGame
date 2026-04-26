@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var base_speed := 3.0
 @export var sprint_speed := 6.0
 @export var crouch_speed := 1.5      
-@export var acceleration := 10.0
+@export var acceleration := 5.0
 @export var jump_velocity := 4.5
 @export var mouse_sensitivity := 0.1
 @export var immobile := false
@@ -28,7 +28,7 @@ extends CharacterBody3D
 @export_group("Crouch Settings")
 @export var crouch_height := 1.0     
 @export var crouch_head_y := -0.7    
-@export var crouch_transition := 8.0  
+@export var crouch_transition := 5.0  
 @export var crouch_fov_shift := -5.0
 @export var crouch_bob_amp_mult := 0.5  
 @export var crouch_bob_freq_mult := 0.7 
