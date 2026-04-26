@@ -173,12 +173,15 @@ func _physics_process(delta: float):
 func calculate_speed(input_dir, is_crouching, is_sprinting):
 	if is_crouching:
 		speed = crouch_speed
-	elif is_sprinting and input_dir.length() > 0.1:
+	elif is_sprinting and (input_dir.length() > 0.01 or effective_velocity > base_speed):
+		# Если есть ввод ИЛИ мы еще катимся по инерции на большой скорости
 		var mult = backward_speed_mult if input_dir.y > 0 else 1.0
 		var side_m = lerp(1.0, side_speed_mult, abs(input_dir.x))
 		speed = sprint_speed * mult * side_m
 	else:
 		speed = base_speed
+
+
 
 func process_crouch(delta, crouching):
 	var target_h = crouch_height if crouching else initial_height
@@ -248,5 +251,12 @@ func handle_visual_effects(delta, input_dir, is_sprinting, crouching):
 	# FOV
 	if CAMERA and "fov" in CAMERA and enable_fov_dynamic:
 		var air_fov = clamp(abs(velocity.y) * 0.5, 0.0, 10.0) if not is_on_floor() else 0.0
-		var target_fov = default_fov + (fov_shift if is_sprinting else 0.0) + (crouch_fov_shift if crouching else 0.0) + air_fov
+		
+		# Проверяем, что персонаж действительно быстро движется по горизонтали
+		var horizontal_velocity = Vector2(velocity.x, velocity.z).length()
+		var is_actually_running = is_sprinting and horizontal_velocity > (base_speed + 0.1)
+		
+		# Используем fov_shift только если мы реально бежим
+		var target_fov = default_fov + (fov_shift if is_actually_running else 0.0) + (crouch_fov_shift if crouching else 0.0) + air_fov
+		
 		CAMERA.fov = lerp(float(CAMERA.fov), target_fov, delta * 5.0)
