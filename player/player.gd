@@ -1,422 +1,197 @@
 extends CharacterBody3D
 
-@export_group("Player Nodes")
+@export_group("Nodes")
 @export var HEAD : Node3D
-@export var CAMERA : Camera3D
-@export var HEADBOB_ANIMATION : AnimationPlayer
-@export var JUMP_ANIMATION : AnimationPlayer
-@export var CROUCH_ANIMATION : AnimationPlayer
-@export var COLLISION_MESH : CollisionShape3D
+@export var CAMERA : Node3D 
+@export var camera_target: Node3D
+@export var COLLISION : CollisionShape3D
+@export var CEILING_CHECK : RayCast3D 
 
-@export_category("Movement Settings")
-@export var base_speed : float = 3.0
-@export var sprint_speed : float = 6.0
-@export var crouch_speed : float = 2.0
-@export var acceleration : float = 10.0
-@export var motion_smoothing : bool = true
+@export_group("Base Movement")
+@export var base_speed := 3.0
+@export var sprint_speed := 6.0
+@export var crouch_speed := 1.5      
+@export var acceleration := 10.0
+@export var jump_velocity := 4.5
+@export var mouse_sensitivity := 0.1
+@export var immobile := false
 
-@export_category("Jump Settings")
-@export var jump_velocity : float = 4.5
-@export var jump_animation : bool = true
-@export var continuous_jumping : bool = true
-@export var in_air_momentum : bool = true
-@export var gravity_enabled : bool = true
-@export var dynamic_gravity : bool = false
+@export_group("Jump Momentum")
+@export var has_jump_momentum := true # Флаг инерции прыжка
+@export var air_control := 0.3         # Насколько сильно можно менять вектор в воздухе (0.0 - 1.0)
 
-@export_category("Fov Settings")
-@export var default_fov : float = 65.0
-@export var dynamic_fov : bool = true
-@export var dinamic_fov_mod : float = 5.0
-@export var fov_smoothing : float = 0.8
+@export_group("Directional Sprint")
+@export var all_direction_sprint := true
+@export var backward_speed_mult := 0.6
+@export var side_speed_mult := 0.8
 
-@export_category("Animation Settings")
-@export var view_bobbing : bool = true
-@export var headbob_multiplier : float = 1.5
-@export var headbob_anim_blend : float = 2
-@export var jump_anim_blend : float = 0.5
-@export var crouch_anim_blend : float = 0.5
+@export_group("Crouch Settings")
+@export var crouch_height := 1.0     
+@export var crouch_head_y := -0.7    
+@export var crouch_transition := 8.0  
+@export var crouch_fov_shift := -5.0
+@export var crouch_bob_amp_mult := 0.5  
+@export var crouch_bob_freq_mult := 0.7 
 
-@export_category("Input Settings")
-## Use the Input Map to map a mouse/keyboard input to an action and add a reference to it to this dictionary to be used in the script.
-@export var controls : Dictionary = {
-	LEFT = "left",
-	RIGHT = "right",
-	FORWARD = "up",
-	BACKWARD = "down",
-	JUMP = "jump",
-	CROUCH = "crouch",
-	SPRINT = "sprint"
-	}
-@export var immobile : bool = false
-@export var sprint_enabled : bool = true
-@export var crouch_enabled : bool = true
-@export var jumping_enabled : bool = true
-@export_enum("Hold to Sprint", "Toggle Sprint") var sprint_mode : int = 0
-@export_enum("Hold to Crouch", "Toggle Crouch") var crouch_mode : int = 1
+@export_group("Tilt Settings")
+@export var tilt_amount := 0.03
+@export var mouse_tilt_amount := 0.13
+@export var forward_tilt_amount := 0.02
+@export var backward_tilt_amount := 0.03
+@export var air_tilt_amount := 0.05
 
-@export_subgroup("Mouse")
-@export var mouse_sensitivity : float = 0.1
-@export var invert_camera_x_axis : bool = false
-@export var invert_camera_y_axis : bool = false
-@export_file var default_reticle
+@export_group("Smoothness (Lerp)")
+@export var pos_smoothing := 7.0
+@export var rot_smoothing := 8.0     
+@export var return_speed := 4.0      
 
-@export_group("Controller")
-## This only affects how the camera is handled, the rest should be covered by adding controller inputs to the existing actions in the Input Map.
-@export var controller_support : bool = false
-## Use the Input Map to map a controller input to an action and add a reference to it to this dictionary to be used in the script.
-@export var controller_controls : Dictionary = {
-	LOOK_LEFT = "look_left",
-	LOOK_RIGHT = "look_right",
-	LOOK_UP = "look_up",
-	LOOK_DOWN = "look_down"
-	}
-## The sensitivity of the analog stick that controls camera rotation. Lower is less sensitive and higher is more sensitive.
-@export_range(0.001, 1, 0.001) var look_sensitivity : float = 0.035
+@export_group("Landing & Jump")
+@export var landing_ebob_amp := 2.0 
+@export var jump_tilt_strength := 0.15
+@export var shake_strength := 0.1   
+@export var shake_decay := 5.0      
 
+@export_group("Bobbing & Idle")
+@export var idle_noise_speed := 2.0
+@export var idle_noise_amp := 0.01
+@export var bob_freq := 3.0
+@export var bob_amp_h := 0.06
+@export var bob_amp_v := 0.06
 
-#region Member Variable Initialization
-# These are variables used in this script that don't need to be exposed in the editor.
-var speed : float = base_speed
-var current_speed : float = 0.0
-# States: normal, crouching, sprinting
-var state : String = "normal"
-var low_ceiling : bool = false # This is for when the ceiling is too low and the player needs to crouch.
-var was_on_floor : bool = true # Was the player on the floor last frame (for landing animation)
+@export_group("FOV Details")
+@export var default_fov := 75.0
+@export var fov_shift := 5.0
 
-# The reticle should always have a Control node as the root
-var RETICLE : Control
+# Внутренние переменные
+var noise_time := 0.0
+var was_on_floor := true
+var last_velocity_y := 0.0 
+var mouse_input_x := 0.0 
+var jump_tilt := 0.0 
+var target_jump_tilt := 0.0 
+var landing_offset := 0.0
+var current_shake := 0.0 
+var speed := 3.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes
-var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") # Don't set this as a const, see the gravity section in _physics_process
+@onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+@onready var initial_height : float = COLLISION.shape.height 
+@onready var initial_head_y : float = HEAD.position.y      
 
-# Stores mouse input for rotating the camera in the physics process
-var mouseInput : Vector2 = Vector2(0,0)
-#endregion
-
-
-#region Main Control Flow
 func _ready():
-	CAMERA.fov = default_fov
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if CAMERA and "fov" in CAMERA:
+		CAMERA.fov = default_fov
 
+func _unhandled_input(event: InputEvent):
+	if event is InputEventMouseMotion and not immobile:
+		mouse_input_x = event.relative.x 
+		HEAD.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+		var target_rot_x = HEAD.rotation.x - deg_to_rad(event.relative.y * mouse_sensitivity)
+		HEAD.rotation.x = clamp(target_rot_x, deg_to_rad(-89), deg_to_rad(89))
 
-	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
-	HEAD.rotation.y = rotation.y
-	rotation.y = 0
-
-	if default_reticle:
-		change_reticle(default_reticle)
-
-	initialize_animations()
-	check_controls()
-	enter_normal_state()
-	
-	if OS.get_name() == "Web":
-		Input.set_use_accumulated_input(false)
-
-
-func _process(_delta):
-	#update_debug_menu_per_frame()
-	pass
-
-
-func _physics_process(delta): # Most things happen here.
-	# Gravity
-	if dynamic_gravity:
-		gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-	if not is_on_floor() and gravity and gravity_enabled:
+func _physics_process(delta: float):
+	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	handle_jumping()
-
-	var input_dir: Vector2 = Vector2.ZERO
-
-	if not immobile: # Immobility works by interrupting user input, so other forces can still be applied to the player
-		input_dir = Input.get_vector(controls.LEFT, controls.RIGHT, controls.FORWARD, controls.BACKWARD)
-
-	handle_movement(delta, input_dir)
-
-	handle_head_rotation()
-
-	# The player is not able to stand up if the ceiling is too low
-	low_ceiling = $CrouchCeilingDetection.is_colliding()
-
-	handle_state(input_dir)
-	if dynamic_fov: # This may be changed to an AnimationPlayer
-		update_camera_fov()
-
-	if view_bobbing:
-		play_headbob_animation(input_dir)
-
-	if jump_animation:
-		play_jump_animation()
-
-	update_debug_menu_per_tick()
 	
-	was_on_floor = is_on_floor() # This must always be at the end of physics_process
-#endregion
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not immobile:
+		velocity.y = jump_velocity
+		target_jump_tilt = jump_tilt_strength 
 
+	var input_dir = Vector2.ZERO if immobile else Input.get_vector("left", "right", "up", "down")
+	
+	# Приседание
+	var is_crouching = Input.is_action_pressed("crouch") or (CEILING_CHECK and CEILING_CHECK.is_colliding())
+	process_crouch(delta, is_crouching)
+	
+	# Расчет скорости
+	var is_sprinting = Input.is_action_pressed("sprint") and not is_crouching and (all_direction_sprint or input_dir.y < 0)
+	calculate_speed(input_dir, is_crouching, is_sprinting)
+	
+	var head_basis = HEAD.global_transform.basis
+	var direction = (head_basis.x * input_dir.x + head_basis.z * input_dir.y).normalized()
+	direction.y = 0 
+	
+	# --- ЛОГИКА ИНЕРЦИИ (MOMENTUM) ---
+	var current_accel = acceleration
+	if not is_on_floor() and has_jump_momentum:
+		# В воздухе используем air_control для плавного изменения вектора
+		current_accel *= air_control
+	
+	velocity.x = lerp(velocity.x, direction.x * speed, current_accel * delta)
+	velocity.z = lerp(velocity.z, direction.z * speed, current_accel * delta)
 
-#region Input Handling
-func handle_jumping():
-	if jumping_enabled:
-		if continuous_jumping: # Hold down the jump button
-			if Input.is_action_pressed(controls.JUMP) and is_on_floor() and !low_ceiling and !immobile:
-				if jump_animation:
-					JUMP_ANIMATION.play("jump", jump_anim_blend)
-				velocity.y += jump_velocity # Adding instead of setting so jumping on slopes works properly
-		else:
-			if Input.is_action_just_pressed(controls.JUMP) and is_on_floor() and !low_ceiling and !immobile:
-				if jump_animation:
-					JUMP_ANIMATION.play("jump", jump_anim_blend)
-				velocity.y += jump_velocity
-
-
-func handle_movement(delta, input_dir):
-	var direction = input_dir.rotated(-HEAD.rotation.y)
-	direction = Vector3(direction.x, 0, direction.y)
+	last_velocity_y = velocity.y
 	move_and_slide()
 
-	if in_air_momentum:
-		if is_on_floor():
-			if motion_smoothing:
-				velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-				velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
-			else:
-				velocity.x = direction.x * speed
-				velocity.z = direction.z * speed
+	if is_on_floor() and not was_on_floor:
+		var impact_speed = abs(last_velocity_y)
+		if impact_speed > 3.0: 
+			var impact_factor = remap(clamp(impact_speed, 3.0, 20.0), 3.0, 20.0, 0.2, 1.0)
+			landing_offset -= landing_ebob_amp * impact_factor
+			target_jump_tilt = -jump_tilt_strength * impact_factor
+			current_shake = shake_strength * impact_factor
+
+	handle_visual_effects(delta, input_dir, is_sprinting, is_crouching)
+	was_on_floor = is_on_floor()
+
+func calculate_speed(input_dir, is_crouching, is_sprinting):
+	if is_crouching:
+		speed = crouch_speed
+	elif is_sprinting and input_dir.length() > 0.1:
+		var mult = backward_speed_mult if input_dir.y > 0 else 1.0
+		var side_m = lerp(1.0, side_speed_mult, abs(input_dir.x))
+		speed = sprint_speed * mult * side_m
 	else:
-		if motion_smoothing:
-			velocity.x = lerp(velocity.x, direction.x * speed, acceleration * delta)
-			velocity.z = lerp(velocity.z, direction.z * speed, acceleration * delta)
-		else:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+		speed = base_speed
 
+func process_crouch(delta, crouching):
+	var target_h = crouch_height if crouching else initial_height
+	var prev_h = COLLISION.shape.height
+	COLLISION.shape.height = lerp(COLLISION.shape.height, target_h, delta * crouch_transition)
+	
+	var height_diff = COLLISION.shape.height - prev_h
+	global_position.y += height_diff / 2.0
+	
+	var target_y = initial_head_y + (crouch_head_y if crouching else 0.0)
+	HEAD.position.y = lerp(HEAD.position.y, target_y, delta * crouch_transition)
 
-func handle_head_rotation():
-	if invert_camera_x_axis:
-		HEAD.rotation_degrees.y -= mouseInput.x * mouse_sensitivity * -1
+func handle_visual_effects(delta, input_dir, is_sprinting, is_crouching):
+	landing_offset = lerp(landing_offset, 0.0, delta * return_speed)
+	jump_tilt = lerp(jump_tilt, target_jump_tilt, delta * return_speed * 1.5)
+	target_jump_tilt = lerp(target_jump_tilt, 0.0, delta * return_speed)
+	current_shake = lerp(current_shake, 0.0, delta * shake_decay)
+	
+	var current_tilt_z = air_tilt_amount if not is_on_floor() else tilt_amount
+	var target_tilt_z = (-input_dir.x * current_tilt_z) - deg_to_rad(mouse_input_x * mouse_tilt_amount)
+	HEAD.rotation.z = lerp_angle(HEAD.rotation.z, target_tilt_z, delta * rot_smoothing)
+	mouse_input_x = lerp(mouse_input_x, 0.0, delta * 10.0)
+
+	var target_tilt_x = 0.0
+	if input_dir.y > 0: target_tilt_x = backward_tilt_amount * input_dir.y
+	elif input_dir.y < 0: target_tilt_x = forward_tilt_amount * input_dir.y * (1.5 if is_sprinting else 1.0)
+	
+	var bob_vec = Vector3.ZERO
+	if is_on_floor() and velocity.length() > 0.1:
+		var f_mult = crouch_bob_freq_mult if is_crouching else 1.0
+		var a_mult = crouch_bob_amp_mult if is_crouching else 1.0
+		noise_time += delta * velocity.length() * bob_freq * f_mult
+		bob_vec.x = sin(noise_time * 0.5) * bob_amp_h * a_mult
+		bob_vec.y = sin(noise_time) * bob_amp_v * a_mult
 	else:
-		HEAD.rotation_degrees.y -= mouseInput.x * mouse_sensitivity
-
-	if invert_camera_y_axis:
-		HEAD.rotation_degrees.x -= mouseInput.y * mouse_sensitivity * -1
-	else:
-		HEAD.rotation_degrees.x -= mouseInput.y * mouse_sensitivity
-
-	if controller_support:
-		var controller_view_rotation: Vector2 = Input.get_vector(controller_controls.LOOK_DOWN, controller_controls.LOOK_UP, controller_controls.LOOK_RIGHT, controller_controls.LOOK_LEFT) * look_sensitivity # These are inverted because of the nature of 3D rotation.
-		if invert_camera_y_axis:
-			HEAD.rotation.x += controller_view_rotation.x * -1
-		else:
-			HEAD.rotation.x += controller_view_rotation.x
-
-		if invert_camera_x_axis:
-			HEAD.rotation.y += controller_view_rotation.y * -1
-		else:
-			HEAD.rotation.y += controller_view_rotation.y
-
-	mouseInput = Vector2(0,0)
-	HEAD.rotation.x = clamp(HEAD.rotation.x, deg_to_rad(-90), deg_to_rad(90))
-
-
-func check_controls(): # If you add a control, you might want to add a check for it here.
-	# The actions are being disabled so the engine doesn't halt the entire project in debug mode
-	if !InputMap.has_action(controls.JUMP):
-		push_error("No control mapped for jumping. Please add an input map control. Disabling jump.")
-		jumping_enabled = false
-	if !InputMap.has_action(controls.LEFT):
-		push_error("No control mapped for move left. Please add an input map control. Disabling movement.")
-		immobile = true
-	if !InputMap.has_action(controls.RIGHT):
-		push_error("No control mapped for move right. Please add an input map control. Disabling movement.")
-		immobile = true
-	if !InputMap.has_action(controls.FORWARD):
-		push_error("No control mapped for move forward. Please add an input map control. Disabling movement.")
-		immobile = true
-	if !InputMap.has_action(controls.BACKWARD):
-		push_error("No control mapped for move backward. Please add an input map control. Disabling movement.")
-		immobile = true
-	if !InputMap.has_action(controls.CROUCH):
-		push_error("No control mapped for crouch. Please add an input map control. Disabling crouching.")
-		crouch_enabled = false
-	if !InputMap.has_action(controls.SPRINT):
-		push_error("No control mapped for sprint. Please add an input map control. Disabling sprinting.")
-		sprint_enabled = false
-#endregion
-
-
-#region State Handling
-func handle_state(moving):
-	if sprint_enabled:
-		if sprint_mode == 0:
-			if Input.is_action_pressed(controls.SPRINT) and state != "crouching":
-				if moving:
-					if state != "sprinting":
-						enter_sprint_state()
-				else:
-					if state == "sprinting":
-						enter_normal_state()
-			elif state == "sprinting":
-				enter_normal_state()
-		elif sprint_mode == 1:
-			if moving:
-				# If the player is holding sprint before moving, handle that scenario
-				if Input.is_action_pressed(controls.SPRINT) and state == "normal":
-					enter_sprint_state()
-				if Input.is_action_just_pressed(controls.SPRINT):
-					match state:
-						"normal":
-							enter_sprint_state()
-						"sprinting":
-							enter_normal_state()
-			elif state == "sprinting":
-				enter_normal_state()
-
-	if crouch_enabled:
-		if crouch_mode == 0:
-			if Input.is_action_pressed(controls.CROUCH) and state != "sprinting":
-				if state != "crouching":
-					enter_crouch_state()
-			elif state == "crouching" and !$CrouchCeilingDetection.is_colliding():
-				enter_normal_state()
-		elif crouch_mode == 1:
-			if Input.is_action_just_pressed(controls.CROUCH):
-				match state:
-					"normal":
-						enter_crouch_state()
-					"crouching":
-						if !$CrouchCeilingDetection.is_colliding():
-							enter_normal_state()
-
-
-# Any enter state function should only be called once when you want to enter that state, not every frame.
-func enter_normal_state():
-	#print("entering normal state")
-	var prev_state = state
-	if prev_state == "crouching":
-		CROUCH_ANIMATION.play_backwards("crouch")
-	state = "normal"
-	speed = base_speed
-
-func enter_crouch_state():
-	#print("entering crouch state")
-	state = "crouching"
-	speed = crouch_speed
-	CROUCH_ANIMATION.play("crouch")
-
-func enter_sprint_state():
-	#print("entering sprint state")
-	var prev_state = state
-	if prev_state == "crouching":
-		CROUCH_ANIMATION.play_backwards("crouch")
-	state = "sprinting"
-	speed = sprint_speed
-#endregion
-
-
-#region Animation Handling
-func initialize_animations():
-	# Reset the camera position
-	# If you want to change the default head height, change these animations.
-	HEADBOB_ANIMATION.play("RESET")
-	JUMP_ANIMATION.play("RESET")
-	CROUCH_ANIMATION.play("RESET")
-
-func play_headbob_animation(moving):
-	if moving and is_on_floor():
-		var use_headbob_animation : String
-		match state:
-			"normal","crouching":
-				use_headbob_animation = "walk"
-			"sprinting":
-				use_headbob_animation = "sprint"
-
-		var was_playing : bool = false
-		if HEADBOB_ANIMATION.current_animation == use_headbob_animation:
-			was_playing = true
-
-		HEADBOB_ANIMATION.play(use_headbob_animation, headbob_anim_blend)
-		HEADBOB_ANIMATION.speed_scale = (current_speed / base_speed) * headbob_multiplier
-		if !was_playing:
-			HEADBOB_ANIMATION.seek(float(randi() % 2)) # Randomize the initial headbob direction
-			# Let me explain that piece of code because it looks like it does the opposite of what it actually does.
-			# The headbob animation has two starting positions. One is at 0 and the other is at 1.
-			# randi() % 2 returns either 0 or 1, and so the animation randomly starts at one of the starting positions.
-			# This code is extremely performant but it makes no sense.
-	else:
-		if HEADBOB_ANIMATION.current_animation == "sprint" or HEADBOB_ANIMATION.current_animation == "walk":
-			HEADBOB_ANIMATION.speed_scale = 1
-			HEADBOB_ANIMATION.play("RESET", headbob_anim_blend)
-
-func play_jump_animation():
-	if !was_on_floor and is_on_floor(): # The player just landed
-		var facing_direction : Vector3 = CAMERA.get_global_transform().basis.x
-		var facing_direction_2D : Vector2 = Vector2(facing_direction.x, facing_direction.z).normalized()
-		var velocity_2D : Vector2 = Vector2(velocity.x, velocity.z).normalized()
-
-		# Compares velocity direction against the camera direction (via dot product) to determine which landing animation to play.
-		var side_landed : int = round(velocity_2D.dot(facing_direction_2D))
-
-		if side_landed > 0:
-			JUMP_ANIMATION.play("land_right", jump_anim_blend)
-		elif side_landed < 0:
-			JUMP_ANIMATION.play("land_left", jump_anim_blend)
-		else:
-			JUMP_ANIMATION.play("land_center", jump_anim_blend)
-
-#endregion
-
-
-#region Debug Menu
-func update_debug_menu_per_frame():
-	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS), 0)
-	var status : String = state
-	if !is_on_floor():
-		status += " in the air"
-	$UserInterface/DebugPanel.add_property("State", status, 4)
-
-
-func update_debug_menu_per_tick():
-	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
-	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
-	$UserInterface/DebugPanel.add_property("Speed", snappedf(current_speed, 0.001), 1)
-	$UserInterface/DebugPanel.add_property("Target speed", speed, 2)
-	var cv : Vector3 = get_real_velocity()
-	var vd : Array[float] = [
-		snappedf(cv.x, 0.001),
-		snappedf(cv.y, 0.001),
-		snappedf(cv.z, 0.001)
-	]
-	var readable_velocity : String = "X: " + str(vd[0]) + " Y: " + str(vd[1]) + " Z: " + str(vd[2])
-	$UserInterface/DebugPanel.add_property("Velocity", readable_velocity, 3)
-
-
-func _unhandled_input(event : InputEvent):
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		mouseInput = event.relative
-	# Toggle debug menu
-	elif event is InputEventKey:
-		if event.is_released():
-			# Where we're going, we don't need InputMap
-			if event.keycode == 4194338: # F7
-				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
-#endregion
-
-
-#region Misc Functions
-func change_reticle(reticle): # Yup, this function is kinda strange
-	if RETICLE:
-		RETICLE.queue_free()
-
-	RETICLE = load(reticle).instantiate()
-	RETICLE.character = self
-	$UserInterface.add_child(RETICLE)
-
-
-func update_camera_fov():
-	if state == "sprinting":
-		CAMERA.fov = lerp(CAMERA.fov, default_fov + dinamic_fov_mod, fov_smoothing / 10)
-	else:
-		CAMERA.fov = lerp(CAMERA.fov, default_fov, fov_smoothing / 10)
-#endregion
+		noise_time += delta * idle_noise_speed
+		bob_vec = Vector3(cos(noise_time * 0.8) * idle_noise_amp, sin(noise_time * 1.2) * idle_noise_amp, 0)
+	
+	if current_shake > 0.01:
+		bob_vec.x += randf_range(-current_shake, current_shake)
+		bob_vec.y += randf_range(-current_shake, current_shake)
+	
+	var final_target_pos = bob_vec + Vector3(0, landing_offset, 0)
+	camera_target.position = camera_target.position.lerp(final_target_pos, delta * pos_smoothing)
+	camera_target.rotation.x = lerp_angle(camera_target.rotation.x, target_tilt_x + jump_tilt, delta * rot_smoothing)
+	
+	if CAMERA:
+		CAMERA.global_transform = camera_target.global_transform
+		if "fov" in CAMERA:
+			var air_fov = clamp(abs(velocity.y) * 0.5, 0.0, 10.0) if not is_on_floor() else 0.0
+			var target_fov = default_fov + (fov_shift if is_sprinting else 0.0) + (crouch_fov_shift if is_crouching else 0.0) + air_fov
+			CAMERA.fov = lerp(float(CAMERA.fov), target_fov, delta * 5.0)

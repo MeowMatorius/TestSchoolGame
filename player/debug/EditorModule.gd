@@ -21,8 +21,6 @@ extends Node
 @export var CHARACTER : CharacterBody3D
 @export var head_path : String = "Head" # Relative to the parent node
 #@export var CAMERA : Camera3D
-#@export var HEADBOB_ANIMATION : AnimationPlayer
-#@export var JUMP_ANIMATION : AnimationPlayer
 #@export var CROUCH_ANIMATION : AnimationPlayer
 #@export var COLLISION_MESH : CollisionShape3D
 

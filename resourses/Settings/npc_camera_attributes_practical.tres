@@ -2,4 +2,3 @@
 
 [resource]
 auto_exposure_enabled = true
-dof_blur_far_enabled = true

@@ -19,14 +19,14 @@ var state_before_pause: GameState
 @onready var player_ui_inventory: Control = player_ui.get_node("ItemsContainer")
 
 # Смена игровой камеры
-@onready var player_camera: Camera3D = player.get_node("Head").get_node("Camera")
-var current_game_camera: Camera3D = player_camera:
+@onready var player_camera: PhantomCamera3D = player.get_node("Head").get_node("CameraTarget").get_node("PhantomCamera3D")
+var current_game_camera: PhantomCamera3D = player_camera:
 	set(camera):
 		previous_game_camera = current_game_camera
 		current_game_camera = camera
 		_on_switch_camera_smooth(current_game_camera, camera, 1)
 
-var previous_game_camera: Camera3D
+var previous_game_camera: PhantomCamera3D
 
 
 func _ready() -> void:
@@ -110,17 +110,10 @@ func _update_game_state(
 		player.immobile = (current_game_state != GameState.DEFAULT)
 
 
-func _on_switch_camera_smooth(from_cam: Camera3D, to_cam: Camera3D, duration: float):
-	# Копируем параметры целевой камеры, чтобы начать движение к ним
-	var tween: Tween = create_tween().set_parallel(true)
-
-	# Плавно меняем позицию и поворот
-	tween.tween_property(from_cam, "global_transform", to_cam.global_transform, duration)\
-		.set_trans(Tween.TRANS_SINE)\
-		.set_ease(Tween.EASE_IN_OUT)
-
-	# Если нужно плавно сменить угол обзора (FOV)
-	tween.tween_property(from_cam, "fov", to_cam.fov, duration)
-
-	await tween.finished
-	to_cam.make_current()
+func _on_switch_camera_smooth(p_cam_1: PhantomCamera3D, p_cam_2: PhantomCamera3D, duration: float):
+	if p_cam_1.priority > p_cam_2.priority:
+		p_cam_1.priority = 0
+		p_cam_2.priority = 10
+	else:
+		p_cam_1.priority = 10
+		p_cam_2.priority = 0

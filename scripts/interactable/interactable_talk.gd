@@ -2,7 +2,8 @@ extends Interactable
 
 @export var internal_name: String = "NPC"
 @export var dialogue_stage: String = "dialogue_1"
-@export var dialogue_camera: Camera3D
+@export var dialogue_camera: PhantomCamera3D
+@export var player_teleport_point: Node3D
 
 
 func _ready() -> void:
