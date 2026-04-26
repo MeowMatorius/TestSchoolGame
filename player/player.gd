@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export_group("Feature Flags")
 @export var enable_jumping := true
 @export var enable_crouching := true
-@export var toggle_crouch := false    
+@export var toggle_crouch := true    
 @export var enable_sprinting := true
 @export var auto_sprint := false      
 @export var enable_movement_smoothing := true 

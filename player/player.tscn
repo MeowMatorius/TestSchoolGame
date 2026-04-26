@@ -316,7 +316,9 @@ CAMERA = NodePath("Head/CameraTarget/PhantomCamera3D")
 camera_target = NodePath("Head/CameraTarget")
 COLLISION = NodePath("Collision")
 CEILING_CHECK = NodePath("CrouchCeilingDetection")
-bob_roll_amp = 0.001
+bob_amp_h = 0.05
+bob_amp_v = 0.05
+bob_roll_amp = 0.0
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=359317445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
