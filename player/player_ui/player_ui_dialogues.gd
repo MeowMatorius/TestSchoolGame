@@ -17,15 +17,16 @@ func show_ui(speaker, line):
 
 	
 func show_choices(choices_array):
-
+	SignalBus.entered_choice_menu.emit(true)
 	for i in range(choices_array.size()):
-		print("Принял ", choices_array)
 		choices[i].visible = true
 		choices[i].text = choices_array[i]["text"]
+		
 		choices[i].pressed.connect(func():
+				SignalBus.entered_choice_menu.emit(false)
 				_clear_ui()
-				DialogueManager._on_choice_selected(choices_array[i]["next_node"])
-				print("Жмали ", choices_array[i]["next_node"]))
+				DialogueManager._on_choice_selected(choices_array[i]["next_node"]),
+				CONNECT_ONE_SHOT)
 	
 	
 func _clear_ui():

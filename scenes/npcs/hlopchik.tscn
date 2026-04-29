@@ -2,7 +2,8 @@
 
 [ext_resource type="Material" uid="uid://dl0y0e70gh3ra" path="res://assets/materials/orange_mat.tres" id="1_5yfcu"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_gmw5h"]
-[ext_resource type="Environment" uid="uid://cuekvwuvrfdcf" path="res://resourses/settings/camera/npc_environment.tres" id="3_74uyl"]
+[ext_resource type="Environment" uid="uid://cuekvwuvrfdcf" path="res://resourses/Settings/camera/npc_environment.tres" id="3_74uyl"]
+[ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://resourses/dialogues/line1.tres" id="3_s2mr4"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_x68is"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_s2mr4"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ob37v"]
@@ -36,6 +37,7 @@ internal_name = "Hlopchik"
 dialogue_stage = "node_001"
 dialogue_camera = NodePath("../PhantomCamera3D")
 player_teleport_point = NodePath("../PlayerTeleportPoint")
+dialogue = ExtResource("3_s2mr4")
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]
 physics_interpolation_mode = 1

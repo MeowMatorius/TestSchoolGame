@@ -7,69 +7,83 @@ var current_step: int = 0
 var path: String
 var choices_array: Array[Variant] = []
 
+#@export var dialogue_line: DialogueLine
+#@export var dialogue_choice: DialogueChoice
+
 signal started_talking
-signal stoped_talking
 signal start_choosing
-signal next_dialogue_stage
 
 
 func _ready() -> void:
-	SignalBus.is_talking.connect(load_all_data)
-
-
-func load_all_data(internal_name, dialogue_stage, dialogue_camera):
-	path = "res://jsons/"+internal_name+".json"
-	print("path:", path)
-	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
-	var content: String = file.get_as_text()
-	all_dialogues = JSON.parse_string(content)
+	SignalBus.is_talking.connect(enter_dialogue_state)
 	
-	if all_dialogues.has(dialogue_stage):
-#		start_dialogue(dialogue_stage, internal_name)
-		enter_dialogue_state(dialogue_stage, dialogue_camera)
-	else:
-		print("Диалоги закончились")
-
-
-func enter_dialogue_state(dialogue_stage, dialogue_camera):
+func enter_dialogue_state(internal_name, dialogue_stage, dialogue_camera, dialogue_line: DialogueLine):
 	GameManager.current_game_state = GameManager.GameState.DIALOGUE
 	GameManager.current_game_camera = dialogue_camera
-	start_dialogue_choice(dialogue_stage)
-
-func start_dialogue_choice(dialogue_stage):
-	choices_array = []
-	var dialogue_id = all_dialogues[dialogue_stage]
-	var speaker = dialogue_id["speaker"]
-	var text = dialogue_id["text"]
-	var choices = dialogue_id["choices"]
+	display_line(dialogue_camera, dialogue_line)
 	
-	for i in range(text.size()):
-		if i != 0:
-			await InputManager.skip_pressed
-		var line = text[i]
-		started_talking.emit(speaker, line)
-
-		if i+1 == text.size():
-			for j in range(choices.size()):
-				choices_array.append(choices[j]["text"])
-			if choices_array.size() >= 1:
-				print("Да, я отправил ", choices)
-				start_choosing.emit(choices)
-			elif choices_array.size() == 0:
-				pass
+func display_line(dialogue_camera, dialogue_line):
+	started_talking.emit(dialogue_line.character_name, dialogue_line.text)
 	await InputManager.skip_pressed
+	if dialogue_line.next_dialogue != null:
+		display_line(dialogue_camera, dialogue_line.next_dialogue)
+	else:
+		GameManager.current_game_state = GameManager.GameState.DEFAULT
+		GameManager.current_game_camera = GameManager.player_camera
 	
-	stoped_talking.emit()
-	GameManager.current_game_state = GameManager.GameState.DEFAULT
-	GameManager.current_game_camera = GameManager.player_camera
-#	switch_dialogue_stage(dialogue_stage, internal_name)
-			
-func _on_choice_selected(next_node_id):
-	start_dialogue_choice(next_node_id)
-	print("Игрок выбрал путь: ", next_node_id)			
+
+#func _on_next_pressed(current_line: DialogueLine):
+#	if current_line.next_dialogue:
+#		display_line(current_line.next_dialogue)
+#	else:
+#		hide() # Конец диалога	
 	
 	
-func switch_dialogue_stage(dialogue_stage, internal_name):
-	var get_next_dialogue_stage = dialogue_stage.split("_")[0] + "_" + str(int(dialogue_stage.split("_")[-1]) + 1)
-	next_dialogue_stage.emit(get_next_dialogue_stage, internal_name)
+	
+	
+	
+	
+
+
+#func load_all_data(internal_name, dialogue_stage, dialogue_camera):
+#	path = "res://jsons/"+internal_name+".json"
+#	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
+#	var content: String = file.get_as_text()
+#	all_dialogues = JSON.parse_string(content)
+#	
+#	if all_dialogues.has(dialogue_stage):
+#		enter_dialogue_state(dialogue_stage, dialogue_camera)
+#
+#
+#func enter_dialogue_state(dialogue_stage, dialogue_camera):
+#	GameManager.current_game_state = GameManager.GameState.DIALOGUE
+#	GameManager.current_game_camera = dialogue_camera
+#	start_dialogue_choice(dialogue_stage)
+#
+#
+#func start_dialogue_choice(dialogue_stage):
+#	choices_array = []
+#	var dialogue_id = all_dialogues[dialogue_stage]
+#	var speaker = dialogue_id["speaker"]
+#	var text = dialogue_id["text"]
+#	var choices = dialogue_id["choices"]
+#	
+#	for i in range(text.size()):
+#		if i != 0:
+#			await InputManager.skip_pressed
+#		var line = text[i]
+#		started_talking.emit(speaker, line)
+#		if i+1 == text.size():
+#			for j in range(choices.size()):
+#				choices_array.append(choices[j]["text"])
+#			if choices_array.size() >= 1:
+#				start_choosing.emit(choices)
+#			elif choices.size() == 0:
+#				await InputManager.skip_pressed
+#				GameManager.current_game_state = GameManager.GameState.DEFAULT
+#				GameManager.current_game_camera = GameManager.player_camera
+#			
+#		
+#func _on_choice_selected(next_node_id):
+#	start_dialogue_choice(next_node_id)
 	
