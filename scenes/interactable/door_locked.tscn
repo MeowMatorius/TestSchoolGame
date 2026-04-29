@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c42bnvqdrdffo"]
 
-[ext_resource type="Material" uid="uid://dshdom31wrtsl" path="res://assets/materials/box_mat_1.tres" id="1_dj30l"]
+[ext_resource type="Material" uid="uid://dp3x5sjk5vtmp" path="res://assets/materials/red_mat.tres" id="1_hinle"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="2_j8i13"]
 [ext_resource type="Resource" uid="uid://d4grfj7jekajm" path="res://resourses/interactable/switch/door_locked.tres" id="3_hinle"]
 
@@ -70,7 +70,7 @@ collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=1126159426]
 transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0)
-material_override = ExtResource("1_dj30l")
+material_override = ExtResource("1_hinle")
 mesh = SubResource("BoxMesh_1vxdn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1813992751]

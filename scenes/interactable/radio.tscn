@@ -1,14 +1,9 @@
 [gd_scene format=3 uid="uid://bsb3o0wml375t"]
 
-[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://assets/textures/greybox_textures/greybox_green_grid.png" id="2_4b7o3"]
-[ext_resource type="AudioStream" uid="uid://bisrjdry01kks" path="res://assets/music/imaginary_interlude.mp3" id="3_3mpwk"]
+[ext_resource type="Material" uid="uid://b1aia1nusvhj5" path="res://assets/materials/green_mat.tres" id="1_e02vc"]
+[ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://assets/music/falling_snow.mp3" id="2_e02vc"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="3_7h80l"]
 [ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://resourses/interactable/switch/button.tres" id="4_e02vc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhhqh"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("2_4b7o3")
-uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_7h80l"]
 
@@ -31,7 +26,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 3
 
 [node name="boombox" type="MeshInstance3D" parent="." unique_id=536735608]
-material_override = SubResource("StandardMaterial3D_hhhqh")
+material_override = ExtResource("1_e02vc")
 mesh = SubResource("PrismMesh_7h80l")
 metadata/extras = {
 "MM": {},
@@ -43,8 +38,9 @@ shape = SubResource("BoxShape3D_5l70m")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=400099460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
-stream = ExtResource("3_3mpwk")
-max_distance = 10.0
+stream = ExtResource("2_e02vc")
+autoplay = true
+max_distance = 50.0
 panning_strength = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=275348863]

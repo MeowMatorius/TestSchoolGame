@@ -4,8 +4,10 @@ signal pause_requested
 signal interaction_pressed
 signal skip_pressed
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_echo(): return

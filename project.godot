@@ -29,6 +29,12 @@ InventoryManager="*uid://bgltkoojbqj2i"
 SignalBus="*uid://ddt7dkbp124a8"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
@@ -98,3 +104,38 @@ skip={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+psx_affine_strength={
+"type": "float",
+"value": 1.0
+}
+psx_bit_depth={
+"type": "uint",
+"value": 5
+}
+psx_fog_color={
+"type": "color",
+"value": Color(0.5, 0.5, 0.5, 0)
+}
+psx_fog_far={
+"type": "float",
+"value": 20.0
+}
+psx_fog_near={
+"type": "float",
+"value": 10.0
+}
+psx_precision_uv={
+"type": "float",
+"value": 128.0
+}
+psx_precision_xy={
+"type": "float",
+"value": 256.0
+}
+psx_precision_z={
+"type": "float",
+"value": 512.0
+}

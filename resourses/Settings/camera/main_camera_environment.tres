@@ -1,0 +1,24 @@
+[gd_resource type="Environment" format=3 uid="uid://bitluo2rdlpji"]
+
+[ext_resource type="Texture2D" uid="uid://dgepamc2d5b30" path="res://assets/hdri/fireplace.exr" id="1_702jx"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e7oew"]
+panorama = ExtResource("1_702jx")
+
+[sub_resource type="Sky" id="Sky_wodsf"]
+sky_material = SubResource("PanoramaSkyMaterial_e7oew")
+
+[resource]
+background_mode = 1
+background_color = Color(0.16366455, 0.2220346, 0.40217102, 1)
+sky = SubResource("Sky_wodsf")
+tonemap_mode = 4
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 1.3

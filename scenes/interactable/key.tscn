@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://duuhjykupjx8t"]
 
-[ext_resource type="Material" uid="uid://dlbojyay0ki5g" path="res://assets/materials/box_mat_7.tres" id="1_wy8tx"]
+[ext_resource type="Material" uid="uid://dp3x5sjk5vtmp" path="res://assets/materials/red_mat.tres" id="1_srvai"]
 [ext_resource type="Script" uid="uid://bv7k47qfnu1q4" path="res://scripts/interactable/interactable_pickup.gd" id="2_7cqbe"]
-[ext_resource type="Resource" uid="uid://bibfh5bl8yx26" path="res://resourses/interactable/items/key.tres" id="3_srvai"]
+[ext_resource type="Resource" uid="uid://b3kgm5cdrh0ak" path="res://resourses/interactable/items/key_red.tres" id="3_osn4e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mncer"]
 
@@ -13,7 +13,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1214280325]
-material_override = ExtResource("1_wy8tx")
+material_override = ExtResource("1_srvai")
 mesh = SubResource("BoxMesh_mncer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=362366221]
@@ -25,4 +25,4 @@ shape = SubResource("BoxShape3D_cguwc")
 
 [node name="InteractComponent" type="Node3D" parent="." unique_id=104121503]
 script = ExtResource("2_7cqbe")
-item_data = ExtResource("3_srvai")
+item_data = ExtResource("3_osn4e")

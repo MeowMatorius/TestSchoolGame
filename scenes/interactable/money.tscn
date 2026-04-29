@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmxjqrluhse4m"]
 
-[ext_resource type="Material" uid="uid://dlbojyay0ki5g" path="res://assets/materials/box_mat_7.tres" id="1_qr5ap"]
+[ext_resource type="Material" uid="uid://cikn2tvkldjti" path="res://assets/materials/yellow_mat.tres" id="1_qr5ap"]
 [ext_resource type="Script" uid="uid://bv7k47qfnu1q4" path="res://scripts/interactable/interactable_pickup.gd" id="2_x8uqp"]
 [ext_resource type="Resource" uid="uid://bt2werxjn26vd" path="res://resourses/interactable/items/money.tres" id="3_qr5ap"]
 

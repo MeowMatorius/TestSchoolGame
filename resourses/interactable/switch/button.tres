@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_x34nk")
+object_state = 0
 activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"

@@ -13,4 +13,4 @@ enum ObjectState {ON, OFF}
 @export_category("Настройка замка")
 enum LockState {LOCKED, UNLOCKED, BROKEN}
 @export var lock_state: LockState = LockState.UNLOCKED
-@export_enum("Key") var item_needed_to_open: String
+@export_enum("Key", "Red Key") var item_needed_to_open: String

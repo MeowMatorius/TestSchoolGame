@@ -70,9 +70,9 @@ extends CharacterBody3D
 @export var idle_noise_speed := 2.0
 @export var idle_noise_amp := 0.01
 @export var bob_freq := 3.0
-@export var bob_amp_h := 0.06
-@export var bob_amp_v := 0.06
-@export var bob_roll_amp := 0.02 # НОВЫЙ ЭКСПОРТ: Сила покачивания влево-вправо (Roll)
+@export var bob_amp_h := 0.05
+@export var bob_amp_v := 0.05
+@export var bob_roll_amp := 0.0
 @export var bob_stop_speed := 3.0 
 
 @export_group("FOV Details")
@@ -100,8 +100,10 @@ var effective_velocity := 0.0
 @onready var initial_height : float = COLLISION.shape.height 
 @onready var initial_head_y : float = HEAD.position.y      
 
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseMotion and not immobile:
@@ -114,6 +116,7 @@ func _unhandled_input(event: InputEvent):
 	if enable_crouching and toggle_crouch and event.is_action_pressed("crouch"):
 		crouch_toggled = !crouch_toggled
 
+
 func _process(delta: float):
 	var input_dir = Vector2.ZERO if immobile else Input.get_vector("left", "right", "up", "down")
 	var is_sprinting = enable_sprinting and (Input.is_action_pressed("sprint") or auto_sprint) and not is_crouching
@@ -122,6 +125,7 @@ func _process(delta: float):
 	
 	if CAMERA:
 		CAMERA.global_transform = camera_target.global_transform
+
 
 func _physics_process(delta: float):
 	if not is_on_floor():
@@ -170,6 +174,7 @@ func _physics_process(delta: float):
 
 	was_on_floor = is_on_floor()
 
+
 func calculate_speed(input_dir, is_crouching, is_sprinting):
 	if is_crouching:
 		speed = crouch_speed
@@ -191,6 +196,7 @@ func process_crouch(delta, crouching):
 	global_position.y += height_diff / 2.0
 	var target_y = initial_head_y + (crouch_head_y if crouching else 0.0)
 	HEAD.position.y = lerp(HEAD.position.y, target_y, delta * crouch_transition)
+
 
 func handle_visual_effects(delta, input_dir, is_sprinting, crouching):
 	# 1. Плавная скорость

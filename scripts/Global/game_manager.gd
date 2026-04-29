@@ -14,9 +14,8 @@ var state_before_pause: GameState
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var player_ui: CanvasLayer = player.get_node("UserInterface")
 @onready var player_ui_pause: Control = player_ui.get_node("PauseMenuContainer")
-@onready var player_ui_prompt: Control = player_ui.get_node("InteractPrompt")
 @onready var player_ui_dialogue: Control = player_ui.get_node("DialoguesContainer")
-@onready var player_ui_inventory: Control = player_ui.get_node("ItemsContainer")
+@onready var player_ui_default: Control = player_ui.get_node("DefaultContainer")
 
 # Смена игровой камеры
 @onready var player_camera: PhantomCamera3D = player.get_node("Head").get_node("CameraTarget").get_node("PhantomCamera3D")
@@ -55,8 +54,7 @@ func _on_game_state_changed() -> void:
 				1.0,
 				false,
 				false,
-				false,
-				true
+				true,
 				)
 		GameState.DIALOGUE:
 			_update_game_state(
@@ -65,9 +63,8 @@ func _on_game_state_changed() -> void:
 				false, 
 				1.0,
 				false,
-				false,
 				true,
-				true
+				false,
 				)
 		GameState.PAUSE:
 			_update_game_state(
@@ -78,7 +75,6 @@ func _on_game_state_changed() -> void:
 				true,
 				false,
 				false,
-				false
 				)
 
 
@@ -88,9 +84,8 @@ func _update_game_state(
 		pause_tree, 
 		time_scale, 
 		ui_pause_flg,
-		ui_prompt_flg,
 		ui_dialogue_flg,
-		ui_inventory_flg
+		ui_default_flg
 		) -> void:
 	
 	# Базовые флаги
@@ -101,9 +96,8 @@ func _update_game_state(
 	
 	# Переключение интерфейса
 	player_ui_pause.visible = ui_pause_flg
-	player_ui_prompt.visible = ui_prompt_flg
 	player_ui_dialogue.visible = ui_dialogue_flg
-	player_ui_inventory.visible = ui_inventory_flg
+	player_ui_default.visible = ui_default_flg
 	
 	# Обездвижить игрока
 	if player:

@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://sabku4btyvak"]
 
-[ext_resource type="Material" uid="uid://brae5luvbqpd2" path="res://assets/materials/box_mat_5.tres" id="2_664ey"]
+[ext_resource type="Material" uid="uid://dl0y0e70gh3ra" path="res://assets/materials/orange_mat.tres" id="1_5yfcu"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_gmw5h"]
-[ext_resource type="Environment" uid="uid://cuekvwuvrfdcf" path="res://resourses/Settings/npc_environment.tres" id="3_74uyl"]
-[ext_resource type="CameraAttributesPractical" uid="uid://dxd0crdx6irb8" path="res://resourses/Settings/npc_camera_attributes_practical.tres" id="4_x68is"]
+[ext_resource type="Environment" uid="uid://cuekvwuvrfdcf" path="res://resourses/settings/camera/npc_environment.tres" id="3_74uyl"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_x68is"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_s2mr4"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ob37v"]
@@ -14,7 +13,6 @@
 
 [sub_resource type="Resource" id="Resource_xkf83"]
 script = ExtResource("7_ob37v")
-duration = 0.5
 transition = 1
 
 [node name="Hlopchik" type="StaticBody3D" unique_id=1769752881]
@@ -22,7 +20,7 @@ transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.
 collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1819891481]
-material_override = ExtResource("2_664ey")
+material_override = ExtResource("1_5yfcu")
 mesh = SubResource("CapsuleMesh_uyltb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=423383141]
@@ -41,11 +39,9 @@ player_teleport_point = NodePath("../PlayerTeleportPoint")
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]
 physics_interpolation_mode = 1
-transform = Transform3D(0.9569606, 0.0050649983, 0.29017368, 9.313226e-10, 0.9998477, -0.017452393, -0.29021794, 0.016701253, 0.956815, 0.3779383, 0.5225449, 1.7333298)
+transform = Transform3D(0.9180845, 0.100237, -0.38350216, -4.656613e-10, 0.9674984, 0.25287765, 0.39638534, -0.23216306, 0.88824517, -0.18432522, 0.74016297, 0.9836064)
 top_level = true
-keep_aspect = 0
 environment = ExtResource("3_74uyl")
-attributes = ExtResource("4_x68is")
 fov = 55.0
 
 [node name="PhantomCameraHost" type="Node" parent="DialogueCamera" unique_id=137878921]
@@ -55,10 +51,11 @@ script = ExtResource("5_x68is")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1234953876]
-transform = Transform3D(0.96187985, 0.0047727497, 0.27343076, -0.004772751, 0.9999884, -0.0006651711, -0.2734308, -0.000665199, 0.9618916, 0.34762993, 0.5528266, 1.7302771)
+transform = Transform3D(0.9110268, 0.10427353, -0.39894575, 0.0071964604, 0.9633304, 0.268222, 0.41228497, -0.2472284, 0.87686926, -0.20146345, 0.7571578, 0.96717274)
 script = ExtResource("6_s2mr4")
 tween_resource = SubResource("Resource_xkf83")
 tween_on_load = false
+inactive_update_mode = 1
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="PlayerTeleportPoint" type="Node3D" parent="." unique_id=649458906]

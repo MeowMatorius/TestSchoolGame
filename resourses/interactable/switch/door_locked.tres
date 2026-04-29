@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_ht65o")
-one_time_use = true
 lock_state = 0
-item_needed_to_open = "Key"
+item_needed_to_open = "Red Key"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"

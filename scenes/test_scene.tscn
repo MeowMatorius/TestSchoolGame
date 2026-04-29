@@ -1,78 +1,156 @@
 [gd_scene format=3 uid="uid://cebxk55fsjy8k"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_3qnke"]
-[ext_resource type="PackedScene" uid="uid://bhb04m8x30qrb" path="res://scenes/cube.tscn" id="2_qjeyg"]
-[ext_resource type="Material" uid="uid://dalddbuqmxhu6" path="res://assets/materials/floor_mat_1.tres" id="2_wtsjf"]
+[ext_resource type="VoxelGIData" uid="uid://dp6ue1yv8x1ds" path="res://resourses/settings/test_scene.VoxelGI_data.res" id="2_h3xc6"]
+[ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
+[ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="3_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://scenes/interactable/radio.tscn" id="4_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://scenes/npcs/hlopchik.tscn" id="5_s36qc"]
 [ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/interactable/key.tscn" id="5_wtsjf"]
-[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/interactable/door.tscn" id="6_6qxox"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="8_rnaij"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rnaij"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_cguwc"]
-material = ExtResource("2_wtsjf")
+[sub_resource type="Sky" id="Sky_h3xc6"]
+sky_material = SubResource("ProceduralSkyMaterial_rnaij")
+
+[sub_resource type="Environment" id="Environment_s36qc"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_h3xc6")
+tonemap_mode = 4
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3xc6"]
+albedo_texture = ExtResource("2_rnaij")
+uv1_scale = Vector3(5, 5, 5)
 
 [node name="TestScene" type="Node" unique_id=1532311243]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=516208645]
+environment = SubResource("Environment_s36qc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1489697784]
+transform = Transform3D(-0.22985649, -0.27249888, 0.93429667, -0.11458061, 0.96090186, 0.25206932, -0.96645606, -0.049112506, -0.25209257, 0, 0, 0)
+light_color = Color(0.36343467, 0.42371255, 0.63291526, 1)
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
+light_angular_distance = 5.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=1533978709]
+size = Vector3(32.149414, 21.435547, 30.139648)
+data = ExtResource("2_h3xc6")
+
 [node name="Сцена" type="Node" parent="." unique_id=215577381]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Сцена" unique_id=1622076130]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Сцена" unique_id=420914931]
+use_collision = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Сцена" unique_id=611937543]
-transform = Transform3D(0.96860284, -0.10517264, -0.22527155, 0.21582562, 0.80547184, 0.551937, 0.12340123, -0.5832271, 0.80288124, 0, 0, 0)
-shadow_enabled = true
+[node name="Building2" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=512281619]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 5.5, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(30, 12, 30)
+material = SubResource("StandardMaterial3D_h3xc6")
 
-[node name="Floor" type="StaticBody3D" parent="Сцена" unique_id=888598047]
-transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
+[node name="Building" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=539491674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+operation = 2
+use_collision = true
+size = Vector3(30, 10, 30)
+material = SubResource("StandardMaterial3D_h3xc6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Сцена/Floor" unique_id=573922480]
-shape = SubResource("BoxShape3D_mncer")
+[node name="Room2" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=2021993531]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 10, 3, 9.25)
+use_collision = true
+size = Vector3(20, 10, 23)
+material = SubResource("StandardMaterial3D_h3xc6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Сцена/Floor" unique_id=1862156806]
-material_override = ExtResource("2_wtsjf")
-mesh = SubResource("BoxMesh_cguwc")
+[node name="Room" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=1763434892]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10, 3, 9.25)
+operation = 2
+use_collision = true
+size = Vector3(20, 10, 23)
+material = SubResource("StandardMaterial3D_h3xc6")
+
+[node name="Window" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=1078514683]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 2, 16, 4, 0)
+operation = 2
+size = Vector3(3, 2, 2)
+
+[node name="Window2" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=727016113]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 2, 16, 4, -10)
+operation = 2
+size = Vector3(3, 2, 2)
+
+[node name="Window3" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=90972068]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 2, -16.067907, 4, 0)
+operation = 2
+size = Vector3(3, 2, 2)
+
+[node name="Window4" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=1113310626]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 2, -16.067907, 4, -10)
+operation = 2
+size = Vector3(3, 2, 2)
+
+[node name="Window5" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=50734765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 1.8, 3.350137)
+operation = 2
+size = Vector3(1.5, 2.5, 1.508)
+
+[node name="Window6" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=867768754]
+transform = Transform3D(1, 0, 0, 0, 6.25, 0, 0, 0, 4, 15.984484, 2.6485229, 6.871545)
+operation = 2
+size = Vector3(4, 0.5, 0.5)
+
+[node name="Window7" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=885871594]
+transform = Transform3D(1, 0, 0, 0, 6.25, 0, 0, 0, 4, 15.984484, 2.6485229, 9.871545)
+operation = 2
+size = Vector3(4, 0.5, 0.5)
+
+[node name="Window8" type="CSGBox3D" parent="Сцена/CSGCombiner3D" unique_id=507422282]
+transform = Transform3D(1, 0, 0, 0, 6.25, 0, 0, 0, 4, 15.984484, 2.6485229, 12.871545)
+operation = 2
+size = Vector3(4, 0.5, 0.5)
 
 [node name="Объекты" type="Node" parent="." unique_id=1128602655]
 
-[node name="Door" parent="Объекты" unique_id=1458739684 instance=ExtResource("6_6qxox")]
-transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -0.9814137, 1.75, 1.9652827)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Объекты" unique_id=789221112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.876456, 0.48961365, 14.987246)
+material_override = ExtResource("3_h3xc6")
+use_collision = true
+mode = 1
+spin_degrees = 180.0
+spin_sides = 4
 
 [node name="DoorLocked" parent="Объекты" unique_id=863302286 instance=ExtResource("8_rnaij")]
-transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, -2.7747831, 1.75, 1.9560246)
-
-[node name="Table" type="Node3D" parent="Объекты" unique_id=870872000]
-
-[node name="Cube" parent="Объекты/Table" unique_id=1552698575 instance=ExtResource("2_qjeyg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, 0)
-
-[node name="Cube2" parent="Объекты/Table" unique_id=1452860932 instance=ExtResource("2_qjeyg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, -1)
-
-[node name="Table2" type="Node3D" parent="Объекты" unique_id=370391371]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4648383, -2)
-
-[node name="Cube" parent="Объекты/Table2" unique_id=1536960056 instance=ExtResource("2_qjeyg")]
-
-[node name="Cube2" parent="Объекты/Table2" unique_id=1621860434 instance=ExtResource("2_qjeyg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
+transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 10.479179, 1.75, 3.0123982)
 
 [node name="Radio" parent="Объекты" unique_id=1068241980 instance=ExtResource("4_h3xc6")]
-transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 0.17311001, 1.75, -0.0994966)
+transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 10.359689, 1.7201098, 14.637021)
 
 [node name="Key" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
-transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.044398665, 1.6, -1.0407205)
+transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, 9.850069, 1.5795966, 14.338424)
 
 [node name="Money" parent="Объекты" unique_id=16297360 instance=ExtResource("7_h3xc6")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.30783725, 1.6, 0.12790072)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9.3449, 1.5866728, 14.685175)
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
 [node name="Player" parent="Персонажи" unique_id=342963380 instance=ExtResource("1_3qnke")]
-transform = Transform3D(1.3113419e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113419e-07, -1.75, 5.5370064, -1)
+transform = Transform3D(-2.3841858e-07, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -2.3841858e-07, 6.816902, 0.5370064, 9.251356)
 crouch_head_y = -0.1
 
 [node name="Hlopchik" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
-transform = Transform3D(-0.017452449, 0.017449748, 0.9996954, 0, 0.9998477, -0.017452406, -0.9998477, -0.0003045872, -0.01744979, -4.89258, 1.5418601, -1.8273633)
+transform = Transform3D(0.017452363, -0.017449748, -0.9996954, 0, 0.9998477, -0.017452406, 0.9998477, 0.0003045857, 0.017449705, 13.288271, 1.5418601, 9.860581)

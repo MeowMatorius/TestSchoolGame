@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dp3x5sjk5vtmp"]
+
+[ext_resource type="Texture2D" uid="uid://ht5bgdh7kv6v" path="res://assets/textures/greybox_textures/greybox_red_grid.png" id="1_mik8v"]
+
+[resource]
+albedo_texture = ExtResource("1_mik8v")
+uv1_scale = Vector3(5, 5, 5)

@@ -14,4 +14,4 @@ func interact(object):
 
 
 func get_prompt() -> String:
-	return "Взять"
+	return "Взять: " + item_data.name

@@ -7,6 +7,5 @@
 script = ExtResource("1_uf6ka")
 unique = true
 type = "Key"
-name = "Key"
 icon = ExtResource("1_qnk12")
 metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
