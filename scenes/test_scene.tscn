@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/interactable/door.tscn" id="7_ntc4i"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
+[ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="11_u0xbq"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://resourses/interactable/items/item_data.gd" id="12_pln1h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s36qc"]
 panorama = ExtResource("1_s36qc")
@@ -36,6 +38,15 @@ dof_blur_far_distance = 20.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3xc6"]
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="Resource" id="Resource_8gixj"]
+resource_local_to_scene = true
+script = ExtResource("12_pln1h")
+type = "Money"
+name = "Money"
+quantity = 100
+icon = ExtResource("11_u0xbq")
+metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
 
 [node name="TestScene" type="Node" unique_id=1532311243]
 
@@ -564,6 +575,12 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.63
 [node name="BookShelf57" parent="Объекты/Bookshelfs" unique_id=1964749599 instance=ExtResource("10_gthg3")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 4.5, -15.200001)
 
+[node name="Money2" parent="Объекты" unique_id=1137028239 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.9402585, 0.18932807, 20.75747)
+
+[node name="InteractComponent" parent="Объекты/Money2" index="4" unique_id=104121503]
+item_data = SubResource("Resource_8gixj")
+
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
 [node name="Player" parent="Персонажи" unique_id=342963380 instance=ExtResource("1_3qnke")]
@@ -573,3 +590,5 @@ crouch_head_y = -0.1
 
 [node name="Hlopchik" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
 transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 19.061)
+
+[editable path="Объекты/Money2"]

@@ -29,14 +29,25 @@ func show_choices(dialogue_line):
 			button.pressed.disconnect(_on_choice_selected)
 		
 		if i < dialogue_line.choices.size():
+			if dialogue_line.choices[i].condition.size() != 0:
+				button.disabled = !_disabled_condition(dialogue_line.choices[i].condition)
 			button.visible = true
-			button.text = dialogue_line.choices[i]
+#			button.disabled = !dialogue_line.condition[0].is_met()
+			button.text = dialogue_line.choices[i].text
 			# Подключаем сигнал к функции, передавая нужную ветку через bind
-			button.pressed.connect(_on_choice_selected.bind(dialogue_line.choices_branches[i]))
+			button.pressed.connect(_on_choice_selected.bind(dialogue_line.choices[i].next_dialogue))
 		else:
 			# Скрываем лишние кнопки, если вариантов выбора меньше, чем кнопок в UI
 			button.visible = false
 
+func  _disabled_condition(condition):
+	var item_condition: Array[bool] = []
+	for i in condition:
+		item_condition.append(i.is_met())
+	if false in item_condition:
+		return false
+	else:
+		return true
 
 func _on_choice_selected(branch_id):
 	SignalBus.entered_choice_menu.emit(false)

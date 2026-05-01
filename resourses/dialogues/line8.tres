@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://bfcnm3ol7ekw3"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_atp2h"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="2_syhkj"]
+
+[resource]
+script = ExtResource("1_atp2h")
+character_name = "Хлопчик"
+text = "Возвращайся, когда будут деньги"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

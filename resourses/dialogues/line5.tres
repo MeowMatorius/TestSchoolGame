@@ -1,9 +1,13 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://c8l5y8gmped8e"]
 
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_s6vyp"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="2_ytr61"]
+[ext_resource type="Resource" uid="uid://dbegw2m8slk7t" path="res://resourses/dialogues/condition_1.tres" id="3_ql608"]
+[ext_resource type="Resource" uid="uid://biyqmoujwyvh6" path="res://resourses/dialogues/line7.tres" id="4_ql608"]
 
 [resource]
 script = ExtResource("1_s6vyp")
-character_name = "Хлопчик"
-text = "....."
+text = "Да, конечно, покупаю"
+next_dialogue = ExtResource("4_ql608")
+condition = Array[ExtResource("2_ytr61")]([ExtResource("3_ql608")])
 metadata/_custom_type_script = "uid://c2uc01bjiw2hw"
