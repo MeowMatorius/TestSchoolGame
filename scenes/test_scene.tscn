@@ -7,11 +7,12 @@
 [ext_resource type="Material" uid="uid://16kb6ih4kwxl" path="res://assets/materials/white_mat.tres" id="3_6qxox"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="3_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://scenes/interactable/radio.tscn" id="4_h3xc6"]
-[ext_resource type="PackedScene" uid="uid://box5806sw7ljq" path="res://scenes/csg/book_shelf.tscn" id="5_gthg3"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://scenes/npcs/hlopchik.tscn" id="5_s36qc"]
 [ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/interactable/key.tscn" id="5_wtsjf"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="7_h3xc6"]
+[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/interactable/door.tscn" id="7_ntc4i"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="8_rnaij"]
+[ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s36qc"]
 panorama = ExtResource("1_s36qc")
@@ -23,12 +24,10 @@ sky_material = SubResource("PanoramaSkyMaterial_s36qc")
 background_mode = 2
 sky = SubResource("Sky_s36qc")
 tonemap_mode = 4
-tonemap_agx_contrast = 2.0
 sdfgi_read_sky_light = false
-volumetric_fog_albedo = Color(0.7607843, 0.84313726, 1, 1)
-volumetric_fog_sky_affect = 0.5
+fog_light_color = Color(1, 0.95686275, 0.8980392, 1)
+volumetric_fog_albedo = Color(1, 0.95686275, 0.8980392, 1)
 adjustment_enabled = true
-adjustment_saturation = 1.3
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s36qc"]
 auto_exposure_speed = 2.0
@@ -46,7 +45,8 @@ camera_attributes = SubResource("CameraAttributesPractical_s36qc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1489697784]
 transform = Transform3D(-0.99415106, 0.024294581, -0.105231375, 0, 0.97437, 0.22495098, 0.10799944, 0.22363527, -0.9686706, 0, 0, 0)
-light_color = Color(0.7607843, 0.84313726, 1, 1)
+visible = false
+light_color = Color(1, 0.95686275, 0.8980392, 1)
 light_energy = 2.0
 light_indirect_energy = 3.0
 light_angular_distance = 0.5
@@ -157,633 +157,6 @@ material_override = ExtResource("3_h3xc6")
 operation = 2
 size = Vector3(50, 3, 50)
 
-[node name="Stairs" type="CSGPolygon3D" parent="Сцена/Building" unique_id=1057532991]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0, 4)
-material_override = ExtResource("3_h3xc6")
-polygon = PackedVector2Array(-6.3, 0, -6.3, 5.5, 4, 0)
-depth = 6.0
-
-[node name="Stairs2" type="CSGPolygon3D" parent="Сцена/Building" unique_id=1091224953]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.700002, 0, -2)
-material_override = ExtResource("3_h3xc6")
-polygon = PackedVector2Array(-6.3, 0, -6.3, 5.5, 4, 0)
-depth = 6.0
-
-[node name="BookShelf" parent="Сцена/Building" unique_id=622311071 instance=ExtResource("5_gthg3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.937151e-07, 1.4862633, 21.900002)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building" unique_id=240250968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1000004, 1.4862633, 21.900002)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf2" unique_id=382866417]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf2/BookShelf2" unique_id=747237160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf2/BookShelf2" unique_id=689154456]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf2/BookShelf2" unique_id=1576203493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf2/BookShelf2" unique_id=576850808]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf2/BookShelf2" unique_id=315998092]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf3" type="CSGBox3D" parent="Сцена/Building" unique_id=1292086151]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1, 1.4862633, 21.900002)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf3" unique_id=1638748998]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf3/BookShelf2" unique_id=390855652]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf3/BookShelf2" unique_id=1349032070]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf3/BookShelf2" unique_id=793405807]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf3/BookShelf2" unique_id=2044278676]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf3/BookShelf2" unique_id=1596120225]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf4" type="CSGBox3D" parent="Сцена/Building" unique_id=800806706]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.486, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf4" unique_id=1188752878]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf4/BookShelf2" unique_id=650992617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf4/BookShelf2" unique_id=293410249]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf4/BookShelf2" unique_id=424257790]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf4/BookShelf2" unique_id=1489722862]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf4/BookShelf2" unique_id=708523607]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf5" type="CSGBox3D" parent="Сцена/Building" unique_id=1752996766]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.486, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf5" unique_id=203841674]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf5/BookShelf2" unique_id=421197998]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf5/BookShelf2" unique_id=451857107]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf5/BookShelf2" unique_id=1590315824]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf5/BookShelf2" unique_id=170304065]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf5/BookShelf2" unique_id=1158212371]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf6" type="CSGBox3D" parent="Сцена/Building" unique_id=689716193]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2, 1.486, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf6" unique_id=115850021]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf6/BookShelf2" unique_id=259165316]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf6/BookShelf2" unique_id=1591957642]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf6/BookShelf2" unique_id=1393787846]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf6/BookShelf2" unique_id=1745633982]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf6/BookShelf2" unique_id=1349844835]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf7" type="CSGBox3D" parent="Сцена/Building" unique_id=549737716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1, 1.486, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf7" unique_id=250792593]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf7/BookShelf2" unique_id=1656356859]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf7/BookShelf2" unique_id=1073486749]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf7/BookShelf2" unique_id=634251388]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf7/BookShelf2" unique_id=862702533]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf7/BookShelf2" unique_id=1195596339]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf8" type="CSGBox3D" parent="Сцена/Building" unique_id=1900348190]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.386, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf8" unique_id=1999924250]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf8/BookShelf2" unique_id=1047710258]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf8/BookShelf2" unique_id=1518668812]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf8/BookShelf2" unique_id=209224607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf8/BookShelf2" unique_id=1231424595]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf8/BookShelf2" unique_id=586444618]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf9" type="CSGBox3D" parent="Сцена/Building" unique_id=74671040]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.386, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf9" unique_id=921801298]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf9/BookShelf2" unique_id=373766215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf9/BookShelf2" unique_id=256931256]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf9/BookShelf2" unique_id=215114631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf9/BookShelf2" unique_id=1937495787]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf9/BookShelf2" unique_id=1379045284]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf10" type="CSGBox3D" parent="Сцена/Building" unique_id=951202237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2, 4.386, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf10" unique_id=546371469]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf10/BookShelf2" unique_id=1039119335]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf10/BookShelf2" unique_id=953823630]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf10/BookShelf2" unique_id=1985095037]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf10/BookShelf2" unique_id=379223210]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf10/BookShelf2" unique_id=321226470]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf11" type="CSGBox3D" parent="Сцена/Building" unique_id=898153342]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1, 4.386, -4)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf11" unique_id=650635625]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf11/BookShelf2" unique_id=768527787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf11/BookShelf2" unique_id=44283902]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf11/BookShelf2" unique_id=1286430608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf11/BookShelf2" unique_id=590316390]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf11/BookShelf2" unique_id=159964214]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf12" type="CSGBox3D" parent="Сцена/Building" unique_id=585196700]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 1.486, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf12" unique_id=403602134]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf12/BookShelf2" unique_id=726344356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf12/BookShelf2" unique_id=1472603852]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf12/BookShelf2" unique_id=887908490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf12/BookShelf2" unique_id=760092589]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf12/BookShelf2" unique_id=208811284]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf13" type="CSGBox3D" parent="Сцена/Building" unique_id=329110194]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 1.486, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf13" unique_id=338104180]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf13/BookShelf2" unique_id=1211981044]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf13/BookShelf2" unique_id=431599668]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf13/BookShelf2" unique_id=40361211]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf13/BookShelf2" unique_id=1996579393]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf13/BookShelf2" unique_id=987466661]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf14" type="CSGBox3D" parent="Сцена/Building" unique_id=354915823]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.2, 1.486, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf14" unique_id=1968019669]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf14/BookShelf2" unique_id=1956544624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf14/BookShelf2" unique_id=959630591]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf14/BookShelf2" unique_id=1177838973]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf14/BookShelf2" unique_id=1445242693]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf14/BookShelf2" unique_id=703550719]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf15" type="CSGBox3D" parent="Сцена/Building" unique_id=1038756265]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 14.1, 1.486, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf15" unique_id=2136367986]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf15/BookShelf2" unique_id=812728611]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf15/BookShelf2" unique_id=1893539508]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf15/BookShelf2" unique_id=1181889126]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf15/BookShelf2" unique_id=1302463985]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf15/BookShelf2" unique_id=1200570062]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf16" type="CSGBox3D" parent="Сцена/Building" unique_id=1198943161]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 4.386, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf16" unique_id=1141706806]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf16/BookShelf2" unique_id=1829917291]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf16/BookShelf2" unique_id=64522348]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf16/BookShelf2" unique_id=282764263]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf16/BookShelf2" unique_id=187057496]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf16/BookShelf2" unique_id=1161092915]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf17" type="CSGBox3D" parent="Сцена/Building" unique_id=681490275]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 4.386, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf17" unique_id=1371568995]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf17/BookShelf2" unique_id=483798353]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf17/BookShelf2" unique_id=752986609]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf17/BookShelf2" unique_id=1585886820]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf17/BookShelf2" unique_id=1800497993]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf17/BookShelf2" unique_id=47249196]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf18" type="CSGBox3D" parent="Сцена/Building" unique_id=857638443]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.2, 4.386, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf18" unique_id=968194466]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf18/BookShelf2" unique_id=635376097]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf18/BookShelf2" unique_id=1327597227]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf18/BookShelf2" unique_id=123710967]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf18/BookShelf2" unique_id=2098934952]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf18/BookShelf2" unique_id=1346293451]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
-[node name="BookShelf19" type="CSGBox3D" parent="Сцена/Building" unique_id=546344256]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 14.1, 4.386, 6)
-size = Vector3(6, 3, 1)
-
-[node name="BookShelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf19" unique_id=1178668236]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, -0.13500023)
-operation = 2
-size = Vector3(6, 3, 1.3000001)
-
-[node name="Shelf" type="CSGBox3D" parent="Сцена/Building/BookShelf19/BookShelf2" unique_id=693613447]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000002, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf2" type="CSGBox3D" parent="Сцена/Building/BookShelf19/BookShelf2" unique_id=570316050]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0.43209887, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf3" type="CSGBox3D" parent="Сцена/Building/BookShelf19/BookShelf2" unique_id=1301505628]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11111081, 0)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf4" type="CSGBox3D" parent="Сцена/Building/BookShelf19/BookShelf2" unique_id=1723320831]
-transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, -0.67901224, 0.14999962)
-operation = 2
-size = Vector3(6, 0.1, 1)
-
-[node name="Shelf5" type="CSGBox3D" parent="Сцена/Building/BookShelf19/BookShelf2" unique_id=1355582624]
-transform = Transform3D(-4.8568214e-08, -1.1111112, 0, 1.1111112, -4.8568214e-08, 0, 0, 0, 1.1111112, 0, -0.012345433, 0.14999962)
-operation = 2
-size = Vector3(3, 0.1, 1)
-
 [node name="Reception" type="CSGPolygon3D" parent="Сцена/Building" unique_id=388754567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023543835, -0.03655255, 18.024565)
 use_collision = true
@@ -792,76 +165,410 @@ mode = 1
 spin_degrees = 180.0
 spin_sides = 8
 
-[node name="Node3D" type="CSGCombiner3D" parent="Сцена" unique_id=99620134]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4, 0, 0)
-material_override = ExtResource("3_6qxox")
+[node name="StairsRight" type="CSGPolygon3D" parent="Сцена/Building" unique_id=1057532991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7, 0, 4)
+material_override = ExtResource("3_h3xc6")
+polygon = PackedVector2Array(-6.3, 0, -6.3, 5.5, 4, 0)
+depth = 6.0
 
-[node name="RoomOuterWall" type="CSGBox3D" parent="Сцена/Node3D" unique_id=2021993531]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 36.19091, 3.7272725, 19.409092)
+[node name="StairsLeft" type="CSGPolygon3D" parent="Сцена/Building" unique_id=1091224953]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.700002, 0, -2)
+material_override = ExtResource("3_h3xc6")
+polygon = PackedVector2Array(-6.3, 0, -6.3, 5.5, 4, 0)
+depth = 6.0
+
+[node name="CorridorOuterWall" type="CSGBox3D" parent="Сцена/Building" unique_id=1889603288]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 27.481197, 6.581115, 0.90909195)
 use_collision = true
-size = Vector3(20, 10, 23)
+size = Vector3(10, 5, 50)
 
-[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Node3D/RoomOuterWall" unique_id=1763434892]
+[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Building/CorridorOuterWall" unique_id=119960051]
 transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0)
 operation = 2
 use_collision = true
-size = Vector3(20, 10, 23)
+size = Vector3(10, 5, 50)
 material = SubResource("StandardMaterial3D_h3xc6")
 
-[node name="RoomDoor" type="CSGBox3D" parent="Сцена/Node3D/RoomOuterWall" unique_id=50734765]
-transform = Transform3D(1.8181818, 0, 0, 0, 1.8181818, 0, 0, 0, 1.8181818, -0.45454597, -2.2281551, -10.727024)
+[node name="RoomDoor" type="CSGBox3D" parent="Сцена/Building/CorridorOuterWall" unique_id=1534326767]
+transform = Transform3D(1.8181818, 0, 0, 0, 1.8181818, 0, 0, 0, 1.8181818, -0.45454407, -0.36041737, -10.727024)
 operation = 2
-size = Vector3(1.2, 2.4, 1.508)
+size = Vector3(1.2, 2.1, 1.508)
 
-[node name="DoorLocked" parent="Сцена/Node3D/RoomOuterWall/RoomDoor" unique_id=863302286 instance=ExtResource("8_rnaij")]
-transform = Transform3D(0.1, 0, 0, 0, 2.5, 0, 0, 0, 0.1, 0.75, -0.024514437, 0.10486293)
+[node name="CorridorDoor" type="CSGBox3D" parent="Сцена/Building" unique_id=1328084003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 6.502241, 0.5)
+operation = 2
+size = Vector3(6, 2.1, 2)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Сцена/Node3D/RoomOuterWall" unique_id=789221112]
-transform = Transform3D(1.8181818, 0, 0, 0, 1.8181818, 0, 0, 0, 1.8181818, -0.22462463, -4.5643377, 10.4313545)
-material_override = ExtResource("3_h3xc6")
+[node name="RoomOuterWall3" type="CSGBox3D" parent="Сцена/Building" unique_id=1626110579]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 39.765884, 7.727272, -6.090908)
 use_collision = true
-mode = 1
-spin_degrees = 180.0
-spin_sides = 5
+size = Vector3(40, 10, 23)
 
-[node name="MediumWindow" type="CSGBox3D" parent="Сцена/Node3D" unique_id=867768754]
-transform = Transform3D(0.9090909, 0, 0, 0, 5.681818, 0, 0, 0, 3.6363635, 41.631348, 3.407748, 16.92054)
+[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Building/RoomOuterWall3" unique_id=86184229]
+transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0)
 operation = 2
-size = Vector3(4, 0.5, 0.5)
+use_collision = true
+size = Vector3(40, 10, 23)
+material = SubResource("StandardMaterial3D_h3xc6")
 
-[node name="MediumWindow3" type="CSGBox3D" parent="Сцена/Node3D" unique_id=507422282]
-transform = Transform3D(0.9090909, 0, 0, 0, 5.681818, 0, 0, 0, 3.6363635, 41.631348, 3.407748, 22.375084)
+[node name="RoomDoor2" type="CSGBox3D" parent="Сцена/Building" unique_id=420394288]
+transform = Transform3D(-3.9737625e-08, 0, 0.9090909, 0, 0.9090909, 0, -0.9090909, 0, -3.9737625e-08, 29.744661, 6.500186, -6.8779373)
 operation = 2
-size = Vector3(4, 0.5, 0.5)
+size = Vector3(1.268, 2.3, 4)
 
-[node name="Small window" type="CSGBox3D" parent="Сцена/Node3D" unique_id=1215696947]
-transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 36.054543, 3.4081817, 25.42909)
+[node name="Door" parent="Сцена/Building/RoomDoor2" unique_id=772345131 instance=ExtResource("7_ntc4i")]
+transform = Transform3D(0.09999999, 0, 0, 0, 2.3, 0, 0, 0, 0.09999999, 0.6004882, 0.021020412, 0.44587326)
+
+[node name="MediumWindow2" type="CSGBox3D" parent="Сцена/Building" unique_id=926094267]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 33.95632, 6.8861647, -11.519484)
 operation = 2
-size = Vector3(1, 2, 2.295)
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow5" type="CSGBox3D" parent="Сцена/Building" unique_id=5194568]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 37.45632, 6.8861647, -11.519484)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow6" type="CSGBox3D" parent="Сцена/Building" unique_id=981493018]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 40.45632, 6.8861647, -11.519484)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow7" type="CSGBox3D" parent="Сцена/Building" unique_id=1524571327]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 43.95632, 6.8861647, -11.519484)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="RoomOuterWall4" type="CSGBox3D" parent="Сцена/Building" unique_id=1974683068]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 39.765884, 7.727272, 7.909092)
+use_collision = true
+size = Vector3(40, 10, 23)
+
+[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Building/RoomOuterWall4" unique_id=1551594433]
+transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0)
+operation = 2
+use_collision = true
+size = Vector3(40, 10, 23)
+material = SubResource("StandardMaterial3D_h3xc6")
+
+[node name="RoomDoor3" type="CSGBox3D" parent="Сцена/Building" unique_id=969184344]
+transform = Transform3D(-3.9737625e-08, 0, 0.9090909, 0, 0.9090909, 0, -0.9090909, 0, -3.9737625e-08, 29.744661, 6.500186, 7.1220627)
+operation = 2
+size = Vector3(1.268, 2.3, 4)
+
+[node name="DoorLocked" parent="Сцена/Building/RoomDoor3" unique_id=1458739684 instance=ExtResource("8_rnaij")]
+transform = Transform3D(0.09999999, 0, 0, 0, 2.3, 0, 0, 0, 0.09999999, 0.6374564, 0.23638344, 0.4418602)
+
+[node name="MediumWindow3" type="CSGBox3D" parent="Сцена/Building" unique_id=1155996046]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 33.95632, 6.8861647, 13.480516)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow8" type="CSGBox3D" parent="Сцена/Building" unique_id=1725925683]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 37.45632, 6.8861647, 13.480516)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow9" type="CSGBox3D" parent="Сцена/Building" unique_id=1061516883]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 40.45632, 6.8861647, 13.480516)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow10" type="CSGBox3D" parent="Сцена/Building" unique_id=566930931]
+transform = Transform3D(0.909091, 0, 1.4210855e-14, 0, 5.6818175, 0, -3.5527137e-15, 0, 3.636364, 43.95632, 6.8861647, 13.480516)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="CorridorOuterWall2" type="CSGBox3D" parent="Сцена/Building" unique_id=745456257]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -27.294003, 6.581115, 0.707412)
+use_collision = true
+size = Vector3(10, 5, 50)
+
+[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Building/CorridorOuterWall2" unique_id=1335180670]
+transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0)
+operation = 2
+use_collision = true
+size = Vector3(10, 5, 50)
+material = SubResource("StandardMaterial3D_h3xc6")
+
+[node name="RoomDoor" type="CSGBox3D" parent="Сцена/Building/CorridorOuterWall2" unique_id=1417287025]
+transform = Transform3D(1.8181818, 0, 0, 0, 1.8181818, 0, 0, 0, 1.8181818, -0.45454407, -0.36041737, -10.727024)
+operation = 2
+size = Vector3(1.2, 2.1, 1.508)
+
+[node name="CorridorDoor2" type="CSGBox3D" parent="Сцена/Building" unique_id=507919324]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.312805, 6.502241, 1.1165037)
+operation = 2
+size = Vector3(6, 2.1, 2)
+
+[node name="RoomOuterWall5" type="CSGBox3D" parent="Сцена/Building" unique_id=822507197]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -39.57869, 7.727272, 7.707413)
+use_collision = true
+size = Vector3(40, 10, 23)
+
+[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Building/RoomOuterWall5" unique_id=173303134]
+transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0)
+operation = 2
+use_collision = true
+size = Vector3(40, 10, 23)
+material = SubResource("StandardMaterial3D_h3xc6")
+
+[node name="RoomDoor4" type="CSGBox3D" parent="Сцена/Building" unique_id=1091464266]
+transform = Transform3D(1.1921287e-07, 0, -0.9090909, 0, 0.9090909, 0, 0.9090909, 0, 1.1921287e-07, -29.557467, 6.500186, 8.494442)
+operation = 2
+size = Vector3(1.268, 2.3, 4)
+
+[node name="Door" parent="Сцена/Building/RoomDoor4" unique_id=369472719 instance=ExtResource("7_ntc4i")]
+transform = Transform3D(0.09999999, 0, 0, 0, 2.3, 0, 0, 0, 0.09999999, 0.6004882, 0.021020412, 0.44587326)
+
+[node name="MediumWindow4" type="CSGBox3D" parent="Сцена/Building" unique_id=2039671415]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -33.769127, 6.8861647, 13.135988)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow11" type="CSGBox3D" parent="Сцена/Building" unique_id=823770923]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -37.269127, 6.8861647, 13.135988)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow12" type="CSGBox3D" parent="Сцена/Building" unique_id=1091639083]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -40.269127, 6.8861647, 13.135988)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow13" type="CSGBox3D" parent="Сцена/Building" unique_id=1196032774]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -43.769127, 6.8861647, 13.135989)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="RoomOuterWall6" type="CSGBox3D" parent="Сцена/Building" unique_id=1619319910]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -39.57869, 7.727272, -6.292587)
+use_collision = true
+size = Vector3(40, 10, 23)
+
+[node name="RoomInnerWall" type="CSGBox3D" parent="Сцена/Building/RoomOuterWall6" unique_id=232567237]
+transform = Transform3D(0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0, 0.9090909, 0, 0, 0)
+operation = 2
+use_collision = true
+size = Vector3(40, 10, 23)
+material = SubResource("StandardMaterial3D_h3xc6")
+
+[node name="RoomDoor5" type="CSGBox3D" parent="Сцена/Building" unique_id=2111932634]
+transform = Transform3D(1.1921287e-07, 0, -0.9090909, 0, 0.9090909, 0, 0.9090909, 0, 1.1921287e-07, -29.557467, 6.500186, -5.5055585)
+operation = 2
+size = Vector3(1.268, 2.3, 4)
+
+[node name="DoorLocked" parent="Сцена/Building/RoomDoor5" unique_id=1403210390 instance=ExtResource("8_rnaij")]
+transform = Transform3D(0.09999999, 0, 0, 0, 2.3, 0, 0, 0, 0.09999999, 0.6374564, 0.23638344, 0.4418602)
+
+[node name="MediumWindow14" type="CSGBox3D" parent="Сцена/Building" unique_id=181724519]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -33.769127, 6.8861647, -11.864012)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow15" type="CSGBox3D" parent="Сцена/Building" unique_id=1998492200]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -37.269127, 6.8861647, -11.864012)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow16" type="CSGBox3D" parent="Сцена/Building" unique_id=144764270]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -40.269127, 6.8861647, -11.864012)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
+
+[node name="MediumWindow17" type="CSGBox3D" parent="Сцена/Building" unique_id=267158584]
+transform = Transform3D(-0.909091, 0, -3.1790103e-07, 0, 5.681817, 0, 7.947526e-08, 0, -3.636364, -43.769127, 6.8861647, -11.864011)
+operation = 2
+size = Vector3(2, 0.3, 0.3)
 
 [node name="Объекты" type="Node" parent="." unique_id=1128602655]
 
 [node name="Radio" parent="Объекты" unique_id=1068241980 instance=ExtResource("4_h3xc6")]
-transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 0.25968814, 1.2201098, 16.63702)
+transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 0.25968814, 1.1954125, 16.63702)
 
 [node name="Key" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
-transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.24993157, 1.0795966, 16.338425)
+transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.24993157, 1.0548993, 16.338425)
 
 [node name="Money" parent="Объекты" unique_id=16297360 instance=ExtResource("7_h3xc6")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.7551005, 1.0866728, 16.685175)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.7551005, 1.0619755, 16.685175)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Объекты" unique_id=1620990080]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.4, 0)
-light_color = Color(1, 0.9012695, 0.8750766, 1)
-light_energy = 10.0
+[node name="Освещение" type="Node3D" parent="Объекты" unique_id=465821152]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Объекты/Освещение" unique_id=1620990080]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 10.900001, 8.4, 12.700001)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
 shadow_enabled = true
 spot_range = 15.0
-spot_angle = 50.0
+spot_angle = 70.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Объекты/Освещение" unique_id=2117450477]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.599999, 8.4, 12.700001)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Объекты/Освещение" unique_id=600281069]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 10.900001, 8.4, -11.4)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Объекты/Освещение" unique_id=593060231]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.599999, 8.4, -11.4)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Объекты/Освещение" unique_id=1443389237]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, -0.17510033, 9.8666725, 0.005174637)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Объекты/Освещение" unique_id=2064657789]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, 12.4249, 9.8666725, 0.005174637)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Объекты/Освещение" unique_id=1115847755]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, -12.3751, 9.8666725, 0.005174637)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Объекты/Освещение" unique_id=547344606]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, -0.17510033, 9.8666725, -11.194825)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Объекты/Освещение" unique_id=474080832]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, -0.17510033, 9.8666725, 12.505175)
+light_color = Color(1, 0.9383199, 0.8539381, 1)
+light_energy = 15.0
+light_volumetric_fog_energy = 0.3
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 70.0
+
+[node name="Bookshelfs" type="Node3D" parent="Объекты" unique_id=1351824152]
+
+[node name="BookShelf" parent="Объекты/Bookshelfs" unique_id=1731136523 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 22)
+
+[node name="BookShelf2" parent="Объекты/Bookshelfs" unique_id=1127179925 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.5, 22)
+
+[node name="BookShelf5" parent="Объекты/Bookshelfs" unique_id=603296132 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.5, 22)
+
+[node name="BookShelf8" parent="Объекты/Bookshelfs" unique_id=1699582878 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.5, 22)
+
+[node name="BookShelf17" parent="Объекты/Bookshelfs" unique_id=995215243 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.5, 22)
+
+[node name="BookShelf20" parent="Объекты/Bookshelfs" unique_id=798003252 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.5, 1.5, 7.5)
+
+[node name="BookShelf23" parent="Объекты/Bookshelfs" unique_id=1112806593 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.5, 4.5, 7.5)
+
+[node name="BookShelf36" parent="Объекты/Bookshelfs" unique_id=686437331 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 1.5, 7.5)
+
+[node name="BookShelf37" parent="Объекты/Bookshelfs" unique_id=1197361989 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8, 4.5, 7.5)
+
+[node name="BookShelf38" parent="Объекты/Bookshelfs" unique_id=1874180067 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 7.5, 1.5, 7.5)
+
+[node name="BookShelf39" parent="Объекты/Bookshelfs" unique_id=43458830 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 7.5, 4.5, 7.5)
+
+[node name="BookShelf40" parent="Объекты/Bookshelfs" unique_id=760671499 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14, 1.5, 7.5)
+
+[node name="BookShelf41" parent="Объекты/Bookshelfs" unique_id=1760998029 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14, 4.5, 7.5)
+
+[node name="BookShelf42" parent="Объекты/Bookshelfs" unique_id=2100515982 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.633334, 1.5, -15.200001)
+
+[node name="BookShelf43" parent="Объекты/Bookshelfs" unique_id=1700488133 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 1.5, -15.200001)
+
+[node name="BookShelf44" parent="Объекты/Bookshelfs" unique_id=2132342023 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.366666, 1.5, -15.700001)
+
+[node name="BookShelf45" parent="Объекты/Bookshelfs" unique_id=1636334010 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.366669, 1.5, -15.700003)
+
+[node name="BookShelf46" parent="Объекты/Bookshelfs" unique_id=655923627 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 14.133332, 1.5, -5.2)
+
+[node name="BookShelf47" parent="Объекты/Bookshelfs" unique_id=181420922 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 14.133332, 4.5, -5.2)
+
+[node name="BookShelf48" parent="Объекты/Bookshelfs" unique_id=803649905 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 7.633333, 1.5, -5.2000003)
+
+[node name="BookShelf49" parent="Объекты/Bookshelfs" unique_id=1642833141 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 7.633333, 4.5, -5.2000003)
+
+[node name="BookShelf50" parent="Объекты/Bookshelfs" unique_id=1039043182 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -7.8666677, 1.5, -5.2000017)
+
+[node name="BookShelf51" parent="Объекты/Bookshelfs" unique_id=405604226 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -7.8666677, 4.5, -5.2000017)
+
+[node name="BookShelf52" parent="Объекты/Bookshelfs" unique_id=1764148558 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -14.366669, 1.5, -5.200002)
+
+[node name="BookShelf53" parent="Объекты/Bookshelfs" unique_id=2109433051 instance=ExtResource("10_gthg3")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -14.366669, 4.5, -5.200002)
+
+[node name="BookShelf54" parent="Объекты/Bookshelfs" unique_id=1654787889 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.366666, 4.5, -15.700001)
+
+[node name="BookShelf55" parent="Объекты/Bookshelfs" unique_id=1014663586 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.366669, 4.5, -15.700003)
+
+[node name="BookShelf56" parent="Объекты/Bookshelfs" unique_id=249012561 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.633334, 4.5, -15.200001)
+
+[node name="BookShelf57" parent="Объекты/Bookshelfs" unique_id=1964749599 instance=ExtResource("10_gthg3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 4.5, -15.200001)
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
 [node name="Player" parent="Персонажи" unique_id=342963380 instance=ExtResource("1_3qnke")]
 transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 0.117, 0, -21.549)
+safe_margin = 0.005
 crouch_head_y = -0.1
 
 [node name="Hlopchik" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
