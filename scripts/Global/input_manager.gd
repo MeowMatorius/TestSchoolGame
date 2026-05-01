@@ -4,9 +4,11 @@ signal pause_requested
 signal interaction_pressed
 signal skip_pressed
 
+var is_in_choice_menu: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	SignalBus.entered_choice_menu.connect(func(state): is_in_choice_menu = state)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -26,7 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 					interaction_pressed.emit()
 					
 			GameManager.GameState.DIALOGUE:
-				if event.is_action_pressed("skip"):
+				if event.is_action_pressed("skip") and is_in_choice_menu == false:
+					print('Жоска нажал потому что можна')
 					skip_pressed.emit()
 
 

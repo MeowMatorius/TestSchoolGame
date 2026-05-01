@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dmm5yukxklihk"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_dfij5"]
+
+[resource]
+script = ExtResource("1_dfij5")
+character_name = "Хлопчик"
+text = "Хрю-хрю-хрю"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

@@ -4,17 +4,19 @@ extends Interactable
 @export var dialogue_stage: String = "dialogue_1"
 @export var dialogue_camera: PhantomCamera3D
 @export var player_teleport_point: Node3D
+@export var dialogue: DialogueLine
 
 
 func _ready() -> void:
 	highlighted = false
-	DialogueManager.next_dialogue_stage.connect(change_dialogue_stage)
+#	DialogueManager.next_dialogue_stage.connect(change_dialogue_stage)
 
 
 
 func interact(object):
 	print("интерактнул жоска")
-	SignalBus.is_talking.emit(internal_name, dialogue_stage, dialogue_camera)
+	print(dialogue)
+	SignalBus.is_talking.emit(internal_name, dialogue_stage, dialogue_camera, dialogue)
 
 
 func get_prompt() -> String:
