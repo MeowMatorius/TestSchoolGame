@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://ht5bgdh7kv6v" path="res://assets/textures/greybox_textures/greybox_red_grid.png" id="1_mik8v"]
 
 [resource]
+resource_local_to_scene = true
 albedo_texture = ExtResource("1_mik8v")
 uv1_scale = Vector3(5, 5, 5)

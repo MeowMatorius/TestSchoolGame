@@ -43,6 +43,8 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 player="Игрок"
 collectable=""
+player_ui=""
+player_camera=""
 
 [input]
 
