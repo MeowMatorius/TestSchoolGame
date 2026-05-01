@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://biyqmoujwyvh6"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_dn7g5"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="2_2eowm"]
+
+[resource]
+script = ExtResource("1_dn7g5")
+character_name = "Хлопчик"
+text = "Вот, держи"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

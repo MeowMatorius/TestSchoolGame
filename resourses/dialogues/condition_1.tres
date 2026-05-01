@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConditionType" format=3 uid="uid://dbegw2m8slk7t"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="2_4lh8s"]
+[ext_resource type="Resource" uid="uid://bt2werxjn26vd" path="res://resourses/interactable/items/money.tres" id="2_pu4ps"]
+
+[resource]
+script = ExtResource("2_4lh8s")
+item = ExtResource("2_pu4ps")
+item_quantity = 100
+metadata/_custom_type_script = "uid://cp032c8l2hpry"

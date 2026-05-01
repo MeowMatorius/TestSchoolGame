@@ -27,13 +27,6 @@ func enter_dialogue_state(internal_name, dialogue_stage, dialogue_camera, dialog
 
 func display_line(dialogue_line):
 	print(dialogue_line, dialogue_line.choices, dialogue_line.text)
-	count+=1
-	print('Вызвали диалог ', count, ' раз')
-	var stack = get_stack()
-	if stack.size() > 1:
-		var caller = stack[1] # Индекс 1 — это тот, кто вызвал эту функцию
-		print("Вызвано из скрипта: ", caller.source)
-		print("В функции: ", caller.function)
 	started_talking.emit(dialogue_line.character_name, dialogue_line.text)
 	if dialogue_line.choices.size() == 0:
 		await InputManager.skip_pressed

@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dmm5yukxklihk"]
 
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_dfij5"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="2_f2rfa"]
+[ext_resource type="Resource" uid="uid://bfcnm3ol7ekw3" path="res://resourses/dialogues/line8.tres" id="3_3en6t"]
 
 [resource]
 script = ExtResource("1_dfij5")
-character_name = "Хлопчик"
-text = "Хрю-хрю-хрю"
+text = "У вернусь позже"
+next_dialogue = ExtResource("3_3en6t")
 metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_65el7"]
 [ext_resource type="Resource" uid="uid://c8l5y8gmped8e" path="res://resourses/dialogues/line5.tres" id="2_8h51w"]
 [ext_resource type="Resource" uid="uid://dmm5yukxklihk" path="res://resourses/dialogues/line6.tres" id="3_5c46m"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="4_5c46m"]
 
 [resource]
 script = ExtResource("1_65el7")
 character_name = "Хлопчик"
-text = "Меня зовут Х-ы-хы-ы-х-ХОХЛЫ"
-choices = Array[String](["Тут таких не любят", "Хрю-хрю"])
-choices_branches = Array[ExtResource("1_65el7")]([ExtResource("2_8h51w"), ExtResource("3_5c46m")])
+text = "Уменя есть ПИВО. Могу продать его тебе за 100 монет"
+choices = Array[ExtResource("1_65el7")]([ExtResource("2_8h51w"), ExtResource("3_5c46m")])
 metadata/_custom_type_script = "uid://c2uc01bjiw2hw"
