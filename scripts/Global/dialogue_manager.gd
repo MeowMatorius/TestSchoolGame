@@ -6,6 +6,7 @@ var dialogue_data: Array[Variant] = []
 var current_step: int = 0
 var path: String
 var choices_array: Array[Variant] = []
+var count:int = 0
 
 #@export var dialogue_line: DialogueLine
 #@export var dialogue_choice: DialogueChoice
@@ -18,19 +19,36 @@ func _ready() -> void:
 	SignalBus.is_talking.connect(enter_dialogue_state)
 	
 func enter_dialogue_state(internal_name, dialogue_stage, dialogue_camera, dialogue_line: DialogueLine):
+	
 	GameManager.current_game_state = GameManager.GameState.DIALOGUE
 	GameManager.current_game_camera = dialogue_camera
-	display_line(dialogue_camera, dialogue_line)
-	
-func display_line(dialogue_camera, dialogue_line):
+	display_line(dialogue_line)
+
+
+func display_line(dialogue_line):
+	print(dialogue_line, dialogue_line.choices, dialogue_line.text)
+	count+=1
+	print('Вызвали диалог ', count, ' раз')
+	var stack = get_stack()
+	if stack.size() > 1:
+		var caller = stack[1] # Индекс 1 — это тот, кто вызвал эту функцию
+		print("Вызвано из скрипта: ", caller.source)
+		print("В функции: ", caller.function)
 	started_talking.emit(dialogue_line.character_name, dialogue_line.text)
-	await InputManager.skip_pressed
+	if dialogue_line.choices.size() == 0:
+		await InputManager.skip_pressed
+	
 	if dialogue_line.next_dialogue != null:
-		display_line(dialogue_camera, dialogue_line.next_dialogue)
+		display_line(dialogue_line.next_dialogue)
+	elif dialogue_line.choices.size() != 0:
+		start_choosing.emit(dialogue_line)
 	else:
 		GameManager.current_game_state = GameManager.GameState.DEFAULT
 		GameManager.current_game_camera = GameManager.player_camera
 	
+
+func _on_choice_selected(next_node_id):
+	display_line(next_node_id)
 
 #func _on_next_pressed(current_line: DialogueLine):
 #	if current_line.next_dialogue:
