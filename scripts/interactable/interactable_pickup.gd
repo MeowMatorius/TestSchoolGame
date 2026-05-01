@@ -14,4 +14,7 @@ func interact(object):
 
 
 func get_prompt() -> String:
-	return "Взять: " + item_data.name
+	if !item_data.unique:
+		return "Взять: " + item_data.name + " (" + str(item_data.quantity) + ")"
+	else:
+		return "Взять: " + item_data.name

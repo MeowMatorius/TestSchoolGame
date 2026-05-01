@@ -39,7 +39,7 @@ dof_blur_far_distance = 20.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_8gixj"]
+[sub_resource type="Resource" id="Resource_pln1h"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -400,8 +400,8 @@ transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957,
 [node name="Key" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
 transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.24993157, 1.0548993, 16.338425)
 
-[node name="Money" parent="Объекты" unique_id=16297360 instance=ExtResource("7_h3xc6")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.7551005, 1.0619755, 16.685175)
+[node name="Money (11)" parent="Объекты" unique_id=16297360 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 15.685175)
 
 [node name="Освещение" type="Node3D" parent="Объекты" unique_id=465821152]
 
@@ -575,20 +575,23 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.63
 [node name="BookShelf57" parent="Объекты/Bookshelfs" unique_id=1964749599 instance=ExtResource("10_gthg3")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 4.5, -15.200001)
 
-[node name="Money2" parent="Объекты" unique_id=1137028239 instance=ExtResource("7_h3xc6")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.9402585, 0.18932807, 20.75747)
+[node name="Money (100)" parent="Объекты" unique_id=1137028239 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
-[node name="InteractComponent" parent="Объекты/Money2" index="4" unique_id=104121503]
-item_data = SubResource("Resource_8gixj")
+[node name="InteractComponent" parent="Объекты/Money (100)" index="4" unique_id=104121503]
+item_data = SubResource("Resource_pln1h")
+
+[node name="Key2" parent="Объекты" unique_id=54708090 instance=ExtResource("5_wtsjf")]
+transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -1.2499316, 1.0548993, 15.838425)
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
 [node name="Player" parent="Персонажи" unique_id=342963380 instance=ExtResource("1_3qnke")]
-transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 0.117, 0, -21.549)
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 0.117, 0, 10.451)
 safe_margin = 0.005
 crouch_head_y = -0.1
 
 [node name="Hlopchik" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
-transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 19.061)
+transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 14.061001)
 
-[editable path="Объекты/Money2"]
+[editable path="Объекты/Money (100)"]
