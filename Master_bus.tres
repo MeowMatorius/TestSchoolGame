@@ -26,6 +26,11 @@ release_ms = 947.0
 resource_name = "Record"
 format = 0
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_fb4du"]
+resource_name = "Reverb"
+room_size = 0.7
+hipass = 0.3
+
 [resource]
 bus/0/volume_db = -29.225784
 bus/0/effect/0/effect = SubResource("AudioEffectChorus_j3pel")
@@ -38,3 +43,5 @@ bus/0/effect/3/effect = SubResource("AudioEffectCompressor_j3pel")
 bus/0/effect/3/enabled = true
 bus/0/effect/4/effect = SubResource("AudioEffectRecord_j3pel")
 bus/0/effect/4/enabled = true
+bus/0/effect/5/effect = SubResource("AudioEffectReverb_fb4du")
+bus/0/effect/5/enabled = true
