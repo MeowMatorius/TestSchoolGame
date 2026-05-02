@@ -3,5 +3,6 @@
 [ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="1_52pyr"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_52pyr")
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
