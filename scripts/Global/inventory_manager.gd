@@ -33,7 +33,6 @@ func remove_item(item_data_name: String) -> void:
 	_refresh_inventory()
 
 
-# Выносим общую логику в отдельный метод
 func _refresh_inventory():
 	update_inventory.emit(inventory_items)
 	print("Инвентарь обновлен: ", inventory_items.keys())
