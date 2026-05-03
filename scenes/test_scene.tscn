@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/interactable/door.tscn" id="7_ntc4i"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="8_rnaij"]
+[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://assets/textures/greybox_textures/greybox_green_grid.png" id="10_8gixj"]
 [ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://resourses/interactable/items/item_data.gd" id="12_pln1h"]
@@ -43,6 +44,11 @@ dof_blur_far_distance = 20.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf2sn"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("10_8gixj")
+uv1_scale = Vector3(5, 5, 5)
+
 [sub_resource type="Resource" id="Resource_pln1h"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
@@ -54,12 +60,14 @@ metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
 
 [node name="TestScene" type="Node" unique_id=1532311243]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=516208645 groups=["world_env"]]
+[node name="GlobalIllumination" type="Node" parent="." unique_id=577259429]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="GlobalIllumination" unique_id=516208645 groups=["world_env"]]
 environment = SubResource("Environment_s36qc")
 camera_attributes = SubResource("CameraAttributesPractical_s36qc")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1489697784]
-transform = Transform3D(-0.99415106, 0.024294581, -0.105231375, 0, 0.97437, 0.22495098, 0.10799944, 0.22363527, -0.9686706, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="GlobalIllumination" unique_id=1489697784]
+transform = Transform3D(-0.99415094, 0.024294585, -0.10523141, 0, 0.9743701, 0.22495103, 0.10799942, 0.2236353, -0.96867096, 0, 0, 0)
 visible = false
 light_color = Color(1, 0.95686275, 0.8980392, 1)
 light_energy = 2.0
@@ -69,13 +77,13 @@ shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_blur = 0.0
 
-[node name="VoxelGI" type="VoxelGI" parent="." unique_id=1533978709]
+[node name="VoxelGI" type="VoxelGI" parent="GlobalIllumination" unique_id=1533978709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 visible = false
 size = Vector3(55, 15, 55)
 data = ExtResource("2_h3xc6")
 
-[node name="LightmapGI" type="LightmapGI" parent="." unique_id=225102019]
+[node name="LightmapGI" type="LightmapGI" parent="GlobalIllumination" unique_id=225102019]
 visible = false
 
 [node name="Сцена (Статичное)" type="Node" parent="." unique_id=215577381]
@@ -164,7 +172,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 6.63
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 4.5, -15.200001)
 
 [node name="Освещение" type="Node3D" parent="Сцена (Статичное)" unique_id=465821152]
-visible = false
 
 [node name="Внутри" type="Node3D" parent="Сцена (Статичное)/Освещение" unique_id=658528186]
 
@@ -584,6 +591,7 @@ size = Vector3(2, 0.3, 1)
 
 [node name="CorridorLDoor" type="CSGBox3D" parent="Сцена (Статичное)/Building" unique_id=1328084003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 6.502241, 0.5)
+visible = false
 operation = 2
 size = Vector3(6, 2.1, 2)
 
@@ -806,6 +814,12 @@ smooth_faces = false
 [node name="Radio" parent="Объекты" unique_id=1068241980 instance=ExtResource("4_h3xc6")]
 transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 0.25968814, 1.1954125, 16.63702)
 
+[node name="boombox" parent="Объекты/Radio" index="0" unique_id=536735608]
+material_override = SubResource("StandardMaterial3D_hf2sn")
+
+[node name="EventComponent" parent="Объекты/Radio" index="5" unique_id=618681666 node_paths=PackedStringArray("event_object")]
+event_object = NodePath("../../../Сцена (Статичное)/Building/CorridorLDoor")
+
 [node name="RedKey" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
 transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.24993157, 1.0548993, 16.338425)
 
@@ -831,4 +845,5 @@ crouch_head_y = -0.1
 [node name="Hlopchik" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
 transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 14.061001)
 
+[editable path="Объекты/Radio"]
 [editable path="Объекты/Money2"]

@@ -4,6 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://assets/music/falling_snow.mp3" id="2_e02vc"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="3_7h80l"]
 [ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://resourses/interactable/switch/button.tres" id="4_e02vc"]
+[ext_resource type="Script" uid="uid://c7qguf5bkoi7w" path="res://scenes/interactable/event_component.gd" id="5_8abcd"]
+[ext_resource type="Resource" uid="uid://d1n8uxxy4k5g3" path="res://resourses/events/triggeredRadio.tres" id="6_srljc"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_7h80l"]
 
@@ -48,3 +50,7 @@ libraries/ = SubResource("AnimationLibrary_cjal3")
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1529388057]
 script = ExtResource("3_7h80l")
 switch_data = ExtResource("4_e02vc")
+
+[node name="EventComponent" type="Node3D" parent="." unique_id=618681666]
+script = ExtResource("5_8abcd")
+event_data = ExtResource("6_srljc")

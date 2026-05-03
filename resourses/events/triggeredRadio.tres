@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventsRes" format=3 uid="uid://d1n8uxxy4k5g3"]
+
+[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://resourses/events/events_res.gd" id="1_dv8cr"]
+
+[resource]
+script = ExtResource("1_dv8cr")
+name = "TriggeredRadio"
+metadata/_custom_type_script = "uid://78dunhvnphhq"
