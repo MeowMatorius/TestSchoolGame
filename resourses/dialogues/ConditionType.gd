@@ -5,9 +5,7 @@ class_name ConditionType
 
 @export var item: ItemData
 @export var item_quantity: int
-
-
-
+@export var item_given: ItemData
 
 
 func is_met() -> bool:

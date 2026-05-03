@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cebxk55fsjy8k"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_3qnke"]
-[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="1_s36qc"]
-[ext_resource type="VoxelGIData" uid="uid://dp6ue1yv8x1ds" path="res://resourses/settings/test_scene.VoxelGI_data.res" id="2_h3xc6"]
+[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="1_s36qc"]
+[ext_resource type="VoxelGIData" uid="uid://dp6ue1yv8x1ds" path="res://resourses/Settings/test_scene.VoxelGI_data.res" id="2_h3xc6"]
 [ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
 [ext_resource type="Material" uid="uid://16kb6ih4kwxl" path="res://assets/materials/white_mat.tres" id="3_6qxox"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="3_h3xc6"]
