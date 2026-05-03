@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://dqkvw4v07kkll"]
+
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/quests/quest_data.gd" id="1_6i2wf"]
+
+[resource]
+script = ExtResource("1_6i2wf")
+description = "Поговорить с хлопчиком"
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"
