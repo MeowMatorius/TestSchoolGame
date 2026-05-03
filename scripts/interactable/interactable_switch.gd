@@ -19,7 +19,7 @@ func interact(object):
 func unlock():
 	if switch_data.item_needed_to_open in InventoryManager.inventory_items:
 		switch_data.lock_state = switch_data.LockState.UNLOCKED
-		InventoryManager.remove_item(switch_data.item_needed_to_open)
+#		InventoryManager.remove_item(switch_data.item_needed_to_open)
 
 
 func activate(object):

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/interactable/door.tscn" id="7_ntc4i"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="8_rnaij"]
-[ext_resource type="PackedScene" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
+[ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://resourses/interactable/items/item_data.gd" id="12_pln1h"]
 
