@@ -15,11 +15,10 @@ func interact(object):
 		switch(object)
 
 
-
 func unlock():
-	if switch_data.item_needed_to_open in InventoryManager.inventory_items:
+	if switch_data.item_needed_to_open.name in InventoryManager.inventory_items:
 		switch_data.lock_state = switch_data.LockState.UNLOCKED
-#		InventoryManager.remove_item(switch_data.item_needed_to_open)
+		InventoryManager.remove_item(switch_data.item_needed_to_open, switch_data.quantity_needed_to_open)
 
 
 func activate(object):
@@ -64,8 +63,8 @@ func switch_off(object):
 func get_prompt() -> String:
 	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
-		var has_item: bool = switch_data.item_needed_to_open in InventoryManager.inventory_items
-		return "Требуется: " + switch_data.item_needed_to_open if not has_item else "Открыть с помощью: " + switch_data.item_needed_to_open
+		var has_item: bool = switch_data.item_needed_to_open.name in InventoryManager.inventory_items
+		return "Требуется: " + switch_data.item_needed_to_open.name if not has_item else "Открыть с помощью: " + switch_data.item_needed_to_open.name
 	
 	if switch_data.lock_state == switch_data.LockState.BROKEN: return "Замок сломан"
 	

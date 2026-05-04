@@ -4,20 +4,21 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_ebec5"]
 [ext_resource type="Script" uid="uid://cv51immeinjva" path="res://player/player_raycast.gd" id="3_qaoyu"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_yllr7"]
-[ext_resource type="LabelSettings" uid="uid://cgcktd00cqwm4" path="res://resourses/Settings/ui/items_label_settings.tres" id="4_boad6"]
+[ext_resource type="LabelSettings" uid="uid://cgcktd00cqwm4" path="res://resourses/settings/ui/items_label_settings.tres" id="4_boad6"]
 [ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_ebec5"]
-[ext_resource type="LabelSettings" uid="uid://br0uhmjh32wiy" path="res://resourses/Settings/ui/prompt_label_settings.tres" id="4_rgyib"]
+[ext_resource type="LabelSettings" uid="uid://br0uhmjh32wiy" path="res://resourses/settings/ui/prompt_label_settings.tres" id="4_rgyib"]
 [ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://player/player_ui/player_ui_items.gd" id="5_4fv23"]
 [ext_resource type="Script" uid="uid://qgq50dq2seym" path="res://player/player_ui/player_ui_item_slot.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://player/player_ui/player_ui_dialogues.gd" id="6_gql8a"]
-[ext_resource type="StyleBox" uid="uid://ba0cbqsglev17" path="res://resourses/Settings/ui/panel_style_box_flat.tres" id="6_hg6s5"]
+[ext_resource type="StyleBox" uid="uid://ba0cbqsglev17" path="res://resourses/settings/ui/panel_style_box_flat.tres" id="6_hg6s5"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_yllr7"]
 [ext_resource type="Script" uid="uid://k0ay4bgxrais" path="res://scripts/pause_menu/continue_button.gd" id="8_32hag"]
 [ext_resource type="Script" uid="uid://8rbyfm6075b3" path="res://scripts/pause_menu/exit_button.gd" id="8_wodsf"]
 [ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://scripts/pause_menu/settings_menu.gd" id="9_c35mf"]
 [ext_resource type="Script" uid="uid://ds506bf8odr0k" path="res://player/player_ui/player_ui_reticle.gd" id="14_kb6p2"]
-[ext_resource type="Theme" uid="uid://b1fkc7odqd2c1" path="res://resourses/Settings/ui/main_ui_theme.tres" id="16_tqiix"]
+[ext_resource type="Theme" uid="uid://b1fkc7odqd2c1" path="res://resourses/settings/ui/main_ui_theme.tres" id="16_tqiix"]
 [ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://assets/icons/ArrowRight.svg" id="17_e7oew"]
+[ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="19_65viv"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://player/player_ui/player_ui_tooltip.gd" id="19_c35mf"]
 
 [sub_resource type="Resource" id="Resource_kb6p2"]
@@ -145,14 +146,23 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bjvpn")
 
-[node name="Player_UI" type="MarginContainer" parent="UserInterface/VBoxContainer" unique_id=357616649 groups=["player_ui"]]
+[node name="Player_UI" type="Control" parent="UserInterface/VBoxContainer" unique_id=1940152864 groups=["player_ui"]]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=634695021]
 process_mode = 3
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
 
 [node name="Background" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer" unique_id=1735922625]
 layout_mode = 1
@@ -161,6 +171,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x7c3f")
 
 [node name="TabBar" type="TabContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer" unique_id=1461969754]
@@ -171,6 +182,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_behavior_recursive = 2
 theme_override_constants/side_margin = 0
 theme_override_font_sizes/font_size = 20
 tab_alignment = 2
@@ -1486,7 +1498,12 @@ metadata/_tab_name = "Локации"
 
 [node name="DialoguesContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=1096310796 node_paths=PackedStringArray("speaker_name", "speaker_line", "choice_ui")]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_gql8a")
 speaker_name = NodePath("MarginContainer/Dialogue/SpeakerName")
@@ -1715,7 +1732,12 @@ autowrap_mode = 3
 
 [node name="DefaultContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=122634425]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 2
 
@@ -1735,7 +1757,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-mouse_behavior_recursive = 2
 
 [node name="Reticle" type="Control" parent="UserInterface/VBoxContainer/Player_UI/DefaultContainer/ReticleContainer" unique_id=1330175966]
 layout_mode = 2
@@ -1752,12 +1773,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -72.0
-offset_top = 35.58499
+offset_top = 35.98999
 offset_right = 72.0
-offset_bottom = 63.58499
+offset_bottom = 63.98999
 grow_horizontal = 2
 grow_vertical = 2
-mouse_behavior_recursive = 2
 theme_override_font_sizes/font_size = 114
 text = "Использовать"
 label_settings = ExtResource("4_rgyib")
@@ -1776,13 +1796,196 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 
-[node name="Tooltip" type="Label" parent="UserInterface/VBoxContainer/Player_UI" unique_id=1874871750]
+[node name="ItemsTooltips" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI" unique_id=1764051406]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("19_c35mf")
+
+[node name="ItemTooltip" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=115010586]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-size_flags_vertical = 0
-text = "hui"
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip" unique_id=980436236]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("19_65viv")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip" unique_id=1874871750]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("19_c35mf")
+
+[node name="ItemTooltip2" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=722059675]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip2" unique_id=1501578387]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("19_65viv")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip2" unique_id=1027614680]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = ExtResource("4_boad6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip3" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1423655296]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip3" unique_id=619128562]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("19_65viv")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip3" unique_id=1357696061]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = ExtResource("4_boad6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip4" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1342421215]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip4" unique_id=835613875]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("19_65viv")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip4" unique_id=242133493]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = ExtResource("4_boad6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip5" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1144205615]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip5" unique_id=872653811]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("19_65viv")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip5" unique_id=711431252]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = ExtResource("4_boad6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip6" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1306324110]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip6" unique_id=643310085]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("19_65viv")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip6" unique_id=185620185]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = ExtResource("4_boad6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LetterboxDown" type="Panel" parent="UserInterface/VBoxContainer" unique_id=518494400]
 visible = false

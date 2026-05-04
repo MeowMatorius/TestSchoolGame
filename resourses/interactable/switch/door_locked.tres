@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="SwitchData" format=3 uid="uid://d4grfj7jekajm"]
 
 [ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="1_ht65o"]
+[ext_resource type="Resource" uid="uid://b3kgm5cdrh0ak" path="res://resourses/interactable/items/key_red.tres" id="1_y75jl"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_ht65o")
 lock_state = 0
-item_needed_to_open = "Red Key"
+item_needed_to_open = ExtResource("1_y75jl")
+quantity_needed_to_open = 1
 metadata/_custom_type_script = "uid://b00l74oqq5jru"

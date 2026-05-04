@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cebxk55fsjy8k"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_3qnke"]
-[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="1_s36qc"]
-[ext_resource type="VoxelGIData" uid="uid://dp6ue1yv8x1ds" path="res://resourses/Settings/test_scene.VoxelGI_data.res" id="2_h3xc6"]
+[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="1_s36qc"]
+[ext_resource type="VoxelGIData" uid="uid://dp6ue1yv8x1ds" path="res://resourses/settings/test_scene.VoxelGI_data.res" id="2_h3xc6"]
 [ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
 [ext_resource type="Material" uid="uid://16kb6ih4kwxl" path="res://assets/materials/white_mat.tres" id="3_6qxox"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="3_h3xc6"]
@@ -44,12 +44,39 @@ dof_blur_far_distance = 20.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf2sn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gixj"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("10_8gixj")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_pln1h"]
+[sub_resource type="Resource" id="Resource_hf2sn"]
+resource_local_to_scene = true
+script = ExtResource("12_pln1h")
+type = "Money"
+name = "Money"
+quantity = 100
+icon = ExtResource("11_u0xbq")
+metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
+
+[sub_resource type="Resource" id="Resource_qq5q4"]
+resource_local_to_scene = true
+script = ExtResource("12_pln1h")
+type = "Money"
+name = "Money"
+quantity = 100
+icon = ExtResource("11_u0xbq")
+metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
+
+[sub_resource type="Resource" id="Resource_gah1j"]
+resource_local_to_scene = true
+script = ExtResource("12_pln1h")
+type = "Money"
+name = "Money"
+quantity = 100
+icon = ExtResource("11_u0xbq")
+metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
+
+[sub_resource type="Resource" id="Resource_ap2hy"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -815,7 +842,7 @@ smooth_faces = false
 transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 0.25968814, 1.1954125, 16.63702)
 
 [node name="boombox" parent="Объекты/Radio" index="0" unique_id=536735608]
-material_override = SubResource("StandardMaterial3D_hf2sn")
+material_override = SubResource("StandardMaterial3D_8gixj")
 
 [node name="EventComponent" parent="Объекты/Radio" index="5" unique_id=618681666 node_paths=PackedStringArray("event_object")]
 event_object = NodePath("../../../Сцена (Статичное)/Building/CorridorLDoor")
@@ -833,7 +860,34 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
 [node name="InteractComponent" parent="Объекты/Money2" index="4" unique_id=104121503]
-item_data = SubResource("Resource_pln1h")
+item_data = SubResource("Resource_hf2sn")
+
+[node name="Money3" parent="Объекты" unique_id=2047134644 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(0.17320508, 0, -0.1, 0, 0.2, 0, 0.1, 0, 0.17320508, 0.5248045, 1.0619755, 15.712848)
+
+[node name="Money4" parent="Объекты" unique_id=156620861 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(0.17320508, 0, -0.1, 0, 0.2, 0, 0.1, 0, 0.17320508, 2.0076475, 1.0635346, 17.229795)
+
+[node name="InteractComponent" parent="Объекты/Money4" index="4" unique_id=104121503]
+item_data = SubResource("Resource_qq5q4")
+
+[node name="Money5" parent="Объекты" unique_id=1214845557 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(-0.19318517, 0, -0.05176379, 0, 0.2, 0, 0.05176379, 0, -0.19318517, 1.382999, 1.0619755, 17.410154)
+
+[node name="Money6" parent="Объекты" unique_id=1496112892 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(-0.19318517, 0, -0.05176379, 0, 0.2, 0, 0.05176379, 0, -0.19318517, -0.73817396, 1.0635346, 17.38604)
+
+[node name="InteractComponent" parent="Объекты/Money6" index="4" unique_id=104121503]
+item_data = SubResource("Resource_gah1j")
+
+[node name="Money7" parent="Объекты" unique_id=1121777306 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(-0.19318514, 0, 0.05176382, 0, 0.19999999, 0, -0.05176382, 0, -0.19318514, 0.6225061, 1.0619755, 17.585278)
+
+[node name="Money8" parent="Объекты" unique_id=178857367 instance=ExtResource("7_h3xc6")]
+transform = Transform3D(-0.19318514, 0, 0.05176382, 0, 0.19999999, 0, -0.05176382, 0, -0.19318514, -1.2024249, 1.0635346, 16.503809)
+
+[node name="InteractComponent" parent="Объекты/Money8" index="4" unique_id=104121503]
+item_data = SubResource("Resource_ap2hy")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
@@ -847,3 +901,6 @@ transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.0174
 
 [editable path="Объекты/Radio"]
 [editable path="Объекты/Money2"]
+[editable path="Объекты/Money4"]
+[editable path="Объекты/Money6"]
+[editable path="Объекты/Money8"]
