@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c5ktdafkof5xx"]
+
+[node name="Quest" type="Node2D" unique_id=283248427]
+
+[node name="Label" type="Label" parent="." unique_id=1089065149]
+offset_right = 1151.0
+offset_bottom = 66.0
+size_flags_horizontal = 2
+text = "Какой-то квест"
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 1

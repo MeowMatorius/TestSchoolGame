@@ -1,6 +1,9 @@
 extends Node
 var active_quests: Array[QuestData] = []
 
+signal started_quest
+signal stoped_quest
+
 func _ready() -> void:
 	DialogueManager.start_quest.connect(start_quest)
 
@@ -16,7 +19,9 @@ func start_quest(quest):
 func track_quest(quest: QuestData):
 	if not active_quests.has(quest):
 		active_quests.append(quest)
+		started_quest.emit(quest)
 		print("Квест добавлен в список")
+		print(active_quests)
 		# Подписываемся на каждое условие этого квеста
 		for condition in quest.condition:
 			if not condition.is_connected("changed_status", _on_condition_updated):
@@ -35,6 +40,7 @@ func _complete_quest(quest: QuestData):
 	print("Квест выполнен: ", quest.name)
 	# Здесь можно выдать награду или удалить из списка активных
 	active_quests.erase(quest)
+	stoped_quest.emit(quest)
 		
 	
 	
