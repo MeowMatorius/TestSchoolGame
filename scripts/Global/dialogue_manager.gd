@@ -13,6 +13,7 @@ var count:int = 0
 
 signal started_talking
 signal start_choosing
+signal start_quest
 
 
 func _ready() -> void:
@@ -40,11 +41,13 @@ func display_line(dialogue_line):
 		GameManager.current_game_camera = GameManager.player_camera
 	
 
-func _on_choice_selected(next_node_id, condition):
+func _on_choice_selected(next_node_id, condition, quest):
 	for i in condition:
 		if i.item_given != null:
 			InventoryManager.add_item(i.item_given)
 			InventoryManager.remove_item(i.item.name, i.item_quantity)
+	for j in quest:
+		QuestManager.track_quest(j)
 	display_line(next_node_id)
 
 #func _on_next_pressed(current_line: DialogueLine):

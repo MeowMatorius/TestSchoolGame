@@ -44,12 +44,12 @@ dof_blur_far_distance = 20.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf2sn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gixj"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("10_8gixj")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_pln1h"]
+[sub_resource type="Resource" id="Resource_hf2sn"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -815,7 +815,7 @@ smooth_faces = false
 transform = Transform3D(0.3999628, 0, 0.30004957, 0, 0.50000006, 0, -0.30004957, 0, 0.3999628, 0.25968814, 1.1954125, 16.63702)
 
 [node name="boombox" parent="Объекты/Radio" index="0" unique_id=536735608]
-material_override = SubResource("StandardMaterial3D_hf2sn")
+material_override = SubResource("StandardMaterial3D_8gixj")
 
 [node name="EventComponent" parent="Объекты/Radio" index="5" unique_id=618681666 node_paths=PackedStringArray("event_object")]
 event_object = NodePath("../../../Сцена (Статичное)/Building/CorridorLDoor")
@@ -833,7 +833,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
 [node name="InteractComponent" parent="Объекты/Money2" index="4" unique_id=104121503]
-item_data = SubResource("Resource_pln1h")
+item_data = SubResource("Resource_hf2sn")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 

@@ -1,11 +1,14 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dmm5yukxklihk"]
 
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_dfij5"]
-[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/dialogues/ConditionType.gd" id="2_f2rfa"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/conditions/ConditionType.gd" id="2_f2rfa"]
 [ext_resource type="Resource" uid="uid://bfcnm3ol7ekw3" path="res://resourses/dialogues/line8.tres" id="3_3en6t"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/quests/quest_data.gd" id="4_jeul6"]
+[ext_resource type="Resource" uid="uid://dqkvw4v07kkll" path="res://resourses/quests/quest1.tres" id="5_702we"]
 
 [resource]
 script = ExtResource("1_dfij5")
-text = "У вернусь позже"
+text = "Я вернусь позже"
 next_dialogue = ExtResource("3_3en6t")
+quest = Array[ExtResource("4_jeul6")]([ExtResource("5_702we")])
 metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

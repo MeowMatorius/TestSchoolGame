@@ -7,3 +7,4 @@ class_name DialogueLine
 @export var next_dialogue: DialogueLine # Ссылка на следующую фразу (линейно
 @export var choices: Array[DialogueLine]
 @export var condition: Array[ConditionType] 
+@export var quest: Array[QuestData]
