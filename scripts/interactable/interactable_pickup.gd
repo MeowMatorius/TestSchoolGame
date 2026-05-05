@@ -21,7 +21,7 @@ func pick_up_item():
 
 func get_prompt() -> String:
 	if !item_data.unique:
-		return "Взять: " + item_data.name + " (" + str(item_data.quantity) + ")"
+		return "Взять: " + item_data.name + " x" + str(item_data.quantity)
 	else:
 		if InventoryManager.inventory_items.has(item_data.name):
 			if item_data.unique and InventoryManager.inventory_items[item_data.name].quantity > 0:

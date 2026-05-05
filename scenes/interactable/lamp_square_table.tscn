@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://resourses/interactable/switch/button.tres" id="2_1hvpp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b37av"]
+resource_local_to_scene = true
 resource_name = "lamp"
 albedo_color = Color(1, 0.96107477, 0.79073066, 1)
 emission = Color(1, 0.95686275, 0.8980392, 1)
@@ -41,6 +42,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cfl6r"]
+resource_local_to_scene = true
 resource_name = "lampSquareTable_Mesh lampSquareTable"
 _surfaces = [{
 "aabb": AABB(0, 0.42000002, -0.36, 0.36, 0.45, 0.36),
