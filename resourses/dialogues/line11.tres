@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://cijrelh6401yl"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_0ncxt"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/conditions/ConditionType.gd" id="2_umio1"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/quests/quest_data.gd" id="3_jq4er"]
+[ext_resource type="Resource" uid="uid://bagv5uhmbmt17" path="res://resourses/quests/quest2.tres" id="4_umio1"]
+
+[resource]
+script = ExtResource("1_0ncxt")
+character_name = "Игрок"
+text = "Так уж и быть"
+quest = Array[ExtResource("3_jq4er")]([ExtResource("4_umio1")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

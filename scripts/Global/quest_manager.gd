@@ -17,7 +17,7 @@ func start_quest(quest):
 
 # Регистрация квеста в системе
 func track_quest(quest: QuestData):
-	if not active_quests.has(quest):
+	if not active_quests.has(quest) and quest.completed == false:
 		active_quests.append(quest)
 		started_quest.emit(quest)
 		print("Квест добавлен в список")
@@ -38,6 +38,7 @@ func _on_condition_updated(condition: ConditionType):
 
 func _complete_quest(quest: QuestData):
 	print("Квест выполнен: ", quest.name)
+	quest.completed = true
 	# Здесь можно выдать награду или удалить из списка активных
 	active_quests.erase(quest)
 	stoped_quest.emit(quest)

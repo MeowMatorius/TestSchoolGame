@@ -8,3 +8,5 @@ class_name DialogueLine
 @export var choices: Array[DialogueLine]
 @export var condition: Array[ConditionType] 
 @export var quest: Array[QuestData]
+enum Answer { positive, negative } 
+@export var answer: Answer = Answer.positive

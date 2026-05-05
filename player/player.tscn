@@ -2008,7 +2008,6 @@ offset_right = 104.0
 offset_bottom = -203.0
 grow_vertical = 2
 size_flags_horizontal = 2
-script = ExtResource("21_x7c3f")
 
 [node name="Quest1" type="Label" parent="UserInterface/VBoxContainer/Player_UI/QuestContainer" unique_id=658572775]
 visible = false

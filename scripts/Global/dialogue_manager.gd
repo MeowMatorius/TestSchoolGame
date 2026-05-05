@@ -27,8 +27,10 @@ func enter_dialogue_state(internal_name, dialogue_stage, dialogue_camera, dialog
 
 
 func display_line(dialogue_line):
-	print(dialogue_line, dialogue_line.choices, dialogue_line.text)
 	started_talking.emit(dialogue_line.character_name, dialogue_line.text)
+	if dialogue_line.quest != null:
+		for i in dialogue_line.quest:
+			QuestManager.track_quest(i)
 	if dialogue_line.choices.size() == 0:
 		await InputManager.skip_pressed
 	
@@ -48,7 +50,11 @@ func _on_choice_selected(next_node_id, condition, quest):
 			InventoryManager.remove_item(i.item, i.item_quantity)
 	for j in quest:
 		QuestManager.track_quest(j)
-	display_line(next_node_id)
+	if next_node_id != null:
+		display_line(next_node_id)
+	else:
+		GameManager.current_game_state = GameManager.GameState.DEFAULT
+		GameManager.current_game_camera = GameManager.player_camera
 
 #func _on_next_pressed(current_line: DialogueLine):
 #	if current_line.next_dialogue:

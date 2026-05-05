@@ -5,7 +5,8 @@ signal is_talking(internal_name)
 signal entered_choice_menu(a)
 signal event_triggered
 
-signal quest_complited(type)
+signal quest_completed(quest)
+
 
 func _ready():
 	pass
