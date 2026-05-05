@@ -780,7 +780,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -21.5)
 
 [node name="coatRackStanding2" parent="Сцена (Статичное)/Мебель" unique_id=1471716789 instance=ExtResource("22_6gkjt")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -2, 0.40645552, -21)
+transform = Transform3D(-4.222196e-08, 0.9659258, 0.25881904, -1, -4.371139e-08, 0, 1.131334e-08, -0.25881904, 0.9659258, -2, 0.40645552, -21)
 
 [node name="table3" parent="Сцена (Статичное)/Мебель" unique_id=1179166329 instance=ExtResource("19_nlwlv")]
 transform = Transform3D(2.608, 0, -0.6056366, 0, 1, 0, 0.6988114, 0, 2.2602663, 9.5, 0, 14)
