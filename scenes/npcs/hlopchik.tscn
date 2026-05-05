@@ -2,7 +2,6 @@
 
 [ext_resource type="Material" uid="uid://dl0y0e70gh3ra" path="res://assets/materials/orange_mat.tres" id="1_5yfcu"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_gmw5h"]
-[ext_resource type="Environment" uid="uid://cuekvwuvrfdcf" path="res://resourses/Settings/camera/npc_environment.tres" id="3_74uyl"]
 [ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://resourses/dialogues/line1.tres" id="3_s2mr4"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_x68is"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_s2mr4"]
@@ -43,7 +42,6 @@ dialogue = ExtResource("3_s2mr4")
 physics_interpolation_mode = 1
 transform = Transform3D(0.9180845, 0.100237, -0.38350216, -4.656613e-10, 0.9674984, 0.25287765, 0.39638534, -0.23216306, 0.88824517, -0.18432522, 0.74016297, 0.9836064)
 top_level = true
-environment = ExtResource("3_74uyl")
 fov = 55.0
 
 [node name="PhantomCameraHost" type="Node" parent="DialogueCamera" unique_id=137878921]

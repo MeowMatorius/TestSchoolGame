@@ -25,8 +25,8 @@ func _physics_process(_delta):
 			if target_object != collider:
 				_update_target(collider)
 			
-			#text_prompt.text = "%s\n%s" % [target_object.name, target_object_interact.get_prompt()]
-			text_prompt.text = target_object_interact.get_prompt()
+			#text_prompt.text = "%s\n [%s] %s" % [target_object.name, InputManager.get_action_button_name("interact"), target_object_interact.get_prompt()]
+			text_prompt.text = "[%s]\n %s" % [InputManager.get_action_button_name("interact"), target_object_interact.get_prompt()]
 			text_prompt.visible = true
 		elif target_object:
 			_clear_target()
@@ -41,7 +41,7 @@ func _update_target(new_target):
 		if not target_object_interact.object_removed.is_connected(_clear_target):
 			target_object_interact.object_removed.connect(_clear_target)
 		
-	target_object_mesh = target_object.find_children("*", "MeshInstance3D")[0]
+	target_object_mesh = target_object.find_children("*", "MeshInstance3D", true, false)[0]
 	target_object_interact.highlight(target_object_mesh)
 
 

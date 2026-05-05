@@ -20,6 +20,7 @@ extends CharacterBody3D
 @export var camera_target: Node3D
 @export var COLLISION : CollisionShape3D
 @export var CEILING_CHECK : RayCast3D 
+@export var FLASHLIGHT : SpotLight3D
 
 @export_group("Base Movement")
 @export var base_speed := 3.0
@@ -115,6 +116,9 @@ func _unhandled_input(event: InputEvent):
 	
 	if enable_crouching and toggle_crouch and event.is_action_pressed("crouch"):
 		crouch_toggled = !crouch_toggled
+
+	if event.is_action_pressed("flashlight"):
+			FLASHLIGHT.visible = !FLASHLIGHT.visible
 
 
 func _process(delta: float):

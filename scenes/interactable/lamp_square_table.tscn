@@ -8,6 +8,7 @@ resource_name = "lamp"
 albedo_color = Color(1, 0.96107477, 0.79073066, 1)
 emission = Color(1, 0.95686275, 0.8980392, 1)
 emission_energy_multiplier = 2.0
+rim_enabled = true
 rim = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2fiy"]
@@ -74,30 +75,6 @@ points = PackedVector3Array(0, 0, -0.36, 0.36, 0, -0.36, 0, 0, 0, 0, 0.87000006,
 
 [sub_resource type="Animation" id="Animation_n0pes"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh:mesh:surface_0/material:rim_enabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_1hvpp"]
 resource_name = "activate"
@@ -160,7 +137,7 @@ _data = {
 &"deactivate": SubResource("Animation_i7yqx")
 }
 
-[node name="lampSquareTable3" type="StaticBody3D" unique_id=1372868694]
+[node name="lampSquareTable" type="StaticBody3D" unique_id=1372868694]
 collision_layer = 3
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=167483833]
