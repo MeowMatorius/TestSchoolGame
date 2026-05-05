@@ -1,24 +1,101 @@
 [gd_scene format=3 uid="uid://bsb3o0wml375t"]
 
-[ext_resource type="Material" uid="uid://b1aia1nusvhj5" path="res://assets/materials/green_mat.tres" id="1_e02vc"]
-[ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://assets/music/falling_snow.mp3" id="2_e02vc"]
+[ext_resource type="ArrayMesh" uid="uid://bmtynxjxtiuwm" path="res://assets/models/meshes/radio.res" id="1_srljc"]
+[ext_resource type="AudioStream" uid="uid://brovktqpjxhbg" path="res://assets/music/lisrim.mp3" id="2_pxlfp"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="3_7h80l"]
+[ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://assets/icons/music_note.png" id="3_pxlfp"]
 [ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://resourses/interactable/switch/button.tres" id="4_e02vc"]
 [ext_resource type="Script" uid="uid://c7qguf5bkoi7w" path="res://scenes/interactable/event_component.gd" id="5_8abcd"]
 [ext_resource type="Resource" uid="uid://d1n8uxxy4k5g3" path="res://resourses/events/triggeredRadio.tres" id="6_srljc"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_7h80l"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_5l70m"]
+size = Vector3(1, 0.6826172, 0.30371094)
+
+[sub_resource type="Curve" id="Curve_pxlfp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pxlfp"]
+curve = SubResource("Curve_pxlfp")
+
+[sub_resource type="Curve" id="Curve_a33rf"]
+_data = [Vector2(0, 0.060344815), 0.0, 0.0, 0, 0, Vector2(0.50163937, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b831e"]
+curve = SubResource("Curve_a33rf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxlfp"]
+emission_shape_scale = Vector3(0.395, 0.13, 0.16)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.29999998
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_b831e")
+alpha_curve = SubResource("CurveTexture_pxlfp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxlfp"]
+transparency = 1
+albedo_texture = ExtResource("3_pxlfp")
+emission_enabled = true
+emission = Color(0.1360543, 0.24513382, 0.93366754, 1)
+emission_energy_multiplier = 4.0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_pxlfp"]
+material = SubResource("StandardMaterial3D_pxlfp")
+size = Vector2(0.2, 0.3)
+
+[sub_resource type="Animation" id="Animation_pxlfp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5l70m"]
 resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_v6sup"]
 resource_name = "deactivate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cjal3"]
 _data = {
+&"RESET": SubResource("Animation_pxlfp"),
 &"activate": SubResource("Animation_5l70m"),
 &"deactivate": SubResource("Animation_v6sup")
 }
@@ -27,22 +104,28 @@ _data = {
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 3
 
-[node name="boombox" type="MeshInstance3D" parent="." unique_id=536735608]
-material_override = ExtResource("1_e02vc")
-mesh = SubResource("PrismMesh_7h80l")
-metadata/extras = {
-"MM": {},
-"hops": {}
-}
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=173539119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0.15)
+mesh = ExtResource("1_srljc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1961576940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1586914, -0.0024414063)
 shape = SubResource("BoxShape3D_5l70m")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=400099460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4002111, 0)
-stream = ExtResource("2_e02vc")
-max_distance = 50.0
+stream = ExtResource("2_pxlfp")
+attenuation_model = 2
+autoplay = true
+max_distance = 70.0
 panning_strength = 3.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=871601774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1971969, 0)
+amount = 5
+fixed_fps = 10
+process_material = SubResource("ParticleProcessMaterial_pxlfp")
+draw_pass_1 = SubResource("QuadMesh_pxlfp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=275348863]
 libraries/ = SubResource("AnimationLibrary_cjal3")
