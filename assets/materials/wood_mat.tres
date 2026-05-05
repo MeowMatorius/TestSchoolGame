@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://olu184jixa5y"]
+
+[ext_resource type="Texture2D" uid="uid://btcdc7ah3k7fn" path="res://assets/textures/kenneys_fantasy_retro/floor_wood_planks.png" id="1_xmbq6"]
+
+[resource]
+albedo_texture = ExtResource("1_xmbq6")
+roughness = 0.5
+uv1_scale = Vector3(5, 5, 5)
