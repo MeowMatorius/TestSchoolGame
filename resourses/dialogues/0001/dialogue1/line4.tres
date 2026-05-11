@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://fj4rqxvji8rm"]
 
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_65el7"]
-[ext_resource type="Resource" uid="uid://c8l5y8gmped8e" path="res://resourses/dialogues/line5.tres" id="2_8h51w"]
-[ext_resource type="Resource" uid="uid://dmm5yukxklihk" path="res://resourses/dialogues/line6.tres" id="3_5c46m"]
+[ext_resource type="Resource" uid="uid://c8l5y8gmped8e" path="res://resourses/dialogues/0001/dialogue1/line5.tres" id="2_8h51w"]
+[ext_resource type="Resource" uid="uid://dmm5yukxklihk" path="res://resourses/dialogues/0001/dialogue1/line6.tres" id="3_5c46m"]
 [ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/conditions/ConditionType.gd" id="4_5c46m"]
 
 [resource]

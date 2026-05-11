@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SchoolGame"
-run/main_scene="res://scenes/test_scene.tscn"
+run/main_scene="res://test_scene.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=120
 config/icon="res://assets/icons/ui/godot_icon.svg"
@@ -22,14 +22,14 @@ buses/default_bus_layout="uid://cqq4qhl0el65u"
 
 [autoload]
 
-DialogueManager="*uid://c2jwbm0wee7j6"
-EventManager="*uid://dl1lgen8y5dsu"
-GameManager="*uid://cmd1u5c4mp5gs"
-InputManager="*uid://8vassbp55tau"
-InventoryManager="*uid://bgltkoojbqj2i"
-SignalBus="*uid://ddt7dkbp124a8"
 PhantomCameraManager="*uid://duq6jhf6unyis"
-QuestManager="*uid://brbfflif4pr84"
+EventManager="*uid://5mw738vwqvba"
+DialogueManager="*uid://b18s8s6bvy714"
+GameManager="*uid://b0x54nfyuh0d0"
+InputManager="*uid://b1xwqudt2n5ba"
+InventoryManager="*uid://1gt7sdxlctdg"
+QuestManager="*uid://uun05o6kne3o"
+SignalBus="*uid://e8f4r2f4li5s"
 
 [display]
 

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://coil7nbiqw16k"]
+
+[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://resourses/events/event_data.gd" id="1_vnomc"]
+
+[resource]
+script = ExtResource("1_vnomc")
+event_name = "game start"
+metadata/_custom_type_script = "uid://78dunhvnphhq"

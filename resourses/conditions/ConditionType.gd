@@ -14,7 +14,7 @@ signal changed_status(condition: ConditionType)
 		print("completed изменено на: ", completed)
 		emit_changed() # Полезно для ресурсов, чтобы уведомить систему
 		changed_status.emit(self)
-
+@export var dialogue_line: DialogueLine
 
 
 

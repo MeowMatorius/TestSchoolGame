@@ -17,7 +17,7 @@ func _ready():
 func setup_settings_menu():
 	for button in find_children("*", "CheckButton", true):
 		button.pressed.connect(_on_setting_changed.bind(button.name))
-		print ("connected to: ", button.name)
+
 
 
 func _on_setting_changed(setting_name: String):

@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dl0y0e70gh3ra" path="res://assets/materials/orange_mat.tres" id="1_5yfcu"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_gmw5h"]
-[ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://resourses/dialogues/line1.tres" id="3_s2mr4"]
+[ext_resource type="Resource" uid="uid://cxon4cj25fdwq" path="res://resourses/npcs/Hlopchik.tres" id="3_5yfcu"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_x68is"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_s2mr4"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ob37v"]
@@ -27,16 +27,11 @@ mesh = SubResource("CapsuleMesh_uyltb")
 transform = Transform3D(1, 0, 0, 0, 2.085, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_uyltb")
 
-[node name="DialogueComponent" type="Node3D" parent="." unique_id=612109534]
-transform = Transform3D(0.9998477, 2.910383e-11, -0.017452406, 0.00030458646, 0.9998477, 0.017449748, 0.017449748, -0.017452406, 0.9996954, 0, 0, 0)
-
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875 node_paths=PackedStringArray("dialogue_camera", "player_teleport_point")]
 script = ExtResource("2_gmw5h")
-internal_name = "Hlopchik"
-dialogue_stage = "node_001"
 dialogue_camera = NodePath("../PhantomCamera3D")
 player_teleport_point = NodePath("../PlayerTeleportPoint")
-dialogue = ExtResource("3_s2mr4")
+npc_data = ExtResource("3_5yfcu")
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]
 physics_interpolation_mode = 1

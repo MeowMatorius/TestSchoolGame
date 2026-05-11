@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_6i2wf")
+id = null
 description = "Собери монеты, чтобы купить пиво"
 condition = Array[ExtResource("1_7o8qe")]([ExtResource("2_jd4kd")])
 metadata/_custom_type_script = "uid://cb7b0e6porrqt"

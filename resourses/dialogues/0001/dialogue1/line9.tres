@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dv61s83h8hhep"]
 
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_phld4"]
-[ext_resource type="Resource" uid="uid://bpktwen34h5r" path="res://resourses/dialogues/line10.tres" id="2_bb1oc"]
+[ext_resource type="Resource" uid="uid://bpktwen34h5r" path="res://resourses/dialogues/0001/dialogue1/line10.tres" id="2_bb1oc"]
 [ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/conditions/ConditionType.gd" id="2_rmjgt"]
 [ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/quests/quest_data.gd" id="3_bb1oc"]
-[ext_resource type="Resource" uid="uid://cijrelh6401yl" path="res://resourses/dialogues/line11.tres" id="3_xsplf"]
+[ext_resource type="Resource" uid="uid://cijrelh6401yl" path="res://resourses/dialogues/0001/dialogue1/line11.tres" id="3_xsplf"]
 
 [resource]
 script = ExtResource("1_phld4")
