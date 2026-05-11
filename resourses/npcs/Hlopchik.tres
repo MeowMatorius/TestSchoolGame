@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://cxon4cj25fdwq"]
+
+[ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://resourses/dialogues/0001/dialogue1/line1.tres" id="1_d2jjc"]
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/dialogues/DialogueLine.gd" id="1_tgv4t"]
+[ext_resource type="Script" uid="uid://biksjc401uymx" path="res://resourses/npcs/NPCData.gd" id="2_d2jjc"]
+[ext_resource type="Resource" uid="uid://eoqmpq5fase2" path="res://resourses/dialogues/0001/dialogue_event_1/event_line1.tres" id="3_x60hr"]
+
+[resource]
+script = ExtResource("2_d2jjc")
+npc_name = "Hlopchik"
+dialogue_line = ExtResource("1_d2jjc")
+event_dialogues = Dictionary[String, ExtResource("1_tgv4t")]({
+"0001": ExtResource("3_x60hr")
+})
+metadata/_custom_type_script = "uid://biksjc401uymx"
