@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://assets/icons/ui/ArrowRight.svg" id="17_e7oew"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="19_65viv"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://player/player_ui/player_ui_tooltip.gd" id="19_c35mf"]
+[ext_resource type="Script" uid="uid://dhct41ns84g0k" path="res://player/fps_label.gd" id="21_x7c3f"]
 
 [sub_resource type="Resource" id="Resource_kb6p2"]
 script = ExtResource("3_yllr7")
@@ -88,9 +89,15 @@ camera_target = NodePath("Head/CameraTarget")
 COLLISION = NodePath("Collision")
 CEILING_CHECK = NodePath("CrouchCeilingDetection")
 FLASHLIGHT = NodePath("Head/CameraTarget/SpotLight3D")
-forward_tilt_amount = 0.03
-bob_amp_h = 0.03
-bob_amp_v = 0.03
+backward_speed_mult = 0.8
+bob_freq = 1.5
+bob_amp_h = 0.04
+bob_amp_v = 0.04
+sprint_bob_h_mult = 1.1
+sprint_bob_v_mult = 1.1
+sprint_bob_roll_mult = 0.0
+sprint_bob_freq_mult = 1.0
+default_fov = 55.0
 
 [node name="Head" type="Node3D" parent="." unique_id=431790961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -172,15 +179,14 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=634695021]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 168.0
-offset_top = 49.0
-offset_right = -168.0
-offset_bottom = -49.0
+offset_left = 47.0
+offset_top = 17.0
+offset_right = -47.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1408,6 +1414,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="DefaultContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=122634425]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1685,6 +1692,22 @@ text = "TooltipText"
 label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FPSLabel" type="Label" parent="UserInterface/VBoxContainer/Player_UI" unique_id=433789999]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 21.0
+offset_right = 56.0
+offset_bottom = 91.0
+grow_horizontal = 2
+text = "FPS: 120"
+label_settings = ExtResource("4_boad6")
+horizontal_alignment = 1
+script = ExtResource("21_x7c3f")
 
 [node name="LetterboxDown" type="Panel" parent="UserInterface/VBoxContainer" unique_id=518494400]
 custom_minimum_size = Vector2(0, 60)
