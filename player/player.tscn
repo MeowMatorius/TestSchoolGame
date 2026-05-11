@@ -145,7 +145,7 @@ spot_angle = 25.0
 
 [node name="CrouchCeilingDetection" type="RayCast3D" parent="." unique_id=348065536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-target_position = Vector3(0, 1, 0)
+target_position = Vector3(0, 1.5, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=359317445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
