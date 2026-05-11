@@ -20,8 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://assets/icons/ui/ArrowRight.svg" id="17_e7oew"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="19_65viv"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://player/player_ui/player_ui_tooltip.gd" id="19_c35mf"]
-[ext_resource type="Script" uid="uid://dhct41ns84g0k" path="res://player/fps_label.gd" id="21_x7c3f"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://player/player_ui/player_ui_quest.gd" id="21_x7c3f"]
+[ext_resource type="Script" uid="uid://dhct41ns84g0k" path="res://player/player_ui/player_ui_perf_debug.gd" id="22_bjvpn"]
 
 [sub_resource type="Resource" id="Resource_kb6p2"]
 script = ExtResource("3_yllr7")
@@ -111,6 +111,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Head/CameraTarget/Camera" unique_id=265881763]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("7_yllr7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
@@ -165,6 +167,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="LetterboxUp" type="Panel" parent="UserInterface/VBoxContainer" unique_id=343069616]
+visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bjvpn")
@@ -1498,7 +1501,7 @@ text = "Взаимодействие: LMB
 label_settings = ExtResource("4_boad6")
 horizontal_alignment = 2
 
-[node name="ItemsTooltips" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI" unique_id=1764051406]
+[node name="ItemsTooltip" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI" unique_id=1764051406]
 z_index = -100
 layout_mode = 1
 anchors_preset = 14
@@ -1515,7 +1518,7 @@ theme_override_constants/separation = 0
 alignment = 1
 script = ExtResource("19_c35mf")
 
-[node name="ItemTooltip" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=115010586]
+[node name="ItemTooltip" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip" unique_id=115010586]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1525,7 +1528,7 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_constants/separation = 12
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip" unique_id=980436236]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip" unique_id=980436236]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1535,7 +1538,7 @@ mouse_behavior_recursive = 2
 texture = ExtResource("19_65viv")
 expand_mode = 2
 
-[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip" unique_id=1874871750]
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip" unique_id=1874871750]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1545,7 +1548,7 @@ label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemTooltip2" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=722059675]
+[node name="ItemTooltip2" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip" unique_id=722059675]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1555,7 +1558,7 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_constants/separation = 12
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip2" unique_id=1501578387]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip2" unique_id=1501578387]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1565,7 +1568,7 @@ mouse_behavior_recursive = 2
 texture = ExtResource("19_65viv")
 expand_mode = 2
 
-[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip2" unique_id=1027614680]
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip2" unique_id=1027614680]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1575,7 +1578,7 @@ label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemTooltip3" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1423655296]
+[node name="ItemTooltip3" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip" unique_id=1423655296]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1585,7 +1588,7 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_constants/separation = 12
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip3" unique_id=619128562]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip3" unique_id=619128562]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1595,7 +1598,7 @@ mouse_behavior_recursive = 2
 texture = ExtResource("19_65viv")
 expand_mode = 2
 
-[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip3" unique_id=1357696061]
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip3" unique_id=1357696061]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1605,7 +1608,7 @@ label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemTooltip4" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1342421215]
+[node name="ItemTooltip4" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip" unique_id=1342421215]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1615,7 +1618,7 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_constants/separation = 12
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip4" unique_id=835613875]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip4" unique_id=835613875]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1625,7 +1628,7 @@ mouse_behavior_recursive = 2
 texture = ExtResource("19_65viv")
 expand_mode = 2
 
-[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip4" unique_id=242133493]
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip4" unique_id=242133493]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1635,7 +1638,7 @@ label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemTooltip5" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1144205615]
+[node name="ItemTooltip5" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip" unique_id=1144205615]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1645,7 +1648,7 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_constants/separation = 12
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip5" unique_id=872653811]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip5" unique_id=872653811]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1655,7 +1658,7 @@ mouse_behavior_recursive = 2
 texture = ExtResource("19_65viv")
 expand_mode = 2
 
-[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip5" unique_id=711431252]
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip5" unique_id=711431252]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1665,7 +1668,7 @@ label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemTooltip6" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips" unique_id=1306324110]
+[node name="ItemTooltip6" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip" unique_id=1306324110]
 visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -1675,7 +1678,7 @@ mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_constants/separation = 12
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip6" unique_id=643310085]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip6" unique_id=643310085]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1685,7 +1688,7 @@ mouse_behavior_recursive = 2
 texture = ExtResource("19_65viv")
 expand_mode = 2
 
-[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltips/ItemTooltip6" unique_id=185620185]
+[node name="ToolpitText" type="Label" parent="UserInterface/VBoxContainer/Player_UI/ItemsTooltip/ItemTooltip6" unique_id=185620185]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1706,6 +1709,7 @@ offset_right = 104.0
 offset_bottom = -203.0
 grow_vertical = 2
 size_flags_horizontal = 2
+script = ExtResource("21_x7c3f")
 
 [node name="Quest1" type="Label" parent="UserInterface/VBoxContainer/Player_UI/QuestContainer" unique_id=658572775]
 visible = false
@@ -1730,20 +1734,23 @@ vertical_alignment = 1
 [node name="FPSLabel" type="Label" parent="UserInterface/VBoxContainer/Player_UI" unique_id=433789999]
 process_mode = 3
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -50.0
-offset_top = 21.0
-offset_right = 56.0
-offset_bottom = 91.0
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -16.75
+offset_right = 53.0
 grow_horizontal = 2
+grow_vertical = 0
 text = "FPS: 120"
 label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
-script = ExtResource("21_x7c3f")
+script = ExtResource("22_bjvpn")
 
 [node name="LetterboxDown" type="Panel" parent="UserInterface/VBoxContainer" unique_id=518494400]
+visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bjvpn")

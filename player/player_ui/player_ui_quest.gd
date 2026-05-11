@@ -1,9 +1,9 @@
 extends VBoxContainer
 
-
-var quest_entry_scene = preload("res://scenes/interface/quest.tscn")
+var quest_entry_scene: PackedScene = preload("res://scenes/interface/quest.tscn")
 var icon_done = preload("res://assets/icons/check_mark.png")
 var quest_list: Array[Node]
+
 
 func _ready() -> void:
 	quest_list = []
@@ -19,6 +19,7 @@ func show_ui(quest):
 	self.add_child(entry)
 	quest_list.append(entry)
 	
+	
 func _clear_ui(quest):
 	pass
 #	for i in range(quests_list.size()):
@@ -26,14 +27,16 @@ func _clear_ui(quest):
 #			quests_list[i].text = ""
 #			quests_list[i].visible = false	
 #			quests_list[i].remove_meta("quest_id")
+		
 			
 func mark_done(quest):
 	for i in quest_list:
 		if i.has_meta("quest_id") and i.get_meta("quest_id") == quest.id:
 			i.get_node("TextureRect").texture = icon_done
-			
+		
 #var quest_entry_scene = preload("res://ui/QuestEntry.tscn")
-#
+
+
 #func update_quest_list(quests):
 #    # ... очистка ...
 #    for quest in quests:
