@@ -151,6 +151,7 @@ shape = SubResource("ConvexPolygonShape3D_il8ne")
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1525639644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18828976, 0.3750224, -0.17024422)
 light_color = Color(0.9999996, 0.90143526, 0.7654404, 1)
+light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 20.0

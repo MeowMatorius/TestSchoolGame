@@ -230,7 +230,6 @@ size = Vector3(2, 0.3, 1)
 
 [node name="CorridorLDoor" type="CSGBox3D" parent="Сцена (Статичное)/Building" unique_id=1328084003]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 6.502241, 0.5)
-visible = false
 operation = 2
 size = Vector3(6, 2.1, 2)
 
@@ -549,6 +548,7 @@ transform = Transform3D(1.392278, 0, 0, 0, 0.8286204, 0, 0, 0, 1, -1, 0.04586327
 [node name="Освещение" type="Node3D" parent="Сцена (Статичное)" unique_id=465821152]
 
 [node name="Внутри" type="Node3D" parent="Сцена (Статичное)/Освещение" unique_id=658528186]
+visible = false
 
 [node name="MainHallLight2" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Внутри" unique_id=2117450477]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.599999, 8.690288, 12.700001)
@@ -574,9 +574,9 @@ spot_angle = 70.0
 
 [node name="MainHallOutdoorLight" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1257097053]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, -8.099999, 9.9, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -584,9 +584,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight2" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1365306331]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, -5.5999994, 9.9, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -594,9 +594,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight3" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1408778432]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, -4.0999994, 9.9, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -604,9 +604,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight4" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=503287073]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 3.4000006, 9.9, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -614,9 +614,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight5" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1073508050]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 5.9000006, 9.9, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -624,9 +624,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight6" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1619226877]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 7.4000006, 9.9, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -634,9 +634,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight7" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=523634122]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, -8.099999, 4.8999996, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -644,9 +644,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight8" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1101710499]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, -5.5999994, 4.8999996, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -654,9 +654,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight9" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1579089094]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, -4.0999994, 4.8999996, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -664,9 +664,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight10" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=840851362]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 3.4000006, 4.8999996, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -674,9 +674,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight11" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1494305094]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 5.9000006, 4.8999996, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -684,9 +684,9 @@ spot_angle = 5.0
 
 [node name="MainHallOutdoorLight12" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=40958847]
 transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881907, 0, -0.25881907, -0.9659258, 7.4000006, 4.8999996, -33.4)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -695,9 +695,9 @@ spot_angle = 5.0
 [node name="CorridorLight" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=61947305]
 transform = Transform3D(1, -4.312753e-07, 3.3777565e-07, -5.0400274e-07, -0.9659258, 0.25881913, 2.1464392e-07, -0.25881913, -0.9659258, -27.6, 8.367554, -18.127274)
 visible = false
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 10.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -706,9 +706,9 @@ spot_angle = 9.0
 [node name="CorridorLight2" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=111659952]
 transform = Transform3D(-1, 4.0864862e-07, -4.2221959e-07, -5.0400274e-07, -0.9659258, 0.25881913, -3.020667e-07, 0.25881913, 0.9659258, -27.487356, 8.367554, 19.13376)
 visible = false
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 10.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -716,9 +716,9 @@ spot_angle = 9.0
 
 [node name="CorridorLight3" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1243464179]
 transform = Transform3D(1, -4.312753e-07, 3.3777565e-07, -5.0400274e-07, -0.9659258, 0.25881913, 2.1464392e-07, -0.25881913, -0.9659258, 27.4, 8.367554, -18.127274)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 10.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -726,9 +726,9 @@ spot_angle = 9.0
 
 [node name="CorridorLight4" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1089795371]
 transform = Transform3D(-1, 4.0864862e-07, -4.2221959e-07, -5.0400274e-07, -0.9659258, 0.25881913, -3.020667e-07, 0.25881913, 0.9659258, 27.512644, 8.367554, 19.13376)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 10.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -736,9 +736,9 @@ spot_angle = 9.0
 
 [node name="Room1Light" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1297605742]
 transform = Transform3D(1, -1.8390205e-15, -6.863316e-15, 0, -0.9659258, 0.25881913, -7.1054274e-15, -0.25881913, -0.9659259, 33.899998, 8.399999, -18.400002)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -746,9 +746,9 @@ spot_angle = 10.0
 
 [node name="Room1Light2" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=631157822]
 transform = Transform3D(1, -1.8390205e-15, -6.863316e-15, 0, -0.9659258, 0.25881913, -7.1054274e-15, -0.25881913, -0.9659259, 37.4, 8.399999, -18.400002)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -756,9 +756,9 @@ spot_angle = 10.0
 
 [node name="Room1Light3" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=655904893]
 transform = Transform3D(1, -1.8390205e-15, -6.863316e-15, 0, -0.9659258, 0.25881913, -7.1054274e-15, -0.25881913, -0.9659259, 40.40001, 8.399999, -18.400002)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5
@@ -766,9 +766,9 @@ spot_angle = 10.0
 
 [node name="Room1Light4" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=2000116595]
 transform = Transform3D(1, -1.8390205e-15, -6.863316e-15, 0, -0.9659258, 0.25881913, -7.1054274e-15, -0.25881913, -0.9659259, 43.899998, 8.399999, -18.400002)
-light_color = Color(0.8705586, 0.9147284, 0.99999934, 1)
+light_color = Color(0.6532554, 0.7665256, 1, 1)
 light_energy = 16.0
-light_volumetric_fog_energy = 16.0
+light_volumetric_fog_energy = 8.0
 light_bake_mode = 1
 spot_range = 20.0
 spot_attenuation = 1.5

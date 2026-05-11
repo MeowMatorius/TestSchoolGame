@@ -163,6 +163,7 @@ libraries/ = SubResource("AnimationLibrary_i7hci")
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1269480973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16053575, 1.9310961, -0.18544318)
 light_color = Color(1, 0.9019608, 0.7647059, 1)
+light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 20.0
