@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cyein5f2vafk1"]
 
-[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="1_4mxeh"]
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interact/interact_switch.gd" id="1_4mxeh"]
 [ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://resourses/interactable/switch/button.tres" id="2_0gq1c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf5tw"]

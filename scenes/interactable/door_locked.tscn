@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c42bnvqdrdffo"]
 
 [ext_resource type="Material" uid="uid://dp3x5sjk5vtmp" path="res://assets/materials/red_mat.tres" id="1_hinle"]
-[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="2_j8i13"]
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interact/interact_switch.gd" id="2_j8i13"]
 [ext_resource type="Resource" uid="uid://d4grfj7jekajm" path="res://resourses/interactable/switch/door_locked.tres" id="3_hinle"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxdn"]

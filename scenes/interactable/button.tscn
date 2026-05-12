@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kmmor3equpx6"]
 
-[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="1_rhj8v"]
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interact/interact_switch.gd" id="1_rhj8v"]
 [ext_resource type="Texture2D" uid="uid://d4ca5tq8k1jeh" path="res://assets/textures/greybox_textures/greybox_light_grid.png" id="2_rtit6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywcaw"]

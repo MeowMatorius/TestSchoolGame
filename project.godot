@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="SchoolGame"
-run/main_scene="res://test_scene.tscn"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://cfullnp5cxo2d"
+config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=120
+boot_splash/show_image=false
 config/icon="res://assets/icons/ui/godot_icon.svg"
 
 [audio]
@@ -36,6 +37,10 @@ SignalBus="*uid://e8f4r2f4li5s"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=3
+
+[dotnet]
+
+project/assembly_name="SchoolGame"
 
 [editor]
 
