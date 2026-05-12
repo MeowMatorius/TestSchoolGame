@@ -17,20 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="11_2n07n"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="12_6s78v"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://scenes/npcs/hlopchik.tscn" id="14_2n07n"]
-[ext_resource type="Texture2D" uid="uid://c2r1x2bchrfiq" path="res://assets/textures/snow.png" id="16_30u7h"]
+[ext_resource type="Texture2D" uid="uid://b4iwgipyuxts6" path="res://assets/textures/snow.png" id="16_30u7h"]
 [ext_resource type="AudioStream" uid="uid://c1u8q5gf3a31c" path="res://assets/sfx/rain.mp3" id="16_e4csd"]
 [ext_resource type="AudioStream" uid="uid://d4j56ob0jt8oq" path="res://assets/sfx/wind.mp3" id="18_3f14b"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gxwj"]
-albedo_texture = ExtResource("2_445po")
-uv1_scale = Vector3(100, 100, 100)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1ucx5"]
-lightmap_size_hint = Vector2i(14, 21)
-material = SubResource("StandardMaterial3D_7gxwj")
-add_uv2 = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u62ia"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kekqg"]
 panorama = ExtResource("1_bx4p7")
@@ -58,6 +47,17 @@ adjustment_saturation = 1.3
 auto_exposure_speed = 2.0
 dof_blur_far_distance = 100.0
 auto_exposure_min_sensitivity = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gxwj"]
+albedo_texture = ExtResource("2_445po")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ucx5"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_7gxwj")
+add_uv2 = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u62ia"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s78v"]
 transparency = 1
@@ -198,6 +198,15 @@ metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
 [node name="Enviroment" type="Node" parent="." unique_id=1678198859]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=528465232 groups=["world_env"]]
+environment = SubResource("Environment_gqnfj")
+camera_attributes = SubResource("CameraAttributesPractical_q0kuf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment" unique_id=1121918557]
+transform = Transform3D(0.9003188, 0.2738998, -0.3382381, 0, 0.777146, 0.62932044, 0.4352311, -0.566589, 0.69967914, 0, 0, 0)
+light_bake_mode = 1
+shadow_enabled = true
+
 [node name="Ground" type="StaticBody3D" parent="Enviroment" unique_id=1528271684]
 transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, -0.1, 0)
 
@@ -211,16 +220,9 @@ shape = SubResource("BoxShape3D_u62ia")
 [node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Enviroment/Ground" unique_id=2086172900]
 resolution = 1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=528465232 groups=["world_env"]]
-environment = SubResource("Environment_gqnfj")
-camera_attributes = SubResource("CameraAttributesPractical_q0kuf")
+[node name="Weather" type="Node" parent="." unique_id=1401313830]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment" unique_id=1121918557]
-transform = Transform3D(0.9003188, 0.2738998, -0.3382381, 0, 0.777146, 0.62932044, 0.4352311, -0.566589, 0.69967914, 0, 0, 0)
-light_bake_mode = 1
-shadow_enabled = true
-
-[node name="Rain" type="GPUParticles3D" parent="Enviroment" unique_id=1254405326]
+[node name="Rain" type="GPUParticles3D" parent="Weather" unique_id=1254405326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 material_override = SubResource("StandardMaterial3D_6s78v")
 cast_shadow = 0
@@ -234,14 +236,14 @@ visibility_aabb = AABB(-51.99999, -44.155376, -51.999966, 106.09058, 47.155277, 
 process_material = SubResource("ParticleProcessMaterial_e4csd")
 draw_pass_1 = SubResource("QuadMesh_e4csd")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enviroment/Rain" unique_id=633072473]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weather/Rain" unique_id=633072473]
 stream = ExtResource("16_e4csd")
 attenuation_model = 3
 autoplay = true
 panning_strength = 0.0
 bus = &"SFX"
 
-[node name="Snow" type="GPUParticles3D" parent="Enviroment" unique_id=186487468]
+[node name="Snow" type="GPUParticles3D" parent="Weather" unique_id=186487468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_bscv6")
@@ -256,14 +258,14 @@ visibility_aabb = AABB(-64.04949, -62.887592, -63.833374, 126.554535, 63.986485,
 process_material = SubResource("ParticleProcessMaterial_bscv6")
 draw_pass_1 = SubResource("QuadMesh_3f14b")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enviroment/Snow" unique_id=258674877]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weather/Snow" unique_id=258674877]
 stream = ExtResource("18_3f14b")
 attenuation_model = 3
 volume_db = -6.0
 panning_strength = 0.0
 bus = &"SFX"
 
-[node name="Leaves" type="GPUParticles3D" parent="Enviroment" unique_id=528829118]
+[node name="Leaves" type="GPUParticles3D" parent="Weather" unique_id=528829118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 material_override = SubResource("StandardMaterial3D_sut4w")
 cast_shadow = 0
@@ -275,7 +277,7 @@ visibility_aabb = AABB(-95.12263, -79.96687, -99.3248, 192.04112, 81.266655, 195
 process_material = SubResource("ParticleProcessMaterial_445po")
 draw_pass_1 = SubResource("QuadMesh_7gxwj")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enviroment/Leaves" unique_id=373608953]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Weather/Leaves" unique_id=373608953]
 stream = ExtResource("18_3f14b")
 attenuation_model = 3
 volume_db = -6.0
