@@ -65,7 +65,7 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_v3o2h"]
+[sub_resource type="Resource" id="Resource_wy25e"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
@@ -130,12 +130,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47022486, -0.5, 0.21758842
 [node name="AudioStreamPlayer3D" parent="Interactables/Radio" index="2" unique_id=400099460]
 stream = ExtResource("8_lvntd")
 autoplay = false
+bus = &"Master"
 
 [node name="GPUParticles3D" parent="Interactables/Radio" index="3" unique_id=871601774]
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_v3o2h")
+switch_data = SubResource("Resource_wy25e")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
