@@ -175,7 +175,6 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=634695021]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,7 +210,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
 theme = ExtResource("7_65viv")
-tab_alignment = 2
+tab_alignment = 1
 current_tab = 0
 tab_0/title = "🧊"
 tab_1/title = "🔬"

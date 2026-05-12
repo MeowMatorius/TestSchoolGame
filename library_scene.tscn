@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cebxk55fsjy8k"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_3qnke"]
-[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="1_s36qc"]
 [ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="3_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://scenes/interactable/radio.tscn" id="4_h3xc6"]
@@ -33,11 +32,10 @@
 [ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="25_fftn7"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://scenes/npcs/tamagoche.tscn" id="31_fftn7"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s36qc"]
-panorama = ExtResource("1_s36qc")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kow03"]
 
 [sub_resource type="Sky" id="Sky_v46x1"]
-sky_material = SubResource("PanoramaSkyMaterial_s36qc")
+sky_material = SubResource("ProceduralSkyMaterial_kow03")
 
 [sub_resource type="Environment" id="Environment_s36qc"]
 background_mode = 2
@@ -68,7 +66,7 @@ auto_exposure_min_sensitivity = 100.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_1logh"]
+[sub_resource type="Resource" id="Resource_v46x1"]
 resource_local_to_scene = true
 script = ExtResource("25_fftn7")
 object_state = 0
@@ -76,7 +74,7 @@ activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
-[sub_resource type="Resource" id="Resource_40xvk"]
+[sub_resource type="Resource" id="Resource_1logh"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -890,7 +888,7 @@ transform = Transform3D(-4.1656744e-08, -0.9529952, -0.30298537, 1, -4.371139e-0
 transform = Transform3D(0.39996275, 0, 0.30004957, 0, 0.5, 0, -0.30004957, 0, 0.39996275, -1.7403119, 1.2130792, 17.477571)
 
 [node name="InteractComponent" parent="Объекты/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_1logh")
+switch_data = SubResource("Resource_v46x1")
 
 [node name="RedKey" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
 transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.7499316, 1.0548993, 16.062403)
@@ -905,7 +903,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
 [node name="InteractComponent" parent="Объекты/Money2" index="5" unique_id=104121503]
-item_data = SubResource("Resource_40xvk")
+item_data = SubResource("Resource_1logh")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
@@ -918,7 +916,7 @@ crouch_head_y = -0.1
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449746, 0, 0.99984777, -0.017452404, -0.017452404, 0.017449744, 0.9996954, 37.386757, 6.490266, 7.6039286)
 
 [node name="DialogueCamera" parent="Персонажи/Hlopchik2" index="3" unique_id=123514712]
-transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 0.117, 1.5, 10.451)
+transform = Transform3D(0.9984641, -0.004971007, 0.055178143, 0, 0.99596643, 0.08972677, -0.0554016, -0.089588955, 0.9944368, -1.1681654, 1.5246115, 1.5576291)
 
 [node name="Hlopchik" parent="Персонажи" unique_id=1033201141 instance=ExtResource("5_s36qc")]
 transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 14.061001)
