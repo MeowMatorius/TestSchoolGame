@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://eoqmpq5fase2"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resourses/DialogueLine.gd" id="1_q2kvm"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resourses/ConditionType.gd" id="2_ej6gm"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resourses/quest_data.gd" id="3_aks51"]
+[ext_resource type="Resource" uid="uid://w16crddxh147" path="res://src/resourses/💬dialogue_data/npc_0001/dialogue_event_1/event_line2.tres" id="3_ej6gm"]
+
+[resource]
+script = ExtResource("1_q2kvm")
+character_name = "Хлопчик"
+text = "Привет. Жоска начали диалог из ивента"
+next_dialogue = ExtResource("3_ej6gm")
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

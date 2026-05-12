@@ -15,7 +15,7 @@ run/main_scene="uid://cfullnp5cxo2d"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 run/max_fps=120
 boot_splash/show_image=false
-config/icon="res://assets/icons/ui/godot_icon.svg"
+config/icon="res://src/assets/icons/ui/godot_icon.svg"
 
 [audio]
 
