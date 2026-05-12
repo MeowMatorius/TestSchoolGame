@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://dqkvw4v07kkll"]
+
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/📝quest_data/quest_data.gd" id="1_6i2wf"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="1_7o8qe"]
+[ext_resource type="Resource" uid="uid://dbegw2m8slk7t" path="res://resourses/⚙️condition_data/condition_1.tres" id="2_jd4kd"]
+
+[resource]
+script = ExtResource("1_6i2wf")
+id = null
+description = "Собери монеты, чтобы купить пиво"
+condition = Array[ExtResource("1_7o8qe")]([ExtResource("2_jd4kd")])
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"

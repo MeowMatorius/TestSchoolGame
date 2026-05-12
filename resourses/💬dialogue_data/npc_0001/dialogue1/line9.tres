@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dv61s83h8hhep"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/DialogueLine.gd" id="1_phld4"]
+[ext_resource type="Resource" uid="uid://bpktwen34h5r" path="res://resourses/💬dialogue_data/npc_0001/dialogue1/line10.tres" id="2_bb1oc"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="2_rmjgt"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/📝quest_data/quest_data.gd" id="3_bb1oc"]
+[ext_resource type="Resource" uid="uid://cijrelh6401yl" path="res://resourses/💬dialogue_data/npc_0001/dialogue1/line11.tres" id="3_xsplf"]
+
+[resource]
+script = ExtResource("1_phld4")
+character_name = "Хлопчик"
+text = "Кстати, раз уж ты здесь. Сгоняй кобанчиком до моего друга, передай ему Книгу. Он если что сидит за Красной дверью, а я тебе скажу где от нее ключ. Может что-то интересное там найдешь"
+choices = Array[ExtResource("1_phld4")]([ExtResource("2_bb1oc"), ExtResource("3_xsplf")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

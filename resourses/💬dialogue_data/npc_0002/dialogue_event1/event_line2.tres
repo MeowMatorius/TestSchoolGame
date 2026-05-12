@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://cn80ydlp3smvd"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/DialogueLine.gd" id="1_3ubia"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="2_76qhx"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/📝quest_data/quest_data.gd" id="3_omjiw"]
+
+[resource]
+script = ExtResource("1_3ubia")
+character_name = "Игрок"
+text = "Да, я крутой"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

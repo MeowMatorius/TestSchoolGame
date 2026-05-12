@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dgrjfjiv0mb6g"]
 
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interact/interact_switch.gd" id="1_ifij5"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="2_h7hnf"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/switch_data.gd" id="2_h7hnf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvup2"]
 resource_name = "metal"

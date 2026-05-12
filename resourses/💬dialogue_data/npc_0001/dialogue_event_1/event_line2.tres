@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://w16crddxh147"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/DialogueLine.gd" id="1_mib31"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="2_bpm2c"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/📝quest_data/quest_data.gd" id="3_44iry"]
+
+[resource]
+script = ExtResource("1_mib31")
+character_name = "Геймер"
+text = "Привет. Да. У эу уэ"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

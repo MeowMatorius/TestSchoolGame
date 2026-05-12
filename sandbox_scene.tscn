@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfullnp5cxo2d"]
 
 [ext_resource type="Material" uid="uid://cswyiyc4x7ktc" path="res://assets/materials/black_mat_ground.tres" id="1_sut4w"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_u62ia"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://scenes/player.tscn" id="1_u62ia"]
 [ext_resource type="Texture2D" uid="uid://dkdffhk2pse34" path="res://assets/textures/greybox_textures/greybox_dark_grid.png" id="2_445po"]
 [ext_resource type="PackedScene" uid="uid://b2kxce0mejwuf" path="res://scenes/vfx/rain.tscn" id="3_3f14b"]
 [ext_resource type="PackedScene" uid="uid://k5vvlsyj3i42" path="res://scenes/vfx/snow.tscn" id="4_bscv6"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://scenes/interactable/radio.tscn" id="7_x7uc3"]
 [ext_resource type="AudioStream" uid="uid://ddunxky2cdkot" path="res://assets/music/elixir.mp3" id="8_y6xub"]
 [ext_resource type="PackedScene" uid="uid://baf833tfftk3a" path="res://scenes/interactable/books.tscn" id="9_3qn2e"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="9_haolt"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/switch_data.gd" id="9_haolt"]
 [ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/interactable/key.tscn" id="10_0st1q"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="11_2n07n"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="12_6s78v"]

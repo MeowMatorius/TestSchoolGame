@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://cvkawhe0khluf"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/DialogueLine.gd" id="1_to0ot"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="2_6518w"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/📝quest_data/quest_data.gd" id="3_13xdm"]
+[ext_resource type="Resource" uid="uid://cn80ydlp3smvd" path="res://resourses/💬dialogue_data/npc_0002/dialogue_event1/event_line2.tres" id="3_6518w"]
+
+[resource]
+script = ExtResource("1_to0ot")
+character_name = "Кузя"
+text = "Привет. Ты открыл красную дверь"
+next_dialogue = ExtResource("3_6518w")
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

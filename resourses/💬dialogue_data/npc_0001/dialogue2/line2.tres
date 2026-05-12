@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dlda5btmfjrrs"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resourses/DialogueLine.gd" id="1_sc6tk"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="2_nurcf"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://resourses/📝quest_data/quest_data.gd" id="3_074vg"]
+
+[resource]
+script = ExtResource("1_sc6tk")
+character_name = "Игрок"
+text = "У меня нет больше вопросов. Пока"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ConditionType" format=3 uid="uid://cdi84lwj5ugi"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resourses/ConditionType.gd" id="1_iuthy"]
+
+[resource]
+script = ExtResource("1_iuthy")
+metadata/_custom_type_script = "uid://cp032c8l2hpry"

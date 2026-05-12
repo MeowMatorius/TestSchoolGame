@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dp3x5sjk5vtmp" path="res://assets/materials/red_mat.tres" id="1_srvai"]
 [ext_resource type="Script" uid="uid://bv7k47qfnu1q4" path="res://scripts/interact/interact_pickup.gd" id="2_7cqbe"]
-[ext_resource type="Resource" uid="uid://b3kgm5cdrh0ak" path="res://resourses/interactable/items/key_red.tres" id="3_osn4e"]
+[ext_resource type="Resource" uid="uid://b3kgm5cdrh0ak" path="res://resourses/🤚interact_data/items/key_red.tres" id="3_osn4e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mncer"]
 
