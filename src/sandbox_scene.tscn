@@ -98,6 +98,14 @@ shape = SubResource("BoxShape3D_u62ia")
 [node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Enviroment/Ground" unique_id=2086172900]
 resolution = 1
 
+[node name="Static" type="Node" parent="Enviroment" unique_id=125066892]
+
+[node name="desk" parent="Enviroment/Static" unique_id=923594188 instance=ExtResource("6_rvhfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.136017)
+
+[node name="desk2" parent="Enviroment/Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.936584, -0.049999952, -7.8367605)
+
 [node name="Weather" type="Node" parent="." unique_id=1401313830]
 
 [node name="Rain" parent="Weather" unique_id=1894733181 instance=ExtResource("3_o343k")]
@@ -110,14 +118,6 @@ visible = false
 [node name="Leaves" parent="Weather" unique_id=955218550 instance=ExtResource("5_i8p06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 amount = 1000
-
-[node name="Static" type="Node" parent="." unique_id=125066892]
-
-[node name="desk" parent="Static" unique_id=923594188 instance=ExtResource("6_rvhfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.136017)
-
-[node name="desk2" parent="Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.936584, -0.049999952, -7.8367605)
 
 [node name="Interactables" type="Node" parent="." unique_id=1783892644]
 
