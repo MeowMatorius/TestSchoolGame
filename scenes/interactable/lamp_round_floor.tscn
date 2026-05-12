@@ -1,18 +1,16 @@
 [gd_scene format=4 uid="uid://dgrjfjiv0mb6g"]
 
-[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="1_ifij5"]
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interact/interact_switch.gd" id="1_ifij5"]
 [ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://resourses/interactable/switch/switch_data.gd" id="2_h7hnf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvup2"]
 resource_name = "metal"
 albedo_color = Color(0.8759255, 0.917687, 0.9258912, 1)
-emission_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdbbt"]
 resource_local_to_scene = true
 resource_name = "lamp"
 albedo_color = Color(1, 0.96107477, 0.79073066, 1)
-rim_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rm3iq"]
 _surfaces = [{
@@ -75,7 +73,6 @@ points = PackedVector3Array(0.18, 2.044352, 0.08333999, -0.04805913, 2.044352, -
 [sub_resource type="Resource" id="Resource_1pqdn"]
 resource_local_to_scene = true
 script = ExtResource("2_h7hnf")
-object_state = 0
 activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
@@ -162,6 +159,7 @@ libraries/ = SubResource("AnimationLibrary_i7hci")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1269480973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16053575, 1.9310961, -0.18544318)
+visible = false
 light_color = Color(1, 0.9019608, 0.7647059, 1)
 light_volumetric_fog_energy = 0.5
 shadow_enabled = true

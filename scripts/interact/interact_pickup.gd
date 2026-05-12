@@ -1,4 +1,4 @@
-extends Interactable
+extends Interact
 
 @export var item_data: ItemData
 

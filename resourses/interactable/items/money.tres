@@ -7,6 +7,6 @@
 script = ExtResource("1_ptcxq")
 type = "Money"
 name = "Money"
-quantity = 11
+quantity = 50
 icon = ExtResource("1_b6v1s")
 metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"

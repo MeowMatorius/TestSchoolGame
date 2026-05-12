@@ -1,4 +1,4 @@
-class_name Interactable
+class_name Interact
 extends Node
 
 var prompt_message: String

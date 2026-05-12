@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="SchoolGame"
-run/main_scene="res://test_scene.tscn"
+run/main_scene="uid://cfullnp5cxo2d"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=120
+boot_splash/show_image=false
 config/icon="res://assets/icons/ui/godot_icon.svg"
 
 [audio]

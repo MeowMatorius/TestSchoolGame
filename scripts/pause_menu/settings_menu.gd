@@ -19,7 +19,6 @@ func setup_settings_menu():
 		button.pressed.connect(_on_setting_changed.bind(button.name))
 
 
-
 func _on_setting_changed(setting_name: String):
 	match setting_name:
 		"LetterboxButton":

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjlw3u768ihqh"]
 
-[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interactable/interactable_switch.gd" id="1_eyv6f"]
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://scripts/interact/interact_switch.gd" id="1_eyv6f"]
 [ext_resource type="Material" uid="uid://b1aia1nusvhj5" path="res://assets/materials/green_mat.tres" id="1_mxd7w"]
 [ext_resource type="Resource" uid="uid://dmapujbsmxeve" path="res://resourses/interactable/switch/door.tres" id="3_mxd7w"]
 

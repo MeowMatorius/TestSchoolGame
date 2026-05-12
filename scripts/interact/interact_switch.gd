@@ -1,4 +1,4 @@
-extends Interactable
+extends Interact
 
 @export var switch_data: SwitchData
 @export var event_data: EventData

@@ -1,4 +1,4 @@
-extends Interactable
+extends Interact
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 

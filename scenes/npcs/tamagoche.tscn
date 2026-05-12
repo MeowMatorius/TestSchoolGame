@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bgdy45i6nqrr5"]
 
 [ext_resource type="Texture2D" uid="uid://ctldlke35kow5" path="res://assets/models/entities/Textures/colormap.png" id="1_v646c"]
-[ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interactable/interactable_talk.gd" id="2_4lxmt"]
+[ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://scripts/interact/interact_talk.gd" id="2_4lxmt"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_necp0"]
 [ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://resourses/dialogues/0001/dialogue1/line1.tres" id="3_o2fbv"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_sqnmw"]
