@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cfullnp5cxo2d"]
 
 [ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="1_bx4p7"]
+[ext_resource type="Material" uid="uid://cswyiyc4x7ktc" path="res://assets/materials/black_mat_ground.tres" id="1_sut4w"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_u62ia"]
-[ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="2_kekqg"]
+[ext_resource type="Texture2D" uid="uid://dkdffhk2pse34" path="res://assets/textures/greybox_textures/greybox_dark_grid.png" id="2_445po"]
 [ext_resource type="Texture2D" uid="uid://cxqauya5a3qn5" path="res://assets/textures/leaf.png" id="4_3f14b"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://scenes/interactable/lamp_round_floor.tscn" id="4_gqnfj"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://scenes/npcs/tamagoche.tscn" id="5_haolt"]
@@ -20,7 +21,14 @@
 [ext_resource type="AudioStream" uid="uid://c1u8q5gf3a31c" path="res://assets/sfx/rain.mp3" id="16_e4csd"]
 [ext_resource type="AudioStream" uid="uid://d4j56ob0jt8oq" path="res://assets/sfx/wind.mp3" id="18_3f14b"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ug8el"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gxwj"]
+albedo_texture = ExtResource("2_445po")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ucx5"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_7gxwj")
+add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u62ia"]
 
@@ -36,34 +44,34 @@ sky = SubResource("Sky_s36qc")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 4
-tonemap_agx_contrast = 2.0
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
-fog_sky_affect = 0.7
+fog_sky_affect = 0.8
 volumetric_fog_density = 0.01
 adjustment_enabled = true
 adjustment_saturation = 1.3
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_q0kuf"]
 auto_exposure_speed = 2.0
-dof_blur_far_distance = 50.0
-dof_blur_amount = 0.05
+dof_blur_far_distance = 100.0
 auto_exposure_min_sensitivity = 100.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s78v"]
 transparency = 1
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_color = Color(1, 1, 1, 0.19607843)
 disable_receive_shadows = true
 billboard_mode = 2
 billboard_keep_scale = true
 
 [sub_resource type="Curve" id="Curve_6s78v"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49999997, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+metadata/_snap_count = 100
 
 [sub_resource type="CurveTexture" id="CurveTexture_pxlfp"]
 curve = SubResource("Curve_6s78v")
@@ -76,16 +84,16 @@ point_count = 3
 curve = SubResource("Curve_30u7h")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e4csd"]
-emission_shape_scale = Vector3(50, 10, 50)
+emission_shape_scale = Vector3(50, 1, 50)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -1.9999893
 angle_max = 2.0000107
 direction = Vector3(2, 0, -2)
 spread = 90.0
-gravity = Vector3(2, -19.6, 2)
-radial_accel_min = -1.0000023
-radial_accel_max = 0.99999774
+gravity = Vector3(1, -19.6, 1)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = -2.2351742e-06
 scale_min = 0.099999994
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_b831e")
@@ -96,6 +104,7 @@ size = Vector2(0.01, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bscv6"]
 transparency = 1
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("16_30u7h")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -103,8 +112,8 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sut4w"]
-emission_shape_scale = Vector3(50, 10, 50)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bscv6"]
+emission_shape_scale = Vector3(50, 1, 50)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(0, -1.224, 0)
@@ -113,16 +122,14 @@ tangential_accel_max = -2.2351742e-06
 scale_min = 0.099999994
 scale_curve = SubResource("CurveTexture_b831e")
 alpha_curve = SubResource("CurveTexture_pxlfp")
-collision_mode = 1
-collision_friction = 0.1
-collision_bounce = 0.07
 
 [sub_resource type="QuadMesh" id="QuadMesh_3f14b"]
 size = Vector2(0.1, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30u7h"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sut4w"]
 transparency = 1
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_color = Color(1, 1, 1, 0.78431374)
 albedo_texture = ExtResource("4_3f14b")
 disable_receive_shadows = true
@@ -132,21 +139,43 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6s78v"]
-emission_shape_scale = Vector3(50, 10, 50)
+[sub_resource type="Curve" id="Curve_bscv6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1993464, 1), 0.0, 0.0, 0, 0, Vector2(0.8006536, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_sut4w"]
+curve = SubResource("Curve_bscv6")
+
+[sub_resource type="Curve" id="Curve_sut4w"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_445po"]
+curve = SubResource("Curve_sut4w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_445po"]
+emission_shape_scale = Vector3(50, 1, 50)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
+angle_min = -0.9999893
+angle_max = 1.0000107
+angle_curve = SubResource("CurveTexture_445po")
+direction = Vector3(0.1, 0, 0)
+orbit_velocity_min = -0.6229999
+orbit_velocity_max = 0.3500001
 gravity = Vector3(0, -0.612, 0)
 linear_accel_min = -1.0000023
 linear_accel_max = 0.99999774
 tangential_accel_min = -1.0000023
 tangential_accel_max = -2.2351742e-06
-scale_min = 0.099999994
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_b831e")
-alpha_curve = SubResource("CurveTexture_pxlfp")
+scale_min = 0.5
+alpha_curve = SubResource("CurveTexture_sut4w")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.1
 
-[sub_resource type="QuadMesh" id="QuadMesh_445po"]
+[sub_resource type="QuadMesh" id="QuadMesh_7gxwj"]
 size = Vector2(0.3, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxlfp"]
@@ -173,11 +202,14 @@ metadata/_custom_type_script = "uid://b00l74oqq5jru"
 transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, -0.1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Ground" unique_id=101358808]
-material_override = ExtResource("2_kekqg")
-mesh = SubResource("BoxMesh_ug8el")
+material_override = ExtResource("1_sut4w")
+mesh = SubResource("BoxMesh_1ucx5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/Ground" unique_id=1375788858]
 shape = SubResource("BoxShape3D_u62ia")
+
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Enviroment/Ground" unique_id=2086172900]
+resolution = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=528465232 groups=["world_env"]]
 environment = SubResource("Environment_gqnfj")
@@ -189,8 +221,7 @@ light_bake_mode = 1
 shadow_enabled = true
 
 [node name="Rain" type="GPUParticles3D" parent="Enviroment" unique_id=1254405326]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 material_override = SubResource("StandardMaterial3D_6s78v")
 cast_shadow = 0
 gi_mode = 0
@@ -199,30 +230,30 @@ lifetime = 2.0
 preprocess = 3.0
 randomness = 1.0
 fixed_fps = 10
-visibility_aabb = AABB(-51.997845, -54.70527, -51.99999, 110.11528, 66.704605, 110.010994)
+visibility_aabb = AABB(-51.99999, -44.155376, -51.999966, 106.09058, 47.155277, 106.09062)
 process_material = SubResource("ParticleProcessMaterial_e4csd")
 draw_pass_1 = SubResource("QuadMesh_e4csd")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enviroment/Rain" unique_id=633072473]
-visible = false
 stream = ExtResource("16_e4csd")
 attenuation_model = 3
+autoplay = true
 panning_strength = 0.0
 bus = &"SFX"
 
 [node name="Snow" type="GPUParticles3D" parent="Enviroment" unique_id=186487468]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_bscv6")
 cast_shadow = 0
 gi_mode = 0
 amount = 100000
-lifetime = 3.0
-preprocess = 3.0
+lifetime = 10.0
+preprocess = 10.0
 randomness = 1.0
 fixed_fps = 10
-visibility_aabb = AABB(-51.41128, -15.780294, -51.542072, 102.79997, 25.880249, 102.96678)
-process_material = SubResource("ParticleProcessMaterial_sut4w")
+visibility_aabb = AABB(-64.04949, -62.887592, -63.833374, 126.554535, 63.986485, 126.44093)
+process_material = SubResource("ParticleProcessMaterial_bscv6")
 draw_pass_1 = SubResource("QuadMesh_3f14b")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enviroment/Snow" unique_id=258674877]
@@ -233,19 +264,16 @@ panning_strength = 0.0
 bus = &"SFX"
 
 [node name="Leaves" type="GPUParticles3D" parent="Enviroment" unique_id=528829118]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_30u7h")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+material_override = SubResource("StandardMaterial3D_sut4w")
 cast_shadow = 0
 gi_mode = 0
 amount = 1000
-lifetime = 5.0
-preprocess = 3.0
-randomness = 1.0
-visibility_aabb = AABB(-54.078804, -25.414625, -53.02619, 105.09997, 35.689957, 108.471596)
-transform_align = 3
-process_material = SubResource("ParticleProcessMaterial_6s78v")
-draw_pass_1 = SubResource("QuadMesh_445po")
+lifetime = 10.0
+preprocess = 10.0
+visibility_aabb = AABB(-95.12263, -79.96687, -99.3248, 192.04112, 81.266655, 195.10248)
+process_material = SubResource("ParticleProcessMaterial_445po")
+draw_pass_1 = SubResource("QuadMesh_7gxwj")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enviroment/Leaves" unique_id=373608953]
 stream = ExtResource("18_3f14b")
@@ -302,7 +330,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.4314084, 1.2032229, -
 transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, 2.8417666, 1.3299992, -9.238689)
 
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("1_u62ia")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 1.5207329, 0)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.47926712, -6)
 
 [node name="Tamagoche" parent="." unique_id=59066183 instance=ExtResource("5_haolt")]
 transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49683318, -0.36526898, 1.1032227, -9.865707)
