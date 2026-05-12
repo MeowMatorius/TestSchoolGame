@@ -6,6 +6,4 @@
 
 [node name="EventManager" type="Node3D" unique_id=240954700]
 script = ExtResource("1_f5lpb")
-global_events = Dictionary[String, ExtResource("2_tw1wf")]({
-"0001": ExtResource("3_bh6ho")
-})
+global_events = Array[ExtResource("2_tw1wf")]([ExtResource("3_bh6ho")])

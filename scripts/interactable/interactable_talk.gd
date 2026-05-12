@@ -15,3 +15,4 @@ func interact(object):
 
 func get_prompt() -> String:
 	return "Поговорить"
+

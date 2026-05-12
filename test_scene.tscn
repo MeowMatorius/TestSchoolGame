@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://cebxk55fsjy8k"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://player/player.tscn" id="1_3qnke"]
-[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/mountains.exr" id="1_s36qc"]
+[ext_resource type="Texture2D" uid="uid://dup7wa6e2c8fo" path="res://assets/hdri/Mountains.exr" id="1_s36qc"]
 [ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://assets/materials/black_mat.tres" id="3_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://scenes/interactable/radio.tscn" id="4_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://d0uqtdm2x86ae" path="res://assets/models/furniture/rugRounded.glb" id="5_fftn7"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://scenes/npcs/hlopchik.tscn" id="5_s36qc"]
 [ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://scenes/interactable/key.tscn" id="5_wtsjf"]
+[ext_resource type="Texture2D" uid="uid://ht5bgdh7kv6v" path="res://assets/textures/greybox_textures/greybox_red_grid.png" id="6_2nf64"]
 [ext_resource type="PackedScene" uid="uid://brnanjah7se5e" path="res://assets/models/furniture/rugSquare.glb" id="6_68ann"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://scenes/interactable/door.tscn" id="7_ntc4i"]
+[ext_resource type="Resource" uid="uid://b3kgm5cdrh0ak" path="res://resourses/interactable/items/key_red.tres" id="7_sxsde"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://scenes/interactable/door_locked.tscn" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://bmuf8e05i0227" path="res://scenes/interactable/lamp_square_table.tscn" id="9_fftn7"]
+[ext_resource type="Resource" uid="uid://bdbp5qkvr5bg3" path="res://resourses/events/open_red_door.tres" id="9_sxsde"]
 [ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://scenes/csg/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
@@ -67,6 +70,22 @@ auto_exposure_min_sensitivity = 100.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3xc6"]
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5xgu"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("6_2nf64")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rygqd"]
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_8k62k"]
+resource_local_to_scene = true
+script = ExtResource("25_fftn7")
+lock_state = 0
+item_needed_to_open = ExtResource("7_sxsde")
+quantity_needed_to_open = 1
+metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
 [sub_resource type="Resource" id="Resource_8fq6b"]
 resource_local_to_scene = true
@@ -311,6 +330,14 @@ size = Vector3(1.268, 2.3, 4)
 
 [node name="DoorLocked" parent="Сцена (Статичное)/Building/ClassL2Door" unique_id=1458739684 instance=ExtResource("8_rnaij")]
 transform = Transform3D(0.09999999, 0, 0, 0, 2.3, 0, 0, 0, 0.09999999, 0.6374564, 0.23638344, 0.4418602)
+
+[node name="MeshInstance3D" parent="Сцена (Статичное)/Building/ClassL2Door/DoorLocked/Door" parent_id_path=PackedInt32Array(1458739684, 606871235) index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_r5xgu")
+mesh = SubResource("BoxMesh_rygqd")
+
+[node name="InteractComponent" parent="Сцена (Статичное)/Building/ClassL2Door/DoorLocked/Door" parent_id_path=PackedInt32Array(1458739684, 606871235) index="4" unique_id=1162931946]
+switch_data = SubResource("Resource_8k62k")
+event_data = ExtResource("9_sxsde")
 
 [node name="CorridorR" type="CSGBox3D" parent="Сцена (Статичное)/Building" unique_id=745456257]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, -27.294003, 6.581115, 0.707412)
@@ -926,6 +953,7 @@ transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.0174
 [node name="Tamagoche" parent="Персонажи" unique_id=2119838203 instance=ExtResource("31_fftn7")]
 transform = Transform3D(0.49317157, 0, 0.082351655, 0, 0.5, 0, -0.082351655, 0, 0.49317157, -1.3301136, 1, 0.48930234)
 
+[editable path="Сцена (Статичное)/Building/ClassL2Door/DoorLocked"]
 [editable path="Объекты/Radio"]
 [editable path="Объекты/Money2"]
 [editable path="Персонажи/Hlopchik2"]

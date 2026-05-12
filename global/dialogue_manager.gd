@@ -27,12 +27,14 @@ func _ready() -> void:
 func enter_dialogue_state(npc_data):                                  
 	GameManager.current_game_state = GameManager.GameState.DIALOGUE
 #	GameManager.current_game_camera = dialogue_camera
-	
+
 	if event_bool:
 		display_line(npc_data.event_dialogues[event_id])
+		event_bool = false
 	else:
 		display_line(npc_data.dialogue_line)
 	
+
 func check_line_type(id):
 	print('Получил сигнал')
 	event_bool = true

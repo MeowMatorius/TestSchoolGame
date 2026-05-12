@@ -9,3 +9,4 @@ extends Resource
 @export var event_over: bool = false
 @export var quest_data: QuestData
 @export var next_event_data: EventData
+@export var npc: Array[NPCData]
