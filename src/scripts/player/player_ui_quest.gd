@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-var quest_entry_scene: PackedScene = preload("res://scenes/interface/quest.tscn")
-var icon_done = preload("res://assets/icons/check_mark.png")
+var quest_entry_scene: PackedScene = preload("uid://c5ktdafkof5xx")
+var icon_done = preload("uid://cbihmmy1lpu4t")
 var quest_list: Array[Node]
 
 

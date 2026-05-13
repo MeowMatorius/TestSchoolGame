@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://cir8t1hwrrlnd" path="res://src/assets/materials/blue_mat.tres" id="1_j3k1l"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://src/scripts/interact/interact_switch.gd" id="2_cwxdl"]
-[ext_resource type="Resource" uid="uid://bibj45acverym" path="res://src/resourses/🤚interact_data/switch/door_broken.tres" id="3_j3k1l"]
+[ext_resource type="Resource" uid="uid://bibj45acverym" path="res://src/resources/🤚interact_data/switch/door_broken.tres" id="3_j3k1l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxdn"]
 resource_local_to_scene = true

@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://src/scenes/csg/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
-[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resourses/item_data.gd" id="12_pln1h"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="12_pln1h"]
 [ext_resource type="PackedScene" uid="uid://bsjkhnga4fk1c" path="res://src/assets/models/furniture/chairCushion.glb" id="13_nlwlv"]
 [ext_resource type="PackedScene" uid="uid://uxj4ci0t0g2i" path="res://src/assets/models/furniture/cardboardBoxOpen.glb" id="15_lmrlb"]
 [ext_resource type="PackedScene" uid="uid://bb2l2xt8t6a4x" path="res://src/assets/models/furniture/stairs.glb" id="18_qq5q4"]
@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://c77h84o5k4wre" path="res://src/assets/models/furniture/coatRackStanding.glb" id="22_6gkjt"]
 [ext_resource type="PackedScene" uid="uid://cyein5f2vafk1" path="res://src/scenes/interactable/television_vintage.tscn" id="23_5csvr"]
 [ext_resource type="PackedScene" uid="uid://ckywgjny3p3yo" path="res://src/assets/models/furniture/loungeChair.glb" id="23_lmrlb"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resourses/switch_data.gd" id="25_fftn7"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="25_fftn7"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://src/scenes/npcs/tamagoche.tscn" id="31_fftn7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kow03"]

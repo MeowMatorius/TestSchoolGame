@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dl0y0e70gh3ra" path="res://src/assets/materials/orange_mat.tres" id="1_5yfcu"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://src/scripts/interact/interact_talk.gd" id="2_gmw5h"]
-[ext_resource type="Resource" uid="uid://cxon4cj25fdwq" path="res://src/resourses/🤦‍♀️npc_data/Hlopchik.tres" id="3_5yfcu"]
+[ext_resource type="Resource" uid="uid://cxon4cj25fdwq" path="res://src/resources/🤦‍♀️npc_data/Hlopchik.tres" id="3_5yfcu"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_x68is"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_s2mr4"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ob37v"]

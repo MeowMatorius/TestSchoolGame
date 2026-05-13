@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://brovktqpjxhbg" path="res://src/assets/music/lisrim.mp3" id="2_pxlfp"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://src/scripts/interact/interact_switch.gd" id="3_7h80l"]
 [ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/music_note.png" id="3_pxlfp"]
-[ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://src/resourses/🤚interact_data/switch/button.tres" id="4_e02vc"]
+[ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://src/resources/🤚interact_data/switch/button.tres" id="4_e02vc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5l70m"]
 size = Vector3(1, 0.6826172, 0.30371094)

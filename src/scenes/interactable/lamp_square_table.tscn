@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bmuf8e05i0227"]
 
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://src/scripts/interact/interact_switch.gd" id="1_n0pes"]
-[ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://src/resourses/🤚interact_data/switch/button.tres" id="2_1hvpp"]
+[ext_resource type="Resource" uid="uid://buhdpjr3je2bj" path="res://src/resources/🤚interact_data/switch/button.tres" id="2_1hvpp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b37av"]
 resource_local_to_scene = true
