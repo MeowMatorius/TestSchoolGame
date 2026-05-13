@@ -211,7 +211,7 @@ grow_vertical = 2
 mouse_behavior_recursive = 2
 theme = ExtResource("7_65viv")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tab_0/title = "🧊"
 tab_1/title = "🔬"
 tab_2/title = "📘"
@@ -219,6 +219,7 @@ tab_3/title = "🧳"
 tab_4/title = "🗺️"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -629,7 +630,6 @@ layout_mode = 2
 text = "Letterbox (Черные Полосы)"
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
@@ -638,9 +638,17 @@ theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 2
 metadata/_tab_name = "📘"
 
-[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab" unique_id=1414968909]
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab" unique_id=1215305301]
 layout_mode = 2
+
+[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab/HBoxContainer" unique_id=1414968909]
+layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("21_x7c3f")
+
+[node name="Container" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab/HBoxContainer" unique_id=1129765613]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="InventoryTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=745005613]
 visible = false

@@ -3,4 +3,5 @@ using System;
 
 [GlobalClass] public partial class SignalBus : Node
 {
+    
 }
