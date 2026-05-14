@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SwitchData" format=3 uid="uid://d4grfj7jekajm"]
 
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="1_ht65o"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/OLD/switch_data.gd" id="1_ht65o"]
 [ext_resource type="Resource" uid="uid://b3kgm5cdrh0ak" path="res://src/resources/🤚interact_data/items/key_red.tres" id="1_y75jl"]
 
 [resource]

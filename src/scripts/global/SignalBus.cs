@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace SchoolGame.scripts.global;
 
 [GlobalClass] public partial class SignalBus : Node
 {

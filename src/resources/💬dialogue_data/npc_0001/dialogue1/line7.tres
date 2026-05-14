@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://biyqmoujwyvh6"]
 
-[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/DialogueLine.gd" id="1_dn7g5"]
-[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/ConditionType.gd" id="2_2eowm"]
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/OLD/DialogueLine.gd" id="1_dn7g5"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/OLD/ConditionType.gd" id="2_2eowm"]
 [ext_resource type="Resource" uid="uid://dv61s83h8hhep" path="res://src/resources/💬dialogue_data/npc_0001/dialogue1/line9.tres" id="3_ida8o"]
-[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="4_7tjox"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/OLD/quest_data.gd" id="4_7tjox"]
 
 [resource]
 script = ExtResource("1_dn7g5")

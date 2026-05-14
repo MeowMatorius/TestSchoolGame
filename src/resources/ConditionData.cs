@@ -1,11 +1,14 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
+
+namespace SchoolGame.resources;
+
 
 [GlobalClass] public partial class ConditionData : Resource
 {
     [Signal] public delegate void ChangedStatusEventHandler(ConditionData condition);
     
-    private bool _completed = false;
+    private bool _completed;
     [Export] public bool Completed
     {
         get => _completed;
@@ -14,7 +17,7 @@ using System.Collections.Generic;
             _completed = value;
             GD.Print($"completed изменено на: {_completed}");
             EmitChanged();
-            EmitSignal(SignalName.ChangedStatus, this);
+            EmitSignal(global::ConditionData.SignalName.ChangedStatusEventHandler, this);
         }
     }
     

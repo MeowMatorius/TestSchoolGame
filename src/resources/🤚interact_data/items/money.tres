@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bt2werxjn26vd"]
 
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="1_b6v1s"]
-[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="1_ptcxq"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/OLD/item_data.gd" id="1_ptcxq"]
 
 [resource]
 script = ExtResource("1_ptcxq")

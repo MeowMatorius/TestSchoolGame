@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SwitchData" format=3 uid="uid://bibj45acverym"]
 
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="1_8jn5n"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/OLD/switch_data.gd" id="1_8jn5n"]
 
 [resource]
 resource_local_to_scene = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5mw738vwqvba"]
 
 [ext_resource type="Script" uid="uid://bnajtw5d4xyjq" path="res://src/scripts/global/event_manager.gd" id="1_f5lpb"]
-[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://src/resources/event_data.gd" id="2_tw1wf"]
+[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://src/resources/OLD/event_data.gd" id="2_tw1wf"]
 [ext_resource type="Resource" uid="uid://coil7nbiqw16k" path="res://src/resources/🔉event_data/game_start.tres" id="3_bh6ho"]
 
 [node name="EventManager" type="Node3D" unique_id=240954700]

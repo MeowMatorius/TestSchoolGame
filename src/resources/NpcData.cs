@@ -1,14 +1,14 @@
 using Godot;
 using Godot.Collections;
 
-[GlobalClass]
-public partial class NpcData : Resource
-{
-    [Export] 
-    public string NpcId { get; set; } = "0001";
+namespace SchoolGame.resources;
 
-    [Export] 
-    public string NpcName { get; set; } = "NPC";
+
+[GlobalClass] public partial class NpcData : Resource
+{
+    [Export] public string Id { get; set; } = "0001";
+
+    [Export] public string Name { get; set; } = "NPC";
 
     // Указываем базовый тип Resource, но через Hint задаем путь к вашему скрипту DialogueLine.gd
     [Export(PropertyHint.ResourceType, "DialogueLine")] 

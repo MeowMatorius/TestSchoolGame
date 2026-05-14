@@ -1,12 +1,16 @@
 using Godot;
 
+namespace SchoolGame.resources;
+
+
 public enum Type { Key, Collectable, Money, QuestItem }
+
 
 [GlobalClass] public partial class ItemData : Resource
 {
-    [Export] public bool unique { get; set; } = false;
-    [Export] public Type type { get; set; }
-    [Export] public string name { get; set; } = "item";
-    [Export] public int quantity { get; set; } = 1;
-    [Export] public Texture2D icon { get; set; }
+    [Export] public bool Unique { get; set; }
+    [Export] public Type Type { get; set; }
+    [Export] public string Name { get; set; } = "item";
+    [Export] public int Quantity { get; set; } = 1;
+    [Export] public Texture2D Icon { get; set; }
 }

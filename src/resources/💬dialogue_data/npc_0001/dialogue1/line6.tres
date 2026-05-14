@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://dmm5yukxklihk"]
 
-[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/DialogueLine.gd" id="1_dfij5"]
-[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/ConditionType.gd" id="2_f2rfa"]
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/OLD/DialogueLine.gd" id="1_dfij5"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/OLD/ConditionType.gd" id="2_f2rfa"]
 [ext_resource type="Resource" uid="uid://bfcnm3ol7ekw3" path="res://src/resources/💬dialogue_data/npc_0001/dialogue1/line8.tres" id="3_3en6t"]
-[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="4_jeul6"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/OLD/quest_data.gd" id="4_jeul6"]
 [ext_resource type="Resource" uid="uid://dqkvw4v07kkll" path="res://src/resources/📝quest_data/quest1.tres" id="5_702we"]
 
 [resource]

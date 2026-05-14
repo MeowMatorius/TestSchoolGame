@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://c8l5y8gmped8e"]
 
-[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/DialogueLine.gd" id="1_s6vyp"]
-[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/ConditionType.gd" id="2_e4vnu"]
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/OLD/DialogueLine.gd" id="1_s6vyp"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/OLD/ConditionType.gd" id="2_e4vnu"]
 [ext_resource type="Resource" uid="uid://dbegw2m8slk7t" path="res://src/resources/⚙️condition_data/condition_1.tres" id="3_qv2bu"]
 [ext_resource type="Resource" uid="uid://biyqmoujwyvh6" path="res://src/resources/💬dialogue_data/npc_0001/dialogue1/line7.tres" id="4_ql608"]
-[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="5_crt3s"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/OLD/quest_data.gd" id="5_crt3s"]
 
 [resource]
 script = ExtResource("1_s6vyp")

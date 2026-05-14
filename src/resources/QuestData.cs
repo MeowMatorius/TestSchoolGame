@@ -1,32 +1,29 @@
+using System.Linq;
 using Godot;
 using Godot.Collections;
-using System.Linq;
 
-[GlobalClass]
-public partial class QuestData : Resource
+namespace SchoolGame.resources;
+
+
+[GlobalClass] public partial class QuestData : Resource
 {
     private string _id;
     private bool _completed;
     private bool _failed;
 
-    [Export]
-    public string Id
+    [Export] public string Name { get; set; } = "Квест 1";
+    [Export(PropertyHint.MultilineText)] public string Description { get; set; } = "Описание";
+    [Export] public Array<SchoolGame.resources.ConditionData> Condition { get; set; } = new();
+
+    
+    [Export] public string Id
     {
         get => string.IsNullOrEmpty(_id) ? GetId() : _id;
         set => _id = value;
     }
-
-    [Export] 
-    public string Name { get; set; } = "Квест 1";
-
-    [Export(PropertyHint.MultilineText)] 
-    public string Description { get; set; } = "Описание";
-
-    [Export] 
-    public Array<ConditionData> Condition { get; set; } = new();
-
-    [Export]
-    public bool Completed
+    
+    
+    [Export] public bool Completed
     {
         get => _completed;
         set
@@ -36,12 +33,12 @@ public partial class QuestData : Resource
             EmitChanged();
             
             // Предполагается, что SignalBus — это глобальный синглтон (Autoload)
-            SignalBus.Instance.EmitSignal(SignalBus.SignalName.QuestCompleted, this);
+            scripts.global.SignalBus.Instance.EmitSignal(SignalBus.SignalName.QuestCompleted, this);
         }
     }
 
-    [Export]
-    public bool Failed
+    
+    [Export] public bool Failed
     {
         get => _failed;
         set
@@ -51,16 +48,18 @@ public partial class QuestData : Resource
             EmitChanged();
             
             // В Godot 4 C# сигналы обычно отправляются через глобальную шину
-            SignalBus.Instance.EmitSignal(SignalBus.SignalName.QuestCompleted, this);
+            scripts.global.SignalBus.Instance.EmitSignal(SignalBus.SignalName.QuestCompleted, this);
         }
     }
 
-    public string GetId()
+
+    private string GetId()
     {
         return ResourcePath.GetFile().GetBaseName();
     }
 
-    public bool IsComplete()
+
+    private bool IsComplete()
     {
         // Используем LINQ All для проверки всех условий
         return Condition.All(cond => cond != null && cond.Completed);

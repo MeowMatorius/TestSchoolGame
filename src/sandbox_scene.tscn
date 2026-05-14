@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="7_wwywm"]
 [ext_resource type="AudioStream" uid="uid://ddunxky2cdkot" path="res://src/assets/music/elixir.mp3" id="8_lvntd"]
 [ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/music_note.png" id="9_xfj2v"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="10_amhku"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/OLD/switch_data.gd" id="10_amhku"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="11_nq0i5"]
 [ext_resource type="PackedScene" uid="uid://baf833tfftk3a" path="res://src/scenes/interactable/books.tscn" id="12_tkjv7"]
 [ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://src/scenes/interactable/key.tscn" id="13_v2cc4"]

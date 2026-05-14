@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
-[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="12_pln1h"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/OLD/item_data.gd" id="12_pln1h"]
 [ext_resource type="PackedScene" uid="uid://bsjkhnga4fk1c" path="res://src/assets/models/furniture/chairCushion.glb" id="13_nlwlv"]
 [ext_resource type="PackedScene" uid="uid://uxj4ci0t0g2i" path="res://src/assets/models/furniture/cardboardBoxOpen.glb" id="15_lmrlb"]
 [ext_resource type="PackedScene" uid="uid://bb2l2xt8t6a4x" path="res://src/assets/models/furniture/stairs.glb" id="18_qq5q4"]
