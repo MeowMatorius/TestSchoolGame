@@ -29,7 +29,7 @@ func enter_dialogue_state(npc_data):
 #	GameManager.current_game_camera = dialogue_camera
 
 	if event_bool:
-		display_line(npc_data.event_dialogues[event_id])
+		display_line(npc_data.event_dialogues[0])
 		event_bool = false
 	else:
 		display_line(npc_data.dialogue_line)
@@ -44,6 +44,7 @@ func check_line_type(id):
 
 
 func display_line(dialogue_line):
+	call_comand(dialogue_line.text)
 	started_talking.emit(dialogue_line.character_name, dialogue_line.text)
 	track_quest(dialogue_line.quest)
 	if dialogue_line.choices.size() == 0:
@@ -55,6 +56,20 @@ func display_line(dialogue_line):
 	else:
 		end_dialogue()
 	
+func call_comand(text):
+	var clean_text = text
+	if "[trigger:" in text:
+		var start = text.find("[trigger:") + 9
+		var end = text.find("]", start)
+		var tag_content = text.substr(start, end - start)
+		
+		# Вызываем команду через фабрику
+		DialogueCommandFactory.run_command(tag_content) 
+		
+		# Очищаем текст от технического тега для вывода игроку
+		clean_text = text.replace("[trigger:" + tag_content + "]", "")
+		
+	$DialogueLabel.text = clean_text
 
 func _on_choice_selected(next_node_id, condition, quest):
 	get_item(condition)

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EventData" format=3 uid="uid://coil7nbiqw16k"]
 
-[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://src/resources/OLD/event_data.gd" id="1_vnomc"]
-[ext_resource type="Script" uid="uid://biksjc401uymx" path="res://src/resources/OLD/NPCData.gd" id="1_yhrsa"]
+[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://src/resources/event_data.gd" id="1_vnomc"]
+[ext_resource type="Script" uid="uid://biksjc401uymx" path="res://src/resources/NPCData.gd" id="1_yhrsa"]
 [ext_resource type="Resource" uid="uid://cxon4cj25fdwq" path="res://src/resources/🤦‍♀️npc_data/Hlopchik.tres" id="2_e4qmu"]
 
 [resource]
