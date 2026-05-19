@@ -113,7 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 
 [node name="Snow" parent="Weather" unique_id=240097082 instance=ExtResource("4_xa12n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-visible = false
 
 [node name="Leaves" parent="Weather" unique_id=955218550 instance=ExtResource("5_i8p06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)

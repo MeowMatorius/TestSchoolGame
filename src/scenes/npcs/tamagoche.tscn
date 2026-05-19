@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ctldlke35kow5" path="res://src/assets/models/entities/Textures/colormap.png" id="1_v646c"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://src/scripts/interact/interact_talk.gd" id="2_4lxmt"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_necp0"]
-[ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://src/resources/💬dialogue_data/npc_0001/dialogue1/line1.tres" id="3_o2fbv"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_sqnmw"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_o2fbv"]
+[ext_resource type="Resource" uid="uid://j6ecdvxu5rke" path="res://src/resources/🤦‍♀️npc_data/Kuzia.tres" id="6_uqkvi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w83ju"]
 resource_name = "colormap"
@@ -723,7 +723,8 @@ speed_scale = 0.3
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=207587609]
 physics_interpolation_mode = 1
-transform = Transform3D(1.9879063, 0.01970496, -0.21872492, 0, 1.9919329, 0.17945354, 0.21961072, -0.1783684, 1.9798881, -0.03244084, 1.0492228, 2.1608202)
+transform = Transform3D(0.9999967, -0.00023162179, 0.002571009, 0, 0.99596643, 0.08972677, -0.0025814176, -0.08972647, 0.9959632, 0.105288856, 0.5246114, 1.0753899)
+top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="DialogueCamera" unique_id=1064651226]
 process_priority = 300
@@ -739,6 +740,5 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="InteractComponent" type="Node3D" parent="." unique_id=461430410 node_paths=PackedStringArray("dialogue_camera")]
 script = ExtResource("2_4lxmt")
-internal_name = "Tamagoche"
 dialogue_camera = NodePath("../PhantomCamera3D")
-dialogue = ExtResource("3_o2fbv")
+npc_data = ExtResource("6_uqkvi")

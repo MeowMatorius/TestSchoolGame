@@ -1,16 +1,13 @@
 [gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://bpktwen34h5r"]
 
-[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/OLD/DialogueLine.gd" id="1_0jr2w"]
-[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/OLD/ConditionType.gd" id="2_pgbhg"]
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/DialogueLine.gd" id="1_0jr2w"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/ConditionType.gd" id="2_pgbhg"]
 [ext_resource type="Resource" uid="uid://ccvlsqjboiwcn" path="res://src/resources/💬dialogue_data/npc_0001/dialogue1/end_line.tres" id="3_sy5cn"]
-[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/OLD/quest_data.gd" id="4_cfta5"]
-[ext_resource type="Resource" uid="uid://bagv5uhmbmt17" path="res://src/resources/📝quest_data/quest2.tres" id="5_nsibt"]
 
 [resource]
 script = ExtResource("1_0jr2w")
 character_name = "Игрок"
 text = "Ну уж нет"
 next_dialogue = ExtResource("3_sy5cn")
-quest = Array[ExtResource("4_cfta5")]([ExtResource("5_nsibt")])
 answer = 1
 metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

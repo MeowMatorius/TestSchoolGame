@@ -16,9 +16,16 @@ func show_ui(speaker, line):
 	speaker_line.text = line
 
 	
-func show_choices(dialogue_line):
+func show_choices(dialogue_line, npc_data):
+	var all_choices: Array = []
+	all_choices.append_array(dialogue_line.choices)
 	SignalBus.entered_choice_menu.emit(true)
 	speaker_name.text = dialogue_line.character_name
+	
+	if npc_data.quest_dialogues != null:
+		for quest_line in npc_data.quest_dialogues:
+			if quest_line.end_quest in QuestManager.active_quests:
+				all_choices.append(quest_line)
 	
 	for i in range(choices.size()):
 		var button = choices[i]
@@ -27,13 +34,15 @@ func show_choices(dialogue_line):
 		if button.pressed.is_connected(_on_choice_selected):
 			button.pressed.disconnect(_on_choice_selected)
 		
-		if i < dialogue_line.choices.size():
-			if dialogue_line.choices[i].condition.size() != 0:
-				button.disabled = !_disabled_condition(dialogue_line.choices[i].condition)
+		if i < all_choices.size():
+			if all_choices[i].condition != null:
+				button.disabled = !_disabled_condition(all_choices[i].condition)
+			if all_choices[i].end_quest != null:
+				button.add_theme_color_override("font_color", Color(0.875, 0.875, 0.078))
 			button.visible = true
-			button.text = dialogue_line.choices[i].text
+			button.text = all_choices[i].text
 			# Подключаем сигнал к функции, передавая нужную ветку через bind
-			button.pressed.connect(_on_choice_selected.bind(dialogue_line.choices[i].next_dialogue, dialogue_line.choices[i].condition, dialogue_line.choices[i].quest))
+			button.pressed.connect(_on_choice_selected.bind(all_choices[i], npc_data))
 		else:
 			# Скрываем лишние кнопки, если вариантов выбора меньше, чем кнопок в UI
 			button.visible = false
@@ -41,10 +50,12 @@ func show_choices(dialogue_line):
 func  _disabled_condition(condition):
 	return condition.all(func(cond): return cond.is_met())
 
-func _on_choice_selected(branch_id, condition, quest):
+func _on_choice_selected(choice, npc_data):
+	var next_dialogue = choice.next_dialogue
+	var condition = choice.condition
 	SignalBus.entered_choice_menu.emit(false)
 	_clear_ui()
-	DialogueManager._on_choice_selected(branch_id, condition, quest)
+	DialogueManager._on_choice_selected(next_dialogue, condition, choice, npc_data)
 	
 func _clear_ui():
 	for i in range(choices.size()):

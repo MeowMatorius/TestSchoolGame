@@ -60,5 +60,6 @@ draw_pass_1 = SubResource("QuadMesh_3f14b")
 stream = ExtResource("2_8hasy")
 attenuation_model = 3
 volume_db = -6.0
+autoplay = true
 panning_strength = 0.0
 bus = &"SFX"

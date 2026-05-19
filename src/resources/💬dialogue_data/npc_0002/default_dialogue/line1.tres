@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://cnx2sey1kfxox"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/DialogueLine.gd" id="1_k1l7d"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/ConditionType.gd" id="2_2abmy"]
+[ext_resource type="Resource" uid="uid://cf4y2oaexnajm" path="res://src/resources/💬dialogue_data/npc_0002/default_dialogue/line2.tres" id="2_m7a0i"]
+[ext_resource type="Resource" uid="uid://cank2hanq763f" path="res://src/resources/💬dialogue_data/npc_0002/default_dialogue/line3.tres" id="3_qr6dg"]
+[ext_resource type="Resource" uid="uid://c8bfu3bsu8ywy" path="res://src/resources/💬dialogue_data/npc_0002/default_dialogue/line4.tres" id="4_aus52"]
+
+[resource]
+script = ExtResource("1_k1l7d")
+character_name = "Кузя"
+text = "Привет. Че нада?"
+choices = Array[ExtResource("1_k1l7d")]([ExtResource("2_m7a0i"), ExtResource("3_qr6dg"), ExtResource("4_aus52")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

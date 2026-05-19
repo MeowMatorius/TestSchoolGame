@@ -29,10 +29,10 @@ func enter_dialogue_state(npc_data):
 #	GameManager.current_game_camera = dialogue_camera
 
 	if event_bool:
-		display_line(npc_data.event_dialogues[0])
+		display_line(npc_data.event_dialogues[0], npc_data)
 		event_bool = false
 	else:
-		display_line(npc_data.dialogue_line)
+		display_line(npc_data.dialogue_line, npc_data)
 	
 
 func check_line_type(id):
@@ -43,46 +43,44 @@ func check_line_type(id):
 
 
 
-func display_line(dialogue_line):
-	call_comand(dialogue_line.text)
+func display_line(dialogue_line, npc_data):
+	_on_option_button_pressed(dialogue_line)
 	started_talking.emit(dialogue_line.character_name, dialogue_line.text)
-	track_quest(dialogue_line.quest)
+#	track_quest(dialogue_line.quest)
 	if dialogue_line.choices.size() == 0:
 		await InputManager.skip_pressed
 	if dialogue_line.next_dialogue != null:
-		display_line(dialogue_line.next_dialogue)
+		display_line(dialogue_line.next_dialogue, npc_data)
 	elif dialogue_line.choices.size() != 0:
-		start_choosing.emit(dialogue_line)
+		start_choosing.emit(dialogue_line, npc_data)
 	else:
 		end_dialogue()
 	
-func call_comand(text):
-	var clean_text = text
-	if "[trigger:" in text:
-		var start = text.find("[trigger:") + 9
-		var end = text.find("]", start)
-		var tag_content = text.substr(start, end - start)
-		
-		# Вызываем команду через фабрику
-		DialogueCommandFactory.run_command(tag_content) 
-		
-		# Очищаем текст от технического тега для вывода игроку
-		clean_text = text.replace("[trigger:" + tag_content + "]", "")
-		
-	$DialogueLabel.text = clean_text
+	
+func _on_option_button_pressed(dialogue_line) -> void:
 
-func _on_choice_selected(next_node_id, condition, quest):
+	# Фабрика создает команду, используя тип из ресурса и прикрепленный квест
+	var command := DialogueCommandFactory.create_command(
+		dialogue_line.command_type, 
+		dialogue_line
+	)
+	
+	if command:
+		command.execute(get_tree())
+
+func _on_choice_selected(next_node_id, condition, dialogue_line_1, npc_data):
+	_on_option_button_pressed(dialogue_line_1)
 	get_item(condition)
-	track_quest(quest)
+#	track_quest(quest)
 	if next_node_id != null:
-		display_line(next_node_id)
+		display_line(next_node_id, npc_data)
 	else:
 		end_dialogue()
 
-func track_quest(quest_list):
-	if quest_list != null:
-		for quest in quest_list:
-			QuestManager.track_quest(quest)
+#func track_quest(quest_list):
+#	if quest_list != null:
+#		for quest in quest_list:
+#			QuestManager.track_quest(quest)
 			
 func get_item(condition):
 	for i in condition:

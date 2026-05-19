@@ -7,3 +7,4 @@ extends Resource
 
 @export var dialogue_line: DialogueLine
 @export var event_dialogues: Array[DialogueLine]
+@export var quest_dialogues: Array[DialogueLine]
