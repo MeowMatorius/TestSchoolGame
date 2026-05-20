@@ -33,7 +33,7 @@ hipass = 0.3
 
 [resource]
 bus/0/volume_db = -5.9307528
-bus/1/name = &"Master Copy"
+bus/1/name = &"BGM"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false

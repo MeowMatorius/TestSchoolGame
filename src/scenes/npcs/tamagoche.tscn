@@ -723,7 +723,7 @@ speed_scale = 0.3
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=207587609]
 physics_interpolation_mode = 1
-transform = Transform3D(0.9999967, -0.00023162179, 0.002571009, 0, 0.99596643, 0.08972677, -0.0025814176, -0.08972647, 0.9959632, 0.105288856, 0.5246114, 1.0753899)
+transform = Transform3D(0.99911743, 0.0037689016, -0.04183478, 2.3283064e-10, 0.99596643, 0.08972677, 0.042004205, -0.08964758, 0.9950874, 0.05074182, 0.7323807, 1.5052682)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="DialogueCamera" unique_id=1064651226]
