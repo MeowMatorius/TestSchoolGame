@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://baf833tfftk3a"]
 
 [ext_resource type="Script" uid="uid://bh4iah8j25mra" path="res://src/scripts/interact/interact_read.gd" id="1_cf0rl"]
-[ext_resource type="Resource" uid="uid://rr78lm5l1wm" path="res://src/resources/🤚interact_data/read/books.tres" id="2_exki3"]
+[ext_resource type="Resource" uid="uid://rr78lm5l1wm" path="res://src/resources/🤚interact_data/note/books.tres" id="2_exki3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlhjj"]
 resource_name = "carpetDarker"

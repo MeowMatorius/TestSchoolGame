@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://dmm5yukxklihk"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_dfij5"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_f2rfa"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_y4bbp"]
+[ext_resource type="Resource" uid="uid://bfcnm3ol7ekw3" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_05.tres" id="4_rjfuq"]
+
+[resource]
+script = ExtResource("1_dfij5")
+text = "Я вернусь позже"
+next_dialogue = ExtResource("4_rjfuq")
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

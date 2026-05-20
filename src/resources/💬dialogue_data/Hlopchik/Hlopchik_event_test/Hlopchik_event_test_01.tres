@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://eoqmpq5fase2"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_q2kvm"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_8ijjh"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_ej6gm"]
+[ext_resource type="Resource" uid="uid://w16crddxh147" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_event_test/Hlopchik_event_test_02.tres" id="4_gyh3p"]
+
+[resource]
+script = ExtResource("1_q2kvm")
+character_name = "Хлопчик"
+text = "Привет. Жоска начали диалог из ивента"
+next_dialogue = ExtResource("4_gyh3p")
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

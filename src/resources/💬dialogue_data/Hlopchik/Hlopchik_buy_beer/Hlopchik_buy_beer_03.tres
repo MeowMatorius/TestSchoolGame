@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://fj4rqxvji8rm"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_3gwkt"]
+[ext_resource type="Resource" uid="uid://c8l5y8gmped8e" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_03_04.tres" id="2_2n14i"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_aaal8"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="3_2n14i"]
+[ext_resource type="Resource" uid="uid://dmm5yukxklihk" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_03_05.tres" id="3_qoppw"]
+
+[resource]
+script = ExtResource("1_3gwkt")
+character_name = "Хлопчик"
+text = "У меня есть ПИВО. Могу продать за 100 монет"
+choices = Array[ExtResource("1_3gwkt")]([ExtResource("2_2n14i"), ExtResource("3_qoppw")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

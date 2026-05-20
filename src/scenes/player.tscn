@@ -212,7 +212,7 @@ grow_vertical = 2
 mouse_behavior_recursive = 2
 theme = ExtResource("7_65viv")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tab_0/title = "🧊"
 tab_1/title = "🔬"
 tab_2/title = "📘"
@@ -220,7 +220,6 @@ tab_3/title = "🧳"
 tab_4/title = "🗺️"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -631,6 +630,7 @@ layout_mode = 2
 text = "Letterbox (Черные Полосы)"
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20

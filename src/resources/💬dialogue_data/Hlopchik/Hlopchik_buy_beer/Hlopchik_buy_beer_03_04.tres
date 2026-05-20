@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://c8l5y8gmped8e"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_s6vyp"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_e4vnu"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_gg845"]
+[ext_resource type="Resource" uid="uid://dbegw2m8slk7t" path="res://src/resources/📊condition_data/has_item_coins_100.tres" id="3_qv2bu"]
+[ext_resource type="Resource" uid="uid://biyqmoujwyvh6" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_04.tres" id="5_gvkhx"]
+
+[resource]
+script = ExtResource("1_s6vyp")
+text = "Да, конечно, покупаю"
+next_dialogue = ExtResource("5_gvkhx")
+condition = Array[ExtResource("2_e4vnu")]([ExtResource("3_qv2bu")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

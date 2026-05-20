@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://bagv5uhmbmt17"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="1_grrie"]
+[ext_resource type="Resource" uid="uid://d0wuggxwncqas" path="res://src/resources/📊condition_data/has_item_red_key_1.tres" id="2_ayxjb"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="2_geh3e"]
+
+[resource]
+script = ExtResource("2_geh3e")
+id = "side_Hlopchik_give_book_01"
+name = "side_Hlopchik_give_book_01"
+description = "Передать Книгу товарищу Хлопчика"
+condition = Array[ExtResource("1_grrie")]([ExtResource("2_ayxjb")])
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://bpktwen34h5r"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_0jr2w"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_k4hog"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_pgbhg"]
+[ext_resource type="Resource" uid="uid://ccvlsqjboiwcn" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/end_line.tres" id="3_sy5cn"]
+
+[resource]
+script = ExtResource("1_0jr2w")
+character_name = "Игрок"
+text = "Ну уж нет"
+next_dialogue = ExtResource("3_sy5cn")
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

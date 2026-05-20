@@ -6,6 +6,7 @@ signal skip_pressed
 
 var is_in_choice_menu: bool = false
 
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	SignalBus.entered_choice_menu.connect(func(state): is_in_choice_menu = state)

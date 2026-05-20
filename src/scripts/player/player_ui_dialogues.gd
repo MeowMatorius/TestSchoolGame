@@ -16,11 +16,11 @@ func show_ui(speaker, line):
 	speaker_line.text = line
 
 	
-func show_choices(dialogue_line, npc_data):
+func show_choices(dialogue_data, npc_data):
 	var all_choices: Array = []
-	all_choices.append_array(dialogue_line.choices)
+	all_choices.append_array(dialogue_data.choices)
 	SignalBus.entered_choice_menu.emit(true)
-	speaker_name.text = dialogue_line.character_name
+	speaker_name.text = dialogue_data.character_name
 	
 	if npc_data.quest_dialogues != null:
 		for quest_line in npc_data.quest_dialogues:

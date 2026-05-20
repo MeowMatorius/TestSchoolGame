@@ -6,6 +6,7 @@ signal update_inventory(inventory_items: Dictionary)
 signal added_to_inventory(item_data)
 signal removed_from_inventory(item_data)
 
+
 func _ready():
 	SignalBus.is_picking.connect(add_item)
 

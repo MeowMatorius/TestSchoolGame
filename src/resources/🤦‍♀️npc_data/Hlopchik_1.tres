@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="NpcDataClass" format=3 uid="uid://duvxvappp7720"]
-
-[ext_resource type="Resource" uid="uid://dhjyrg576u58x" path="res://src/resources/💬dialogue_data/npc_0001/dialogue1/line1.tres" id="1_pirfi"]
-[ext_resource type="Script" uid="uid://chbpewyfemfvf" path="res://src/resources/NpcData.cs" id="1_w1fcm"]
-
-[resource]
-script = ExtResource("1_w1fcm")
-EventDialogues = Array[Resource]([ExtResource("1_pirfi")])
-metadata/_custom_type_script = "uid://chbpewyfemfvf"

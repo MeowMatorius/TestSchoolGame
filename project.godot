@@ -51,6 +51,14 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://src/resources/": "green",
+"res://src/scenes/": "yellow",
+"res://src/scripts/": "blue"
+}
+
 [global_group]
 
 player="Игрок"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://b4xytsa1bnuxh"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_k760i"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_2bt0f"]
+[ext_resource type="Resource" uid="uid://cxme1x06w28rd" path="res://src/resources/⚙️command_data/end_quest_give_book_01.tres" id="3_75cxr"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="4_qy4h5"]
+[ext_resource type="Resource" uid="uid://dyf1m0tah8bhe" path="res://src/resources/💬dialogue_data/Kuzya/Kuzya_give_book/Kuzya_give_book_02.tres" id="5_ougo5"]
+
+[resource]
+script = ExtResource("1_k760i")
+text = "Я по поводу книги"
+next_dialogue = ExtResource("5_ougo5")
+commands = Array[ExtResource("2_2bt0f")]([ExtResource("3_75cxr")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

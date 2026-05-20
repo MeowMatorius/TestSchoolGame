@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://cnx2sey1kfxox"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_k1l7d"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_2abmy"]
+
+[resource]
+script = ExtResource("1_k1l7d")
+character_name = "Кузя"
+text = "Привет. Че нада?"
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

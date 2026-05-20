@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CommandData" format=3 uid="uid://cxme1x06w28rd"]
+
+[ext_resource type="Resource" uid="uid://bagv5uhmbmt17" path="res://src/resources/📝quest_data/Hlopchik_give_book_01.tres" id="1_isd73"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_3pbnc"]
+
+[resource]
+script = ExtResource("2_3pbnc")
+command_name = "start_side_Hlopchik_buyBeer_01"
+command_type = 2
+quest = ExtResource("1_isd73")
+metadata/_custom_type_script = "uid://d38aadoyy462o"

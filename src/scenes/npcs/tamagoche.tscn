@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_necp0"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_sqnmw"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_o2fbv"]
-[ext_resource type="Resource" uid="uid://j6ecdvxu5rke" path="res://src/resources/🤦‍♀️npc_data/Kuzia.tres" id="6_uqkvi"]
+[ext_resource type="Resource" uid="uid://j6ecdvxu5rke" path="res://src/resources/🤦‍♀️npc_data/Kuzya.tres" id="6_uqkvi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w83ju"]
 resource_name = "colormap"
@@ -738,7 +738,6 @@ script = ExtResource("4_sqnmw")
 tween_resource = SubResource("Resource_8nfuh")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="InteractComponent" type="Node3D" parent="." unique_id=461430410 node_paths=PackedStringArray("dialogue_camera")]
+[node name="InteractComponent" type="Node3D" parent="." unique_id=461430410]
 script = ExtResource("2_4lxmt")
-dialogue_camera = NodePath("../PhantomCamera3D")
 npc_data = ExtResource("6_uqkvi")

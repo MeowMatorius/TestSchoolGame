@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLine" format=3 uid="uid://c8bfu3bsu8ywy"]
-
-[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/DialogueLine.gd" id="1_idu5u"]
-[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/ConditionType.gd" id="2_2oxcr"]
-
-[resource]
-script = ExtResource("1_idu5u")
-text = "Пока"
-metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

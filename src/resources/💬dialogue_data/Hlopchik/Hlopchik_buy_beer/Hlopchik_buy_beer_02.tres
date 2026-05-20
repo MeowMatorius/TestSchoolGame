@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://duwad63v5ppan"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_h2dmf"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_2ld3d"]
+[ext_resource type="Resource" uid="uid://fj4rqxvji8rm" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_03.tres" id="2_y2tjy"]
+
+[resource]
+script = ExtResource("1_h2dmf")
+character_name = "Игрок"
+text = "Привет, Укропчик"
+next_dialogue = ExtResource("2_y2tjy")
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

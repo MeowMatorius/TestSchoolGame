@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://bfcnm3ol7ekw3"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_atp2h"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_g5mn1"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_syhkj"]
+[ext_resource type="Resource" uid="uid://b312iit6cungn" path="res://src/resources/⚙️command_data/start_quest_buy_beer_01.tres" id="3_1nwxn"]
+
+[resource]
+script = ExtResource("1_atp2h")
+character_name = "Хлопчик"
+text = "Возвращайся, когда будут деньги"
+commands = Array[ExtResource("2_g5mn1")]([ExtResource("3_1nwxn")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://biyqmoujwyvh6"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_nxslj"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_kwpnh"]
+[ext_resource type="Resource" uid="uid://dyq4d6wwly3vw" path="res://src/resources/⚙️command_data/end_quest_buy_beer_01.tres" id="3_yewxa"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="4_4i1nm"]
+[ext_resource type="Resource" uid="uid://dv61s83h8hhep" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_06.tres" id="5_obl40"]
+
+[resource]
+script = ExtResource("1_nxslj")
+character_name = "Хлопчик"
+text = "Вот, держи"
+next_dialogue = ExtResource("5_obl40")
+commands = Array[ExtResource("2_kwpnh")]([ExtResource("3_yewxa")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

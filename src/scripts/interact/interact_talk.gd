@@ -1,8 +1,8 @@
 extends Interact
 
-@export var dialogue_camera: PhantomCamera3D
-@export var player_teleport_point: Node3D
-@export var npc_data: NPCData
+#@export var dialogue_camera: PhantomCamera3D
+#@export var player_teleport_point: Node3D
+@export var npc_data: NpcData
 
 
 func interact(object):

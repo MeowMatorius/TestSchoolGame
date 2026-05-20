@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NpcData" format=3 uid="uid://j6ecdvxu5rke"]
+
+[ext_resource type="Resource" uid="uid://cnx2sey1kfxox" path="res://src/resources/💬dialogue_data/Kuzya/Kuzya_default/Kuzya_default_01.tres" id="1_ehjdm"]
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="2_w2c4o"]
+[ext_resource type="Resource" uid="uid://b4xytsa1bnuxh" path="res://src/resources/💬dialogue_data/Kuzya/Kuzya_give_book/Kuzya_give_book_01.tres" id="3_6auj1"]
+[ext_resource type="Script" uid="uid://biksjc401uymx" path="res://src/resources/npc_data.gd" id="4_k343g"]
+
+[resource]
+script = ExtResource("4_k343g")
+npc_id = "Kuzya"
+npc_name = "Kuzya"
+dialogue_data = ExtResource("1_ehjdm")
+quest_dialogues = Array[ExtResource("2_w2c4o")]([ExtResource("3_6auj1")])
+metadata/_custom_type_script = "uid://biksjc401uymx"
