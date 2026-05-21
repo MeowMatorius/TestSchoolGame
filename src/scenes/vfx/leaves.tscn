@@ -64,7 +64,6 @@ cast_shadow = 0
 gi_mode = 0
 amount = 10000
 lifetime = 15.0
-preprocess = 15.0
 randomness = 1.0
 visibility_aabb = AABB(-95.12263, -79.96687, -99.3248, 192.04112, 81.266655, 195.10248)
 process_material = SubResource("ParticleProcessMaterial_445po")

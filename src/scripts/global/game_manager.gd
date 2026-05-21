@@ -4,11 +4,9 @@ extends Node
 enum GameState {DEFAULT, DIALOGUE, PAUSE}
 var current_game_state: GameState = GameState.DEFAULT:
 	set(value):
-		previous_game_state = current_game_state
 		current_game_state = value
 		_on_game_state_changed()
 
-var previous_game_state: GameState
 var state_before_pause: GameState
 
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")

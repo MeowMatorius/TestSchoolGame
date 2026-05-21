@@ -51,7 +51,6 @@ cast_shadow = 0
 gi_mode = 0
 amount = 100000
 lifetime = 2.0
-preprocess = 3.0
 randomness = 1.0
 fixed_fps = 10
 visibility_aabb = AABB(-51.99999, -44.155376, -51.999966, 106.09058, 47.155277, 106.09062)

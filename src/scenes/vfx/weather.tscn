@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b77tvhqxuxoig"]
+
+[ext_resource type="PackedScene" uid="uid://b2kxce0mejwuf" path="res://src/scenes/vfx/rain.tscn" id="1_appt0"]
+[ext_resource type="PackedScene" uid="uid://k5vvlsyj3i42" path="res://src/scenes/vfx/snow.tscn" id="2_772tu"]
+[ext_resource type="PackedScene" uid="uid://c4itbvwp81db8" path="res://src/scenes/vfx/leaves.tscn" id="3_6v1tp"]
+
+[node name="Weather" type="Node" unique_id=994554348]
+
+[node name="Rain" parent="." unique_id=1894733181 instance=ExtResource("1_appt0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+visible = false
+
+[node name="Snow" parent="." unique_id=240097082 instance=ExtResource("2_772tu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+visible = false
+
+[node name="Leaves" parent="." unique_id=955218550 instance=ExtResource("3_6v1tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+visible = false
+amount = 1000

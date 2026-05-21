@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://cswyiyc4x7ktc" path="res://src/assets/materials/black_mat_ground.tres" id="1_wy25e"]
 [ext_resource type="Texture2D" uid="uid://dkdffhk2pse34" path="res://src/assets/textures/greybox_textures/greybox_dark_grid.png" id="2_pohmr"]
 [ext_resource type="PackedScene" uid="uid://b2kxce0mejwuf" path="res://src/scenes/vfx/rain.tscn" id="3_o343k"]
+[ext_resource type="Script" uid="uid://d3m3rolr8tdmv" path="res://src/scripts/weather_system.gd" id="4_pohmr"]
 [ext_resource type="PackedScene" uid="uid://k5vvlsyj3i42" path="res://src/scenes/vfx/snow.tscn" id="4_xa12n"]
 [ext_resource type="PackedScene" uid="uid://c4itbvwp81db8" path="res://src/scenes/vfx/leaves.tscn" id="5_i8p06"]
 [ext_resource type="PackedScene" uid="uid://t24vxvdkn1sh" path="res://src/assets/models/furniture/desk.glb" id="6_rvhfm"]
@@ -65,7 +66,7 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_wy25e"]
+[sub_resource type="Resource" id="Resource_pohmr"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
@@ -106,7 +107,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.
 [node name="desk2" parent="Enviroment/Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.936584, -0.049999952, -7.8367605)
 
-[node name="Weather" type="Node" parent="." unique_id=1401313830]
+[node name="Weather" type="Node" parent="." unique_id=994554348]
+script = ExtResource("4_pohmr")
 
 [node name="Rain" parent="Weather" unique_id=1894733181 instance=ExtResource("3_o343k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
@@ -117,6 +119,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 [node name="Leaves" parent="Weather" unique_id=955218550 instance=ExtResource("5_i8p06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 amount = 1000
+
+[node name="Timer" type="Timer" parent="Weather" unique_id=855284367]
+wait_time = 30.0
+ignore_time_scale = true
 
 [node name="Interactables" type="Node" parent="." unique_id=1783892644]
 
@@ -134,7 +140,7 @@ autoplay = false
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_wy25e")
+switch_data = SubResource("Resource_pohmr")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
