@@ -57,14 +57,15 @@ func display_line(dialogue_data, npc_data):
 
 func _on_option_button_pressed(dialogue_data) -> void:
 
+	for i in dialogue_data.commands:
 	# Фабрика создает команду, используя тип из ресурса и прикрепленный квест
-	var command := DialogueCommandFactory.create_command(
-		dialogue_data.command_type, 
-		dialogue_data
-	)
-	
-	if command:
-		command.execute(get_tree())
+		var command := DialogueCommandFactory.create_command(
+			i.command_type, 
+			i
+		)
+		
+		if command:
+			command.execute(get_tree())
 
 
 func _on_choice_selected(next_node_id, condition, dialogue_line_1, npc_data):

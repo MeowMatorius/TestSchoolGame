@@ -18,15 +18,12 @@ func show_ui(speaker, line):
 	
 func show_choices(dialogue_data, npc_data):
 	var all_choices: Array = []
-	all_choices.append_array(dialogue_data.choices)
+	
 	SignalBus.entered_choice_menu.emit(true)
 	speaker_name.text = dialogue_data.character_name
 	
-	if npc_data.quest_dialogues != null:
-		for quest_line in npc_data.quest_dialogues:
-			if quest_line.end_quest in QuestManager.active_quests:
-				all_choices.append(quest_line)
-	
+	_get_quest_choices(npc_data.quest_dialogues, all_choices)
+	all_choices.append_array(dialogue_data.choices)
 	for i in range(choices.size()):
 		var button = choices[i]
 		
@@ -37,8 +34,9 @@ func show_choices(dialogue_data, npc_data):
 		if i < all_choices.size():
 			if all_choices[i].condition != null:
 				button.disabled = !_disabled_condition(all_choices[i].condition)
-			if all_choices[i].end_quest != null:
-				button.add_theme_color_override("font_color", Color(0.875, 0.875, 0.078))
+			for j in all_choices[i].commands:
+				if j.command_type == DialogueCommandFactory.CommandType.END_QUEST:
+					button.add_theme_color_override("font_color", Color(0.875, 0.875, 0.078))
 			button.visible = true
 			button.text = all_choices[i].text
 			# Подключаем сигнал к функции, передавая нужную ветку через bind
@@ -61,3 +59,11 @@ func _clear_ui():
 	for i in range(choices.size()):
 		choices[i].text = ""
 		choices[i].visible = false
+		choices[i].add_theme_color_override("font_color", Color(0.875, 0.875, 0.875))
+
+func _get_quest_choices(quest_dialogues, all_choices):
+	if quest_dialogues != null:
+		for quest_line in quest_dialogues:
+			for command in quest_line.commands:
+				if command.quest in QuestManager.active_quests:
+					all_choices.append(quest_line)
