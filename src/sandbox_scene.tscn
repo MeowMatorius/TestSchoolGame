@@ -68,22 +68,22 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_pohmr"]
+[sub_resource type="Resource" id="Resource_xa12n"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xa12n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8p06"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("17_o343k")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_i8p06"]
+[sub_resource type="BoxMesh" id="BoxMesh_rvhfm"]
 resource_local_to_scene = true
 
-[sub_resource type="Resource" id="Resource_rvhfm"]
+[sub_resource type="Resource" id="Resource_wwywm"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
@@ -122,8 +122,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.
 [node name="desk2" parent="Enviroment/Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.936584, -0.049999952, -7.8367605)
 
-[node name="Weather" type="Node" parent="." unique_id=994554348]
+[node name="Weather" type="Node" parent="." unique_id=994554348 node_paths=PackedStringArray("weather_timer")]
 script = ExtResource("4_pohmr")
+weather_timer = NodePath("Timer")
 
 [node name="Rain" parent="Weather" unique_id=1894733181 instance=ExtResource("3_o343k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
@@ -155,7 +156,7 @@ autoplay = false
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_pohmr")
+switch_data = SubResource("Resource_xa12n")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
@@ -182,11 +183,11 @@ transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, 2.8417666, 1.3299992, -
 transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, -2.5632415, 1.1220231, -1.75255)
 
 [node name="MeshInstance3D" parent="Interactables/Door/Door" parent_id_path=PackedInt32Array(58036093, 606871235) index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_xa12n")
-mesh = SubResource("BoxMesh_i8p06")
+material_override = SubResource("StandardMaterial3D_i8p06")
+mesh = SubResource("BoxMesh_rvhfm")
 
 [node name="InteractComponent" parent="Interactables/Door/Door" parent_id_path=PackedInt32Array(58036093, 606871235) index="4" unique_id=1162931946]
-switch_data = SubResource("Resource_rvhfm")
+switch_data = SubResource("Resource_wwywm")
 
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("16_fsgqr")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.47926712, -6)
