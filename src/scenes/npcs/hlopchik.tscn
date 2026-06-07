@@ -27,10 +27,8 @@ mesh = SubResource("CapsuleMesh_uyltb")
 transform = Transform3D(1, 0, 0, 0, 2.085, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_uyltb")
 
-[node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875 node_paths=PackedStringArray("dialogue_camera", "player_teleport_point")]
+[node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875]
 script = ExtResource("2_gmw5h")
-dialogue_camera = NodePath("../PhantomCamera3D")
-player_teleport_point = NodePath("../PlayerTeleportPoint")
 npc_data = ExtResource("3_5yfcu")
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]

@@ -16,8 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://src/scenes/interactable/money.tscn" id="14_pwwyv"]
 [ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://src/scenes/interactable/door_locked.tscn" id="15_rm1d6"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://src/scenes/player.tscn" id="16_fsgqr"]
+[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://src/assets/textures/greybox_textures/greybox_green_grid.png" id="17_o343k"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://src/scenes/npcs/tamagoche.tscn" id="17_ygd0t"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://src/scenes/npcs/hlopchik.tscn" id="18_oh1fv"]
+[ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="19_pohmr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bscv6"]
 
@@ -65,11 +67,24 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_wy25e"]
+[sub_resource type="Resource" id="Resource_o343k"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
+metadata/_custom_type_script = "uid://b00l74oqq5jru"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xa12n"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("17_o343k")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i8p06"]
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_rvhfm"]
+resource_local_to_scene = true
+script = ExtResource("10_amhku")
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
 [node name="SandboxScene" type="Node3D" unique_id=1210055575]
@@ -134,7 +149,7 @@ autoplay = false
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_wy25e")
+switch_data = SubResource("Resource_o343k")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
@@ -157,6 +172,16 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.4314084, 1.2032229, -
 [node name="DoorLocked" parent="Interactables" unique_id=1458739684 instance=ExtResource("15_rm1d6")]
 transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, 2.8417666, 1.3299992, -9.238689)
 
+[node name="Door" parent="Interactables" unique_id=58036093 instance=ExtResource("19_pohmr")]
+transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, -2.5632415, 1.1220231, -1.75255)
+
+[node name="MeshInstance3D" parent="Interactables/Door/Door" parent_id_path=PackedInt32Array(58036093, 606871235) index="0" unique_id=1126159426]
+material_override = SubResource("StandardMaterial3D_xa12n")
+mesh = SubResource("BoxMesh_i8p06")
+
+[node name="InteractComponent" parent="Interactables/Door/Door" parent_id_path=PackedInt32Array(58036093, 606871235) index="4" unique_id=1162931946]
+switch_data = SubResource("Resource_rvhfm")
+
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("16_fsgqr")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.47926712, -6)
 
@@ -167,3 +192,4 @@ transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, -3.0617101, 0.9857122, -8.295948)
 
 [editable path="Interactables/Radio"]
+[editable path="Interactables/Door"]

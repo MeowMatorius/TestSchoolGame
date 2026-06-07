@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://src/resources/dialogue_data.gd" id="1_k1l7d"]
 [ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="2_2abmy"]
+[ext_resource type="Resource" uid="uid://cf4y2oaexnajm" path="res://src/resources/💬dialogue_data/Kuzya/Kuzya_default/Kuzya_default_01_1.tres" id="2_5nict"]
+[ext_resource type="Resource" uid="uid://cank2hanq763f" path="res://src/resources/💬dialogue_data/Kuzya/Kuzya_default/Kuzya_default_01_2.tres" id="3_sucmo"]
+[ext_resource type="Resource" uid="uid://c8bfu3bsu8ywy" path="res://src/resources/💬dialogue_data/Kuzya/Kuzya_default/Kuzya_default_01_3.tres" id="4_y4848"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="5_8j208"]
 
 [resource]
 script = ExtResource("1_k1l7d")
 character_name = "Кузя"
 text = "Привет. Че нада?"
+choices = Array[ExtResource("1_k1l7d")]([ExtResource("2_5nict"), ExtResource("3_sucmo"), ExtResource("4_y4848")])
 metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

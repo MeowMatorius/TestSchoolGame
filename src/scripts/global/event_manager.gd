@@ -9,14 +9,15 @@ var global: bool
 
 
 func _ready() -> void:
-	await get_tree().create_timer(1.0).timeout
-	print(global_events)
-	index = get_inf_event('e_0001')[0]
-	global = get_inf_event('e_0001')[1]
-	if global:
-		print('Отправили сигнал')
-		global_events[index].triggered = true
-		triggered_event.emit('e_0001')
+#	await get_tree().create_timer(1.0).timeout
+#	print(global_events)
+#	index = get_inf_event('e_0001')[0]
+#	global = get_inf_event('e_0001')[1]
+#	if global:
+#		print('Отправили сигнал')
+#		global_events[index].triggered = true
+#		triggered_event.emit('e_0001')
+	pass
 
 
 func get_inf_event(event_id):
