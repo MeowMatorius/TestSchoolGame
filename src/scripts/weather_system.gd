@@ -20,9 +20,9 @@ func _ready() -> void:
 	change_weather()
 
 
-func _process(_delta: float) -> void:
-	if weather_timer:
-		print(weather_timer.time_left)
+#func _process(_delta: float) -> void:
+	#if weather_timer:
+		#print(weather_timer.time_left)
 
 
 func _on_timer_timeout() -> void:
