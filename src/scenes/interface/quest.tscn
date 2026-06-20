@@ -1,22 +1,25 @@
 [gd_scene format=3 uid="uid://c5ktdafkof5xx"]
 
-[node name="Quest" type="HBoxContainer" unique_id=357486952]
-custom_minimum_size = Vector2(0, 30)
+[node name="VBoxContainer" type="VBoxContainer" unique_id=1821773418]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 30.0
 grow_horizontal = 2
+
+[node name="Quest" type="HBoxContainer" parent="." unique_id=357486952]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1435447042]
+[node name="TextureRect" type="TextureRect" parent="Quest" unique_id=1435447042]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="." unique_id=1089065149]
+[node name="Label" type="Label" parent="Quest" unique_id=1089065149]
 custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -24,3 +27,6 @@ text = "Какой-то квест"
 vertical_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 1
+
+[node name="SubQuestContainer" type="VBoxContainer" parent="." unique_id=205832321]
+layout_mode = 2

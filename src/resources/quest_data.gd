@@ -5,6 +5,7 @@ extends Resource
 @export var name: String = "Квест 1"
 @export_multiline var description: = "Описание"
 @export var condition: Array[ConditionData] = []
+@export var subquest: Array[QuestData] = []
 
 @export var completed: bool = false:
 	set(value):

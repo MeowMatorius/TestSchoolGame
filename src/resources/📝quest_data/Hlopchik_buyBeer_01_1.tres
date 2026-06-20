@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://cw6qw41pmi3ab"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="1_7qd71"]
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="2_aav1s"]
+[ext_resource type="Resource" uid="uid://dbegw2m8slk7t" path="res://src/resources/📊condition_data/has_item_coins_100.tres" id="2_atjxo"]
+
+[resource]
+script = ExtResource("2_aav1s")
+id = "side_Hlopchik_buyBeer_01_1"
+name = "side_Hlopchik_buyBeer_01_1"
+description = "Собери 100 монет"
+condition = Array[ExtResource("1_7qd71")]([ExtResource("2_atjxo")])
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"

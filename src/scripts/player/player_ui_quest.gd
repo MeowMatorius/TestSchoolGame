@@ -4,6 +4,8 @@ var quest_entry_scene: PackedScene = preload("uid://c5ktdafkof5xx")
 var icon_done = preload("uid://cbihmmy1lpu4t")
 var quest_list: Array[Node]
 
+var sub_quest_scene: PackedScene = preload("uid://b4paruxiqtp6x")
+#@onready var sub_quest_list: VBoxContainer = $VBoxContainer/MarginContainer/SubQuestList
 
 func _ready() -> void:
 	quest_list = []
@@ -14,11 +16,18 @@ func _ready() -> void:
 	
 func show_ui(quest):
 	var entry = quest_entry_scene.instantiate()
-	entry.get_node("Label").text = quest.description
+	entry.get_node("Quest").get_node("Label").text = quest.description
 	entry.set_meta("quest_id", quest.id)
 	self.add_child(entry)
 	quest_list.append(entry)
-	
+	if quest.subquest != null:
+		for sub_quest in quest.subquest:
+			var sub_node = sub_quest_scene.instantiate()
+			entry.get_node("SubQuestContainer").add_child(sub_node)
+			
+			# Инициализируем текст и галочку выполнения
+			sub_node.get_node("Label").text = sub_quest.description
+			
 	
 func _clear_ui(quest):
 	pass
