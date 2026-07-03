@@ -10,12 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://brnanjah7se5e" path="res://src/assets/models/furniture/rugSquare.glb" id="6_68ann"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://src/scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="7_ntc4i"]
-[ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://src/scenes/interactable/door_locked.tscn" id="8_rnaij"]
+[ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked.tscn" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://bmuf8e05i0227" path="res://src/scenes/interactable/lamp_square_table.tscn" id="9_fftn7"]
 [ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://src/scenes/csg/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
-[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/OLD/item_data.gd" id="12_pln1h"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="12_pln1h"]
 [ext_resource type="PackedScene" uid="uid://bsjkhnga4fk1c" path="res://src/assets/models/furniture/chairCushion.glb" id="13_nlwlv"]
 [ext_resource type="PackedScene" uid="uid://uxj4ci0t0g2i" path="res://src/assets/models/furniture/cardboardBoxOpen.glb" id="15_lmrlb"]
 [ext_resource type="PackedScene" uid="uid://bb2l2xt8t6a4x" path="res://src/assets/models/furniture/stairs.glb" id="18_qq5q4"]
@@ -29,7 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://c77h84o5k4wre" path="res://src/assets/models/furniture/coatRackStanding.glb" id="22_6gkjt"]
 [ext_resource type="PackedScene" uid="uid://cyein5f2vafk1" path="res://src/scenes/interactable/television_vintage.tscn" id="23_5csvr"]
 [ext_resource type="PackedScene" uid="uid://ckywgjny3p3yo" path="res://src/assets/models/furniture/loungeChair.glb" id="23_lmrlb"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/OLD/switch_data.gd" id="25_fftn7"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="25_fftn7"]
+[ext_resource type="Texture2D" uid="uid://cuqauyf4g2pxj" path="res://src/assets/textures/greybox_textures/greybox_yellow_grid.png" id="27_55n3t"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://src/scenes/npcs/tamagoche.tscn" id="31_fftn7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kow03"]
@@ -66,7 +67,7 @@ auto_exposure_min_sensitivity = 100.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_v46x1"]
+[sub_resource type="Resource" id="Resource_00rdf"]
 resource_local_to_scene = true
 script = ExtResource("25_fftn7")
 object_state = 0
@@ -74,7 +75,12 @@ activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
-[sub_resource type="Resource" id="Resource_1logh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yih1p"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("27_55n3t")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="Resource" id="Resource_jgyov"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -888,7 +894,7 @@ transform = Transform3D(-4.1656744e-08, -0.9529952, -0.30298537, 1, -4.371139e-0
 transform = Transform3D(0.39996275, 0, 0.30004957, 0, 0.5, 0, -0.30004957, 0, 0.39996275, -1.7403119, 1.2130792, 17.477571)
 
 [node name="InteractComponent" parent="Объекты/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_v46x1")
+switch_data = SubResource("Resource_00rdf")
 
 [node name="RedKey" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
 transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.7499316, 1.0548993, 16.062403)
@@ -902,8 +908,11 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 
 [node name="Money2" parent="Объекты" unique_id=1137028239 instance=ExtResource("7_h3xc6")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
+[node name="MeshInstance3D" parent="Объекты/Money2" index="0" unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_yih1p")
+
 [node name="InteractComponent" parent="Объекты/Money2" index="5" unique_id=104121503]
-item_data = SubResource("Resource_1logh")
+item_data = SubResource("Resource_jgyov")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 

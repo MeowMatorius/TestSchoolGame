@@ -30,7 +30,9 @@ func activate(object):
 	object.set_collision_layer_value(2, false)
 
 
-func switch(object):
+func switch(object) -> void:
+	if switch_data.lock_state == switch_data.LockState.BROKEN:
+		return;
 	if switch_data.object_state == switch_data.ObjectState.OFF:
 		is_switching.emit()
 		switch_on(object)

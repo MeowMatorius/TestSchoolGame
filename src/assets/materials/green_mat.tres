@@ -1,8 +1,9 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://b1aia1nusvhj5"]
 
-[ext_resource type="Texture2D" uid="uid://d1xi7wlxknccd" path="res://src/assets/textures/greybox_textures/greybox_green_grid.png" id="1_anmsq"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rnu68"]
+load_path = "res://.godot/imported/greybox_red_grid.png-f5dcc84a14fe6b3f2a5f183562d2ebea.s3tc.ctex"
 
 [resource]
 resource_local_to_scene = true
-albedo_texture = ExtResource("1_anmsq")
+albedo_texture = SubResource("CompressedTexture2D_rnu68")
 uv1_scale = Vector3(5, 5, 5)
