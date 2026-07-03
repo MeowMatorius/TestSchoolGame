@@ -2,10 +2,6 @@
 
 [ext_resource type="Material" uid="uid://cswyiyc4x7ktc" path="res://src/assets/materials/black_mat_ground.tres" id="1_wy25e"]
 [ext_resource type="Texture2D" uid="uid://dkdffhk2pse34" path="res://src/assets/textures/greybox_textures/greybox_dark_grid.png" id="2_pohmr"]
-[ext_resource type="PackedScene" uid="uid://b2kxce0mejwuf" path="res://src/scenes/vfx/rain.tscn" id="3_o343k"]
-[ext_resource type="Script" uid="uid://d3m3rolr8tdmv" path="res://src/scripts/weather_system.gd" id="4_pohmr"]
-[ext_resource type="PackedScene" uid="uid://k5vvlsyj3i42" path="res://src/scenes/vfx/snow.tscn" id="4_xa12n"]
-[ext_resource type="PackedScene" uid="uid://c4itbvwp81db8" path="res://src/scenes/vfx/leaves.tscn" id="5_i8p06"]
 [ext_resource type="PackedScene" uid="uid://t24vxvdkn1sh" path="res://src/assets/models/furniture/desk.glb" id="6_rvhfm"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="7_wwywm"]
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://src/assets/music/falling_snow.mp3" id="8_wy25e"]
@@ -68,22 +64,22 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_xa12n"]
+[sub_resource type="Resource" id="Resource_idok3"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8p06"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wy25e"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("17_o343k")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_rvhfm"]
+[sub_resource type="BoxMesh" id="BoxMesh_pohmr"]
 resource_local_to_scene = true
 
-[sub_resource type="Resource" id="Resource_wwywm"]
+[sub_resource type="Resource" id="Resource_o343k"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
@@ -122,24 +118,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.
 [node name="desk2" parent="Enviroment/Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.936584, -0.049999952, -7.8367605)
 
-[node name="Weather" type="Node" parent="." unique_id=994554348 node_paths=PackedStringArray("weather_timer")]
-script = ExtResource("4_pohmr")
-weather_timer = NodePath("Timer")
-
-[node name="Rain" parent="Weather" unique_id=1894733181 instance=ExtResource("3_o343k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-
-[node name="Snow" parent="Weather" unique_id=240097082 instance=ExtResource("4_xa12n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-
-[node name="Leaves" parent="Weather" unique_id=955218550 instance=ExtResource("5_i8p06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-amount = 1000
-
-[node name="Timer" type="Timer" parent="Weather" unique_id=855284367]
-wait_time = 30.0
-ignore_time_scale = true
-
 [node name="Interactables" type="Node" parent="." unique_id=1783892644]
 
 [node name="Radio" parent="Interactables" unique_id=1068241980 instance=ExtResource("7_wwywm")]
@@ -156,7 +134,7 @@ autoplay = false
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_xa12n")
+switch_data = SubResource("Resource_idok3")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
@@ -183,11 +161,11 @@ transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, 2.8417666, 1.3299992, -
 transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 0.1, -2.5632415, 1.1220231, -1.75255)
 
 [node name="MeshInstance3D" parent="Interactables/Door/Door" parent_id_path=PackedInt32Array(58036093, 606871235) index="0" unique_id=1126159426]
-material_override = SubResource("StandardMaterial3D_i8p06")
-mesh = SubResource("BoxMesh_rvhfm")
+material_override = SubResource("StandardMaterial3D_wy25e")
+mesh = SubResource("BoxMesh_pohmr")
 
 [node name="InteractComponent" parent="Interactables/Door/Door" parent_id_path=PackedInt32Array(58036093, 606871235) index="4" unique_id=1162931946]
-switch_data = SubResource("Resource_wwywm")
+switch_data = SubResource("Resource_o343k")
 
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("16_fsgqr")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.47926712, -6)
