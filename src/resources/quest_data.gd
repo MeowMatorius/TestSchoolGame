@@ -3,9 +3,8 @@ extends Resource
 
 @export var id: String = get_id()
 @export var name: String = "Квест 1"
-@export_multiline var description: = "Описание"
-@export var condition: Array[ConditionData] = []
-@export var subquest: Array[QuestData] = []
+@export_multiline var description = "Описание"
+@export var subquest: Array[SubquestData] = []
 
 @export var completed: bool = false:
 	set(value):
@@ -28,6 +27,3 @@ func get_id() -> String:
 	# Вернет имя файла без расширения (например, "kill_rats_01")
 	return resource_path.get_file().get_basename()
 
-
-func is_complete() -> bool:
-	return condition.all(func(cond): return cond.completed)

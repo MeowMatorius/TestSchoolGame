@@ -22,9 +22,11 @@ func track_quest(quest: QuestData):
 		print("Квест добавлен в список")
 		print(active_quests)
 		# Подписываемся на каждое условие этого квеста
-		for condition in quest.condition:
-			if not condition.is_connected("changed_status", _on_condition_updated):
-				condition.changed_status.connect(_on_condition_updated)
+		if quest.condition != null:
+			for condition in quest.condition:
+				if not condition.is_connected("changed_status", _on_condition_updated):
+					condition.changed_status.connect(_on_condition_updated)
+			
 
 
 func _on_condition_updated(condition: ConditionData):

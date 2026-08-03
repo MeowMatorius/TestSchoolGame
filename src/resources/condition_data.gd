@@ -15,6 +15,23 @@ signal changed_status(condition: ConditionData)
 		changed_status.emit(self)
 @export var dialogue_data: DialogueData
 
+#func _init() -> void:
+#	# Подключаем глобальный сигнал к функции внутри этого ресурса
+#	SignalBus.is_picking.connect(_add_item)
+#
+
+#func _add_item(item_data) -> void:
+#
+#	if item_data == item:
+#		if InventoryManager.inventory_items.has(item.name):
+#
+#
+#			# Проверяем тип внутри ресурса предмета
+#			if item.type == ItemResource.ItemType.COIN:
+#				# Изменение этой переменной автоматически триггерит сеттер 'set(value)' выше
+#				coins += item.value 
+#			else:
+#				print("Ресурс проигнорирован. Это не монета, а: ", item.item_name)
 
 func is_met() -> bool:
 	var item_condition: Array[bool]

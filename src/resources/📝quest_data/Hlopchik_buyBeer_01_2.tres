@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://dv5eyjrjvjmo2"]
+[gd_resource type="Resource" script_class="SubquestData" format=3 uid="uid://dv5eyjrjvjmo2"]
 
 [ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="1_rchtn"]
 [ext_resource type="Resource" uid="uid://ci046nhp5e7ma" path="res://src/resources/📊condition_data/has_item_beer.tres" id="2_rchtn"]
-[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="3_xgoc1"]
+[ext_resource type="Script" uid="uid://v0d70xqdxsh1" path="res://src/resources/subquest_data.gd" id="3_rchtn"]
 
 [resource]
-script = ExtResource("3_xgoc1")
+script = ExtResource("3_rchtn")
 id = "side_Hlopchik_buyBeer_01_2"
 name = "side_Hlopchik_buyBeer_01_2"
 description = "Купи пиво у Хлопчика"
