@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://qgq50dq2seym" path="res://src/scripts/player/player_ui_item_slot.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://src/scripts/player/player_ui_dialogues.gd" id="6_gql8a"]
 [ext_resource type="StyleBox" uid="uid://ba0cbqsglev17" path="res://src/resources/editor/settings/ui/panel_style_box_flat.tres" id="6_hg6s5"]
-[ext_resource type="Theme" uid="uid://cjoppcy62vgth" path="res://src/resources/editor/themes/main_theme.res" id="7_65viv"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_yllr7"]
 [ext_resource type="Script" uid="uid://k0ay4bgxrais" path="res://src/scripts/interface/continue_button.gd" id="8_32hag"]
 [ext_resource type="Script" uid="uid://8rbyfm6075b3" path="res://src/scripts/interface/exit_button.gd" id="8_wodsf"]
@@ -51,7 +50,6 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s7qer"]
 font_size = 20
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65viv"]
 content_margin_left = 50.0
@@ -175,7 +173,6 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=634695021]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,7 +183,6 @@ mouse_filter = 2
 mouse_behavior_recursive = 1
 
 [node name="Background" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer" unique_id=1735922625]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,28 +194,23 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_65viv")
 
 [node name="TabBar" type="TabContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer" unique_id=1461969754]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -457.0
-offset_top = -248.0
-offset_right = 457.0
-offset_bottom = 248.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
-theme = ExtResource("7_65viv")
+theme_override_font_sizes/font_size = 18
 tab_alignment = 1
-current_tab = 0
-tab_0/title = "🧊"
-tab_1/title = "🔬"
-tab_2/title = "📘"
-tab_3/title = "🧳"
-tab_4/title = "🗺️"
+current_tab = 1
+tab_0/title = "🧊 Главная"
+tab_1/title = "🔬 Настройки"
+tab_2/title = "📘 Задания"
+tab_3/title = "🧳 Инвентарь"
+tab_4/title = "🗺️ Локации"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -227,41 +218,37 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 0
-metadata/_tab_name = "🧊"
+metadata/_tab_name = "🧊 Главная"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab" unique_id=1707960555]
-layout_mode = 2
-
-[node name="GameMenu" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer" unique_id=276443301]
+[node name="GameMenu" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab" unique_id=276443301]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 size_flags_stretch_ratio = 10.32
 alignment = 1
 
-[node name="Continue" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu" unique_id=1891149639]
+[node name="Continue" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1891149639]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme = ExtResource("7_65viv")
 text = "Продолжить"
 script = ExtResource("8_32hag")
 
-[node name="Save" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu" unique_id=1187381786]
+[node name="Save" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1187381786]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 disabled = true
 text = "Сохраниться"
 
-[node name="Load" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu" unique_id=1365915276]
+[node name="Load" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1365915276]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 disabled = true
 text = "Загрузить"
 
-[node name="ExitToMenu" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu" unique_id=1741463144]
+[node name="ExitToMenu" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1741463144]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -269,29 +256,21 @@ disabled = true
 text = "Выйти в меню"
 script = ExtResource("8_wodsf")
 
-[node name="ExitGame" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu" unique_id=1413335273]
+[node name="ExitGame" type="Button" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1413335273]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Выйти из игры"
 script = ExtResource("8_wodsf")
 
-[node name="GameMenu2" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer" unique_id=1894771425]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-size_flags_stretch_ratio = 10.32
-alignment = 1
-
 [node name="SettingsTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=398948490]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 1
-metadata/_tab_name = "🔬"
+metadata/_tab_name = "🔬 Настройки"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab" unique_id=1130737466]
 layout_mode = 2
@@ -310,227 +289,9 @@ script = ExtResource("9_c35mf")
 letterbox_panel_up = NodePath("../../../../../../LetterboxUp")
 letterbox_panel_down = NodePath("../../../../../../LetterboxDown")
 
-[node name="GraphicsSettings" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer" unique_id=1203258797]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings" unique_id=717354270]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-text = "Графика"
-label_settings = SubResource("LabelSettings_s7qer")
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings" unique_id=1130338769]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer" unique_id=1267872124]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer4" unique_id=2103968898]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Разешение"
-
-[node name="OptionButton" type="OptionButton" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer4" unique_id=1791581073]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-disabled = true
-alignment = 1
-selected = 1
-item_count = 3
-popup/item_0/text = "2560x1440"
-popup/item_0/id = 2
-popup/item_1/text = "1920 х 1080"
-popup/item_1/id = 0
-popup/item_2/text = "1280 х 720"
-popup/item_2/id = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer" unique_id=1900881780]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer2" unique_id=1788036476]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Качество Теней"
-
-[node name="OptionButton" type="OptionButton" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer2" unique_id=1734683700]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-disabled = true
-alignment = 1
-selected = 0
-item_count = 3
-popup/item_0/text = "High"
-popup/item_0/id = 0
-popup/item_1/text = "Medium"
-popup/item_1/id = 1
-popup/item_2/text = "Low"
-popup/item_2/id = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer" unique_id=1396584742]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer3" unique_id=1188912296]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Качество Эффектов"
-
-[node name="OptionButton" type="OptionButton" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer3" unique_id=898276948]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-disabled = true
-alignment = 1
-selected = 0
-item_count = 3
-popup/item_0/text = "High"
-popup/item_0/id = 0
-popup/item_1/text = "Medium"
-popup/item_1/id = 1
-popup/item_2/text = "Low"
-popup/item_2/id = 2
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer" unique_id=448753346]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer5" unique_id=1707189243]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Режим Освещения"
-
-[node name="OptionButton" type="OptionButton" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GraphicsSettings/VBoxContainer/HBoxContainer5" unique_id=532073263]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-disabled = true
-alignment = 1
-selected = 1
-item_count = 5
-popup/item_0/text = "Dynamic"
-popup/item_0/id = 4
-popup/item_0/separator = true
-popup/item_1/text = "SDFGI"
-popup/item_1/id = 0
-popup/item_2/text = "VoxelGI"
-popup/item_2/id = 1
-popup/item_3/text = "Static"
-popup/item_3/id = 3
-popup/item_3/separator = true
-popup/item_4/text = "LightmapGI"
-popup/item_4/id = 2
-
-[node name="PostFXSettings" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer" unique_id=1831607580]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings" unique_id=434150060]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-text = "Фильтры"
-label_settings = SubResource("LabelSettings_s7qer")
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings" unique_id=1162676150]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 12
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer" unique_id=1546747947]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer4" unique_id=756362780]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Яркость"
-
-[node name="OptionSlider" type="HSlider" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer4" unique_id=1900347589]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-max_value = 10.0
-value = 5.0
-editable = false
-tick_count = 11
-ticks_on_borders = true
-ticks_position = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer" unique_id=736433483]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer2" unique_id=1254316152]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Контраст"
-
-[node name="OptionSlider" type="HSlider" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer2" unique_id=652738699]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-max_value = 10.0
-value = 5.0
-editable = false
-tick_count = 11
-ticks_on_borders = true
-ticks_position = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer" unique_id=1141401214]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer3" unique_id=1534505950]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Насыщенность"
-
-[node name="OptionSlider" type="HSlider" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer3" unique_id=1974147551]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-max_value = 10.0
-value = 5.0
-editable = false
-tick_count = 11
-ticks_on_borders = true
-ticks_position = 2
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer" unique_id=790326554]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer5" unique_id=1379212318]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Уровень Белого"
-
-[node name="OptionSlider" type="HSlider" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/PostFXSettings/VBoxContainer/HBoxContainer5" unique_id=962335282]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
-max_value = 10.0
-value = 5.0
-editable = false
-tick_count = 11
-ticks_on_borders = true
-ticks_position = 2
-
 [node name="VFXSettings" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer" unique_id=1024313181]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("7_65viv")
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/VFXSettings" unique_id=1659244307]
@@ -637,19 +398,12 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 2
-metadata/_tab_name = "📘"
+metadata/_tab_name = "📘 Задания"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab" unique_id=1215305301]
-layout_mode = 2
-
-[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab/HBoxContainer" unique_id=1414968909]
+[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab" unique_id=1414968909]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("21_x7c3f")
-
-[node name="Container" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/TasksTab/HBoxContainer" unique_id=1129765613]
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="InventoryTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=745005613]
 visible = false
@@ -659,16 +413,9 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 3
-metadata/_tab_name = "🧳"
+metadata/_tab_name = "🧳 Инвентарь"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab" unique_id=11607760]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 60
-alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer" unique_id=1869870045]
+[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab" unique_id=1869870045]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_65viv")
@@ -676,7 +423,7 @@ follow_focus = true
 draw_focus_border = true
 horizontal_scroll_mode = 0
 
-[node name="ItemsContainer" type="FlowContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer" unique_id=1168976601]
+[node name="ItemsContainer" type="FlowContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer" unique_id=1168976601]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -684,7 +431,7 @@ theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 25
 script = ExtResource("5_4fv23")
 
-[node name="ItemSlot1" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1665634812]
+[node name="ItemSlot1" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1665634812]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -693,7 +440,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=339257633]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=339257633]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -705,7 +452,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=1264802477]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=1264802477]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -716,7 +463,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=643226686]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=643226686]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -733,7 +480,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot2" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=746076753]
+[node name="ItemSlot2" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=746076753]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -742,7 +489,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=219032326]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=219032326]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -754,7 +501,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=178006850]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=178006850]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -765,7 +512,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=873947771]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=873947771]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -782,7 +529,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot3" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=642935463]
+[node name="ItemSlot3" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=642935463]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -791,7 +538,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=1157893231]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=1157893231]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -803,7 +550,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=1845109552]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=1845109552]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -814,7 +561,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=400621301]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=400621301]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -831,7 +578,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot4" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=811446193]
+[node name="ItemSlot4" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=811446193]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -840,7 +587,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1397623480]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1397623480]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -852,7 +599,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1061036902]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1061036902]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -863,7 +610,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1109236094]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1109236094]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -880,7 +627,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot5" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1327776583]
+[node name="ItemSlot5" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1327776583]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -889,7 +636,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1212049976]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1212049976]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -901,7 +648,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1020541877]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1020541877]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -912,7 +659,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1733809664]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1733809664]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -929,7 +676,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot6" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1014076366]
+[node name="ItemSlot6" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1014076366]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -938,7 +685,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=746181537]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=746181537]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -950,7 +697,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=121268030]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=121268030]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -961,7 +708,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=264242853]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=264242853]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -978,7 +725,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot7" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=724772298]
+[node name="ItemSlot7" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=724772298]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -987,7 +734,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=594827478]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=594827478]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -999,7 +746,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=835541015]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=835541015]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1010,7 +757,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=466032008]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=466032008]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1027,7 +774,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot8" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=477251096]
+[node name="ItemSlot8" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=477251096]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1036,7 +783,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=1587486945]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=1587486945]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1048,7 +795,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=1401030696]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=1401030696]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1059,7 +806,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=2037760922]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=2037760922]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1076,7 +823,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot9" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=528943626]
+[node name="ItemSlot9" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=528943626]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1085,7 +832,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=2130287618]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=2130287618]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1097,7 +844,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=1988081063]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=1988081063]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1108,7 +855,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=808993591]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=808993591]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1125,7 +872,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot10" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1914228616]
+[node name="ItemSlot10" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1914228616]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1134,7 +881,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1544288119]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1544288119]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1146,7 +893,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1980062649]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1980062649]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1157,7 +904,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1336172541]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1336172541]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1174,7 +921,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot11" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1360164142]
+[node name="ItemSlot11" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1360164142]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1183,7 +930,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=2996523]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=2996523]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1195,7 +942,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=423239360]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=423239360]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1206,7 +953,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=218734360]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=218734360]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1223,7 +970,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot12" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1879356453]
+[node name="ItemSlot12" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1879356453]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1232,7 +979,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=344400816]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=344400816]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1244,7 +991,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=1269247418]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=1269247418]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1255,7 +1002,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=343745494]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=343745494]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1272,7 +1019,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot13" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=574910888]
+[node name="ItemSlot13" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=574910888]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1281,7 +1028,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=552745656]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=552745656]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1293,7 +1040,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=1084247499]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=1084247499]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1304,7 +1051,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=795772760]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=795772760]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1321,7 +1068,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot14" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1584881408]
+[node name="ItemSlot14" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1584881408]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1330,7 +1077,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=607667448]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=607667448]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1342,7 +1089,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1904865554]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1904865554]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1353,7 +1100,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1593781684]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1593781684]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1370,7 +1117,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot15" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1906876571]
+[node name="ItemSlot15" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1906876571]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1379,7 +1126,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=2070357681]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=2070357681]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1391,7 +1138,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=1020070907]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=1020070907]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1402,7 +1149,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=568597171]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=568597171]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1419,7 +1166,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot16" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1740149932]
+[node name="ItemSlot16" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1740149932]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1428,7 +1175,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1480823968]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1480823968]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1440,7 +1187,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1868610553]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1868610553]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1451,7 +1198,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1183057895]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1183057895]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1468,7 +1215,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot17" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=348488405]
+[node name="ItemSlot17" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=348488405]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1477,7 +1224,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=2097502427]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=2097502427]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1489,7 +1236,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=919571880]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=919571880]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1500,7 +1247,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=1819627220]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=1819627220]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1517,7 +1264,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot18" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=728966349]
+[node name="ItemSlot18" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=728966349]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1526,7 +1273,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=1040578778]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=1040578778]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1538,7 +1285,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=2024242882]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=2024242882]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1549,7 +1296,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=675009085]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=675009085]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1566,7 +1313,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot19" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=798164926]
+[node name="ItemSlot19" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=798164926]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1575,7 +1322,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=943450946]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=943450946]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1587,7 +1334,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=1160033718]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=1160033718]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1598,7 +1345,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=976018830]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=976018830]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1615,7 +1362,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot20" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1157182014]
+[node name="ItemSlot20" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1157182014]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1624,7 +1371,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=276337555]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=276337555]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1636,7 +1383,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=1855995269]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=1855995269]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1647,7 +1394,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=667769974]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=667769974]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1664,7 +1411,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot21" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1644396588]
+[node name="ItemSlot21" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1644396588]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1673,7 +1420,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=708529715]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=708529715]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1685,7 +1432,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=220036945]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=220036945]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1696,7 +1443,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=1042556922]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=1042556922]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1713,7 +1460,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot22" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1128554656]
+[node name="ItemSlot22" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1128554656]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1722,7 +1469,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=2018081824]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=2018081824]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1734,7 +1481,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=739620013]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=739620013]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1745,7 +1492,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=228739411]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=228739411]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1762,7 +1509,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot23" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=248370106]
+[node name="ItemSlot23" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=248370106]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1771,7 +1518,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=1965205707]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=1965205707]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1783,7 +1530,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=1202888997]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=1202888997]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1794,7 +1541,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=286467503]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=286467503]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1811,7 +1558,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot24" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1224456592]
+[node name="ItemSlot24" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1224456592]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1820,7 +1567,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=583636397]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=583636397]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1832,7 +1579,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=217661900]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=217661900]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1843,7 +1590,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=379807838]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=379807838]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1860,7 +1607,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot25" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=264010988]
+[node name="ItemSlot25" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=264010988]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1869,7 +1616,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=109688498]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=109688498]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1881,7 +1628,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=2044032055]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=2044032055]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1892,7 +1639,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=959703497]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=959703497]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1909,7 +1656,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot26" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1745275156]
+[node name="ItemSlot26" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1745275156]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1918,7 +1665,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=1104677869]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=1104677869]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1930,7 +1677,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=306550775]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=306550775]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1941,7 +1688,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=1104383131]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=1104383131]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1958,7 +1705,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot27" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=1746127113]
+[node name="ItemSlot27" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1746127113]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1967,7 +1714,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1688258070]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1688258070]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -1979,7 +1726,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1369358242]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1369358242]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1990,7 +1737,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1255900277]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1255900277]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2007,7 +1754,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot28" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=644120954]
+[node name="ItemSlot28" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=644120954]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2016,7 +1763,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=1432516817]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=1432516817]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -2028,7 +1775,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=526958801]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=526958801]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2039,7 +1786,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=1777071402]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=1777071402]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2056,7 +1803,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot29" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=101476934]
+[node name="ItemSlot29" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=101476934]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2065,7 +1812,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=358378977]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=358378977]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -2077,7 +1824,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=179763220]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=179763220]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2088,7 +1835,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=125755150]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=125755150]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2105,7 +1852,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot30" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=275638379]
+[node name="ItemSlot30" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=275638379]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2114,7 +1861,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=29107513]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=29107513]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -2126,7 +1873,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=59554766]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=59554766]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2137,7 +1884,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=750106813]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=750106813]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2154,7 +1901,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot31" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=926015226]
+[node name="ItemSlot31" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=926015226]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2163,7 +1910,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=762168336]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=762168336]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -2175,7 +1922,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=916266404]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=916266404]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2186,7 +1933,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=747516595]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=747516595]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2203,7 +1950,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="ItemSlot32" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer" unique_id=390317859]
+[node name="ItemSlot32" type="Panel" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=390317859]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -2212,7 +1959,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
-[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=831689571]
+[node name="Icon" type="TextureRect" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=831689571]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 15
@@ -2224,7 +1971,7 @@ texture = ExtResource("15_s7qer")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=632930549]
+[node name="Name" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=632930549]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2235,7 +1982,7 @@ label_settings = ExtResource("4_boad6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=842897367]
+[node name="Quantity" type="Label" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=842897367]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2251,13 +1998,6 @@ vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 1
 uppercase = true
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/InventoryTab/HBoxContainer" unique_id=2046885878]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_65viv")
-follow_focus = true
-draw_focus_border = true
 
 [node name="LocationsTab" type="MarginContainer" parent="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar" unique_id=335337410]
 visible = false
@@ -2267,9 +2007,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 4
-metadata/_tab_name = "🗺️"
+metadata/_tab_name = "🗺️ Локации"
 
 [node name="DialoguesContainer" type="Control" parent="UserInterface/VBoxContainer/Player_UI" unique_id=1096310796 node_paths=PackedStringArray("speaker_name", "speaker_line", "choice_ui")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2514,6 +2255,39 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 2
+
+[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI/DefaultContainer" unique_id=266679013]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -280.0
+offset_right = 1098.0
+offset_bottom = -203.0
+grow_vertical = 2
+size_flags_horizontal = 2
+script = ExtResource("21_x7c3f")
+
+[node name="Quest1" type="Label" parent="UserInterface/VBoxContainer/Player_UI/DefaultContainer/QuestContainer" unique_id=658572775]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Сделай "
+vertical_alignment = 1
+
+[node name="Quest2" type="Label" parent="UserInterface/VBoxContainer/Player_UI/DefaultContainer/QuestContainer" unique_id=1735257510]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Сделай "
+vertical_alignment = 1
+
+[node name="Quest3" type="Label" parent="UserInterface/VBoxContainer/Player_UI/DefaultContainer/QuestContainer" unique_id=813803397]
+visible = false
+layout_mode = 2
+text = "Сделай "
+vertical_alignment = 1
 
 [node name="ReticleContainer" type="CenterContainer" parent="UserInterface/VBoxContainer/Player_UI/DefaultContainer" unique_id=617038920]
 layout_mode = 1
@@ -2767,39 +2541,6 @@ label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/VBoxContainer/Player_UI" unique_id=266679013]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -280.0
-offset_right = 1098.0
-offset_bottom = -203.0
-grow_vertical = 2
-size_flags_horizontal = 2
-script = ExtResource("21_x7c3f")
-
-[node name="Quest1" type="Label" parent="UserInterface/VBoxContainer/Player_UI/QuestContainer" unique_id=658572775]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Сделай "
-vertical_alignment = 1
-
-[node name="Quest2" type="Label" parent="UserInterface/VBoxContainer/Player_UI/QuestContainer" unique_id=1735257510]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Сделай "
-vertical_alignment = 1
-
-[node name="Quest3" type="Label" parent="UserInterface/VBoxContainer/Player_UI/QuestContainer" unique_id=813803397]
-visible = false
-layout_mode = 2
-text = "Сделай "
-vertical_alignment = 1
-
 [node name="FPSLabel" type="Label" parent="UserInterface/VBoxContainer/Player_UI" unique_id=433789999]
 process_mode = 3
 layout_mode = 1
@@ -2825,5 +2566,5 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bjvpn")
 
-[connection signal="pressed" from="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu/Continue" to="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu/Continue" method="_on_pressed"]
-[connection signal="pressed" from="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu/ExitGame" to="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/HBoxContainer/GameMenu/ExitGame" method="_on_pressed"]
+[connection signal="pressed" from="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" to="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" method="_on_pressed"]
+[connection signal="pressed" from="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" to="UserInterface/VBoxContainer/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" method="_on_pressed"]
