@@ -189,7 +189,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
 tab_alignment = 1
-current_tab = 3
+current_tab = 1
 tab_0/title = "🧊 Главная"
 tab_1/title = "🔬 Настройки"
 tab_2/title = "📘 Задания"
@@ -250,7 +250,6 @@ text = "Выйти из игры"
 script = ExtResource("8_wodsf")
 
 [node name="SettingsTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=398948490]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
@@ -391,6 +390,7 @@ size_flags_horizontal = 3
 script = ExtResource("21_x7c3f")
 
 [node name="InventoryTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=745005613]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
