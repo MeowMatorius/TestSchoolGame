@@ -4,8 +4,8 @@ extends Control
 var camera: CameraAttributesPractical
 var enviroment: Environment
 
-@export var letterbox_panel_up: Panel
-@export var letterbox_panel_down: Panel
+#@export var letterbox_panel_up: Panel
+#@export var letterbox_panel_down: Panel
 
 
 func _ready():
@@ -21,9 +21,9 @@ func setup_settings_menu():
 
 func _on_setting_changed(setting_name: String):
 	match setting_name:
-		"LetterboxButton":
-			letterbox_panel_up.visible = !letterbox_panel_up.visible
-			letterbox_panel_down.visible = !letterbox_panel_down.visible
+#		"LetterboxButton":
+#			letterbox_panel_up.visible = !letterbox_panel_up.visible
+#			letterbox_panel_down.visible = !letterbox_panel_down.visible
 		"VolumetricFogButton":
 			enviroment.volumetric_fog_enabled = !enviroment.volumetric_fog_enabled
 		"BloomButton":
