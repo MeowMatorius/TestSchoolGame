@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://boqqsj7qhvgr2"]
+
+[ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/close_note_button.gd" id="1_nrv8q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7wuh"]
+bg_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+
+[node name="NoteTest" type="Control" unique_id=47941084]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="Panel" parent="." unique_id=411824334]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 342.0
+offset_top = 128.0
+offset_right = -342.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j7wuh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect" unique_id=2079355823]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -159.0
+offset_right = 159.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[s][color=gray]Годот это круто и класс и мне нравится очень[/color][/s]
+
+Я сосал [i]меня ебали[/i] эти [b][color=green]ебаные тырфейсы[/color][/b] говна из жопы.
+
+Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="TextureRect" unique_id=313448128]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+text = "X"
+script = ExtResource("1_nrv8q")
+
+[connection signal="pressed" from="TextureRect/CloseButton" to="TextureRect/CloseButton" method="_on_pressed"]

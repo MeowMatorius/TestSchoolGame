@@ -29,6 +29,7 @@ sky = SubResource("Sky_s36qc")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 4
+tonemap_agx_contrast = 1.5
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
@@ -37,7 +38,7 @@ glow_enabled = true
 fog_sky_affect = 0.8
 volumetric_fog_density = 0.01
 adjustment_enabled = true
-adjustment_saturation = 1.3
+adjustment_saturation = 1.2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_q0kuf"]
 auto_exposure_speed = 2.0

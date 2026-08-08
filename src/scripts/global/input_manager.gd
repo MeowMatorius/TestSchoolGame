@@ -39,7 +39,7 @@ func set_input_enabled(enabled: bool):
 
 
 func get_action_button_name(action_name: String) -> String:
-	var events = InputMap.action_get_events(action_name)
+	var events: Array[InputEvent] = InputMap.action_get_events(action_name)
 	if events.size() > 0:
 		# as_text() вернет понятное название клавиши
 		return events[0].as_text().replace(" (Physical)", "") 
