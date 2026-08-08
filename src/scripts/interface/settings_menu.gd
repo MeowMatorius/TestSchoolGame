@@ -4,11 +4,8 @@ extends Control
 var camera: CameraAttributesPractical
 var environment: Environment
 
-#@export var letterbox_panel_up: Panel
-#@export var letterbox_panel_down: Panel
 
-
-func _ready():
+func _ready() -> void:
 	if not world_env or not world_env.environment:
 		push_error("WorldEnvironment or Environment resource missing!")
 		return
@@ -44,7 +41,6 @@ func _on_setting_toggled(toggled_on: bool, button: CheckButton) -> void:
 	match button.name:
 		"AllButton":
 			set_all_environment_effects(toggled_on)
-			# Update all child CheckButton visuals to match the global toggle
 			for child in find_children("*", "CheckButton", true):
 				if child.name != "AllButton":
 					(child as CheckButton).button_pressed = toggled_on
