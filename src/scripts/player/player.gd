@@ -104,7 +104,6 @@ extends CharacterBody3D
 
 #region FOV Details
 @export_group("FOV Details")
-@export var default_fov := 75.0
 @export var fov_shift := 5.0
 @export var fov_lerp_speed := 5.0
 #endregion
@@ -417,7 +416,7 @@ func update_fov(delta: float, crouching: bool, is_sprinting: bool) -> void:
 	var horizontal_speed: float = Vector2(velocity.x, velocity.z).length()
 	var is_actually_running: bool = is_sprinting and horizontal_speed > (base_speed + 0.1)
 
-	var target_fov: float = default_fov
+	var target_fov: float = SettingsManager.global_fov
 	if is_actually_running:
 		target_fov += fov_shift
 	if crouching:

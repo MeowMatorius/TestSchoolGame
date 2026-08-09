@@ -31,6 +31,7 @@ InputManager="*uid://b1xwqudt2n5ba"
 InventoryManager="*uid://1gt7sdxlctdg"
 QuestManager="*uid://uun05o6kne3o"
 SignalBus="*uid://e8f4r2f4li5s"
+SettingsManager="*uid://b08wl2iw73fir"
 
 [display]
 
@@ -126,7 +127,6 @@ flashlight={
 
 [physics]
 
-3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 
 [rendering]

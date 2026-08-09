@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://doqrcqi7i4t2l"]
 
-[ext_resource type="FontFile" uid="uid://dsnei0shc21ca" path="res://src/assets/fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf" id="1_5eof8"]
-[ext_resource type="FontFile" uid="uid://b7ns5uy4kgcje" path="res://src/assets/fonts/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf" id="2_26u2o"]
 [ext_resource type="Texture2D" uid="uid://d1qxknlfg57ty" path="res://src/assets/icons/ui/godot_icon.svg" id="3_fkse0"]
 [ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/close_note_button.gd" id="4_norx0"]
 
@@ -77,11 +75,6 @@ grow_vertical = 2
 [node name="Title" type="RichTextLabel" parent="TextureRect/VBoxContainer" unique_id=2079355823]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_5eof8")
-theme_override_fonts/bold_font = ExtResource("1_5eof8")
-theme_override_fonts/bold_italics_font = ExtResource("2_26u2o")
-theme_override_fonts/italics_font = ExtResource("2_26u2o")
-theme_override_fonts/mono_font = ExtResource("1_5eof8")
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
@@ -99,11 +92,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 300)
 custom_maximum_size = Vector2(500, 500)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_5eof8")
-theme_override_fonts/bold_font = ExtResource("1_5eof8")
-theme_override_fonts/bold_italics_font = ExtResource("2_26u2o")
-theme_override_fonts/italics_font = ExtResource("2_26u2o")
-theme_override_fonts/mono_font = ExtResource("1_5eof8")
 bbcode_enabled = true
 text = "фывйвцйвцйвйцвйцвцйвцвцйвйцвцйвцйвйц
 
