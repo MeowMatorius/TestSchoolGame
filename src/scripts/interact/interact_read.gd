@@ -5,15 +5,15 @@ extends Interact
 
 
 func interact(object):
-	SignalBus.is_reading_note.emit()
 	GameManager.current_game_state = GameManager.GameState.READING
 	load_note()
 
 
 func get_prompt() -> String:
-	return "Прочесть"
+	return prompt_text
 
 
 func load_note() -> void:
-	var noteTest: Node = noteScene.instantiate()
-	add_child(noteTest)
+	SignalBus.is_reading_note.emit()
+	var noteNode: Node = noteScene.instantiate()
+	add_child(noteNode)

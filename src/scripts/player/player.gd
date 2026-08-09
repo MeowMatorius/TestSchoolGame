@@ -19,7 +19,7 @@ extends CharacterBody3D
 #region Nodes
 @export_group("Nodes")
 @export var HEAD : Node3D
-@export var CAMERA : Node3D
+@export var CAMERA : PhantomCamera3D
 @export var camera_target: Node3D
 @export var COLLISION : CollisionShape3D
 @export var CEILING_CHECK : RayCast3D
@@ -183,9 +183,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(ACTION_FLASHLIGHT) and is_instance_valid(FLASHLIGHT):
 		FLASHLIGHT.visible = not FLASHLIGHT.visible
 
-func _process(delta: float) -> void:
-	if is_instance_valid(CAMERA) and is_instance_valid(camera_target):
-		CAMERA.global_transform = camera_target.global_transform
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target) or not is_instance_valid(COLLISION):
@@ -215,7 +212,11 @@ func _physics_process(delta: float) -> void:
 	detect_landing()
 	update_visual_effects(delta, input_dir, is_sprinting, is_crouching)
 
+	CAMERA.global_position = camera_target.global_position
+	CAMERA.global_rotation = camera_target.global_rotation
+
 	was_on_floor = is_on_floor()
+
 
 #region Physics sub-functions
 func apply_gravity(delta: float) -> void:
