@@ -81,6 +81,7 @@ camera_target = NodePath("Head/CameraTarget")
 COLLISION = NodePath("Collision")
 CEILING_CHECK = NodePath("CrouchCeilingDetection")
 FLASHLIGHT = NodePath("Head/CameraTarget/SpotLight3D")
+mouse_sensitivity = 8.0
 backward_speed_mult = 0.8
 bob_freq = 1.5
 bob_amp_h = 0.04

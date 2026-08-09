@@ -171,9 +171,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and not immobile:
 		mouse_input_x = event.relative.x
 		if is_instance_valid(HEAD):
-			HEAD.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+			HEAD.rotate_y(deg_to_rad(-event.relative.x * (mouse_sensitivity / 100)))
 		var limit: float = crouch_look_limit_angle if (is_crouching and limit_crouch_look) else 89.0
-		mouse_rotation_x -= event.relative.y * mouse_sensitivity
+		mouse_rotation_x -= event.relative.y * (mouse_sensitivity / 100)
 		mouse_rotation_x = clamp(mouse_rotation_x, -limit, limit)
 
 	if enable_crouching and toggle_crouch and event.is_action_pressed(ACTION_CROUCH):

@@ -6,12 +6,14 @@ extends HBoxContainer
 @export var min_fov: int = 50
 @export var max_fov: int = 100
 
+
 func _ready() -> void:
 	line_edit.text = str(SettingsManager.global_fov)
 	
 	slider.max_value = max_fov
 	slider.min_value = min_fov
 	slider.value = SettingsManager.global_fov
+
 
 func _on_fov_slider_value_changed(value: float) -> void:
 	line_edit.text = str(int(value))
