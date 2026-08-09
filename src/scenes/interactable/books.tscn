@@ -151,4 +151,5 @@ libraries/ = SubResource("AnimationLibrary_gt2ij")
 
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1144016549]
 script = ExtResource("1_cf0rl")
+prompt_text = "Прочесть"
 noteScene = ExtResource("3_ig4w2")

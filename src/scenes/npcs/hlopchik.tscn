@@ -33,18 +33,18 @@ npc_data = ExtResource("3_5yfcu")
 
 [node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]
 physics_interpolation_mode = 1
-transform = Transform3D(0.9180845, 0.100237, -0.38350216, -4.656613e-10, 0.9674984, 0.25287765, 0.39638534, -0.23216306, 0.88824517, -0.18432522, 0.74016297, 0.9836064)
+transform = Transform3D(0.91102654, 0.10427352, -0.39894566, 0.0071964585, 0.96333027, 0.26822203, 0.41228485, -0.24722838, 0.876869, -0.20146345, 0.7571578, 0.96717274)
 top_level = true
+visible = false
 fov = 55.0
 
 [node name="PhantomCameraHost" type="Node" parent="DialogueCamera" unique_id=137878921]
-process_priority = 300
-process_physics_priority = 300
 script = ExtResource("5_x68is")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1234953876]
 transform = Transform3D(0.9110268, 0.10427353, -0.39894575, 0.0071964604, 0.9633304, 0.268222, 0.41228497, -0.2472284, 0.87686926, -0.20146345, 0.7571578, 0.96717274)
+visible = false
 script = ExtResource("6_s2mr4")
 tween_resource = SubResource("Resource_xkf83")
 tween_on_load = false

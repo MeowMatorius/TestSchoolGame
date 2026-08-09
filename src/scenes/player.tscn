@@ -22,13 +22,12 @@
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://src/scripts/player/player_ui_quest.gd" id="21_x7c3f"]
 
-[sub_resource type="Resource" id="Resource_kb6p2"]
+[sub_resource type="Resource" id="Resource_5h06g"]
 script = ExtResource("3_yllr7")
-duration = 0.5
-transition = 1
 
-[sub_resource type="Resource" id="Resource_e7oew"]
+[sub_resource type="Resource" id="Resource_twf7n"]
 script = ExtResource("4_ebec5")
+fov = 50.0
 metadata/_custom_type_script = "uid://b8hhnqsugykly"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
@@ -75,7 +74,7 @@ safe_margin = 0.01
 script = ExtResource("1_0t4e8")
 enable_crouching = false
 HEAD = NodePath("Head")
-CAMERA = NodePath("Head/CameraTarget/Camera")
+CAMERA = NodePath("Head/PhantomCamera3D")
 camera_target = NodePath("Head/CameraTarget")
 COLLISION = NodePath("Collision")
 CEILING_CHECK = NodePath("CrouchCeilingDetection")
@@ -95,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 [node name="CameraTarget" type="Node3D" parent="Head" unique_id=1494832552]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/CameraTarget" unique_id=161934072]
-transform = Transform3D(0.9857387, 0, 0.16828291, 0.021554677, 0.99176306, -0.12625928, -0.16689678, 0.12808593, 0.9776193, 1, -0.34907746, 0)
+transform = Transform3D(0.98573875, -1.8360817e-09, 0.16828291, 0.021554679, 0.9917631, -0.12625927, -0.16689679, 0.12808594, 0.9776193, 1, -0.34907746, 0)
 visible = false
 light_color = Color(0.9999996, 0.92300963, 0.7544096, 1)
 light_energy = 5.0
@@ -105,32 +104,34 @@ shadow_enabled = true
 spot_range = 20.0
 spot_angle = 25.0
 
-[node name="Camera" type="Camera3D" parent="Head/CameraTarget" unique_id=921838086]
+[node name="Camera" type="Camera3D" parent="Head" unique_id=921838086]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 top_level = true
+fov = 50.0
 
-[node name="PhantomCameraHost" type="Node" parent="Head/CameraTarget/Camera" unique_id=1972342520]
-process_priority = 300
-process_physics_priority = 300
+[node name="PhantomCameraHost" type="Node" parent="Head/Camera" unique_id=1972342520]
 script = ExtResource("7_yllr7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera3D" type="Node3D" parent="Head/CameraTarget" unique_id=508387966 groups=["player_camera"]]
+[node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 node_paths=PackedStringArray("follow_target", "look_at_target") groups=["player_camera"]]
 script = ExtResource("2_ebec5")
-tween_resource = SubResource("Resource_kb6p2")
+priority = 100
+follow_target = NodePath("../CameraTarget")
+look_at_target = NodePath("../CameraTarget")
+tween_resource = SubResource("Resource_5h06g")
 tween_on_load = false
-camera_3d_resource = SubResource("Resource_e7oew")
+camera_3d_resource = SubResource("Resource_twf7n")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="InteractionRayCast" type="RayCast3D" parent="Head/CameraTarget/PhantomCamera3D" unique_id=298195236 node_paths=PackedStringArray("text_prompt")]
+[node name="InteractionRayCast" type="RayCast3D" parent="Head/PhantomCamera3D" unique_id=298195236 node_paths=PackedStringArray("text_prompt")]
 target_position = Vector3(0, 0, -2)
 collision_mask = 2
 hit_back_faces = false
 debug_shape_custom_color = Color(0, 0.93333334, 0, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_qaoyu")
-text_prompt = NodePath("../../../../UserInterface/Player_UI/DefaultContainer/InteractPrompt")
+text_prompt = NodePath("../../../UserInterface/Player_UI/DefaultContainer/InteractPrompt")
 
 [node name="CrouchCeilingDetection" type="RayCast3D" parent="." unique_id=348065536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -189,14 +190,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 tab_0/title = "🧊 Главная"
 tab_1/title = "🔬 Настройки"
 tab_2/title = "📘 Задания"
 tab_3/title = "🧳 Инвентарь"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -250,6 +250,7 @@ text = "Выйти из игры"
 script = ExtResource("8_wodsf")
 
 [node name="SettingsTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=398948490]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
