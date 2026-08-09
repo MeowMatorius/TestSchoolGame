@@ -924,9 +924,6 @@ crouch_head_y = -0.1
 [node name="Hlopchik2" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449746, 0, 0.99984777, -0.017452404, -0.017452404, 0.017449744, 0.9996954, 37.386757, 6.490266, 7.6039286)
 
-[node name="DialogueCamera" parent="Персонажи/Hlopchik2" index="3" unique_id=123514712]
-transform = Transform3D(0.9984641, -0.004971007, 0.055178143, 0, 0.99596643, 0.08972677, -0.0554016, -0.089588955, 0.9944368, -1.1681654, 1.5246115, 1.5576291)
-
 [node name="Hlopchik" parent="Персонажи" unique_id=1033201141 instance=ExtResource("5_s36qc")]
 transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 14.061001)
 

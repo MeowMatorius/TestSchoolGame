@@ -1,7 +1,7 @@
 class_name Interact
 extends Node
 
-var prompt_message: String
+#var prompt_message: String
 var highlighted: bool = false
 
 

@@ -24,10 +24,11 @@
 
 [sub_resource type="Resource" id="Resource_5h06g"]
 script = ExtResource("3_yllr7")
+duration = 0.5
+transition = 1
 
 [sub_resource type="Resource" id="Resource_twf7n"]
 script = ExtResource("4_ebec5")
-fov = 50.0
 metadata/_custom_type_script = "uid://b8hhnqsugykly"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
@@ -108,7 +109,6 @@ spot_angle = 25.0
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 top_level = true
-fov = 50.0
 
 [node name="PhantomCameraHost" type="Node" parent="Head/Camera" unique_id=1972342520]
 script = ExtResource("7_yllr7")
