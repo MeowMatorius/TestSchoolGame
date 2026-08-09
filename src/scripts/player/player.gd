@@ -120,14 +120,14 @@ const SPRINT_BOB_TRANSITION_SPEED := 8.0
 #endregion
 
 #region Action Strings
-const ACTION_LEFT = "left"
-const ACTION_RIGHT = "right"
-const ACTION_UP = "up"
-const ACTION_DOWN = "down"
-const ACTION_JUMP = "jump"
-const ACTION_SPRINT = "sprint"
-const ACTION_CROUCH = "crouch"
-const ACTION_FLASHLIGHT = "flashlight"
+const ACTION_LEFT: String = "left"
+const ACTION_RIGHT: String = "right"
+const ACTION_UP: String = "up"
+const ACTION_DOWN: String = "down"
+const ACTION_JUMP: String = "jump"
+const ACTION_SPRINT: String = "sprint"
+const ACTION_CROUCH: String = "crouch"
+const ACTION_FLASHLIGHT: String = "flashlight"
 #endregion
 
 #region State Variables
