@@ -1,7 +1,7 @@
 extends Node
 
 # Смена состояния игры 
-enum GameState {DEFAULT, DIALOGUE, PAUSE}
+enum GameState {DEFAULT, DIALOGUE, PAUSE, READING}
 var current_game_state: GameState = GameState.DEFAULT:
 	set(value):
 		current_game_state = value
@@ -62,6 +62,16 @@ func _on_game_state_changed() -> void:
 				1.0,
 				false,
 				true,
+				false,
+				)
+		GameState.READING:
+			_update_game_state(
+				Input.MOUSE_MODE_VISIBLE, 
+				false, 
+				false, 
+				0.0,
+				false,
+				false,
 				false,
 				)
 		GameState.PAUSE:

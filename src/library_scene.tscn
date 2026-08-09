@@ -67,7 +67,7 @@ auto_exposure_min_sensitivity = 100.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_00rdf"]
+[sub_resource type="Resource" id="Resource_55n3t"]
 resource_local_to_scene = true
 script = ExtResource("25_fftn7")
 object_state = 0
@@ -75,12 +75,12 @@ activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yih1p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00rdf"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("27_55n3t")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_jgyov"]
+[sub_resource type="Resource" id="Resource_yih1p"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -894,7 +894,7 @@ transform = Transform3D(-4.1656744e-08, -0.9529952, -0.30298537, 1, -4.371139e-0
 transform = Transform3D(0.39996275, 0, 0.30004957, 0, 0.5, 0, -0.30004957, 0, 0.39996275, -1.7403119, 1.2130792, 17.477571)
 
 [node name="InteractComponent" parent="Объекты/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_00rdf")
+switch_data = SubResource("Resource_55n3t")
 
 [node name="RedKey" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
 transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.7499316, 1.0548993, 16.062403)
@@ -909,10 +909,10 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
 [node name="MeshInstance3D" parent="Объекты/Money2" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_yih1p")
+material_override = SubResource("StandardMaterial3D_00rdf")
 
 [node name="InteractComponent" parent="Объекты/Money2" index="5" unique_id=104121503]
-item_data = SubResource("Resource_jgyov")
+item_data = SubResource("Resource_yih1p")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
