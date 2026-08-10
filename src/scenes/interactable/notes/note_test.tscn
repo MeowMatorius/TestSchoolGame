@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/close_note_button.gd" id="1_nrv8q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
+bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pohmr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o343k"]
@@ -12,13 +19,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rvhfm"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
-bg_color = Color(0.08078333, 0.08078336, 0.08078327, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [node name="NoteTest" type="Control" unique_id=47941084]
 layout_mode = 3
 anchors_preset = 15
@@ -28,23 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="CloseButton" type="Button" parent="." unique_id=313448128]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "Закрыть"
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pohmr")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_o343k")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xa12n")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_i8p06")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rvhfm")
-icon_alignment = 2
-script = ExtResource("1_nrv8q")
 
 [node name="TextureRect" type="Panel" parent="." unique_id=411824334]
 layout_mode = 1
@@ -77,5 +60,20 @@ text = "[s][color=gray]Godot это круто и класс и мне нрав�
 
 Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять"
 vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="." unique_id=313448128]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pohmr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o343k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xa12n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i8p06")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rvhfm")
+icon_alignment = 2
+script = ExtResource("1_nrv8q")
 
 [connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
