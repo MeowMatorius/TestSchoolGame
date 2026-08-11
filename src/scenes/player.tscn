@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_yllr7"]
 [ext_resource type="Script" uid="uid://k0ay4bgxrais" path="res://src/scripts/interface/continue_button.gd" id="8_32hag"]
 [ext_resource type="Script" uid="uid://8rbyfm6075b3" path="res://src/scripts/interface/exit_button.gd" id="8_wodsf"]
-[ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://src/scripts/interface/settings_menu.gd" id="9_c35mf"]
-[ext_resource type="Script" uid="uid://dy63qstgclb1l" path="res://src/scripts/interface/fov_slider.gd" id="10_qmjc7"]
+[ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://src/scripts/interface/settings/settings_menu.gd" id="9_c35mf"]
+[ext_resource type="Script" uid="uid://dy63qstgclb1l" path="res://src/scripts/interface/settings/fov_slider.gd" id="10_qmjc7"]
 [ext_resource type="Script" uid="uid://ds506bf8odr0k" path="res://src/scripts/player/player_ui_reticle.gd" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://cpxtlr8qmqwao" path="res://src/assets/icons/pivo.png" id="15_s7qer"]
 [ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://src/assets/icons/ui/ArrowRight.svg" id="17_e7oew"]
@@ -102,7 +102,6 @@ visible = false
 light_color = Color(0.9999996, 0.92300963, 0.7544096, 1)
 light_energy = 5.0
 light_indirect_energy = 3.0
-light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 spot_range = 20.0
 spot_angle = 25.0
