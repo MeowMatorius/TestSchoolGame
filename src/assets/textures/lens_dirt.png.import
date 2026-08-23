@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://isjsflxq3134"
-path="res://.godot/imported/red_key.png-9a7687b4063fc5d5adbc138f26930a8d.ctex"
+uid="uid://dtdy13iu435mw"
+path="res://.godot/imported/lens_dirt.png-d5d17a2ae9d3fb046214645f5aa58dc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/icons/red_key.png"
-dest_files=["res://.godot/imported/red_key.png-9a7687b4063fc5d5adbc138f26930a8d.ctex"]
+source_file="res://src/assets/textures/lens_dirt.png"
+dest_files=["res://.godot/imported/lens_dirt.png-d5d17a2ae9d3fb046214645f5aa58dc2.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.5
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

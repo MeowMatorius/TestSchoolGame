@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cfullnp5cxo2d"]
 
+[ext_resource type="CompressedTexture3D" uid="uid://ccb6qk3ptn5pk" path="res://src/assets/luts/sepia_lut.jpg" id="1_o343k"]
 [ext_resource type="Material" uid="uid://cswyiyc4x7ktc" path="res://src/assets/materials/black_mat_ground.tres" id="1_wy25e"]
+[ext_resource type="Texture2D" uid="uid://crura1sjj4oag" path="res://src/assets/textures/kenneys_skybox/skybox-night.png" id="2_o343k"]
 [ext_resource type="Texture2D" uid="uid://dkdffhk2pse34" path="res://src/assets/textures/greybox_textures/greybox_dark_grid.png" id="2_pohmr"]
 [ext_resource type="PackedScene" uid="uid://t24vxvdkn1sh" path="res://src/assets/models/furniture/desk.glb" id="6_rvhfm"]
+[ext_resource type="PackedScene" uid="uid://b2kxce0mejwuf" path="res://src/scenes/vfx/rain.tscn" id="6_xa12n"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="7_wwywm"]
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://src/assets/music/falling_snow.mp3" id="8_wy25e"]
 [ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/music_note.png" id="9_xfj2v"]
@@ -19,10 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://src/scenes/npcs/hlopchik.tscn" id="18_oh1fv"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="19_pohmr"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bscv6"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pohmr"]
+panorama = ExtResource("2_o343k")
 
 [sub_resource type="Sky" id="Sky_s36qc"]
-sky_material = SubResource("ProceduralSkyMaterial_bscv6")
+sky_material = SubResource("PanoramaSkyMaterial_pohmr")
 
 [sub_resource type="Environment" id="Environment_gqnfj"]
 background_mode = 2
@@ -30,22 +34,22 @@ sky = SubResource("Sky_s36qc")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 4
-tonemap_agx_contrast = 1.5
 ssr_enabled = true
 ssao_enabled = true
+ssao_light_affect = 0.1
+ssao_ao_channel_affect = 0.1
 ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
-fog_sky_affect = 0.8
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
+volumetric_fog_sky_affect = 0.8
 adjustment_enabled = true
-adjustment_saturation = 1.2
+adjustment_color_correction = ExtResource("1_o343k")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_q0kuf"]
-auto_exposure_speed = 2.0
-dof_blur_far_distance = 100.0
-auto_exposure_min_sensitivity = 100.0
+auto_exposure_speed = 4.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 20.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gxwj"]
 albedo_texture = ExtResource("2_pohmr")
@@ -67,7 +71,7 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_wy25e"]
+[sub_resource type="Resource" id="Resource_xa12n"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
@@ -83,9 +87,13 @@ environment = SubResource("Environment_gqnfj")
 camera_attributes = SubResource("CameraAttributesPractical_q0kuf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment" unique_id=1121918557]
-transform = Transform3D(0.9003188, 0.2738998, -0.3382381, 0, 0.777146, 0.62932044, 0.4352311, -0.566589, 0.69967914, 0, 0, 0)
-light_bake_mode = 1
+transform = Transform3D(0.89173436, 0.28480464, -0.35170448, 1.2970897e-08, 0.777146, 0.62932044, 0.45255914, -0.5611867, 0.6930078, 0, 0, 0)
+light_color = Color(0.07058824, 0.12941177, 0.2784314, 1)
 shadow_enabled = true
+
+[node name="Rain" parent="Enviroment" unique_id=1894733181 instance=ExtResource("6_xa12n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+transparency = 0.8
 
 [node name="Ground" type="StaticBody3D" parent="Enviroment" unique_id=1528271684]
 transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
@@ -120,21 +128,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47022486, -0.5, 0.21758842
 
 [node name="AudioStreamPlayer3D" parent="Interactables/Radio" index="2" unique_id=400099460]
 stream = ExtResource("8_wy25e")
-autoplay = false
 
 [node name="GPUParticles3D" parent="Interactables/Radio" index="3" unique_id=871601774]
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_wy25e")
+switch_data = SubResource("Resource_xa12n")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
 
-[node name="books" parent="Interactables" unique_id=1556637199 instance=ExtResource("12_tkjv7")]
+[node name="Note" parent="Interactables" unique_id=1556637199 instance=ExtResource("12_tkjv7")]
 transform = Transform3D(0.92650896, 0, -0.37627277, 0, 1, 0, 0.37627277, 0, 0.92650896, 0.17316654, 1.1032228, -9.381689)
 
-[node name="books2" parent="Interactables" unique_id=475974563 instance=ExtResource("10_pohmr")]
+[node name="Newspaper" parent="Interactables" unique_id=475974563 instance=ExtResource("10_pohmr")]
 transform = Transform3D(0.9979705, 0, 0.06367406, 0, 1, 0, -0.06367406, 0, 0.9979705, 0.23980787, 1.1032228, -9.817928)
 
 [node name="Key" parent="Interactables" unique_id=243040129 instance=ExtResource("13_v2cc4")]
@@ -162,6 +169,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.4792671
 
 [node name="Kuzya" parent="." unique_id=59066183 instance=ExtResource("17_ygd0t")]
 transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49683318, -0.36526898, 1.1032227, -9.865707)
+visible = false
 
 [node name="Hlopchik" parent="." unique_id=1769752881 instance=ExtResource("18_oh1fv")]
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, -3.0617101, 0.9857122, -8.295948)

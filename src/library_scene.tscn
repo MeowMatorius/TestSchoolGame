@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://cebxk55fsjy8k"]
+[gd_scene format=4 uid="uid://cebxk55fsjy8k"]
 
+[ext_resource type="CompressedTexture3D" uid="uid://f1in5t07nxb" path="res://src/assets/luts/light_lut.jpg" id="1_00rdf"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://src/scenes/player.tscn" id="1_3qnke"]
 [ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://src/assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://src/assets/materials/black_mat.tres" id="3_h3xc6"]
@@ -13,9 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked.tscn" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://bmuf8e05i0227" path="res://src/scenes/interactable/lamp_square_table.tscn" id="9_fftn7"]
 [ext_resource type="PackedScene" uid="uid://irkotmaf5jqf" path="res://src/scenes/csg/book_shelf.tscn" id="10_gthg3"]
-[ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
-[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="12_pln1h"]
 [ext_resource type="PackedScene" uid="uid://bsjkhnga4fk1c" path="res://src/assets/models/furniture/chairCushion.glb" id="13_nlwlv"]
 [ext_resource type="PackedScene" uid="uid://uxj4ci0t0g2i" path="res://src/assets/models/furniture/cardboardBoxOpen.glb" id="15_lmrlb"]
 [ext_resource type="PackedScene" uid="uid://bb2l2xt8t6a4x" path="res://src/assets/models/furniture/stairs.glb" id="18_qq5q4"]
@@ -29,8 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://c77h84o5k4wre" path="res://src/assets/models/furniture/coatRackStanding.glb" id="22_6gkjt"]
 [ext_resource type="PackedScene" uid="uid://cyein5f2vafk1" path="res://src/scenes/interactable/television_vintage.tscn" id="23_5csvr"]
 [ext_resource type="PackedScene" uid="uid://ckywgjny3p3yo" path="res://src/assets/models/furniture/loungeChair.glb" id="23_lmrlb"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="25_fftn7"]
-[ext_resource type="Texture2D" uid="uid://cuqauyf4g2pxj" path="res://src/assets/textures/greybox_textures/greybox_yellow_grid.png" id="27_55n3t"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://src/scenes/npcs/tamagoche.tscn" id="31_fftn7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kow03"]
@@ -44,50 +41,38 @@ sky = SubResource("Sky_v46x1")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 4
-tonemap_agx_contrast = 2.0
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_read_sky_light = false
 glow_enabled = true
+glow_bloom = 0.5
 fog_light_color = Color(1, 0.95686275, 0.8980392, 1)
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(1, 0.95686275, 0.8980392, 1)
 adjustment_enabled = true
-adjustment_saturation = 1.3
+adjustment_color_correction = ExtResource("1_00rdf")
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s36qc"]
-auto_exposure_enabled = true
-auto_exposure_speed = 2.0
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yih1p"]
+dof_blur_far_enabled = true
 dof_blur_far_distance = 20.0
-auto_exposure_min_sensitivity = 100.0
+
+[sub_resource type="VoxelGIData" id="VoxelGIData_55n3t"]
+_data = {
+"bounds": AABB(-63.06543, -15.795776, -61.49414, 126.13086, 31.591553, 122.98828),
+"level_counts": PackedInt32Array(1, 0, 0, 0, 0, 0, 0, 0),
+"octree_cells": PackedByteArray("//////////////////////////////////////////8="),
+"octree_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAAAA=="),
+"octree_df_png": PackedByteArray("iVBORw0KGgoAAAANSUhEUgAAIAAAAACACAAAAACGzLjBAAAAAXNSR0IArs4c6QAABU1JREFUeJzt2jENACAAwDDAv2cQwUFYWgUTsLkHAAAAAAAAAPC79ToAAAAAAAAAALhnAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQIABAAAAAAAAAAACDAAAAAAAAAAAEGAAAAAAAAAAAIAAAwAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAABAgAEAAAAAAAAAAAIMAAAAAAAAAAAQYAAAAAAAAAAAgAADAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAAABBgAAAAAAAAAACDAAAAAAAAAAAECAAQAAAAAAAAAAAgwAAAAAAAAAABBgAAAAAAAAAACAAAMAAAAAAAAAAAQYAAAAAAAAAAAgwAAAAAAAAAAAAAEGAAAAAAAAAAAIMAAAAAAAAAAAQMABJx8B//w5aDkAAAAASUVORK5CYII="),
+"octree_size": Vector3(128, 64, 128),
+"to_cell_xform": Transform3D(1.014819, 0, 0, 0, 1.014819, 0, 0, 0, 1.014819, 63.999996, 16.029854, 62.405422)
+}
+interior = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3xc6"]
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="Resource" id="Resource_55n3t"]
-resource_local_to_scene = true
-script = ExtResource("25_fftn7")
-object_state = 0
-activate_prompt_message = "Включить"
-deactivate_prompt_message = "Выключить"
-metadata/_custom_type_script = "uid://b00l74oqq5jru"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00rdf"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("27_55n3t")
-uv1_scale = Vector3(5, 5, 5)
-
-[sub_resource type="Resource" id="Resource_yih1p"]
-resource_local_to_scene = true
-script = ExtResource("12_pln1h")
-type = "Money"
-name = "Money"
-quantity = 100
-icon = ExtResource("11_u0xbq")
-metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
 
 [node name="TestScene" type="Node3D" unique_id=1293502681]
 
@@ -95,7 +80,7 @@ metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GlobalIllumination" unique_id=516208645 groups=["world_env"]]
 environment = SubResource("Environment_s36qc")
-camera_attributes = SubResource("CameraAttributesPractical_s36qc")
+camera_attributes = SubResource("CameraAttributesPractical_yih1p")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="GlobalIllumination" unique_id=1489697784]
 transform = Transform3D(-0.99415094, 0.024294585, -0.10523141, 0, 0.9743701, 0.22495103, 0.10799942, 0.2236353, -0.96867096, 0, 0, 0)
@@ -107,6 +92,11 @@ light_angular_distance = 0.5
 shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_blur = 0.0
+
+[node name="VoxelGI" type="VoxelGI" parent="GlobalIllumination" unique_id=852190606]
+visible = false
+size = Vector3(126.13086, 31.591553, 122.98828)
+data = SubResource("VoxelGIData_55n3t")
 
 [node name="Сцена (Статичное)" type="Node" parent="." unique_id=215577381]
 
@@ -551,29 +541,6 @@ transform = Transform3D(1.392278, 0, 0, 0, 0.8286204, 0, 0, 0, 1, -1, 0.04586327
 
 [node name="Освещение" type="Node3D" parent="Сцена (Статичное)" unique_id=465821152]
 
-[node name="Внутри" type="Node3D" parent="Сцена (Статичное)/Освещение" unique_id=658528186]
-visible = false
-
-[node name="MainHallLight2" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Внутри" unique_id=2117450477]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -10.599999, 8.690288, 12.700001)
-light_color = Color(1, 0.95686275, 0.8980392, 1)
-light_energy = 15.0
-light_volumetric_fog_energy = 0.3
-shadow_enabled = true
-spot_range = 15.0
-spot_attenuation = 1.5
-spot_angle = 70.0
-
-[node name="MainHallLight6" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Внутри" unique_id=2064657789]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, 1, 0, -1, -4.3711392e-08, 12.324866, 8.638519, -0.008023262)
-light_color = Color(1, 0.95686275, 0.8980392, 1)
-light_energy = 15.0
-light_volumetric_fog_energy = 0.3
-shadow_enabled = true
-spot_range = 15.0
-spot_attenuation = 1.5
-spot_angle = 70.0
-
 [node name="Снаружи" type="Node3D" parent="Сцена (Статичное)/Освещение" unique_id=1415416490]
 
 [node name="MainHallOutdoorLight" type="SpotLight3D" parent="Сцена (Статичное)/Освещение/Снаружи" unique_id=1257097053]
@@ -893,26 +860,11 @@ transform = Transform3D(-4.1656744e-08, -0.9529952, -0.30298537, 1, -4.371139e-0
 [node name="Radio" parent="Объекты" unique_id=1068241980 instance=ExtResource("4_h3xc6")]
 transform = Transform3D(0.39996275, 0, 0.30004957, 0, 0.5, 0, -0.30004957, 0, 0.39996275, -1.7403119, 1.2130792, 17.477571)
 
-[node name="InteractComponent" parent="Объекты/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_55n3t")
-
 [node name="RedKey" parent="Объекты" unique_id=243040129 instance=ExtResource("5_wtsjf")]
 transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -0.7499316, 1.0548993, 16.062403)
 
-[node name="RedKey2" parent="Объекты" unique_id=54708090 instance=ExtResource("5_wtsjf")]
-transform = Transform3D(0.2, 0, 0, 0, 0.20000002, 0, 0, 0, 0.2, -1.2499316, 1.0548993, 15.838425)
-
 [node name="Money" parent="Объекты" unique_id=16297360 instance=ExtResource("7_h3xc6")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 15.685175)
-
-[node name="Money2" parent="Объекты" unique_id=1137028239 instance=ExtResource("7_h3xc6")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
-
-[node name="MeshInstance3D" parent="Объекты/Money2" index="0" unique_id=1214280325]
-material_override = SubResource("StandardMaterial3D_00rdf")
-
-[node name="InteractComponent" parent="Объекты/Money2" index="5" unique_id=104121503]
-item_data = SubResource("Resource_yih1p")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 
@@ -921,15 +873,8 @@ transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0
 safe_margin = 0.005
 crouch_head_y = -0.1
 
-[node name="Hlopchik2" parent="Персонажи" unique_id=1769752881 instance=ExtResource("5_s36qc")]
-transform = Transform3D(0.9998477, 0.00030458646, 0.017449746, 0, 0.99984777, -0.017452404, -0.017452404, 0.017449744, 0.9996954, 37.386757, 6.490266, 7.6039286)
-
 [node name="Hlopchik" parent="Персонажи" unique_id=1033201141 instance=ExtResource("5_s36qc")]
 transform = Transform3D(-1, -1.5257378e-09, -8.740946e-08, 0, 0.9998477, -0.017452406, 8.742278e-08, -0.017452406, -0.9998477, 0.2880001, 1, 14.061001)
 
 [node name="Tamagoche" parent="Персонажи" unique_id=2119838203 instance=ExtResource("31_fftn7")]
 transform = Transform3D(0.49317157, 0, 0.082351655, 0, 0.5, 0, -0.082351655, 0, 0.49317157, -1.3301136, 1, 0.48930234)
-
-[editable path="Объекты/Radio"]
-[editable path="Объекты/Money2"]
-[editable path="Персонажи/Hlopchik2"]
