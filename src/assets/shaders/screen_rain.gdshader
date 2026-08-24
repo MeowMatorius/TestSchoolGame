@@ -1,20 +1,30 @@
 shader_type canvas_item;
 render_mode unshaded;
 
+// Основные параметры дождя
 uniform float rain_amount : hint_range(0.0, 1.0) = 0.25;
 uniform float blue_amount : hint_range(0.0, 1.0) = 0.0;
 uniform float speed : hint_range(0.0, 2.0) = 0.2;
+
+// Параметры шлейфов
 uniform float trail_strength : hint_range(0.0, 1.0) = 1.0;
 uniform float trail_length : hint_range(0.0, 1.0) = 1.0;
+uniform float trail_intensity : hint_range(0.0, 2.0) = 1.0; // Новый параметр
+
+// Параметры капель
 uniform float drop_size : hint_range(0.1, 2.0) = 1.5;
+uniform float density : hint_range(0.5, 4.0) = 1.0;
+
+// Визуальные эффекты
 uniform float wind_strength : hint_range(-1.0, 1.0) = 0.0;
 uniform float blur_strength : hint_range(0.0, 8.0) = 2.0;
 uniform float highlight_intensity : hint_range(0.0, 2.0) = 0.5;
-uniform float density : hint_range(0.5, 4.0) = 1.0;
 uniform float chromatic_aberration : hint_range(0.0, 0.01) = 0.002;
 
+// Захват экрана
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
+// Хэш-функции
 vec3 N13(float p) {
     vec3 p3 = fract(vec3(p) * vec3(.1031, .11369, .13787));
     p3 += dot(p3, p3.yzx + 19.19);
@@ -25,10 +35,12 @@ float N(float t) {
     return fract(sin(t * 12345.564) * 7658.76);
 }
 
+// Плавное появление/исчезновение
 float Saw(float b, float t) {
     return smoothstep(0.0, b, t) * (1.0 - smoothstep(b, 1.0, t));
 }
 
+// SDF капли (форма яйца)
 float sdEgg(vec2 p, float ra, float rb) {
     const float k = sqrt(3.0);
     p.x = abs(p.x);
@@ -38,7 +50,7 @@ float sdEgg(vec2 p, float ra, float rb) {
                                                : length(vec2(p.x + r, p.y)) - 2.0 * r) - rb;
 }
 
-// Улучшенный слой капель с ветром, бликами и следом
+// Слой движущихся капель
 vec2 DropLayer2(vec2 uv, float t, vec2 densityScale) {
     vec2 a = vec2(6.0, 1.0) * densityScale * density;
     vec2 grid = a * 2.0;
@@ -59,9 +71,9 @@ vec2 DropLayer2(vec2 uv, float t, vec2 densityScale) {
     x *= 0.6;
 
     float ti = fract(t * (gridFall + 0.1) + n.z);
-    float y = 1.0 - ti;
+    float y = 1.0 - ti; // 1 сверху, 0 снизу
 
-    // Добавляем влияние ветра (сдвиг по горизонтали, зависящий от высоты)
+    // Влияние ветра
     x += wind_strength * (1.0 - ti) * 0.3;
 
     float dropShape = mix(0.0, -0.2, ti);
@@ -71,7 +83,7 @@ vec2 DropLayer2(vec2 uv, float t, vec2 densityScale) {
     float d = sdEgg((st - vec2(x, y)) * a.yx, 0.0, dropShape);
     float mainDrop = smoothstep(diameter / 1.5, 0.0, d);
 
-    // Блик на капле
+    // Блик
     float highlight = smoothstep(diameter * 0.2, 0.0, length((st - vec2(x, y)) - vec2(-0.02, -0.05) * diameter));
     mainDrop += highlight * highlight_intensity;
 
@@ -86,7 +98,7 @@ vec2 DropLayer2(vec2 uv, float t, vec2 densityScale) {
         trail = hFade * vFade * 0.5 * trail_strength;
     }
 
-    // Слабый след над каплей (мокрый след)
+    // Лёгкий след над каплей (мокрое стекло)
     if (st.y > y) {
         float width = diameter * 0.9;
         float hFade = smoothstep(width, 0.0, abs(st.x - x));
@@ -113,12 +125,14 @@ float StaticDrops(vec2 uv, float t) {
 }
 
 // Комбинирование слоёв
+// Возвращает: x - маска капель, y - сырая маска шлейфа (без масштабирования)
 vec2 Drops(vec2 uv, float t, float l0, float l1, float l2) {
     float s = StaticDrops(uv, t) * l0;
-    vec2 m1 = DropLayer2(uv, t, vec2(1.0)) * l1;
-    vec2 m2 = DropLayer2(uv * 1.85, t, vec2(1.0)) * l2;
-    float c = smoothstep(0.3, 1.0, s + m1.x + m2.x);
-    return vec2(c, m1.y + m2.y);
+    vec2 m1 = DropLayer2(uv, t, vec2(1.0));
+    vec2 m2 = DropLayer2(uv * 1.85, t, vec2(1.0));
+    float c = smoothstep(0.3, 1.0, s + m1.x * l1 + m2.x * l2);
+    float trail = m1.y + m2.y; // суммарный шлейф
+    return vec2(c, trail);
 }
 
 void fragment() {
@@ -126,23 +140,29 @@ void fragment() {
     vec2 aspect_uv = (FRAGCOORD.xy - 0.5 * resolution.xy) / resolution.y;
     float t = TIME * speed;
 
-    // Исправленные веса слоёв: при rain_amount = 0 эффект исчезает
+    // Веса слоёв капель
     float staticDrops = smoothstep(0.0, 0.1, rain_amount);
     float layer1 = smoothstep(0.25, 0.75, rain_amount);
     float layer2 = smoothstep(0.0, 0.5, rain_amount);
 
+    // Получаем маски
     vec2 c = Drops(aspect_uv, t, staticDrops, layer1, layer2);
+
+    // Раздельное управление шлейфами
+    float rain_presence = smoothstep(0.0, 0.1, rain_amount); // гарантирует исчезновение при rain_amount = 0
+    float trail = c.y * trail_intensity * rain_presence;
 
     // Преломление фона
     vec2 grad = vec2(dFdx(c.x), dFdy(c.x));
     vec2 scale = 0.5 * vec2(resolution.y / resolution.x, 1.0);
     vec2 n = grad * scale;
 
+    // Расчёт блюра с учётом шлейфа
     float maxBlur = mix(3.0, 6.0, rain_amount) * blur_strength;
     float minBlur = 1.0 * blur_strength;
-    float focus = mix(maxBlur - c.y, minBlur, smoothstep(0.1, 0.2, c.x));
+    float focus = mix(maxBlur - trail, minBlur, smoothstep(0.1, 0.2, c.x));
 
-    // Выборка цвета с возможной хроматической аберрацией
+    // Выборка цвета с хроматической аберрацией
     vec3 col;
     if (chromatic_aberration > 0.0) {
         float ca = chromatic_aberration;
