@@ -2,12 +2,12 @@ shader_type canvas_item;
 
 render_mode unshaded;
 
-uniform float rain_amount   : hint_range(0.0, 1.0) = 0.7;
-uniform float blue_amount   : hint_range(0.0, 1.0) = 1.0;
+uniform float rain_amount   : hint_range(0.0, 1.0) = 0.25;
+uniform float blue_amount   : hint_range(0.0, 1.0) = 0.0;
 uniform float speed         : hint_range(0.0, 2.0) = 0.2;
-uniform float trail_strength: hint_range(0.0, 3.0) = 1.0;
-uniform float trail_length  : hint_range(0.0, 2.0) = 1.0;
-uniform float drop_size     : hint_range(0.1, 4.0) = 1.0;
+uniform float trail_strength: hint_range(0.0, 1.0) = 1.0;
+uniform float trail_length  : hint_range(0.0, 1.0) = 1.0;
+uniform float drop_size     : hint_range(0.1, 2.0) = 1.5;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
@@ -52,7 +52,7 @@ vec2 DropLayer2(vec2 uv, float t, vec2 densityScale) {
     id = floor(uv * grid);
     vec2 st = fract(uv * grid) - vec2(0.5, 0.0);
     vec3 n = N13(id.x * 35.2 + id.y * 2376.1);
-    float x = n.x - 0.5;
+    float x = n.x - 0.7;
 
     // Horizontal wobble
     x += sin(uv.y * 20.0 + sin(uv.y * 20.0)) * (0.5 - abs(x)) * (n.z - 0.5) * 0.3;
@@ -117,7 +117,7 @@ void fragment() {
     vec2 aspect_uv = (FRAGCOORD.xy - 0.5 * resolution.xy) / resolution.y;
     float t = TIME * speed;
 
-    float staticDrops = smoothstep(-0.5, 1.0, rain_amount) * 2.0;
+    float staticDrops = smoothstep(-0.5, 1.0, rain_amount);
     float layer1 = smoothstep(0.25, 0.75, rain_amount);
     float layer2 = smoothstep(0.0, 0.5, rain_amount);
 
