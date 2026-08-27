@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://cfullnp5cxo2d"]
 
-[ext_resource type="CompressedTexture3D" uid="uid://ccb6qk3ptn5pk" path="res://src/assets/luts/sepia_lut.jpg" id="1_o343k"]
+[ext_resource type="CompressedTexture3D" uid="uid://f1in5t07nxb" path="res://src/assets/luts/light_lut.jpg" id="1_o343k"]
 [ext_resource type="Material" uid="uid://cswyiyc4x7ktc" path="res://src/assets/materials/black_mat_ground.tres" id="1_wy25e"]
-[ext_resource type="Texture2D" uid="uid://crura1sjj4oag" path="res://src/assets/textures/kenneys_skybox/skybox-night.png" id="2_o343k"]
+[ext_resource type="Texture2D" uid="uid://cyf3lqjk0h8np" path="res://src/assets/textures/kenneys_skybox/skybox-day.png" id="2_o343k"]
 [ext_resource type="Texture2D" uid="uid://dkdffhk2pse34" path="res://src/assets/textures/greybox_textures/greybox_dark_grid.png" id="2_pohmr"]
 [ext_resource type="PackedScene" uid="uid://t24vxvdkn1sh" path="res://src/assets/models/furniture/desk.glb" id="6_rvhfm"]
-[ext_resource type="PackedScene" uid="uid://b2kxce0mejwuf" path="res://src/scenes/vfx/rain.tscn" id="6_xa12n"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="7_wwywm"]
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://src/assets/music/falling_snow.mp3" id="8_wy25e"]
 [ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/music_note.png" id="9_xfj2v"]
@@ -36,12 +35,11 @@ reflected_light_source = 2
 tonemap_mode = 4
 ssr_enabled = true
 ssao_enabled = true
-ssao_light_affect = 0.1
-ssao_ao_channel_affect = 0.1
 ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 volumetric_fog_sky_affect = 0.8
 adjustment_enabled = true
 adjustment_color_correction = ExtResource("1_o343k")
@@ -88,12 +86,7 @@ camera_attributes = SubResource("CameraAttributesPractical_q0kuf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment" unique_id=1121918557]
 transform = Transform3D(0.89173436, 0.28480464, -0.35170448, 1.2970897e-08, 0.777146, 0.62932044, 0.45255914, -0.5611867, 0.6930078, 0, 0, 0)
-light_color = Color(0.07058824, 0.12941177, 0.2784314, 1)
 shadow_enabled = true
-
-[node name="Rain" parent="Enviroment" unique_id=1894733181 instance=ExtResource("6_xa12n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
-transparency = 0.8
 
 [node name="Ground" type="StaticBody3D" parent="Enviroment" unique_id=1528271684]
 transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)

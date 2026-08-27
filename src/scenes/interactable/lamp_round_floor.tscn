@@ -73,7 +73,6 @@ points = PackedVector3Array(0.18, 2.044352, 0.08333999, -0.04805913, 2.044352, -
 [sub_resource type="Resource" id="Resource_1pqdn"]
 resource_local_to_scene = true
 script = ExtResource("2_h7hnf")
-object_state = 0
 activate_prompt_message = "Включить"
 deactivate_prompt_message = "Выключить"
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
