@@ -10,7 +10,8 @@ func interact(object):
 
 
 func get_prompt() -> String:
-	return prompt_text
+	return 'Прочесть: ' + prompt_text
+	#return 'Прочесть: ' + prompt_text
 
 
 func load_note() -> void:

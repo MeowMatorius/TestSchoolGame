@@ -9,6 +9,14 @@ signal is_switching
 signal is_activated
 
 
+func _ready() -> void:
+	match switch_data.object_state:
+		switch_data.ObjectState.OFF:
+			switch_off(get_parent())
+		switch_data.ObjectState.ON:
+			switch_on(get_parent())
+
+
 func interact(object):
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
 		unlock()
@@ -66,7 +74,6 @@ func switch_off(object):
 
 
 func get_prompt() -> String:
-	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
 		var has_item: bool = switch_data.item_needed_to_open.name in InventoryManager.inventory_items
 		return "Требуется: " + switch_data.item_needed_to_open.name if not has_item else "Открыть с помощью: " + switch_data.item_needed_to_open.name

@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_yllr7"]
 [ext_resource type="Script" uid="uid://k0ay4bgxrais" path="res://src/scripts/interface/continue_button.gd" id="8_32hag"]
 [ext_resource type="Script" uid="uid://8rbyfm6075b3" path="res://src/scripts/interface/exit_button.gd" id="8_wodsf"]
-[ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://src/scripts/interface/settings_menu.gd" id="9_c35mf"]
+[ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://src/scripts/interface/settings/settings_menu.gd" id="9_c35mf"]
+[ext_resource type="Script" uid="uid://dy63qstgclb1l" path="res://src/scripts/interface/settings/fov_slider.gd" id="10_qmjc7"]
 [ext_resource type="Script" uid="uid://ds506bf8odr0k" path="res://src/scripts/player/player_ui_reticle.gd" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://cpxtlr8qmqwao" path="res://src/assets/icons/pivo.png" id="15_s7qer"]
 [ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://src/assets/icons/ui/ArrowRight.svg" id="17_e7oew"]
@@ -24,10 +25,11 @@
 
 [sub_resource type="Resource" id="Resource_5h06g"]
 script = ExtResource("3_yllr7")
+duration = 0.5
+transition = 1
 
 [sub_resource type="Resource" id="Resource_twf7n"]
 script = ExtResource("4_ebec5")
-fov = 50.0
 metadata/_custom_type_script = "uid://b8hhnqsugykly"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
@@ -78,7 +80,8 @@ CAMERA = NodePath("Head/PhantomCamera3D")
 camera_target = NodePath("Head/CameraTarget")
 COLLISION = NodePath("Collision")
 CEILING_CHECK = NodePath("CrouchCeilingDetection")
-FLASHLIGHT = NodePath("Head/CameraTarget/SpotLight3D")
+FLASHLIGHT = NodePath("Head/PhantomCamera3D/SpotLight3D")
+mouse_sensitivity = 8.0
 backward_speed_mult = 0.8
 bob_freq = 1.5
 bob_amp_h = 0.04
@@ -93,32 +96,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="CameraTarget" type="Node3D" parent="Head" unique_id=1494832552]
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Head/CameraTarget" unique_id=161934072]
-transform = Transform3D(0.98573875, -1.8360817e-09, 0.16828291, 0.021554679, 0.9917631, -0.12625927, -0.16689679, 0.12808594, 0.9776193, 1, -0.34907746, 0)
-visible = false
-light_color = Color(0.9999996, 0.92300963, 0.7544096, 1)
-light_energy = 5.0
-light_indirect_energy = 3.0
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-spot_range = 20.0
-spot_angle = 25.0
-
 [node name="Camera" type="Camera3D" parent="Head" unique_id=921838086]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 top_level = true
-fov = 50.0
 
 [node name="PhantomCameraHost" type="Node" parent="Head/Camera" unique_id=1972342520]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("7_yllr7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 node_paths=PackedStringArray("follow_target", "look_at_target") groups=["player_camera"]]
+[node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 groups=["player_camera"]]
 script = ExtResource("2_ebec5")
 priority = 100
-follow_target = NodePath("../CameraTarget")
-look_at_target = NodePath("../CameraTarget")
 tween_resource = SubResource("Resource_5h06g")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_twf7n")
@@ -132,6 +123,17 @@ debug_shape_custom_color = Color(0, 0.93333334, 0, 1)
 debug_shape_thickness = 1
 script = ExtResource("3_qaoyu")
 text_prompt = NodePath("../../../UserInterface/Player_UI/DefaultContainer/InteractPrompt")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/PhantomCamera3D" unique_id=821304649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03010726)
+visible = false
+light_color = Color(0.9999996, 0.92300963, 0.7544096, 1)
+light_energy = 5.0
+light_indirect_energy = 3.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+spot_range = 20.0
+spot_angle = 25.0
 
 [node name="CrouchCeilingDetection" type="RayCast3D" parent="." unique_id=348065536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -162,6 +164,8 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/Player_UI" unique_id=634695021]
 process_mode = 3
+visible = false
+z_index = 100
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,6 +193,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
+theme_override_font_sizes/font_size = 18
 tab_alignment = 1
 current_tab = 0
 tab_0/title = "🧊 Главная"
@@ -219,28 +224,6 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Продолжить"
 script = ExtResource("8_32hag")
-
-[node name="Save" type="Button" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1187381786]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-disabled = true
-text = "Сохраниться"
-
-[node name="Load" type="Button" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1365915276]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-disabled = true
-text = "Загрузить"
-
-[node name="ExitToMenu" type="Button" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1741463144]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-disabled = true
-text = "Выйти в меню"
-script = ExtResource("8_wodsf")
 
 [node name="ExitGame" type="Button" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu" unique_id=1413335273]
 custom_minimum_size = Vector2(200, 40)
@@ -376,18 +359,52 @@ button_pressed = true
 layout_mode = 2
 text = "Bloom (Свечение)"
 
-[node name="Letterbox" type="HBoxContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=1651108603]
-visible = false
+[node name="GameplaySettings" type="VBoxContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer" unique_id=801995540]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
 
-[node name="LetterboxButton" type="CheckButton" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/Letterbox" unique_id=375387419]
+[node name="Label" type="Label" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings" unique_id=741630991]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-button_pressed = true
+size_flags_vertical = 1
+text = "Геймплей"
+label_settings = SubResource("LabelSettings_s7qer")
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/Letterbox" unique_id=1225118972]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings" unique_id=927614094]
 layout_mode = 2
-text = "Letterbox (Черные Полосы)"
+theme_override_constants/separation = 12
+
+[node name="Fov" type="HBoxContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2" unique_id=826909237 node_paths=PackedStringArray("slider", "line_edit")]
+layout_mode = 2
+script = ExtResource("10_qmjc7")
+slider = NodePath("FovSlider")
+line_edit = NodePath("FovEdit")
+min_fov = 60
+
+[node name="Label" type="Label" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" unique_id=214660855]
+layout_mode = 2
+text = "FOV (Угол обзора)"
+
+[node name="FovSlider" type="HSlider" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" unique_id=1490795698]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 75.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="FovEdit" type="LineEdit" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" unique_id=584127508]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+emoji_menu_enabled = false
+caret_blink = true
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
 visible = false
@@ -2000,8 +2017,7 @@ uppercase = true
 
 [node name="DialoguesContainer" type="Control" parent="UserInterface/Player_UI" unique_id=1096310796 node_paths=PackedStringArray("speaker_name", "speaker_line", "choice_ui")]
 visible = false
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -2236,8 +2252,7 @@ autowrap_mode = 3
 
 [node name="DefaultContainer" type="Control" parent="UserInterface/Player_UI" unique_id=122634425]
 visible = false
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -2247,36 +2262,16 @@ mouse_behavior_recursive = 2
 
 [node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=266679013]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = -280.0
-offset_right = 1098.0
-offset_bottom = -203.0
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.035
+anchor_right = 0.95300007
+offset_left = -0.3199997
+offset_top = 39.0
+offset_right = 0.1439209
+offset_bottom = 116.0
+grow_horizontal = 2
 size_flags_horizontal = 2
 script = ExtResource("21_x7c3f")
-
-[node name="Quest1" type="Label" parent="UserInterface/Player_UI/DefaultContainer/QuestContainer" unique_id=658572775]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Сделай "
-vertical_alignment = 1
-
-[node name="Quest2" type="Label" parent="UserInterface/Player_UI/DefaultContainer/QuestContainer" unique_id=1735257510]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Сделай "
-vertical_alignment = 1
-
-[node name="Quest3" type="Label" parent="UserInterface/Player_UI/DefaultContainer/QuestContainer" unique_id=813803397]
-visible = false
-layout_mode = 2
-text = "Сделай "
-vertical_alignment = 1
 
 [node name="ReticleContainer" type="CenterContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=617038920]
 layout_mode = 1
@@ -2336,14 +2331,11 @@ theme_override_styles/panel = ExtResource("6_hg6s5")
 [node name="ItemsTooltip" type="VBoxContainer" parent="UserInterface/Player_UI" unique_id=1764051406]
 z_index = -100
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = -1
 anchor_top = 0.5
-anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = -100.0
-offset_bottom = 100.0
-grow_horizontal = 2
+offset_left = 25.0
+offset_right = 25.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
@@ -2532,3 +2524,7 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" method="_on_pressed"]
 [connection signal="pressed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" method="_on_pressed"]
+[connection signal="drag_ended" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_drag_ended"]
+[connection signal="drag_started" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_drag_started"]
+[connection signal="value_changed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_value_changed"]
+[connection signal="text_submitted" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovEdit" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_edit_text_submitted"]

@@ -17,7 +17,7 @@ dest_files=["res://.godot/imported/check_mark.png-1611f3df7dcf4c302e44bb7f2be59e
 
 compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.7
+compress/lossy_quality=0.5
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

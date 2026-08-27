@@ -1,8 +1,18 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cikn2tvkldjti"]
 
 [ext_resource type="Texture2D" uid="uid://cuqauyf4g2pxj" path="res://src/assets/textures/greybox_textures/greybox_yellow_grid.png" id="1_5kpln"]
+[ext_resource type="Shader" uid="uid://ddquqhhrffih6" path="res://src/assets/shaders/highlighter.gdshader" id="2_p36gy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nb2g"]
+render_priority = 0
+shader = ExtResource("2_p36gy")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 3.00000011875
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 3.0
 
 [resource]
 resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_7nb2g")
 albedo_texture = ExtResource("1_5kpln")
 uv1_scale = Vector3(5, 5, 5)

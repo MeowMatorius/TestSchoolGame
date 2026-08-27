@@ -25,8 +25,15 @@ func _physics_process(_delta):
 			if target_object != collider:
 				_update_target(collider)
 			
-			#text_prompt.text = "%s\n [%s] %s" % [target_object.name, InputManager.get_action_button_name("interact"), target_object_interact.get_prompt()]
-			text_prompt.text = "[%s]\n %s" % [InputManager.get_action_button_name("interact"), target_object_interact.get_prompt()]
+			# Версия с выводом имени объекта (В будущем поменять на вывод кастомного имени из объекта)
+			#text_prompt.text = "%s\n [%s]\n %s" % [target_object.name, InputManager.get_action_button_name("interact"), target_object_interact.get_prompt()]
+			
+			# Версия без вывода имени объекта (В будущем поменять на вывод укороченных инпутов (Left Mouse Button = LBM и тд))
+			#text_prompt.text = "[%s]\n %s" % [InputManager.get_action_button_name("interact"), target_object_interact.get_prompt()]
+
+			# Чистая версия с выводом действия (Без имени объекта и кнопки)
+			text_prompt.text = "%s" % [target_object_interact.get_prompt()]
+
 			text_prompt.visible = true
 		elif target_object:
 			_clear_target()

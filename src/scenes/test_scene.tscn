@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://t6puu1pee6ti"]
+[gd_scene format=3 uid="uid://dbd2tpqgl37ch"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://src/scenes/player.tscn" id="1_3qnke"]
-[ext_resource type="Texture2D" path="res://assets/hdri/mountains.exr" id="1_s36qc"]
 [ext_resource type="Texture2D" uid="uid://mlesf0boc70f" path="res://src/assets/textures/greybox_textures/greybox_grey_grid.png" id="2_rnaij"]
 [ext_resource type="Material" uid="uid://cikvv008qjvvm" path="res://src/assets/materials/black_mat.tres" id="3_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="4_h3xc6"]
@@ -11,12 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://brnanjah7se5e" path="res://src/assets/models/furniture/rugSquare.glb" id="6_68ann"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://src/scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="7_ntc4i"]
-[ext_resource type="PackedScene" uid="uid://c42bnvqdrdffo" path="res://src/scenes/interactable/door_locked.tscn" id="8_rnaij"]
+[ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked.tscn" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://bmuf8e05i0227" path="res://src/scenes/interactable/lamp_square_table.tscn" id="9_fftn7"]
-[ext_resource type="PackedScene" path="res://scenes/book_shelf.tscn" id="10_gthg3"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
-[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/OLD/item_data.gd" id="12_pln1h"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="12_pln1h"]
 [ext_resource type="PackedScene" uid="uid://bsjkhnga4fk1c" path="res://src/assets/models/furniture/chairCushion.glb" id="13_nlwlv"]
 [ext_resource type="PackedScene" uid="uid://uxj4ci0t0g2i" path="res://src/assets/models/furniture/cardboardBoxOpen.glb" id="15_lmrlb"]
 [ext_resource type="PackedScene" uid="uid://bb2l2xt8t6a4x" path="res://src/assets/models/furniture/stairs.glb" id="18_qq5q4"]
@@ -30,10 +28,11 @@
 [ext_resource type="PackedScene" uid="uid://c77h84o5k4wre" path="res://src/assets/models/furniture/coatRackStanding.glb" id="22_6gkjt"]
 [ext_resource type="PackedScene" uid="uid://cyein5f2vafk1" path="res://src/scenes/interactable/television_vintage.tscn" id="23_5csvr"]
 [ext_resource type="PackedScene" uid="uid://ckywgjny3p3yo" path="res://src/assets/models/furniture/loungeChair.glb" id="23_lmrlb"]
+[ext_resource type="Texture2D" uid="uid://cuqauyf4g2pxj" path="res://src/assets/textures/greybox_textures/greybox_yellow_grid.png" id="25_g4vrd"]
+[ext_resource type="Shader" uid="uid://ddquqhhrffih6" path="res://src/assets/shaders/highlighter.gdshader" id="26_ys4mu"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://src/scenes/npcs/tamagoche.tscn" id="31_fftn7"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s36qc"]
-panorama = ExtResource("1_s36qc")
 
 [sub_resource type="Sky" id="Sky_s36qc"]
 sky_material = SubResource("PanoramaSkyMaterial_s36qc")
@@ -65,7 +64,21 @@ dof_blur_far_distance = 20.0
 albedo_texture = ExtResource("2_rnaij")
 uv1_scale = Vector3(5, 5, 5)
 
-[sub_resource type="Resource" id="Resource_5csvr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7nb2g"]
+render_priority = 0
+shader = ExtResource("26_ys4mu")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 3.00000011875
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0tg6"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_7nb2g")
+albedo_texture = ExtResource("25_g4vrd")
+uv1_scale = Vector3(5, 5, 5)
+
+[sub_resource type="Resource" id="Resource_6e2xt"]
 resource_local_to_scene = true
 script = ExtResource("12_pln1h")
 type = "Money"
@@ -450,85 +463,85 @@ transform = Transform3D(-1.7160001, 0, -3.5762787e-07, 0, 1.5045123, 0, 5.960464
 
 [node name="Bookshelfs" type="Node3D" parent="Сцена (Статичное)" unique_id=1351824152]
 
-[node name="BookShelf" parent="Сцена (Статичное)/Bookshelfs" unique_id=1731136523 instance=ExtResource("10_gthg3")]
+[node name="BookShelf" parent="Сцена (Статичное)/Bookshelfs" unique_id=1731136523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 22)
 
-[node name="BookShelf2" parent="Сцена (Статичное)/Bookshelfs" unique_id=1127179925 instance=ExtResource("10_gthg3")]
+[node name="BookShelf2" parent="Сцена (Статичное)/Bookshelfs" unique_id=1127179925]
 transform = Transform3D(0.96592593, -0.12940952, -0.22414392, -1.4901161e-08, 0.8660254, -0.50000006, 0.2588191, 0.48296294, 0.8365164, -7.5, 1.5, 20.761463)
 
-[node name="BookShelf8" parent="Сцена (Статичное)/Bookshelfs" unique_id=1699582878 instance=ExtResource("10_gthg3")]
+[node name="BookShelf8" parent="Сцена (Статичное)/Bookshelfs" unique_id=1699582878]
 transform = Transform3D(0.9659258, 0.25881904, 1.131334e-08, 0, -4.371139e-08, 1, 0.25881904, -0.9659258, -4.222196e-08, 7, 0.4918177, 20)
 
-[node name="BookShelf20" parent="Сцена (Статичное)/Bookshelfs" unique_id=798003252 instance=ExtResource("10_gthg3")]
+[node name="BookShelf20" parent="Сцена (Статичное)/Bookshelfs" unique_id=798003252]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.5, 1.5, 7.5)
 
-[node name="BookShelf23" parent="Сцена (Статичное)/Bookshelfs" unique_id=1112806593 instance=ExtResource("10_gthg3")]
+[node name="BookShelf23" parent="Сцена (Статичное)/Bookshelfs" unique_id=1112806593]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.5, 4.5, 7.5)
 
-[node name="BookShelf36" parent="Сцена (Статичное)/Bookshelfs" unique_id=686437331 instance=ExtResource("10_gthg3")]
+[node name="BookShelf36" parent="Сцена (Статичное)/Bookshelfs" unique_id=686437331]
 transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, -8, 1.5, 11.5)
 
-[node name="BookShelf37" parent="Сцена (Статичное)/Bookshelfs" unique_id=1197361989 instance=ExtResource("10_gthg3")]
+[node name="BookShelf37" parent="Сцена (Статичное)/Bookshelfs" unique_id=1197361989]
 transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, -8, 4.5, 11.5)
 
-[node name="BookShelf38" parent="Сцена (Статичное)/Bookshelfs" unique_id=1874180067 instance=ExtResource("10_gthg3")]
+[node name="BookShelf38" parent="Сцена (Статичное)/Bookshelfs" unique_id=1874180067]
 transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 7.5, 1.5, 5.5)
 
-[node name="BookShelf39" parent="Сцена (Статичное)/Bookshelfs" unique_id=43458830 instance=ExtResource("10_gthg3")]
+[node name="BookShelf39" parent="Сцена (Статичное)/Bookshelfs" unique_id=43458830]
 transform = Transform3D(-0.9659258, 0, 0.25881913, 0, 1, 0, -0.25881913, 0, -0.9659258, 7.5, 4.5, 5.5)
 
-[node name="BookShelf40" parent="Сцена (Статичное)/Bookshelfs" unique_id=760671499 instance=ExtResource("10_gthg3")]
+[node name="BookShelf40" parent="Сцена (Статичное)/Bookshelfs" unique_id=760671499]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14, 1.5, 7.5)
 
-[node name="BookShelf41" parent="Сцена (Статичное)/Bookshelfs" unique_id=1760998029 instance=ExtResource("10_gthg3")]
+[node name="BookShelf41" parent="Сцена (Статичное)/Bookshelfs" unique_id=1760998029]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14, 4.5, 7.5)
 
-[node name="BookShelf42" parent="Сцена (Статичное)/Bookshelfs" unique_id=2100515982 instance=ExtResource("10_gthg3")]
+[node name="BookShelf42" parent="Сцена (Статичное)/Bookshelfs" unique_id=2100515982]
 transform = Transform3D(-0.9659258, 0, -0.25881895, 0, 1, 0, 0.25881895, 0, -0.9659258, 6.633334, 1.5, -14.200001)
 
-[node name="BookShelf43" parent="Сцена (Статичное)/Bookshelfs" unique_id=1700488133 instance=ExtResource("10_gthg3")]
+[node name="BookShelf43" parent="Сцена (Статичное)/Bookshelfs" unique_id=1700488133]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 1.5, -15.200001)
 
-[node name="BookShelf44" parent="Сцена (Статичное)/Bookshelfs" unique_id=2132342023 instance=ExtResource("10_gthg3")]
+[node name="BookShelf44" parent="Сцена (Статичное)/Bookshelfs" unique_id=2132342023]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.366666, 1.5, -15.700001)
 
-[node name="BookShelf45" parent="Сцена (Статичное)/Bookshelfs" unique_id=1636334010 instance=ExtResource("10_gthg3")]
+[node name="BookShelf45" parent="Сцена (Статичное)/Bookshelfs" unique_id=1636334010]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.366669, 1.5, -15.700003)
 
-[node name="BookShelf46" parent="Сцена (Статичное)/Bookshelfs" unique_id=655923627 instance=ExtResource("10_gthg3")]
+[node name="BookShelf46" parent="Сцена (Статичное)/Bookshelfs" unique_id=655923627]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 14.133332, 1.5, -5.2)
 
-[node name="BookShelf47" parent="Сцена (Статичное)/Bookshelfs" unique_id=181420922 instance=ExtResource("10_gthg3")]
+[node name="BookShelf47" parent="Сцена (Статичное)/Bookshelfs" unique_id=181420922]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 14.133332, 4.5, -5.2)
 
-[node name="BookShelf48" parent="Сцена (Статичное)/Bookshelfs" unique_id=803649905 instance=ExtResource("10_gthg3")]
+[node name="BookShelf48" parent="Сцена (Статичное)/Bookshelfs" unique_id=803649905]
 transform = Transform3D(1, 0, -1.7484555e-07, -1.7484555e-07, -4.371139e-08, -1, -7.642742e-15, 1, -4.371139e-08, 7.633333, 0.5, -5.2000003)
 
-[node name="BookShelf49" parent="Сцена (Статичное)/Bookshelfs" unique_id=1642833141 instance=ExtResource("10_gthg3")]
+[node name="BookShelf49" parent="Сцена (Статичное)/Bookshelfs" unique_id=1642833141]
 transform = Transform3D(0.85792696, -0.41974038, 0.2962764, 0.08487577, -0.45295483, -0.8874846, 0.5067129, 0.78654337, -0.35297617, 6.633333, 1.3753777, -2.6177895)
 
-[node name="BookShelf50" parent="Сцена (Статичное)/Bookshelfs" unique_id=1039043182 instance=ExtResource("10_gthg3")]
+[node name="BookShelf50" parent="Сцена (Статичное)/Bookshelfs" unique_id=1039043182]
 transform = Transform3D(0.9659258, 0.25881904, -1.575745e-07, 1.7484555e-07, -4.371139e-08, 1, 0.25881904, -0.9659258, -8.7475314e-08, -8.254896, 0.57816744, -5.566586)
 
-[node name="BookShelf51" parent="Сцена (Статичное)/Bookshelfs" unique_id=405604226 instance=ExtResource("10_gthg3")]
+[node name="BookShelf51" parent="Сцена (Статичное)/Bookshelfs" unique_id=405604226]
 transform = Transform3D(0.9659258, 0.25881904, -1.575745e-07, 1.7484555e-07, -4.371139e-08, 1, 0.25881904, -0.9659258, -8.7475314e-08, -7.4784393, 0.57816744, -8.464363)
 
-[node name="BookShelf52" parent="Сцена (Статичное)/Bookshelfs" unique_id=1764148558 instance=ExtResource("10_gthg3")]
+[node name="BookShelf52" parent="Сцена (Статичное)/Bookshelfs" unique_id=1764148558]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -14.366669, 1.5, -5.200002)
 
-[node name="BookShelf53" parent="Сцена (Статичное)/Bookshelfs" unique_id=2109433051 instance=ExtResource("10_gthg3")]
+[node name="BookShelf53" parent="Сцена (Статичное)/Bookshelfs" unique_id=2109433051]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -14.366669, 4.5, -5.200002)
 
-[node name="BookShelf54" parent="Сцена (Статичное)/Bookshelfs" unique_id=1654787889 instance=ExtResource("10_gthg3")]
+[node name="BookShelf54" parent="Сцена (Статичное)/Bookshelfs" unique_id=1654787889]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.366666, 4.5, -15.700001)
 
-[node name="BookShelf55" parent="Сцена (Статичное)/Bookshelfs" unique_id=1014663586 instance=ExtResource("10_gthg3")]
+[node name="BookShelf55" parent="Сцена (Статичное)/Bookshelfs" unique_id=1014663586]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -14.366669, 4.5, -15.700003)
 
-[node name="BookShelf56" parent="Сцена (Статичное)/Bookshelfs" unique_id=249012561 instance=ExtResource("10_gthg3")]
+[node name="BookShelf56" parent="Сцена (Статичное)/Bookshelfs" unique_id=249012561]
 transform = Transform3D(-0.9659258, 0, -0.25881895, 0, 1, 0, 0.25881895, 0, -0.9659258, 6.633334, 4.5, -14.200001)
 
-[node name="BookShelf57" parent="Сцена (Статичное)/Bookshelfs" unique_id=1964749599 instance=ExtResource("10_gthg3")]
+[node name="BookShelf57" parent="Сцена (Статичное)/Bookshelfs" unique_id=1964749599]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.633334, 4.5, -15.200001)
 
 [node name="doorway" parent="Сцена (Статичное)/Bookshelfs" unique_id=78999764 instance=ExtResource("20_ap2hy")]
@@ -889,8 +902,11 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.2551005, 1.0619755, 
 [node name="Money2" parent="Объекты" unique_id=1137028239 instance=ExtResource("7_h3xc6")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.7875535, 1.0635346, 16.25747)
 
+[node name="MeshInstance3D" parent="Объекты/Money2" index="0" unique_id=1214280325]
+material_override = SubResource("StandardMaterial3D_q0tg6")
+
 [node name="InteractComponent" parent="Объекты/Money2" index="5" unique_id=104121503]
-item_data = SubResource("Resource_5csvr")
+item_data = SubResource("Resource_6e2xt")
 
 [node name="Персонажи" type="Node" parent="." unique_id=1511845288]
 

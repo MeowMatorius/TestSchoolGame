@@ -3,17 +3,10 @@
 [ext_resource type="Material" uid="uid://dl0y0e70gh3ra" path="res://src/assets/materials/orange_mat.tres" id="1_5yfcu"]
 [ext_resource type="Script" uid="uid://bxkg5v4jnuicd" path="res://src/scripts/interact/interact_talk.gd" id="2_gmw5h"]
 [ext_resource type="Resource" uid="uid://cxon4cj25fdwq" path="res://src/resources/🤦‍♀️npc_data/Hlopchik.tres" id="3_5yfcu"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_x68is"]
-[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="6_s2mr4"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_ob37v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_uyltb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uyltb"]
-
-[sub_resource type="Resource" id="Resource_xkf83"]
-script = ExtResource("7_ob37v")
-transition = 1
 
 [node name="Hlopchik" type="StaticBody3D" unique_id=1769752881]
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, 0, 0, 0)
@@ -30,26 +23,6 @@ shape = SubResource("BoxShape3D_uyltb")
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1438756875]
 script = ExtResource("2_gmw5h")
 npc_data = ExtResource("3_5yfcu")
-
-[node name="DialogueCamera" type="Camera3D" parent="." unique_id=123514712]
-physics_interpolation_mode = 1
-transform = Transform3D(0.91102654, 0.10427352, -0.39894566, 0.0071964585, 0.96333027, 0.26822203, 0.41228485, -0.24722838, 0.876869, -0.20146345, 0.7571578, 0.96717274)
-top_level = true
-visible = false
-fov = 55.0
-
-[node name="PhantomCameraHost" type="Node" parent="DialogueCamera" unique_id=137878921]
-script = ExtResource("5_x68is")
-metadata/_custom_type_script = "uid://bd046eokvcnu2"
-
-[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=1234953876]
-transform = Transform3D(0.9110268, 0.10427353, -0.39894575, 0.0071964604, 0.9633304, 0.268222, 0.41228497, -0.2472284, 0.87686926, -0.20146345, 0.7571578, 0.96717274)
-visible = false
-script = ExtResource("6_s2mr4")
-tween_resource = SubResource("Resource_xkf83")
-tween_on_load = false
-inactive_update_mode = 1
-metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="PlayerTeleportPoint" type="Node3D" parent="." unique_id=649458906]
 transform = Transform3D(1, 5.820766e-11, 0, 0, 1, 0, 0, 0, 1, -0.036, -1, 2.055)

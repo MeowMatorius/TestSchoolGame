@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://doqrcqi7i4t2l"]
+
+[ext_resource type="Texture2D" uid="uid://7nk0qmihpk0f" path="res://src/assets/icons/white_key.png" id="1_qpbne"]
+[ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/notes/close_note_button.gd" id="4_norx0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5eof8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26u2o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fkse0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_norx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3v0c"]
+
+[node name="NoteTest2" type="Control" unique_id=47941084]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="Panel" parent="." unique_id=411824334]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -270.0
+offset_right = 448.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrv8q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=846271432]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.051000003
+anchor_top = 0.074
+anchor_right = 0.94900006
+anchor_bottom = 0.92600006
+offset_left = 0.30399704
+offset_top = 0.040000916
+offset_right = -0.30407715
+offset_bottom = -0.040039063
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="TextureRect/VBoxContainer" unique_id=2079355823]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]Кошмар на улице Жопотрясова[/b]"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer" unique_id=1997045513]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=523019000]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "фывйвцйвцйвйцвйцвцйвцвцйвйцвцйвцйвйц
+
+Я сосал меня ебали эти ебаные тырфейсы говна из жопы.
+
+Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять
+
+Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять
+
+Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять"
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1056762811]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 500)
+layout_mode = 2
+texture = ExtResource("1_qpbne")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CloseButton" type="Button" parent="." unique_id=1369511274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5eof8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_26u2o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fkse0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_norx0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w3v0c")
+icon_alignment = 2
+script = ExtResource("4_norx0")
+
+[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]

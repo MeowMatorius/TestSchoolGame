@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://baf833tfftk3a"]
 
 [ext_resource type="Script" uid="uid://bh4iah8j25mra" path="res://src/scripts/interact/interact_read.gd" id="1_cf0rl"]
-[ext_resource type="PackedScene" uid="uid://boqqsj7qhvgr2" path="res://src/scenes/note_test.tscn" id="3_ig4w2"]
+[ext_resource type="PackedScene" uid="uid://boqqsj7qhvgr2" path="res://src/scenes/interactable/notes/note_test.tscn" id="3_ig4w2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlhjj"]
 resource_name = "carpetDarker"
@@ -151,5 +151,5 @@ libraries/ = SubResource("AnimationLibrary_gt2ij")
 
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1144016549]
 script = ExtResource("1_cf0rl")
-prompt_text = "Прочесть"
+prompt_text = "Записка"
 noteScene = ExtResource("3_ig4w2")

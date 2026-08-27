@@ -104,7 +104,6 @@ extends CharacterBody3D
 
 #region FOV Details
 @export_group("FOV Details")
-@export var default_fov := 75.0
 @export var fov_shift := 5.0
 @export var fov_lerp_speed := 5.0
 #endregion
@@ -120,14 +119,14 @@ const SPRINT_BOB_TRANSITION_SPEED := 8.0
 #endregion
 
 #region Action Strings
-const ACTION_LEFT = "left"
-const ACTION_RIGHT = "right"
-const ACTION_UP = "up"
-const ACTION_DOWN = "down"
-const ACTION_JUMP = "jump"
-const ACTION_SPRINT = "sprint"
-const ACTION_CROUCH = "crouch"
-const ACTION_FLASHLIGHT = "flashlight"
+const ACTION_LEFT: String = "left"
+const ACTION_RIGHT: String = "right"
+const ACTION_UP: String = "up"
+const ACTION_DOWN: String = "down"
+const ACTION_JUMP: String = "jump"
+const ACTION_SPRINT: String = "sprint"
+const ACTION_CROUCH: String = "crouch"
+const ACTION_FLASHLIGHT: String = "flashlight"
 #endregion
 
 #region State Variables
@@ -172,9 +171,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and not immobile:
 		mouse_input_x = event.relative.x
 		if is_instance_valid(HEAD):
-			HEAD.rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+			HEAD.rotate_y(deg_to_rad(-event.relative.x * (mouse_sensitivity / 100)))
 		var limit: float = crouch_look_limit_angle if (is_crouching and limit_crouch_look) else 89.0
-		mouse_rotation_x -= event.relative.y * mouse_sensitivity
+		mouse_rotation_x -= event.relative.y * (mouse_sensitivity / 100)
 		mouse_rotation_x = clamp(mouse_rotation_x, -limit, limit)
 
 	if enable_crouching and toggle_crouch and event.is_action_pressed(ACTION_CROUCH):
@@ -417,7 +416,7 @@ func update_fov(delta: float, crouching: bool, is_sprinting: bool) -> void:
 	var horizontal_speed: float = Vector2(velocity.x, velocity.z).length()
 	var is_actually_running: bool = is_sprinting and horizontal_speed > (base_speed + 0.1)
 
-	var target_fov: float = default_fov
+	var target_fov: float = SettingsManager.global_fov
 	if is_actually_running:
 		target_fov += fov_shift
 	if crouching:
