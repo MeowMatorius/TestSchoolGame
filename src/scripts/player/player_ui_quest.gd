@@ -18,13 +18,16 @@ func show_ui(quest):
 	var entry = quest_entry_scene.instantiate()
 	entry.get_node("Quest").get_node("Label").text = quest.description
 	entry.set_meta("quest_id", quest.id)
+	entry.set_meta("is_quest", true)
 	self.add_child(entry)
 	quest_list.append(entry)
 	if quest.subquest != null:
 		for sub_quest in quest.subquest:
 			var sub_node = sub_quest_scene.instantiate()
 			entry.get_node("SubQuestContainer").add_child(sub_node)
-			
+			sub_node.set_meta("quest_id", sub_quest.id)
+			sub_node.set_meta("is_quest", false)
+			quest_list.append(sub_node)
 			# Инициализируем текст и галочку выполнения
 			sub_node.get_node("Label").text = sub_quest.description
 			
@@ -39,9 +42,14 @@ func _clear_ui(quest):
 		
 			
 func mark_done(quest):
+	print('Залетели чтоб поставить галочку для ', quest.id)
 	for i in quest_list:
 		if i.has_meta("quest_id") and i.get_meta("quest_id") == quest.id:
-			i.get_node("TextureRect").texture = icon_done
+			if i.get_meta("is_quest") == true:
+				i.get_node("Quest").get_node("TextureRect").texture = icon_done
+			else:
+				i.get_node("TextureRect").texture = icon_done
+#			i.get_node("TextureRect").texture = icon_done
 		
 #var quest_entry_scene = preload("res://ui/QuestEntry.tscn")
 

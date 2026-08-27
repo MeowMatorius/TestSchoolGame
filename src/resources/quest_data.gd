@@ -27,3 +27,9 @@ func get_id() -> String:
 	# Вернет имя файла без расширения (например, "kill_rats_01")
 	return resource_path.get_file().get_basename()
 
+func is_complete() -> bool:
+	for subq in subquest:
+		if not subq or not subq.completed:
+			return false # Нашли хоть один невыполненный — квест не завершен
+			
+	return true # Все подквесты пройдены

@@ -93,4 +93,4 @@ func get_item(condition):
 
 func end_dialogue():
 	GameManager.current_game_state = GameManager.GameState.DEFAULT
-	GameManager.current_game_camera = GameManager.player_camera
+#	GameManager.current_game_camera = GameManager.player_camera

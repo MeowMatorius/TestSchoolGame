@@ -10,8 +10,8 @@ static func create_command(type: CommandType, data: Resource = null) -> DialogCo
 			if data.quest is QuestData:
 				return AcceptQuestCommand.new(data.quest)
 			push_error("Фабрика: Для команды START_QUEST нужен QuestResource!")
-		CommandType.END_QUEST:
-			if data.quest is QuestData:
-				return CompleteQuestCommand.new(data.quest)
-			push_error("Фабрика: Для команды END_QUEST нужен QuestResource!")
+#		CommandType.END_QUEST:
+#			if data.quest is QuestData:
+#				return CompleteQuestCommand.new(data.quest)
+#			push_error("Фабрика: Для команды END_QUEST нужен QuestResource!")
 	return null
