@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://bt2werxjn26vd" path="res://src/resources/🤚interact_data/items/money.tres" id="3_qr5ap"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mncer"]
+resource_local_to_scene = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
 

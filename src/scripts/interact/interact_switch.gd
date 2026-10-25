@@ -11,9 +11,9 @@ signal is_activated
 
 func _ready() -> void:
 	match switch_data.object_state:
-		switch_data.ObjectState.OFF:
+		SwitchData.ObjectState.OFF:
 			switch_off(get_parent())
-		switch_data.ObjectState.ON:
+		SwitchData.ObjectState.ON:
 			switch_on(get_parent())
 
 
@@ -33,9 +33,11 @@ func unlock():
 
 
 func activate(object):
+	if switch_data.lock_state == switch_data.LockState.BROKEN:
+		return;
 	is_activated.emit()
 	object.get_node("AnimationPlayer").play("activate")
-	object.set_collision_layer_value(2, false)
+	object.set_collision_layer_value(2, false) # Если объект можно будет ресетнуть то придется думать над альтернативой
 
 
 func switch(object) -> void:
@@ -50,6 +52,8 @@ func switch(object) -> void:
 
 
 func switch_on(object):
+	if switch_data.object_state == SwitchData.ObjectState.ON: return
+	
 	switch_data.object_state = switch_data.ObjectState.ON
 	
 	var anim = object.get_node_or_null("AnimationPlayer")
@@ -62,6 +66,8 @@ func switch_on(object):
 
 
 func switch_off(object):
+	if switch_data.object_state == SwitchData.ObjectState.OFF: return
+	
 	switch_data.object_state = switch_data.ObjectState.OFF
 
 	var anim = object.get_node_or_null("AnimationPlayer")

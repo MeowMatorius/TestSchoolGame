@@ -49,12 +49,12 @@ func _update_target(new_target):
 			target_object_interact.object_removed.connect(_clear_target)
 		
 	target_object_mesh = target_object.find_children("*", "MeshInstance3D", true, false)[0]
-	target_object_interact.highlight(target_object_mesh)
+	target_object_interact.set_shader_effect(target_object_mesh, true)
 
 
 func _clear_target():
 	if is_instance_valid(target_object_interact):
-		target_object_interact.disable_highlight(target_object_mesh)
+		target_object_interact.set_shader_effect(target_object_mesh, false)
 		target_object_mesh = []
 		target_object = null
 		text_prompt.text = ''

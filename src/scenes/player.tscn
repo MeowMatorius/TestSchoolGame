@@ -74,7 +74,6 @@ outline_color = Color(0, 0, 0, 1)
 floor_snap_length = 0.2
 safe_margin = 0.01
 script = ExtResource("1_0t4e8")
-enable_crouching = false
 HEAD = NodePath("Head")
 CAMERA = NodePath("Head/PhantomCamera3D")
 camera_target = NodePath("Head/CameraTarget")

@@ -4,12 +4,14 @@
 [ext_resource type="Shader" uid="uid://ddquqhhrffih6" path="res://src/assets/shaders/highlighter.gdshader" id="2_p36gy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7nb2g"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_p36gy")
 shader_parameter/shine_color = Color(1, 1, 1, 1)
-shader_parameter/cycle_interval = 3.00000011875
+shader_parameter/cycle_interval = 5.0
 shader_parameter/shine_speed = 1.0
-shader_parameter/shine_width = 3.0
+shader_parameter/shine_width = 5.00000019
+shader_parameter/effect_strength = 0.0
 
 [resource]
 resource_local_to_scene = true
