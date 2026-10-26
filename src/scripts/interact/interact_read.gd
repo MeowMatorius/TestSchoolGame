@@ -4,7 +4,7 @@ extends Interact
 @export var noteScene: PackedScene
 
 
-func interact(object):
+func interact(target_object):
 	GameManager.current_game_state = GameManager.GameState.READING
 	load_note()
 

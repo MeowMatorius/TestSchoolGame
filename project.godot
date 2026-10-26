@@ -24,14 +24,14 @@ buses/default_bus_layout="uid://cqq4qhl0el65u"
 [autoload]
 
 PhantomCameraManager="*uid://duq6jhf6unyis"
+GameManager="*uid://b0x54nfyuh0d0"
 EventManager="*uid://5mw738vwqvba"
 DialogueManager="*uid://b18s8s6bvy714"
-GameManager="*uid://b0x54nfyuh0d0"
-InputManager="*uid://b1xwqudt2n5ba"
 InventoryManager="*uid://1gt7sdxlctdg"
 QuestManager="*uid://uun05o6kne3o"
-SignalBus="*uid://e8f4r2f4li5s"
 SettingsManager="*uid://b08wl2iw73fir"
+InputManager="*uid://b1xwqudt2n5ba"
+SignalBus="*uid://e8f4r2f4li5s"
 
 [display]
 
@@ -310,6 +310,7 @@ common/physics_interpolation=true
 
 [rendering]
 
+textures/streaming/enabled=true
 rendering_device/driver.windows="d3d12"
 lights_and_shadows/contact_shadow/enabled=true
 lights_and_shadows/multi_bounce_occlusion/enabled=true

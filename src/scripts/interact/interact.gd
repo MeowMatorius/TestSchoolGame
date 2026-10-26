@@ -9,10 +9,11 @@ func _ready() -> void:
 
 
 func set_shader_effect(mesh: MeshInstance3D, enabled: bool) -> void:
-	print(mesh)
-	if not mesh: return
+	var next: Material = null
+	
+	if mesh and mesh.material_override and mesh.material_override.next_pass:
+		next = mesh.material_override.next_pass
+	else: return
 
-	var next: Material = mesh.material_override.next_pass
-	print(next)
 	if next is ShaderMaterial:
 		next.set_shader_parameter("effect_strength", 1.0 if enabled else 0.0)

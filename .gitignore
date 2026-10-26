@@ -24,4 +24,3 @@ mono_crash.*.json
 .DS_Store
 
 /android/
-/.continue
