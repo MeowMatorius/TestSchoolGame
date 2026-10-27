@@ -3,7 +3,6 @@ extends Interact
 @export var switch_data: SwitchData
 @export var event_data: EventData
 @export var quest_data: QuestData
-@export var commands: Array[CommandData]
 
 signal is_switching
 signal is_activated
@@ -18,6 +17,8 @@ func _ready() -> void:
 
 
 func interact(object):
+	trigger_command()
+	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
 		unlock()
 	elif switch_data.one_time_use:

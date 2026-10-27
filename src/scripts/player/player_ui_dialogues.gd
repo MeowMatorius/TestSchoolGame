@@ -35,7 +35,7 @@ func show_choices(dialogue_data, npc_data):
 			if all_choices[i].condition != null:
 				button.disabled = !_disabled_condition(all_choices[i].condition)
 			for j in all_choices[i].commands:
-				if j.command_type == DialogueCommandFactory.CommandType.END_QUEST:
+				if j.command_type == CommandFactory.CommandType.END_QUEST:
 					button.add_theme_color_override("font_color", Color(0.875, 0.875, 0.078))
 			button.visible = true
 			button.text = all_choices[i].text

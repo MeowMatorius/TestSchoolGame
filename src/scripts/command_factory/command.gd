@@ -1,4 +1,4 @@
-class_name DialogCommand
+class_name Command
 extends RefCounted
 
 

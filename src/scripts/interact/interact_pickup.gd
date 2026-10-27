@@ -6,6 +6,8 @@ signal object_removed
 
 
 func interact(object):
+	trigger_command()
+	
 	if InventoryManager.inventory_items.has(item_data.name):
 		if item_data.unique and InventoryManager.inventory_items[item_data.name].quantity > 0: pass
 		else: pick_up_item()

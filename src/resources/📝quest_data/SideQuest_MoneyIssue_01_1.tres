@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SubquestData" format=3 uid="uid://b4hr7j422mo55"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="1_8fim7"]
+[ext_resource type="Script" uid="uid://v0d70xqdxsh1" path="res://src/resources/subquest_data.gd" id="2_8fim7"]
+[ext_resource type="Resource" uid="uid://cvyn34tn4xjp5" path="res://src/resources/📊condition_data/has_item_coins_hub.tres" id="2_pcsk6"]
+
+[resource]
+script = ExtResource("2_8fim7")
+id = "SideQuest_MoneyIssue_01_1"
+name = "SideQuest_MoneyIssue_01_1"
+description = "Собери все монеты (Хаб)"
+condition = Array[ExtResource("1_8fim7")]([ExtResource("2_pcsk6")])
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"
