@@ -24,7 +24,7 @@ func show_ui(quest):
 	if quest.subquest != null:
 		for sub_quest in quest.subquest:
 			var sub_node = sub_quest_scene.instantiate()
-			entry.get_node("SubQuestContainer").add_child(sub_node)
+			entry.get_node("SubQuestContainer").add_child(sub_node) 
 			sub_node.set_meta("quest_id", sub_quest.id)
 			sub_node.set_meta("is_quest", false)
 			quest_list.append(sub_node)

@@ -164,7 +164,6 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/Player_UI" unique_id=634695021]
 process_mode = 3
-visible = false
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -195,13 +194,14 @@ grow_vertical = 2
 mouse_behavior_recursive = 2
 theme_override_font_sizes/font_size = 18
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tab_0/title = "🧊 Главная"
 tab_1/title = "🔬 Настройки"
 tab_2/title = "📘 Задания"
 tab_3/title = "🧳 Инвентарь"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -407,7 +407,6 @@ emoji_menu_enabled = false
 caret_blink = true
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
@@ -2260,19 +2259,6 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 2
 
-[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=266679013]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.035
-anchor_right = 0.95300007
-offset_left = -0.3199997
-offset_top = 39.0
-offset_right = 0.1439209
-offset_bottom = 116.0
-grow_horizontal = 2
-size_flags_horizontal = 2
-script = ExtResource("21_x7c3f")
-
 [node name="ReticleContainer" type="CenterContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=617038920]
 layout_mode = 1
 anchors_preset = 8
@@ -2521,6 +2507,20 @@ text = "TooltipText"
 label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI" unique_id=266679013]
+z_index = -100
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_right = 0.95300007
+offset_left = -0.3199997
+offset_top = 39.0
+offset_right = 0.1439209
+offset_bottom = 116.0
+grow_horizontal = 2
+size_flags_horizontal = 2
+script = ExtResource("21_x7c3f")
 
 [connection signal="pressed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" method="_on_pressed"]
 [connection signal="pressed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" method="_on_pressed"]
