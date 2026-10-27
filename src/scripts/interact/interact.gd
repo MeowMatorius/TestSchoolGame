@@ -1,29 +1,27 @@
 class_name Interact
 extends Node
 
-#var prompt_message: String
 var highlighted: bool = false
+@export var commands: Array[CommandData]
+
+
+func trigger_command():
+	for i in commands:
+		# Фабрика создает команду, используя тип из ресурса и прикрепленный квест
+		var command := CommandFactory.create_command(i.command_type,i)
+		if command: command.execute(get_tree())
 
 
 func _ready() -> void:
 	highlighted = false
 
 
-func highlight(object_mesh):
-	pass
-	#if object_mesh is MeshInstance3D and !highlighted:
-	#	highlighted = true
-	#	var mat: Material = object_mesh.get_active_material(0)
-	#	if mat is StandardMaterial3D:
-	#		mat.emission_enabled = true
-	#		mat.emission = Color(1.0, 1.0, 1.0, 1.0) # Зеленая подсветка
-	#		mat.emission_energy_multiplier = 0.05
+func set_shader_effect(mesh: MeshInstance3D, enabled: bool) -> void:
+	var next: Material = null
+	
+	if mesh and mesh.material_override and mesh.material_override.next_pass:
+		next = mesh.material_override.next_pass
+	else: return
 
-
-func disable_highlight(object_mesh):
-	pass
-	#if object_mesh is MeshInstance3D and highlighted:
-	#	highlighted = false
-	#	var mat: Material = object_mesh.get_active_material(0)
-	#	if mat is StandardMaterial3D:
-	#		mat.emission_enabled = false
+	if next is ShaderMaterial:
+		next.set_shader_parameter("effect_strength", 1.0 if enabled else 0.0)

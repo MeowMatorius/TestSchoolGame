@@ -59,7 +59,7 @@ func _on_option_button_pressed(dialogue_data) -> void:
 
 	for i in dialogue_data.commands:
 	# Фабрика создает команду, используя тип из ресурса и прикрепленный квест
-		var command := DialogueCommandFactory.create_command(
+		var command := CommandFactory.create_command(
 			i.command_type, 
 			i
 		)

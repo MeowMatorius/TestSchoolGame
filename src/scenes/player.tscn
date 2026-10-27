@@ -23,10 +23,8 @@
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://src/scripts/player/player_ui_quest.gd" id="21_x7c3f"]
 
-[sub_resource type="Resource" id="Resource_5h06g"]
+[sub_resource type="Resource" id="Resource_qmjc7"]
 script = ExtResource("3_yllr7")
-duration = 0.5
-transition = 1
 
 [sub_resource type="Resource" id="Resource_twf7n"]
 script = ExtResource("4_ebec5")
@@ -74,7 +72,6 @@ outline_color = Color(0, 0, 0, 1)
 floor_snap_length = 0.2
 safe_margin = 0.01
 script = ExtResource("1_0t4e8")
-enable_crouching = false
 HEAD = NodePath("Head")
 CAMERA = NodePath("Head/PhantomCamera3D")
 camera_target = NodePath("Head/CameraTarget")
@@ -101,7 +98,7 @@ physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 top_level = true
 
-[node name="PhantomCameraHost" type="Node" parent="Head/Camera" unique_id=1972342520]
+[node name="PhantomCameraHost" type="Node" parent="Head/Camera" unique_id=89063505]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("7_yllr7")
@@ -109,10 +106,12 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 groups=["player_camera"]]
 script = ExtResource("2_ebec5")
-priority = 100
-tween_resource = SubResource("Resource_5h06g")
+priority = 10
+tween_resource = SubResource("Resource_qmjc7")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_twf7n")
+follow_damping = true
+look_at_damping = true
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="InteractionRayCast" type="RayCast3D" parent="Head/PhantomCamera3D" unique_id=298195236 node_paths=PackedStringArray("text_prompt")]

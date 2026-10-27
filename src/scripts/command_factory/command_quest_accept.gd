@@ -1,5 +1,5 @@
-class_name CompleteQuestCommand
-extends DialogCommand
+class_name CommandQuestAccept
+extends Command
 
 var quest_resource: QuestData
 
@@ -9,5 +9,5 @@ func _init(p_quest_resource: QuestData) -> void:
 	quest_resource = p_quest_resource
 
 
-#func execute(scene_tree: SceneTree) -> void:
-#	QuestManager._complete_quest(quest_resource)
+func execute(scene_tree: SceneTree) -> void:
+	QuestManager.track_quest(quest_resource)

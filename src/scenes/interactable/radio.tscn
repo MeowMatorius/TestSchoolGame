@@ -134,6 +134,7 @@ bus = &"Radio"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1971969, 0)
 material_override = SubResource("StandardMaterial3D_pxlfp")
 cast_shadow = 0
+emitting = false
 amount = 5
 fixed_fps = 10
 process_material = SubResource("ParticleProcessMaterial_pxlfp")

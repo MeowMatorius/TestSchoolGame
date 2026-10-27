@@ -3,7 +3,7 @@ var active_quests: Array[QuestData] = []
 var active_subquests: Array[SubquestData] = []
 
 signal started_quest
-signal stoped_quest
+signal finished_quest
 
 
 func _ready() -> void:
@@ -64,4 +64,4 @@ func _complete_quest(quest: QuestData):
 	# Здесь можно выдать награду или удалить из списка активных
 #	if subquest in active_quests:
 #		active_quests.erase(subquest)
-#		stoped_quest.emit(subquest)
+#		finished_quest.emit(subquest)

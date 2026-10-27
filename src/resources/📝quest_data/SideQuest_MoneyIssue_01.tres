@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://b082ncx8wv3fp"]
+
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="1_a8vl6"]
+[ext_resource type="Script" uid="uid://v0d70xqdxsh1" path="res://src/resources/subquest_data.gd" id="2_q2snb"]
+[ext_resource type="Resource" uid="uid://b4hr7j422mo55" path="res://src/resources/📝quest_data/SideQuest_MoneyIssue_01_1.tres" id="3_jdbom"]
+
+[resource]
+script = ExtResource("1_a8vl6")
+id = "SideQuest_MoneyIssue_01"
+name = "SideQuest_MoneyIssue_01"
+description = "Найти все монеты"
+subquest = Array[ExtResource("2_q2snb")]([ExtResource("3_jdbom")])
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"

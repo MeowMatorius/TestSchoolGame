@@ -18,12 +18,12 @@ extends CharacterBody3D
 
 #region Nodes
 @export_group("Nodes")
-@export var HEAD : Node3D
-@export var CAMERA : PhantomCamera3D
+@export var HEAD: Node3D
+@export var CAMERA: PhantomCamera3D
 @export var camera_target: Node3D
-@export var COLLISION : CollisionShape3D
-@export var CEILING_CHECK : RayCast3D
-@export var FLASHLIGHT : SpotLight3D
+@export var COLLISION: CollisionShape3D
+@export var CEILING_CHECK: RayCast3D
+@export var FLASHLIGHT: SpotLight3D
 #endregion
 
 #region Base Movement
@@ -130,6 +130,9 @@ const ACTION_FLASHLIGHT: String = "flashlight"
 #endregion
 
 #region State Variables
+var _camera_has_fov: bool = false
+var _base_fov: float = 75.0 # fallback, если SettingsManager недоступен
+
 var noise_time: float = 0.0
 var was_on_floor: bool = true
 var last_velocity_y: float = 0.0
@@ -147,6 +150,7 @@ var current_tilt_x: float = 0.0
 var smoothed_horizontal_speed: float = 0.0
 var sprint_bob_factor: float = 0.0
 #endregion
+
 
 #region Onready
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity") as float
@@ -166,8 +170,24 @@ func _ready() -> void:
 		print("CAMERA not assigned – FOV and camera snapping will be ignored")
 	if not is_instance_valid(FLASHLIGHT):
 		print("FLASHLIGHT not assigned – flashlight toggle will have no effect")
+	if is_instance_valid(CAMERA):
+		_camera_has_fov = CAMERA.get("fov") != null
+		if _camera_has_fov:
+			_base_fov = float(CAMERA.get("fov"))
+		else:
+			push_warning("CAMERA has no 'fov' property – dynamic FOV disabled")
+	else:
+		_camera_has_fov = false
+
+	await get_tree().process_frame
+	var host = get_tree().root.find_child("PhantomCameraHost", true, false)
+	if host:
+		host.interpolation_mode = 1  # IDLE
+		print("Host mode set to: ", host.interpolation_mode)
+
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Обработка движения мыши для поворота головы и камеры
 	if event is InputEventMouseMotion and not immobile:
 		mouse_input_x = event.relative.x
 		if is_instance_valid(HEAD):
@@ -176,32 +196,41 @@ func _unhandled_input(event: InputEvent) -> void:
 		mouse_rotation_x -= event.relative.y * (mouse_sensitivity / 100)
 		mouse_rotation_x = clamp(mouse_rotation_x, -limit, limit)
 
+	# Переключение режима приседания при нажатии клавиши
 	if enable_crouching and toggle_crouch and event.is_action_pressed(ACTION_CROUCH):
 		crouch_toggled = not crouch_toggled
 
+	# Включение/выключение фонаря при нажатии клавиши
 	if event.is_action_pressed(ACTION_FLASHLIGHT) and is_instance_valid(FLASHLIGHT):
 		FLASHLIGHT.visible = not FLASHLIGHT.visible
 
 
 func _physics_process(delta: float) -> void:
+	# Проверка валидности необходимых узлов перед выполнением кода
 	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target) or not is_instance_valid(COLLISION):
 		return
 
+	# Получение вектора движения из пользовательского ввода
 	var input_dir := Vector2.ZERO if immobile else Input.get_vector(ACTION_LEFT, ACTION_RIGHT, ACTION_UP, ACTION_DOWN)
 
+	# Применение гравитации к игроку
 	apply_gravity(delta)
 
+	# Обработка прыжка при нажатии клавиши и нахождении на земле
 	if enable_jumping and Input.is_action_just_pressed(ACTION_JUMP) and is_on_floor() and not immobile:
 		velocity.y = jump_velocity
 		if enable_landing_effects:
 			target_jump_tilt = jump_tilt_strength
 
+	# Обновление состояния приседания
 	update_crouch_state()
 	process_crouch(delta, is_crouching)
 
+	# Определение режима спринта (активен ли спринт или автоматический спринт)
 	var is_sprinting: bool = enable_sprinting and (Input.is_action_pressed(ACTION_SPRINT) or auto_sprint) and not is_crouching
 	calculate_speed(input_dir, is_sprinting)
 
+	# Вычисление направления движения
 	var direction: Vector3 = calculate_move_direction(input_dir)
 	apply_movement(delta, direction, is_sprinting)
 
@@ -218,22 +247,27 @@ func _physics_process(delta: float) -> void:
 
 
 #region Physics sub-functions
+# Применение гравитации к игроку
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+# Обновление состояния приседания (в зависимости от настроек)
 func update_crouch_state() -> void:
 	if not enable_crouching:
 		is_crouching = false
 		return
 	if toggle_crouch:
+		# Если включено переключение приседания и есть коллизия сверху, то приседаем
 		if is_instance_valid(CEILING_CHECK) and CEILING_CHECK.is_colliding():
 			is_crouching = true
 		else:
 			is_crouching = crouch_toggled
 	else:
+		# Если не включено переключение приседания, то приседаем при удерживании клавиши
 		is_crouching = Input.is_action_pressed(ACTION_CROUCH) or (is_instance_valid(CEILING_CHECK) and CEILING_CHECK.is_colliding())
 
+# Вычисление направления движения в 3D пространстве
 func calculate_move_direction(input_dir: Vector2) -> Vector3:
 	if not is_instance_valid(HEAD):
 		return Vector3.ZERO
@@ -242,16 +276,20 @@ func calculate_move_direction(input_dir: Vector2) -> Vector3:
 	direction.y = 0
 	return direction.normalized()
 
+# Применение движения к игроку с учетом плавности и управления в воздухе
 func apply_movement(delta: float, direction: Vector3, is_sprinting: bool) -> void:
 	if enable_movement_smoothing:
+		# Фактор управления в воздухе (если есть инерция прыжка)
 		var control_factor: float = air_control if (not is_on_floor() and has_jump_momentum) else 1.0
 		var accel: float = acceleration * control_factor
 		velocity.x = lerp(velocity.x, direction.x * speed, accel * delta)
 		velocity.z = lerp(velocity.z, direction.z * speed, accel * delta)
 	else:
+		# Прямое применение скорости без плавности
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 
+# Обнаружение приземления и применение эффектов
 func detect_landing() -> void:
 	if not is_on_floor() or was_on_floor:
 		return
@@ -260,14 +298,16 @@ func detect_landing() -> void:
 
 	var impact_speed: float = abs(last_velocity_y)
 	if impact_speed > LANDING_SPEED_THRESHOLD:
+		# Вычисление силы удара для эффектов
 		var impact_factor: float = remap(clamp(impact_speed, LANDING_SPEED_THRESHOLD, LANDING_SPEED_MAX),
 				LANDING_SPEED_THRESHOLD, LANDING_SPEED_MAX, 0.2, 1.0) as float
 		landing_offset -= landing_ebob_amp * impact_factor
-		target_jump_tilt = -jump_tilt_strength * impact_factor
+		target_jump_tilt = - jump_tilt_strength * impact_factor
 		current_shake = shake_strength * impact_factor
 #endregion
 
 #region Speed & Crouch Processing
+# Вычисление скорости движения в зависимости от состояния игрока
 func calculate_speed(input_dir: Vector2, is_sprinting: bool) -> void:
 	# Определяем базовую скорость в зависимости от состояния
 	var base_movement_speed: float
@@ -282,8 +322,10 @@ func calculate_speed(input_dir: Vector2, is_sprinting: bool) -> void:
 	if is_sprinting and not all_direction_sprint and input_dir.y >= 0:
 		base_movement_speed = base_speed
 	
-	# Проверка инерции для спринта
-	if is_sprinting and input_dir.length() <= 0.01 and smoothed_horizontal_speed <= base_speed:
+	# Проверка инерции для спринта (если игрок не двигается, но уже спринтит)
+	# Исправлено: убрана логика моментального разгона
+	if is_sprinting and input_dir.length() <= 0.01:
+		# При спринте с нулевым вводом скорость должна плавно снижаться
 		base_movement_speed = base_speed
 	
 	# Применяем направленные множители ко ВСЕМ типам движения
@@ -292,6 +334,7 @@ func calculate_speed(input_dir: Vector2, is_sprinting: bool) -> void:
 	
 	speed = base_movement_speed * mult * side_m
 
+# Обработка приседания (изменение высоты и позиции головы)
 func process_crouch(delta: float, crouching: bool) -> void:
 	if not is_instance_valid(COLLISION) or not is_instance_valid(HEAD):
 		return
@@ -305,6 +348,7 @@ func process_crouch(delta: float, crouching: bool) -> void:
 #endregion
 
 #region Full Visual Effects
+# Обновление всех визуальных эффектов (боббинг, наклон, FOV и т.д.)
 func update_visual_effects(delta: float, input_dir: Vector2, is_sprinting: bool, crouching: bool) -> void:
 	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target):
 		return
@@ -313,9 +357,10 @@ func update_visual_effects(delta: float, input_dir: Vector2, is_sprinting: bool,
 	var target_smooth: float = real_speed if is_on_floor() else 0.0
 	smoothed_horizontal_speed = lerp(smoothed_horizontal_speed, target_smooth, delta * bob_stop_speed)
 
-	# Плавный переход спринт-фактора для боббинга
+	# Плавный переход спринт-фактора для боббинга (от обычной ходьбы к спринту)
 	update_sprint_bob_factor(delta, is_sprinting)
 
+	# Применение затухания эффектов
 	apply_decay(delta)
 
 	if enable_tilting:
@@ -327,6 +372,7 @@ func update_visual_effects(delta: float, input_dir: Vector2, is_sprinting: bool,
 	var bob_offset: Vector3 = bobbing_data["offset"]
 	var roll_bob: float = bobbing_data["roll"]
 
+	# Добавление случайного шума при сильном ударе
 	if current_shake > 0.01:
 		bob_offset.x += randf_range(-current_shake, current_shake)
 		bob_offset.y += randf_range(-current_shake, current_shake)
@@ -339,6 +385,7 @@ func update_visual_effects(delta: float, input_dir: Vector2, is_sprinting: bool,
 
 	update_fov(delta, crouching, is_sprinting)
 
+# Плавный переход между обычной ходьбой и спринтом для боббинга
 func update_sprint_bob_factor(delta: float, is_sprinting: bool) -> void:
 	# Определяем целевую интенсивность спринта
 	var horizontal_speed: float = Vector2(velocity.x, velocity.z).length()
@@ -348,6 +395,7 @@ func update_sprint_bob_factor(delta: float, is_sprinting: bool) -> void:
 	# Плавный переход между обычной ходьбой и спринтом
 	sprint_bob_factor = lerp(sprint_bob_factor, target_factor, delta * SPRINT_BOB_TRANSITION_SPEED)
 
+# Применение затухания эффектов (например, наклон после прыжка)
 func apply_decay(delta: float) -> void:
 	landing_offset = lerp(landing_offset, 0.0, delta * return_speed)
 	jump_tilt = lerp(jump_tilt, target_jump_tilt, delta * return_speed * JUMP_TILT_RETURN_MULT)
@@ -366,6 +414,7 @@ func update_tilt(delta: float, input_dir: Vector2, is_sprinting: bool) -> void:
 		target_x = forward_tilt_amount * input_dir.y * (1.5 if is_sprinting else 1.0)
 	current_tilt_x = lerp(current_tilt_x, target_x + jump_tilt, delta * tilt_smoothing)
 
+# Вычисление боббинга (движения камеры при движении)
 func calculate_bobbing(delta: float, crouching: bool) -> Dictionary:
 	var bob_vec: Vector3 = Vector3.ZERO
 	var roll: float = 0.0
@@ -391,7 +440,7 @@ func calculate_bobbing(delta: float, crouching: bool) -> Dictionary:
 		# Roll с усилением спринта
 		roll = sin(noise_time) * bob_roll_amp * a_mult * sprint_r_mult
 
-	# Idle шум
+	# Idle шум (движение камеры при отсутствии движения)
 	if enable_idle_noise:
 		var ticks: float = Time.get_ticks_msec() * 0.001
 		var idle_time: float = ticks * idle_noise_speed
@@ -405,23 +454,36 @@ func calculate_bobbing(delta: float, crouching: bool) -> Dictionary:
 
 	return {"offset": bob_vec, "roll": roll}
 
+
+func _get_target_base_fov() -> float:
+	# SettingsManager может отсутствовать – не падаем
+	if Engine.has_singleton("SettingsManager"):
+		var sm = Engine.get_singleton("SettingsManager")
+		if sm and "global_fov" in sm:
+			return float(sm.global_fov)
+	# Fallback: текущий FOV камеры на момент старта
+	return _base_fov
+
+
+# Обновление поля зрения камеры в зависимости от состояния игрока
 func update_fov(delta: float, crouching: bool, is_sprinting: bool) -> void:
-	if not enable_fov_dynamic or not is_instance_valid(CAMERA) or not "fov" in CAMERA:
+	if not enable_fov_dynamic or not _camera_has_fov:
 		return
 
 	var air_fov: float = 0.0
 	if not is_on_floor():
-		air_fov = clamp(abs(velocity.y) * AIR_FOV_FACTOR, 0.0, AIR_FOV_MAX) as float
+		air_fov = clamp(abs(velocity.y) * AIR_FOV_FACTOR, 0.0, AIR_FOV_MAX)
 
 	var horizontal_speed: float = Vector2(velocity.x, velocity.z).length()
 	var is_actually_running: bool = is_sprinting and horizontal_speed > (base_speed + 0.1)
 
-	var target_fov: float = SettingsManager.global_fov
+	var target_fov: float = _get_target_base_fov()
 	if is_actually_running:
 		target_fov += fov_shift
 	if crouching:
 		target_fov += crouch_fov_shift
 	target_fov += air_fov
 
-	CAMERA.fov = lerp(float(CAMERA.fov), target_fov, delta * fov_lerp_speed) as float
+	var current_fov: float = float(CAMERA.get("fov"))
+	CAMERA.set("fov", lerp(current_fov, target_fov, delta * fov_lerp_speed))
 #endregion
