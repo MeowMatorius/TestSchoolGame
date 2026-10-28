@@ -25,6 +25,7 @@ func add_item(item_data: ItemData):
 
 func remove_item(item_data: ItemData, quantity: int) -> void:
 	if not inventory_items.has(item_data.name): return
+	if item_data.reusable: return
 	
 	var inventory_item: ItemData = inventory_items[item_data.name]
 	if inventory_item.unique or inventory_item.quantity - quantity <= 0:
