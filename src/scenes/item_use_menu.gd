@@ -15,6 +15,11 @@ func _ready() -> void:
 
 func instantiate_items(switch_data: SwitchData) -> void:
 	GameManager.current_game_state = GameManager.GameState.USING_ITEM
+
+	for child in get_children():
+		if child in use_item_slots or child.has_method("display"):
+			child.queue_free()
+	clear_slots()
 	
 	# Фильтр на подходящие предметы
 	var matching_items: Array[ItemData] = []
@@ -29,9 +34,9 @@ func instantiate_items(switch_data: SwitchData) -> void:
 
 
 func clear_slots() -> void:
-	# Очистка слотов
 	for slot: Node in use_item_slots:
-		slot.queue_free()
+		if is_instance_valid(slot):
+			slot.queue_free()
 	use_item_slots.clear()
 
 
