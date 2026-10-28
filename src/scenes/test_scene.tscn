@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="4_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://d0uqtdm2x86ae" path="res://src/assets/models/furniture/rugRounded.glb" id="5_fftn7"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://src/scenes/npcs/hlopchik.tscn" id="5_s36qc"]
-[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://src/scenes/interactable/key.tscn" id="5_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://src/scenes/interactable/key_red.tscn" id="5_wtsjf"]
 [ext_resource type="PackedScene" uid="uid://brnanjah7se5e" path="res://src/assets/models/furniture/rugSquare.glb" id="6_68ann"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://src/scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="7_ntc4i"]
