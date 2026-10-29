@@ -35,5 +35,6 @@ func _on_button_button_up() -> void:
 		
 	else:
 		GameManager.current_game_state = GameManager.GameState.DEFAULT
-		SignalBus.is_using_item.emit()
+		SignalBus.is_using_item.emit(slot_switch_data)
 		InventoryManager.remove_item(slot_switch_data.item_needed_to_open, slot_switch_data.quantity_needed_to_open)
+		item_use_menu.clear_slots()
