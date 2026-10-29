@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://src/assets/icons/ui/ArrowRight.svg" id="17_e7oew"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="19_65viv"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
+[ext_resource type="Script" uid="uid://dpjvef24mylqn" path="res://src/scenes/item_use_menu.gd" id="19_ybrxc"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://src/scripts/player/player_ui_quest.gd" id="21_x7c3f"]
 
 [sub_resource type="Resource" id="Resource_qmjc7"]
@@ -163,6 +164,7 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/Player_UI" unique_id=634695021]
 process_mode = 3
+visible = false
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -193,14 +195,13 @@ grow_vertical = 2
 mouse_behavior_recursive = 2
 theme_override_font_sizes/font_size = 18
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tab_0/title = "🧊 Главная"
 tab_1/title = "🔬 Настройки"
 tab_2/title = "📘 Задания"
 tab_3/title = "🧳 Инвентарь"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -406,6 +407,7 @@ emoji_menu_enabled = false
 caret_blink = true
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
@@ -2249,14 +2251,61 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="DefaultContainer" type="Control" parent="UserInterface/Player_UI" unique_id=122634425]
-visible = false
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 2
+
+[node name="Control" type="Control" parent="UserInterface/Player_UI/DefaultContainer" unique_id=441919810]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = -50.0
+offset_right = 294.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Player_UI/DefaultContainer/Control" unique_id=819838560]
+custom_minimum_size = Vector2(235, 225)
+custom_maximum_size = Vector2(235, 225)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+horizontal_scroll_mode = 0
+
+[node name="ItemUseMenu" type="GridContainer" parent="UserInterface/Player_UI/DefaultContainer/Control/ScrollContainer" unique_id=379279859]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+columns = 3
+script = ExtResource("19_ybrxc")
+
+[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=266679013]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.035
+anchor_right = 0.95300007
+offset_left = -0.3199997
+offset_top = 39.0
+offset_right = 0.1439209
+offset_bottom = 116.0
+grow_horizontal = 2
+size_flags_horizontal = 2
+script = ExtResource("21_x7c3f")
 
 [node name="ReticleContainer" type="CenterContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=617038920]
 layout_mode = 1
@@ -2506,20 +2555,6 @@ text = "TooltipText"
 label_settings = SubResource("LabelSettings_65viv")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI" unique_id=266679013]
-z_index = -100
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.035
-anchor_right = 0.95300007
-offset_left = -0.3199997
-offset_top = 39.0
-offset_right = 0.1439209
-offset_bottom = 116.0
-grow_horizontal = 2
-size_flags_horizontal = 2
-script = ExtResource("21_x7c3f")
 
 [connection signal="pressed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/Continue" method="_on_pressed"]
 [connection signal="pressed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab/GameMenu/ExitGame" method="_on_pressed"]

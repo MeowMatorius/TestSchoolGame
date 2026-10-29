@@ -1,7 +1,6 @@
 extends Button
-signal is_stoped_reading_note()
 
 func _on_pressed() -> void:
 	GameManager.current_game_state = GameManager.GameState.DEFAULT
-	is_stoped_reading_note.emit()
+	SignalBus.is_stoped_reading.emit()
 	get_parent().queue_free()

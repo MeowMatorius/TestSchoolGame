@@ -9,6 +9,8 @@ signal is_activated
 
 
 func _ready() -> void:
+	SignalBus.is_using_item.connect(unlock)
+	
 	match switch_data.object_state:
 		SwitchData.ObjectState.OFF:
 			switch_off(get_parent())
@@ -17,20 +19,20 @@ func _ready() -> void:
 
 
 func interact(object):
-	trigger_command()
-	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
-		unlock()
+		GameManager.current_game_state = GameManager.GameState.USING_ITEM
+		SignalBus.is_item_needed.emit(switch_data)
 	elif switch_data.one_time_use:
 		activate(object)
 	else:
 		switch(object)
 
+	trigger_command()
 
-func unlock():
-	if switch_data.item_needed_to_open.name in InventoryManager.inventory_items:
-		switch_data.lock_state = switch_data.LockState.UNLOCKED
-		InventoryManager.remove_item(switch_data.item_needed_to_open, switch_data.quantity_needed_to_open)
+
+func unlock(used_switch_data: SwitchData):
+	if used_switch_data != switch_data:return
+	switch_data.lock_state = switch_data.LockState.UNLOCKED
 
 
 func activate(object):
@@ -82,8 +84,9 @@ func switch_off(object):
 
 func get_prompt() -> String:
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
-		var has_item: bool = switch_data.item_needed_to_open.name in InventoryManager.inventory_items
-		return "Требуется: " + switch_data.item_needed_to_open.name if not has_item else "Открыть с помощью: " + switch_data.item_needed_to_open.name
+		#var has_item: bool = switch_data.item_needed_to_open.name in InventoryManager.inventory_items
+		#return "Требуется: " + switch_data.item_needed_to_open.name if not has_item else "Открыть с помощью: " + switch_data.item_needed_to_open.name
+		return "Закрыто"
 	
 	if switch_data.lock_state == switch_data.LockState.BROKEN: return "Замок сломан"
 	

@@ -15,6 +15,6 @@ func get_prompt() -> String:
 
 
 func load_note() -> void:
-	SignalBus.is_reading_note.emit()
+	SignalBus.is_reading.emit()
 	var noteNode: Node = noteScene.instantiate()
 	add_child(noteNode)

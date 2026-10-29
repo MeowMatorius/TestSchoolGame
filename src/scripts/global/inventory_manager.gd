@@ -4,7 +4,7 @@ extends Node
 
 signal update_inventory(inventory_items: Dictionary)
 signal added_to_inventory(item_data)
-signal removed_from_inventory(item_data)
+signal removed_from_inventory(item_data, quantity)
 
 
 func _ready():
@@ -25,9 +25,10 @@ func add_item(item_data: ItemData):
 
 func remove_item(item_data: ItemData, quantity: int) -> void:
 	if not inventory_items.has(item_data.name): return
+	if item_data.reusable: return
 	
 	var inventory_item: ItemData = inventory_items[item_data.name]
-	if inventory_item.unique or inventory_item.quantity - quantity <= 1:
+	if inventory_item.unique or inventory_item.quantity - quantity <= 0:
 		inventory_items.erase(item_data.name)
 	else:
 		inventory_item.quantity -= quantity
