@@ -15,10 +15,10 @@ extends Resource
 	set(value):
 		# Сеттер сработает при изменении значения
 		completed = value
-		print("completed изменено на: ", completed)
+		print("completed для ", self, "изменено на: ", completed)
 		emit_changed() # Полезно для ресурсов, чтобы уведомить систему
 		SignalBus.quest_completed.emit(self)
-
+	
 @export var failed: bool = false:
 	set(value):
 		# Сеттер сработает при изменении значения
@@ -34,4 +34,21 @@ func get_id() -> String:
 
 
 func is_complete() -> bool:
-	return condition.all(func(cond): return cond.completed)
+#	for cond in condition:
+#		if not cond.completed:
+#			return false
+#	return true
+	self.completed = condition.all(func(cond): return cond.completed)
+	if self.completed == true:
+		SignalBus.changed_subquest_status.emit(self)
+	return self.completed
+
+
+func _init() -> void:
+	# Подключаем глобальный сигнал к функции внутри этого ресурса
+#	SignalBus.is_picking.connect(_add_item)
+
+
+	if not SignalBus.changed_condition_status.is_connected(is_complete):
+		SignalBus.changed_condition_status.connect(is_complete)
+

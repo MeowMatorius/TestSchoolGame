@@ -11,8 +11,9 @@ func _ready() -> void:
 	quest_list = []
 	QuestManager.started_quest.connect(show_ui)
 	QuestManager.finished_quest.connect(_clear_ui)
-	SignalBus.quest_completed.connect(mark_done)
-
+#	SignalBus.quest_completed.connect(mark_done)
+	SignalBus.changed_subquest_status.connect(mark_done)
+	SignalBus.changed_quest_status.connect(mark_done)
 	
 func show_ui(quest):
 	var entry = quest_entry_scene.instantiate()

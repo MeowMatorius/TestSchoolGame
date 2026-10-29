@@ -14,3 +14,10 @@ signal event_triggered
 
 # Quest
 signal quest_completed(quest)
+signal changed_quest_status(quest)
+
+# SubQuest
+signal changed_subquest_status(subquest)
+
+# Condition
+signal changed_condition_status()

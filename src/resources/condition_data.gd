@@ -1,7 +1,7 @@
 extends Resource
 class_name ConditionData
 
-signal changed_status(condition: ConditionData)
+
 
 @export var item: ItemData
 @export var item_quantity: int
@@ -12,25 +12,25 @@ signal changed_status(condition: ConditionData)
 		if completed == value: 
 			return # Выходим, если значение не изменилось, чтобы не спамить сигналами		
 		completed = value
-		print("completed изменено на: ", completed)
+		print("completed для ", self, "изменено на: ", completed)
 		emit_changed() # Полезно для ресурсов, чтобы уведомить систему
-		changed_status.emit(self)
+		SignalBus.changed_condition_status.emit()
 @export var dialogue_data: DialogueData
 
 func _init() -> void:
 	# Подключаем глобальный сигнал к функции внутри этого ресурса
 #	SignalBus.is_picking.connect(_add_item)
-	if not InventoryManager.added_to_inventory.is_connected(_add_item):
-		InventoryManager.added_to_inventory.connect(_add_item)
+	if not InventoryManager.update_inventory.is_connected(_add_item):
+		InventoryManager.update_inventory.connect(_add_item)
 
 
-func _add_item(item_data) -> void:
+func _add_item(inventory_items) -> void:
 
-	if item_data == item:
-		if InventoryManager.inventory_items.has(item.name):
-			if InventoryManager.inventory_items[item.name].quantity >= item_quantity:
-				self.completed = true
-				print('Собрано достаточное кол-во предметов')
+	if InventoryManager.inventory_items.has(item.name):
+		if InventoryManager.inventory_items[item.name].quantity >= item_quantity:
+			self.completed = true
+		else:
+			self.completed = false
 
 #			# Проверяем тип внутри ресурса предмета
 #			if item.type == "Money":

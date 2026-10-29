@@ -10,7 +10,6 @@ extends Resource
 	set(value):
 		# Сеттер сработает при изменении значения
 		completed = value
-		print("completed изменено на: ", completed)
 		emit_changed() # Полезно для ресурсов, чтобы уведомить систему
 		SignalBus.quest_completed.emit(self)
 
@@ -27,9 +26,17 @@ func get_id() -> String:
 	# Вернет имя файла без расширения (например, "kill_rats_01")
 	return resource_path.get_file().get_basename()
 
-func is_complete() -> bool:
-	for subq in subquest:
-		if not subq or not subq.completed:
-			return false # Нашли хоть один невыполненный — квест не завершен
-			
-	return true # Все подквесты пройдены
+func is_complete(iii) -> bool:
+	
+	self.completed = subquest.all(func(subq): return subq.completed)
+	if self.completed == true:
+		SignalBus.changed_quest_status.emit(self)
+	return self.completed
+	
+func _init() -> void:
+	# Подключаем глобальный сигнал к функции внутри этого ресурса
+#	SignalBus.is_picking.connect(_add_item)
+
+
+	if not SignalBus.changed_subquest_status.is_connected(is_complete):
+		SignalBus.changed_subquest_status.connect(is_complete)
