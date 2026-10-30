@@ -43,7 +43,7 @@ extends CharacterBody3D
 @export var air_control := 0.3
 #endregion
 
-#region Directional Speed Multipliers (применяются ко всем типам движения)
+#region Directional Speed Multipliers
 @export_group("Directional Speed")
 @export var all_direction_sprint := true
 @export var backward_speed_mult := 0.6
@@ -75,6 +75,8 @@ extends CharacterBody3D
 @export_group("Smoothness (Lerp)")
 @export var pos_smoothing := 15.0
 @export var return_speed := 4.0
+#endregion
+
 #region Landing & Jump
 @export_group("Landing & Jump")
 @export var landing_ebob_amp := 2.0
@@ -131,7 +133,7 @@ const ACTION_FLASHLIGHT: String = "flashlight"
 
 #region State Variables
 var _camera_has_fov: bool = false
-var _base_fov: float = 75.0 # fallback, если SettingsManager недоступен
+var _base_fov: float = 75.0
 
 var noise_time: float = 0.0
 var was_on_floor: bool = true
@@ -149,14 +151,18 @@ var current_tilt_z: float = 0.0
 var current_tilt_x: float = 0.0
 var smoothed_horizontal_speed: float = 0.0
 var sprint_bob_factor: float = 0.0
-#endregion
 
+# Кэш состояния физики для _process
+var _cached_input_dir: Vector2 = Vector2.ZERO
+var _cached_is_sprinting: bool = false
+#endregion
 
 #region Onready
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity") as float
 @onready var initial_height: float = COLLISION.shape.height if COLLISION else 0.0
 @onready var initial_head_y: float = HEAD.position.y if HEAD else 0.0
 #endregion
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -170,6 +176,7 @@ func _ready() -> void:
 		print("CAMERA not assigned – FOV and camera snapping will be ignored")
 	if not is_instance_valid(FLASHLIGHT):
 		print("FLASHLIGHT not assigned – flashlight toggle will have no effect")
+
 	if is_instance_valid(CAMERA):
 		_camera_has_fov = CAMERA.get("fov") != null
 		if _camera_has_fov:
@@ -178,6 +185,13 @@ func _ready() -> void:
 			push_warning("CAMERA has no 'fov' property – dynamic FOV disabled")
 	else:
 		_camera_has_fov = false
+
+	# Обе камеры двигаются вручную в _process — отключаем физическую интерполяцию,
+	# чтобы Godot не пытался интерполировать их между физическими тиками.
+	if is_instance_valid(CAMERA):
+		CAMERA.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
+	if is_instance_valid(camera_target):
+		camera_target.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 
 	await get_tree().process_frame
 	var host = get_tree().root.find_child("PhantomCameraHost", true, false)
@@ -205,6 +219,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		FLASHLIGHT.visible = not FLASHLIGHT.visible
 
 
+# ФИЗИКА: движение, гравитация, прыжок, коллизии
 func _physics_process(delta: float) -> void:
 	# Проверка валидности необходимых узлов перед выполнением кода
 	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target) or not is_instance_valid(COLLISION):
@@ -238,12 +253,24 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	detect_landing()
-	update_visual_effects(delta, input_dir, is_sprinting, is_crouching)
 
-	CAMERA.global_position = camera_target.global_position
-	CAMERA.global_rotation = camera_target.global_rotation
+	_cached_input_dir = input_dir
+	_cached_is_sprinting = is_sprinting
 
 	was_on_floor = is_on_floor()
+
+
+# ВИЗУАЛ: боббинг, tilt, FOV + синхронизация камеры — каждый кадр рендера
+func _process(delta: float) -> void:
+	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target):
+		return
+
+	update_visual_effects(delta, _cached_input_dir, _cached_is_sprinting, is_crouching)
+
+	# Ручная синхронизация камеры с целью — но теперь в _process, а не в _physics_process
+	if is_instance_valid(CAMERA):
+		CAMERA.global_position = camera_target.global_position
+		CAMERA.global_rotation = camera_target.global_rotation
 
 
 #region Physics sub-functions
@@ -331,7 +358,7 @@ func calculate_speed(input_dir: Vector2, is_sprinting: bool) -> void:
 	# Применяем направленные множители ко ВСЕМ типам движения
 	var mult: float = backward_speed_mult if input_dir.y > 0 else 1.0
 	var side_m: float = lerp(1.0, side_speed_mult, abs(input_dir.x)) as float
-	
+
 	speed = base_movement_speed * mult * side_m
 
 # Обработка приседания (изменение высоты и позиции головы)
@@ -402,6 +429,7 @@ func apply_decay(delta: float) -> void:
 	target_jump_tilt = lerp(target_jump_tilt, 0.0, delta * return_speed)
 	current_shake = lerp(current_shake, 0.0, delta * shake_decay)
 
+
 func update_tilt(delta: float, input_dir: Vector2, is_sprinting: bool) -> void:
 	var t_z: float = air_tilt_amount if not is_on_floor() else tilt_amount
 	var target_z: float = (-input_dir.x * t_z) - deg_to_rad(mouse_input_x * mouse_sensitivity_tilt)
@@ -429,7 +457,7 @@ func calculate_bobbing(delta: float, crouching: bool) -> Dictionary:
 		var sprint_v_mult: float = lerp(1.0, sprint_bob_v_mult, sprint_bob_factor)
 		var sprint_r_mult: float = lerp(1.0, sprint_bob_roll_mult, sprint_bob_factor)
 		var sprint_f_mult: float = lerp(1.0, sprint_bob_freq_mult, sprint_bob_factor)
-		
+
 		noise_time += delta * smoothed_horizontal_speed * bob_freq * f_mult * sprint_f_mult
 		noise_time = fmod(noise_time, 2.0 * PI)
 		
@@ -445,9 +473,9 @@ func calculate_bobbing(delta: float, crouching: bool) -> Dictionary:
 		var ticks: float = Time.get_ticks_msec() * 0.001
 		var idle_time: float = ticks * idle_noise_speed
 		var idle_vec: Vector3 = Vector3(
-			cos(idle_time * 0.8) * idle_noise_amp,
-			sin(idle_time * 1.2) * idle_noise_amp,
-			0.0
+				cos(idle_time * 0.8) * idle_noise_amp,
+				sin(idle_time * 1.2) * idle_noise_amp,
+				0.0
 		)
 		var idle_weight: float = clamp(1.0 - (smoothed_horizontal_speed / base_speed), 0.0, 1.0) as float
 		bob_vec = bob_vec.lerp(idle_vec, idle_weight)
@@ -486,4 +514,4 @@ func update_fov(delta: float, crouching: bool, is_sprinting: bool) -> void:
 
 	var current_fov: float = float(CAMERA.get("fov"))
 	CAMERA.set("fov", lerp(current_fov, target_fov, delta * fov_lerp_speed))
-#endregion
+	#endregion
