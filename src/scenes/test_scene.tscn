@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://brnanjah7se5e" path="res://src/assets/models/furniture/rugSquare.glb" id="6_68ann"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://src/scenes/interactable/money.tscn" id="7_h3xc6"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="7_ntc4i"]
-[ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked.tscn" id="8_rnaij"]
+[ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked_red.tscn" id="8_rnaij"]
 [ext_resource type="PackedScene" uid="uid://bmuf8e05i0227" path="res://src/scenes/interactable/lamp_square_table.tscn" id="9_fftn7"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="11_u0xbq"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="12_fftn7"]
