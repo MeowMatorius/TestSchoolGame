@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b3kgm5cdrh0ak"]
 
-[ext_resource type="Texture2D" uid="uid://isjsflxq3134" path="res://src/assets/icons/red_key.png" id="1_aidij"]
+[ext_resource type="Texture2D" uid="uid://dlfyrehl56rm1" path="res://src/assets/icons/new/key_red.png" id="1_6a8vm"]
 [ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="2_t2h5f"]
 
 [resource]
@@ -9,5 +9,5 @@ unique = true
 reusable = true
 type = "Key"
 name = "Red Key"
-icon = ExtResource("1_aidij")
+icon = ExtResource("1_6a8vm")
 metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"

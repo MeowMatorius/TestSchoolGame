@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 var quest_entry_scene: PackedScene = preload("uid://c5ktdafkof5xx")
-var icon_done = preload("uid://cbihmmy1lpu4t")
+var icon_done = preload("uid://b75qvx41sk45q")
 var quest_list: Array[Node]
 
 var sub_quest_scene: PackedScene = preload("uid://b4paruxiqtp6x")

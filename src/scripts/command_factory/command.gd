@@ -2,5 +2,5 @@ class_name Command
 extends RefCounted
 
 
-func execute(scene_tree: SceneTree) -> void:
+func execute(_scene_tree: SceneTree) -> void:
 	pass

@@ -33,17 +33,18 @@ func instantiate_items(switch_data: SwitchData) -> void:
 	fill_slots(switch_data, matching_items)
 
 
-func clear_slots() -> void:
-	for slot: Node in use_item_slots:
-		if is_instance_valid(slot):
-			slot.queue_free()
-	use_item_slots.clear()
-
-
+# Создание слотов
 func fill_slots(switch_data: SwitchData, matching_items: Array[ItemData]) -> void:
-	# Создание слотов
 	for item: ItemData in matching_items:
 		var slot: Node = item_scene.instantiate()
 		add_child(slot)
 		use_item_slots.append(slot)
 		slot.display(item, switch_data)
+
+
+# Чистка слотов
+func clear_slots(_data = null) -> void:
+	for slot: Node in use_item_slots:
+		if is_instance_valid(slot):
+			slot.queue_free()
+	use_item_slots.clear()

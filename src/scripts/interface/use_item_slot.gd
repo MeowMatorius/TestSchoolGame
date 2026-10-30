@@ -32,7 +32,6 @@ func _on_button_button_up() -> void:
 	if not _is_usable():
 		GameManager.current_game_state = GameManager.GameState.DEFAULT
 		item_use_menu.clear_slots()
-		
 	else:
 		GameManager.current_game_state = GameManager.GameState.DEFAULT
 		SignalBus.is_using_item.emit(slot_switch_data)

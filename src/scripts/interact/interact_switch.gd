@@ -31,8 +31,8 @@ func interact(object):
 
 
 func unlock(used_switch_data: SwitchData):
-	if used_switch_data != switch_data:return
-	switch_data.lock_state = switch_data.LockState.UNLOCKED
+	if used_switch_data != switch_data: return
+	used_switch_data.lock_state = switch_data.LockState.UNLOCKED
 
 
 func activate(object):

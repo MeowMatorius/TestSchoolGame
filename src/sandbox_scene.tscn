@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://t24vxvdkn1sh" path="res://src/assets/models/furniture/desk.glb" id="6_rvhfm"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="7_wwywm"]
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://src/assets/music/falling_snow.mp3" id="8_wy25e"]
-[ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/music_note.png" id="9_xfj2v"]
+[ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/new/music_note.png" id="9_xfj2v"]
 [ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="10_amhku"]
 [ext_resource type="PackedScene" uid="uid://cnc8nv7l7b55j" path="res://src/scenes/interactable/newspaper.tscn" id="10_pohmr"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="11_nq0i5"]
@@ -15,11 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://7ypkwxj6x6v6" path="res://src/scenes/interactable/door_broken.tscn" id="13_idok3"]
 [ext_resource type="PackedScene" uid="uid://duuhjykupjx8t" path="res://src/scenes/interactable/key_red.tscn" id="13_v2cc4"]
 [ext_resource type="PackedScene" uid="uid://bmxjqrluhse4m" path="res://src/scenes/interactable/money.tscn" id="14_pwwyv"]
-[ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked.tscn" id="15_rm1d6"]
+[ext_resource type="PackedScene" uid="uid://b7u45061y44d7" path="res://src/scenes/interactable/door_locked_red.tscn" id="15_rm1d6"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://src/scenes/player.tscn" id="16_fsgqr"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://src/scenes/npcs/tamagoche.tscn" id="17_ygd0t"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://src/scenes/npcs/hlopchik.tscn" id="18_oh1fv"]
 [ext_resource type="PackedScene" uid="uid://bump43bs5s28v" path="res://src/scenes/interactable/key_white.tscn" id="18_xa12n"]
+[ext_resource type="PackedScene" uid="uid://d31qgwvirjr4y" path="res://src/scenes/interactable/door_locked_white.tscn" id="19_i8p06"]
 [ext_resource type="PackedScene" uid="uid://bjlw3u768ihqh" path="res://src/scenes/interactable/door.tscn" id="19_pohmr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pohmr"]
@@ -70,7 +71,7 @@ emission_energy_multiplier = 4.0
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="Resource" id="Resource_xa12n"]
+[sub_resource type="Resource" id="Resource_i8p06"]
 resource_local_to_scene = true
 script = ExtResource("10_amhku")
 activate_prompt_message = "Включить"
@@ -107,15 +108,15 @@ resolution = 1
 [node name="Static" type="Node" parent="Enviroment" unique_id=125066892]
 
 [node name="desk" parent="Enviroment/Static" unique_id=923594188 instance=ExtResource("6_rvhfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.136017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.399132)
 
 [node name="desk2" parent="Enviroment/Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
-transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 2.936584, -0.049999952, -7.8367605)
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 1.0806615, -0.049999952, -9.425266)
 
 [node name="Interactables" type="Node" parent="." unique_id=1783892644]
 
 [node name="Radio" parent="Interactables" unique_id=1068241980 instance=ExtResource("7_wwywm")]
-transform = Transform3D(0.44031727, 0, 0.2368981, 0, 0.5, 0, -0.2368981, 0, 0.44031727, -1.0613761, 1.353223, -9.409695)
+transform = Transform3D(0.44031727, 0, 0.2368981, 0, 0.5, 0, -0.2368981, 0, 0.44031727, -1.0613761, 1.353223, -9.67281)
 
 [node name="MeshInstance3D" parent="Interactables/Radio" index="0" unique_id=173539119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47022486, -0.5, 0.21758842)
@@ -127,48 +128,54 @@ stream = ExtResource("8_wy25e")
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
 [node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
-switch_data = SubResource("Resource_xa12n")
+switch_data = SubResource("Resource_i8p06")
 
 [node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1905768, 0.01890564, -10.428116)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8961786, 0.01890564, -9.786154)
 
 [node name="Note" parent="Interactables" unique_id=1556637199 instance=ExtResource("12_tkjv7")]
-transform = Transform3D(0.92650896, 0, -0.37627277, 0, 1, 0, 0.37627277, 0, 0.92650896, 0.17316654, 1.1032228, -9.381689)
+transform = Transform3D(0.92650896, 0, -0.37627277, 0, 1, 0, 0.37627277, 0, 0.92650896, 0.17316654, 1.1032228, -9.644804)
 
 [node name="Newspaper" parent="Interactables" unique_id=475974563 instance=ExtResource("10_pohmr")]
-transform = Transform3D(0.9979705, 0, 0.06367406, 0, 1, 0, -0.06367406, 0, 0.9979705, 0.23980787, 1.1032228, -9.817928)
+transform = Transform3D(0.9979705, 0, 0.06367406, 0, 1, 0, -0.06367406, 0, 0.9979705, 0.23980787, 1.1032228, -10.081043)
 
 [node name="KeyRed" parent="Interactables" unique_id=243040129 instance=ExtResource("13_v2cc4")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.2012084, 1.2032229, -7.5157757)
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 1.4016464, 1.2032229, -9.689892)
 
 [node name="KeyWhite" parent="Interactables" unique_id=2094718940 instance=ExtResource("18_xa12n")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.157791, 1.2032229, -5.950334)
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.967088, 1.2032229, -9.646474)
 
 [node name="Money" parent="Interactables" unique_id=966525831 instance=ExtResource("14_pwwyv")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.6473267, 1.2032229, -7.1331606)
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 1.7842615, 1.2032229, -10.136009)
 
 [node name="Money2" parent="Interactables" unique_id=797124229 instance=ExtResource("14_pwwyv")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.736461, 1.2032229, -6.0699835)
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.8474386, 1.2032229, -10.225143)
 
 [node name="Money3" parent="Interactables" unique_id=116772522 instance=ExtResource("14_pwwyv")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.4314084, 1.2032229, -6.536861)
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.380561, 1.2032229, -9.920092)
 
 [node name="Door" parent="Interactables" unique_id=1458739684 instance=ExtResource("19_pohmr")]
 
 [node name="DoorBroken" parent="Interactables" unique_id=1781524158 instance=ExtResource("13_idok3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="DoorLocked" parent="Interactables" unique_id=742594431 instance=ExtResource("15_rm1d6")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.207396, 0, -9.239)
+[node name="DoorLockedRed" parent="Interactables" unique_id=742594431 instance=ExtResource("15_rm1d6")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.1459227, 0, -9.177526)
 
-[node name="DoorLocked2" parent="Interactables" unique_id=220669067 instance=ExtResource("15_rm1d6")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.084449, 0, -9.239)
+[node name="DoorLockedRed2" parent="Interactables" unique_id=220669067 instance=ExtResource("15_rm1d6")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.1459227, 0, -7.300474)
+
+[node name="DoorLocedWhite" parent="Interactables" unique_id=1539340013 instance=ExtResource("19_i8p06")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.115788, 0, -3)
+
+[node name="DoorLocedWhite2" parent="Interactables" unique_id=2432207 instance=ExtResource("19_i8p06")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.115788, 0, -5)
 
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("16_fsgqr")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.47926712, -6)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1, -0.47926712, -6)
 
 [node name="Kuzya" parent="." unique_id=59066183 instance=ExtResource("17_ygd0t")]
-transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49683318, -0.36526898, 1.1032227, -9.865707)
+transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49683318, -0.36526898, 1.1032227, -10.128822)
 
 [node name="Hlopchik" parent="." unique_id=1769752881 instance=ExtResource("18_oh1fv")]
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, -3.0617101, 0.9857122, -8.295948)
