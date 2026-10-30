@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://dy63qstgclb1l" path="res://src/scripts/interface/settings/fov_slider.gd" id="10_qmjc7"]
 [ext_resource type="Script" uid="uid://ds506bf8odr0k" path="res://src/scripts/player/player_ui_reticle.gd" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://cpxtlr8qmqwao" path="res://src/assets/icons/pivo.png" id="15_s7qer"]
-[ext_resource type="Texture2D" uid="uid://cvaqd7wy8nwhg" path="res://src/assets/icons/ui/ArrowRight.svg" id="17_e7oew"]
+[ext_resource type="Texture2D" uid="uid://bcawc20pqffrx" path="res://src/assets/icons/new/speech_bubble_normal.png" id="18_ybrxc"]
 [ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="19_65viv"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://dpjvef24mylqn" path="res://src/scripts/interface/item_use_menu.gd" id="19_ybrxc"]
@@ -2073,9 +2073,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2088,9 +2089,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2103,9 +2105,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2118,9 +2121,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2133,9 +2137,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2148,9 +2153,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2163,9 +2169,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2178,9 +2185,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2193,9 +2201,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 
@@ -2208,9 +2217,10 @@ mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
 action_mode = 0
 text = "Выбор"
-icon = ExtResource("17_e7oew")
+icon = ExtResource("18_ybrxc")
 alignment = 0
 autowrap_mode = 3
 

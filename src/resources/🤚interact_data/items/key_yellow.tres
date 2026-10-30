@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bibfh5bl8yx26"]
+
+[ext_resource type="Texture2D" uid="uid://bvf1c7gk5p5yt" path="res://src/assets/icons/new/key_yellow.png" id="1_p18gw"]
+[ext_resource type="Script" uid="uid://dw2qhvsgt2xq6" path="res://src/resources/item_data.gd" id="2_rqetm"]
+
+[resource]
+script = ExtResource("2_rqetm")
+unique = true
+type = "Key"
+icon = ExtResource("1_p18gw")
+metadata/_custom_type_script = "uid://dw2qhvsgt2xq6"

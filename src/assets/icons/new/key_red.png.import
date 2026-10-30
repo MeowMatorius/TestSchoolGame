@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxh0hi4ma5t84"
-path="res://.godot/imported/yellow_key.png-e7c596f7049302effb1fbe5b93a61647.ctex"
+uid="uid://dlfyrehl56rm1"
+path="res://.godot/imported/key_red.png-0c75c346d0c87207fea46c9637833d08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/icons/yellow_key.png"
-dest_files=["res://.godot/imported/yellow_key.png-e7c596f7049302effb1fbe5b93a61647.ctex"]
+source_file="res://src/assets/icons/new/key_red.png"
+dest_files=["res://.godot/imported/key_red.png-0c75c346d0c87207fea46c9637833d08.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/high_quality_mode=0
-compress/lossy_quality=0.5
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

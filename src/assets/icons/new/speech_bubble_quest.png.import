@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nk0qmihpk0f"
-path="res://.godot/imported/white_key.png-49ca4db046ae215189eb9a3eddd4f388.ctex"
+uid="uid://brub87og7yvwk"
+path="res://.godot/imported/speech_bubble_quest.png-4156ffe890b74ccf80ddb1469a0abe39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/icons/white_key.png"
-dest_files=["res://.godot/imported/white_key.png-49ca4db046ae215189eb9a3eddd4f388.ctex"]
+source_file="res://src/assets/icons/new/speech_bubble_quest.png"
+dest_files=["res://.godot/imported/speech_bubble_quest.png-4156ffe890b74ccf80ddb1469a0abe39.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/high_quality_mode=0
-compress/lossy_quality=0.5
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1

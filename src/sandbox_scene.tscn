@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://t24vxvdkn1sh" path="res://src/assets/models/furniture/desk.glb" id="6_rvhfm"]
 [ext_resource type="PackedScene" uid="uid://bsb3o0wml375t" path="res://src/scenes/interactable/radio.tscn" id="7_wwywm"]
 [ext_resource type="AudioStream" uid="uid://c2yqd7j4alq47" path="res://src/assets/music/falling_snow.mp3" id="8_wy25e"]
-[ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/music_note.png" id="9_xfj2v"]
+[ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/new/music_note.png" id="9_xfj2v"]
 [ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="10_amhku"]
 [ext_resource type="PackedScene" uid="uid://cnc8nv7l7b55j" path="res://src/scenes/interactable/newspaper.tscn" id="10_pohmr"]
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://src/scenes/interactable/lamp_round_floor.tscn" id="11_nq0i5"]
