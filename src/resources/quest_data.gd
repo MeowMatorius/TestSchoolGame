@@ -27,11 +27,13 @@ func get_id() -> String:
 	return resource_path.get_file().get_basename()
 
 func is_complete(iii) -> bool:
-	
-	self.completed = subquest.all(func(subq): return subq.completed)
-	if self.completed == true:
-		SignalBus.changed_quest_status.emit(self)
+	print(self.id, self.completed)
+	if self.completed == false:
+		self.completed = subquest.all(func(subq): return subq.completed)
+		if self.completed == true:
+			SignalBus.changed_quest_status.emit(self)
 	return self.completed
+		
 	
 func _init() -> void:
 	# Подключаем глобальный сигнал к функции внутри этого ресурса
