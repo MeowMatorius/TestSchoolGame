@@ -5,7 +5,7 @@ extends Interact
 signal object_removed
 
 
-func interact(object):
+func interact(_target_object):
 	trigger_command()
 	
 	if InventoryManager.inventory_items.has(item_data.name):

@@ -5,7 +5,7 @@ extends Interact
 @export var npc_data: NpcData
 
 
-func interact(target_object):
+func interact(_target_object):
 	SignalBus.is_talking.emit(npc_data)
 
 

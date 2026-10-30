@@ -277,7 +277,7 @@ func calculate_move_direction(input_dir: Vector2) -> Vector3:
 	return direction.normalized()
 
 # Применение движения к игроку с учетом плавности и управления в воздухе
-func apply_movement(delta: float, direction: Vector3, is_sprinting: bool) -> void:
+func apply_movement(delta: float, direction: Vector3, _is_sprinting: bool) -> void:
 	if enable_movement_smoothing:
 		# Фактор управления в воздухе (если есть инерция прыжка)
 		var control_factor: float = air_control if (not is_on_floor() and has_jump_momentum) else 1.0
