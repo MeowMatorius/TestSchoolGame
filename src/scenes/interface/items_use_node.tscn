@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cwwxusyuudl6k"]
 
 [ext_resource type="Texture2D" uid="uid://d1qxknlfg57ty" path="res://src/assets/icons/ui/godot_icon.svg" id="1_6r3eo"]
-[ext_resource type="Script" uid="uid://dnmu3v04i1gg6" path="res://src/scenes/interface/use_item_slot.gd" id="1_wkrk4"]
+[ext_resource type="Script" uid="uid://dnmu3v04i1gg6" path="res://src/scripts/interface/use_item_slot.gd" id="1_wkrk4"]
 
-[node name="ItemUseMenu" type="Control" unique_id=284770637]
-custom_minimum_size = Vector2(70, 70)
+[node name="ItemUseNode" type="Control" unique_id=284770637]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0
@@ -37,7 +37,7 @@ mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Button/MarginContainer/VBoxContainer" unique_id=1218266572]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_6r3eo")
 expand_mode = 1
