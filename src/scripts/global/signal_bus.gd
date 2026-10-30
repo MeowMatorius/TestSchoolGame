@@ -1,5 +1,6 @@
-@warning_ignore("unused_signal")
 extends Node
+
+@warning_ignore_start("unused_signal")
 
 # Interact
 signal is_picking(object_name: String) 		  # interact_pickup
@@ -17,3 +18,5 @@ signal event_triggered
 
 # Quest
 signal quest_completed(quest)
+
+@warning_ignore_restore("unused_signal")
