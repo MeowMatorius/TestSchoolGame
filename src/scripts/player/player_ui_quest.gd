@@ -31,7 +31,7 @@ func show_ui(quest):
 			quest_list.append(sub_node)
 			# Инициализируем текст и галочку выполнения
 			sub_node.get_node("Label").text = sub_quest.description
-			
+			sub_quest.is_complete()
 	
 func _clear_ui(quest):
 	pass
