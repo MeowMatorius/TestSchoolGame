@@ -106,6 +106,7 @@ script = ExtResource("7_yllr7")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 groups=["player_camera"]]
+physics_interpolation_mode = 1
 script = ExtResource("2_ebec5")
 priority = 10
 tween_resource = SubResource("Resource_qmjc7")

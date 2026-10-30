@@ -67,6 +67,7 @@ _data = {
 [sub_resource type="Resource" id="Resource_2wvck"]
 resource_local_to_scene = true
 script = ExtResource("3_2wvck")
+one_time_use = true
 lock_state = 0
 item_needed_to_open = ExtResource("2_j038k")
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
