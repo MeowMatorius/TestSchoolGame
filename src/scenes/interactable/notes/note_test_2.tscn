@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://doqrcqi7i4t2l"]
 
-[ext_resource type="Texture2D" uid="uid://7nk0qmihpk0f" path="res://src/assets/icons/white_key.png" id="1_qpbne"]
+[ext_resource type="Texture2D" uid="uid://b7ayahhlqo127" path="res://src/assets/icons/new/beer_new.png" id="1_qpbne"]
 [ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/notes/close_note_button.gd" id="4_norx0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
@@ -74,7 +74,7 @@ theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
-text = "[b]Кошмар на улице Жопотрясова[/b]"
+text = "[b]Title[/b]"
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer" unique_id=1997045513]
@@ -85,15 +85,7 @@ custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "фывйвцйвцйвйцвйцвцйвцвцйвйцвцйвцйвйц
-
-Я сосал меня ебали эти ебаные тырфейсы говна из жопы.
-
-Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять
-
-Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять
-
-Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять"
+text = "Test text"
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1056762811]
 custom_minimum_size = Vector2(300, 300)
