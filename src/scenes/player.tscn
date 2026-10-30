@@ -95,6 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 [node name="CameraTarget" type="Node3D" parent="Head" unique_id=1494832552]
 
 [node name="Camera" type="Camera3D" parent="Head" unique_id=921838086]
+physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 top_level = true
 
@@ -102,14 +103,11 @@ top_level = true
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("7_yllr7")
-interpolation_mode = 1
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 node_paths=PackedStringArray("follow_target", "look_at_target") groups=["player_camera"]]
+[node name="PhantomCamera3D" type="Node3D" parent="Head" unique_id=508387966 groups=["player_camera"]]
 script = ExtResource("2_ebec5")
 priority = 10
-follow_target = NodePath("..")
-look_at_target = NodePath("../CameraTarget")
 tween_resource = SubResource("Resource_qmjc7")
 tween_on_load = false
 camera_3d_resource = SubResource("Resource_twf7n")

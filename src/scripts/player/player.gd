@@ -186,18 +186,11 @@ func _ready() -> void:
 	else:
 		_camera_has_fov = false
 
-	# Обе камеры двигаются вручную в _process — отключаем физическую интерполяцию,
-	# чтобы Godot не пытался интерполировать их между физическими тиками.
+	# отключаем физическую интерполяцию,
 	if is_instance_valid(CAMERA):
 		CAMERA.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	if is_instance_valid(camera_target):
 		camera_target.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
-
-	await get_tree().process_frame
-	var host = get_tree().root.find_child("PhantomCameraHost", true, false)
-	if host:
-		host.interpolation_mode = 1  # IDLE
-		print("Host mode set to: ", host.interpolation_mode)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -260,14 +253,14 @@ func _physics_process(delta: float) -> void:
 	was_on_floor = is_on_floor()
 
 
-# ВИЗУАЛ: боббинг, tilt, FOV + синхронизация камеры — каждый кадр рендера
+# боббинг, tilt, FOV + синхронизация камеры
 func _process(delta: float) -> void:
 	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target):
 		return
 
 	update_visual_effects(delta, _cached_input_dir, _cached_is_sprinting, is_crouching)
 
-	# Ручная синхронизация камеры с целью — но теперь в _process, а не в _physics_process
+	# Ручная синхронизация камеры с целью
 	if is_instance_valid(CAMERA):
 		CAMERA.global_position = camera_target.global_position
 		CAMERA.global_rotation = camera_target.global_rotation
