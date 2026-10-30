@@ -58,11 +58,10 @@ offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[s][color=gray]Godot это круто и класс и мне нравится очень[/color][/s]
+text = "[s][color=gray]Test[/color][/s]
 
-Я сосал меня ебали эти [color=red]ебаные тырфейсы[/color] говна из жопы.
-
-Неужели блять нельзя было сделать проще чтобы не ебать себе и другим мозге а не срать мне в обед блять"
+Test [color=red]test[/color] test"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CloseButton" type="Button" parent="." unique_id=313448128]

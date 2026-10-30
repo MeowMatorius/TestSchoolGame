@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cpxtlr8qmqwao" path="res://src/assets/icons/pivo.png" id="15_s7qer"]
 [ext_resource type="Texture2D" uid="uid://bcawc20pqffrx" path="res://src/assets/icons/new/speech_bubble_normal.png" id="18_ybrxc"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
+[ext_resource type="Script" uid="uid://na42o1gngcun" path="res://src/scripts/interface/item_use_menu_close.gd" id="19_fkrvq"]
 [ext_resource type="Script" uid="uid://dpjvef24mylqn" path="res://src/scripts/interface/item_use_menu.gd" id="19_ybrxc"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://src/scripts/player/player_ui_quest.gd" id="21_x7c3f"]
 [ext_resource type="Texture2D" uid="uid://cspicebvhlmb8" path="res://src/assets/icons/new/coin.png" id="23_ybrxc"]
@@ -2042,6 +2043,7 @@ offset_right = 463.0
 offset_bottom = 155.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
@@ -2049,7 +2051,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Player_UI/DialoguesContainer/MarginContainer2" unique_id=1686183845]
 layout_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 mouse_behavior_recursive = 2
 follow_focus = true
 draw_focus_border = true
@@ -2061,7 +2063,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-mouse_behavior_recursive = 1
 alignment = 1
 
 [node name="Choice_1" type="Button" parent="UserInterface/Player_UI/DialoguesContainer/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=1426323502]
@@ -2069,7 +2070,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2085,7 +2085,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2101,7 +2100,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2117,7 +2115,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2133,7 +2130,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2149,7 +2145,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2165,7 +2160,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2181,7 +2175,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2197,7 +2190,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2213,7 +2205,6 @@ visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_65viv")
 theme_override_constants/outline_size = 5
@@ -2233,6 +2224,7 @@ anchor_bottom = 1.0
 offset_top = -88.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 100
@@ -2273,13 +2265,28 @@ mouse_behavior_recursive = 2
 
 [node name="ItemUseMode" type="Control" parent="UserInterface/Player_UI/DefaultContainer" unique_id=441919810]
 layout_mode = 1
-anchor_left = 0.4262153
-anchor_top = 0.37037036
-anchor_right = 0.5737847
-anchor_bottom = 0.44769156
-offset_top = 1.5258789e-05
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="CloseItemUseMenu" type="Button" parent="UserInterface/Player_UI/DefaultContainer/ItemUseMode" unique_id=60402352 node_paths=PackedStringArray("item_use_menu")]
+visible = false
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+mouse_filter = 1
+flat = true
+script = ExtResource("19_fkrvq")
+item_use_menu = NodePath("../ScrollContainer/ItemUseMenu")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Player_UI/DefaultContainer/ItemUseMode" unique_id=819838560]
 custom_minimum_size = Vector2(580, -1)
@@ -2290,14 +2297,16 @@ anchor_left = -0.0882353
 anchor_top = -0.09875309
 anchor_right = 1.0882353
 anchor_bottom = 1.0987531
-offset_left = 15.0
-offset_top = 4.947937
-offset_right = -15.0
-offset_bottom = -4.947937
+offset_left = 387.64706
+offset_top = 293.992
+offset_right = -387.64697
+offset_bottom = -411.992
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 19
 size_flags_vertical = 19
+mouse_filter = 2
+mouse_default_cursor_shape = 2
 theme_override_constants/scrollbar_h_separation = 4
 theme_override_constants/scrollbar_v_separation = 4
 horizontal_scroll_mode = 5
@@ -2306,12 +2315,14 @@ scroll_horizontal_by_default = true
 scroll_hint_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemUseMenu" type="GridContainer" parent="UserInterface/Player_UI/DefaultContainer/ItemUseMode/ScrollContainer" unique_id=379279859]
+[node name="ItemUseMenu" type="GridContainer" parent="UserInterface/Player_UI/DefaultContainer/ItemUseMode/ScrollContainer" unique_id=379279859 node_paths=PackedStringArray("close_item_menu_button")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+mouse_filter = 2
 columns = 999
 script = ExtResource("19_ybrxc")
+close_item_menu_button = NodePath("../../CloseItemUseMenu")
 
 [node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=266679013]
 layout_mode = 1
@@ -2324,6 +2335,7 @@ offset_right = 0.1439209
 offset_bottom = 116.0
 grow_horizontal = 2
 size_flags_horizontal = 2
+mouse_filter = 2
 script = ExtResource("21_x7c3f")
 
 [node name="ReticleContainer" type="CenterContainer" parent="UserInterface/Player_UI/DefaultContainer" unique_id=617038920]
@@ -2581,3 +2593,4 @@ vertical_alignment = 1
 [connection signal="drag_started" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_drag_started"]
 [connection signal="value_changed" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_value_changed"]
 [connection signal="text_submitted" from="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovEdit" to="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_edit_text_submitted"]
+[connection signal="button_up" from="UserInterface/Player_UI/DefaultContainer/ItemUseMode/CloseItemUseMenu" to="UserInterface/Player_UI/DefaultContainer/ItemUseMode/CloseItemUseMenu" method="_on_button_up"]
