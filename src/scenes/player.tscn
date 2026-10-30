@@ -19,10 +19,10 @@
 [ext_resource type="Script" uid="uid://ds506bf8odr0k" path="res://src/scripts/player/player_ui_reticle.gd" id="14_kb6p2"]
 [ext_resource type="Texture2D" uid="uid://cpxtlr8qmqwao" path="res://src/assets/icons/pivo.png" id="15_s7qer"]
 [ext_resource type="Texture2D" uid="uid://bcawc20pqffrx" path="res://src/assets/icons/new/speech_bubble_normal.png" id="18_ybrxc"]
-[ext_resource type="Texture2D" uid="uid://csnhsvyvqipuq" path="res://src/assets/icons/gold_coin.png" id="19_65viv"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://dpjvef24mylqn" path="res://src/scripts/interface/item_use_menu.gd" id="19_ybrxc"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://src/scripts/player/player_ui_quest.gd" id="21_x7c3f"]
+[ext_resource type="Texture2D" uid="uid://cspicebvhlmb8" path="res://src/assets/icons/new/coin.png" id="23_ybrxc"]
 
 [sub_resource type="Resource" id="Resource_qmjc7"]
 script = ExtResource("3_yllr7")
@@ -2412,7 +2412,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 2
-texture = ExtResource("19_65viv")
+texture = ExtResource("23_ybrxc")
 expand_mode = 2
 
 [node name="ToolpitText" type="Label" parent="UserInterface/Player_UI/ItemsTooltip/ItemTooltip" unique_id=1874871750]
@@ -2442,7 +2442,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 2
-texture = ExtResource("19_65viv")
+texture = ExtResource("23_ybrxc")
 expand_mode = 2
 
 [node name="ToolpitText" type="Label" parent="UserInterface/Player_UI/ItemsTooltip/ItemTooltip2" unique_id=1027614680]
@@ -2472,7 +2472,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 2
-texture = ExtResource("19_65viv")
+texture = ExtResource("23_ybrxc")
 expand_mode = 2
 
 [node name="ToolpitText" type="Label" parent="UserInterface/Player_UI/ItemsTooltip/ItemTooltip3" unique_id=1357696061]
@@ -2502,7 +2502,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 2
-texture = ExtResource("19_65viv")
+texture = ExtResource("23_ybrxc")
 expand_mode = 2
 
 [node name="ToolpitText" type="Label" parent="UserInterface/Player_UI/ItemsTooltip/ItemTooltip4" unique_id=242133493]
@@ -2532,7 +2532,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 2
-texture = ExtResource("19_65viv")
+texture = ExtResource("23_ybrxc")
 expand_mode = 2
 
 [node name="ToolpitText" type="Label" parent="UserInterface/Player_UI/ItemsTooltip/ItemTooltip5" unique_id=711431252]
@@ -2562,7 +2562,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_behavior_recursive = 2
-texture = ExtResource("19_65viv")
+texture = ExtResource("23_ybrxc")
 expand_mode = 2
 
 [node name="ToolpitText" type="Label" parent="UserInterface/Player_UI/ItemsTooltip/ItemTooltip6" unique_id=185620185]
