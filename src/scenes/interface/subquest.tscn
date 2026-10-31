@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://b4paruxiqtp6x"]
 
+[ext_resource type="Texture2D" uid="uid://c3ftg5q3krips" path="res://src/assets/icons/ui/white_check.png" id="1_1qyj3"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_evydg"]
 font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
-[node name="Quest" type="HBoxContainer" unique_id=357486952]
+[node name="Subquest" type="HBoxContainer" unique_id=357486952]
 custom_minimum_size = Vector2(0, 30)
 offset_right = 1152.0
 offset_bottom = 30.0
@@ -11,9 +15,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1435447042]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(20, 20)
+custom_maximum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_1qyj3")
 expand_mode = 2
 stretch_mode = 5
 

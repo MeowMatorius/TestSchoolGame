@@ -1,5 +1,11 @@
 [gd_scene format=3 uid="uid://c5ktdafkof5xx"]
 
+[ext_resource type="Texture2D" uid="uid://c3ftg5q3krips" path="res://src/assets/icons/ui/white_check.png" id="1_k8d5w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_epw4f"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="VBoxContainer" type="VBoxContainer" unique_id=1821773418]
 anchors_preset = 10
 anchor_right = 1.0
@@ -16,6 +22,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+texture = ExtResource("1_k8d5w")
 expand_mode = 2
 stretch_mode = 5
 
@@ -24,9 +31,16 @@ custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Какой-то квест"
+label_settings = SubResource("LabelSettings_epw4f")
 vertical_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 1
 
-[node name="SubQuestContainer" type="VBoxContainer" parent="." unique_id=205832321]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=38348896]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="SubQuestContainer" type="VBoxContainer" parent="MarginContainer" unique_id=205832321]
 layout_mode = 2

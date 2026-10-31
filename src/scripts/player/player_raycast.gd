@@ -34,7 +34,7 @@ func _physics_process(_delta):
 			# Чистая версия с выводом действия (Без имени объекта и кнопки)
 			text_prompt.text = "%s" % [target_object_interact.get_prompt()]
 
-			text_prompt.visible = true
+			text_prompt.visible = false # СДЕЛАТЬ TRUE ЧТОБЫ ВЕРНУТЬ PROMPT (Сделать флагом?)
 		elif target_object:
 			_clear_target()
 	else:

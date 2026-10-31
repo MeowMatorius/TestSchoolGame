@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd1y0lxe38jcm"
-path="res://.godot/imported/broken-padlock.svg-7a3920904d7a9cb4be319561366b517f.ctex"
+uid="uid://bionxldh4a55b"
+path="res://.godot/imported/lock_broken.png-e4fae5af447c77582662bc68c6a7e4fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/icons/ui/broken-padlock.svg"
-dest_files=["res://.godot/imported/broken-padlock.svg-7a3920904d7a9cb4be319561366b517f.ctex"]
+source_file="res://src/assets/icons/ui/lock_broken.png"
+dest_files=["res://.godot/imported/lock_broken.png-e4fae5af447c77582662bc68c6a7e4fc.ctex"]
 
 [params]
 
@@ -41,6 +41,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

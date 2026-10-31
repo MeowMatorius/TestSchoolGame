@@ -475,17 +475,6 @@ func calculate_bobbing(delta: float, crouching: bool) -> Dictionary:
 
 	return {"offset": bob_vec, "roll": roll}
 
-
-func _get_target_base_fov() -> float:
-	# SettingsManager может отсутствовать – не падаем
-	if Engine.has_singleton("SettingsManager"):
-		var sm = Engine.get_singleton("SettingsManager")
-		if sm and "global_fov" in sm:
-			return float(sm.global_fov)
-	# Fallback: текущий FOV камеры на момент старта
-	return _base_fov
-
-
 # Обновление поля зрения камеры в зависимости от состояния игрока
 func update_fov(delta: float, crouching: bool, is_sprinting: bool) -> void:
 	if not enable_fov_dynamic or not _camera_has_fov:
@@ -498,7 +487,7 @@ func update_fov(delta: float, crouching: bool, is_sprinting: bool) -> void:
 	var horizontal_speed: float = Vector2(velocity.x, velocity.z).length()
 	var is_actually_running: bool = is_sprinting and horizontal_speed > (base_speed + 0.1)
 
-	var target_fov: float = _get_target_base_fov()
+	var target_fov: float = SettingsManager.global_fov
 	if is_actually_running:
 		target_fov += fov_shift
 	if crouching:
