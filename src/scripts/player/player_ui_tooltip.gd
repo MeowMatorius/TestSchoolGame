@@ -5,11 +5,11 @@ var item_queue: Array = []
 
 
 func _ready() -> void:
-	if not InventoryManager.added_to_inventory.is_connected(_on_item_added):
-		InventoryManager.added_to_inventory.connect(_on_item_added)
+	if not SignalBus.added_to_inventory.is_connected(_on_item_added):
+		SignalBus.added_to_inventory.connect(_on_item_added)
 	
-	if not InventoryManager.removed_from_inventory.is_connected(_on_item_removed):
-		InventoryManager.removed_from_inventory.connect(_on_item_removed)
+	if not SignalBus.removed_from_inventory.is_connected(_on_item_removed):
+		SignalBus.removed_from_inventory.connect(_on_item_removed)
 	
 	for slot in slots:
 		slot.visible = false

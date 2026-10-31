@@ -42,7 +42,7 @@ func display_line(dialogue_data, npc_data):
 	SignalBus.started_talking.emit(dialogue_data.character_name, dialogue_data.text)
 #	track_quest(dialogue_data.quest)
 	if dialogue_data.choices.size() == 0:
-		await InputManager.skip_pressed
+		await SignalBus.skip_pressed
 	if dialogue_data.next_dialogue != null:
 		display_line(dialogue_data.next_dialogue, npc_data)
 	elif dialogue_data.choices.size() != 0:

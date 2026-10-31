@@ -1,8 +1,6 @@
 extends Resource
 class_name ConditionData
 
-
-
 @export var item: ItemData
 @export var item_quantity: int
 @export var item_given: ItemData
@@ -17,11 +15,12 @@ class_name ConditionData
 		SignalBus.changed_condition_status.emit()
 @export var dialogue_data: DialogueData
 
+
 func _init() -> void:
 	# Подключаем глобальный сигнал к функции внутри этого ресурса
 #	SignalBus.is_picking.connect(_add_item)
-	if not InventoryManager.update_inventory.is_connected(_add_item):
-		InventoryManager.update_inventory.connect(_add_item)
+	if not SignalBus.update_inventory.is_connected(_add_item):
+		SignalBus.update_inventory.connect(_add_item)
 
 
 func _add_item(_inventory_items) -> void:
@@ -57,4 +56,3 @@ func is_met() -> bool:
 	else:
 		print('вернул')
 		return true
-

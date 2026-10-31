@@ -4,9 +4,6 @@ extends Interact
 @export var event_data: EventData
 @export var quest_data: QuestData
 
-signal is_switching
-signal is_activated
-
 
 func _ready() -> void:
 	object_type = ObjectType.SWITCH
@@ -40,7 +37,7 @@ func unlock(used_switch_data: SwitchData):
 func activate(object):
 	if switch_data.lock_state == switch_data.LockState.BROKEN:
 		return;
-	is_activated.emit()
+	SignalBus.is_activated.emit()
 	object.get_node("AnimationPlayer").play("activate")
 	object.set_collision_layer_value(2, false) # Если объект можно будет ресетнуть то придется думать над альтернативой
 
@@ -49,10 +46,10 @@ func switch(object) -> void:
 	if switch_data.lock_state == switch_data.LockState.BROKEN:
 		return;
 	if switch_data.object_state == switch_data.ObjectState.OFF:
-		is_switching.emit()
+		SignalBus.is_switching.emit()
 		switch_on(object)
 	else:
-		is_switching.emit()
+		SignalBus.is_switching.emit()
 		switch_off(object)
 
 

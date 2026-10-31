@@ -10,7 +10,7 @@ func _ready() -> void:
 	text_prompt.text = ""
 	target_object = null
 	target_object_mesh = null
-	InputManager.interaction_pressed.connect(_on_interaction_pressed)
+	SignalBus.interaction_pressed.connect(_on_interaction_pressed)
 
 
 func _on_interaction_pressed() -> void:

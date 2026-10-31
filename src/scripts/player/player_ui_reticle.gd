@@ -39,7 +39,7 @@ var press_boost: float = 0.0
 func _ready():
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 
-	InputManager.interaction_pressed.connect(_on_interact)
+	SignalBus.interaction_pressed.connect(_on_interact)
 	SignalBus.is_targeting_object.connect(_on_targeting_object)
 	SignalBus.is_not_targeting_object.connect(_reset_icon)
 

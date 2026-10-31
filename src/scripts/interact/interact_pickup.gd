@@ -2,8 +2,6 @@ extends Interact
 
 @export var item_data: ItemData
 
-signal object_removed
-
 
 func _ready() -> void:
 	object_type = ObjectType.PICKUP
@@ -22,7 +20,7 @@ func pick_up_item():
 	SignalBus.is_picking.emit(item_data)
 	
 	get_parent().collision_layer = 0
-	object_removed.emit()
+	SignalBus.object_removed.emit()
 	get_parent().queue_free()
 
 

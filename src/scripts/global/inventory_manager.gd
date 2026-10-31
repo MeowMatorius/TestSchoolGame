@@ -2,11 +2,6 @@ extends Node
 
 @export var inventory_items: Dictionary[String, ItemData] = {}
 
-signal update_inventory(inventory_items: Dictionary)
-signal added_to_inventory(item_data)
-signal removed_from_inventory(item_data, quantity)
-
-
 func _ready():
 	SignalBus.is_picking.connect(add_item)
 
@@ -19,7 +14,7 @@ func add_item(item_data: ItemData):
 			inventory_items[item_data_name].quantity += item_data.quantity
 	else:
 		inventory_items[item_data_name] = item_data.duplicate() # Дубль (Чтобы изменения не трогали исходный файл предмета)
-	added_to_inventory.emit(item_data)
+	SignalBus.added_to_inventory.emit(item_data)
 	_refresh_inventory()
 
 
@@ -32,10 +27,10 @@ func remove_item(item_data: ItemData, quantity: int) -> void:
 		inventory_items.erase(item_data.name)
 	else:
 		inventory_item.quantity -= quantity
-	removed_from_inventory.emit(item_data, quantity)
+	SignalBus.removed_from_inventory.emit(item_data, quantity)
 	_refresh_inventory()
 
 
 func _refresh_inventory():
-	update_inventory.emit(inventory_items)
+	SignalBus.update_inventory.emit(inventory_items)
 	print("Инвентарь обновлен: ", inventory_items.keys())

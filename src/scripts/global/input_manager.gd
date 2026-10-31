@@ -1,9 +1,5 @@
 extends Node
 
-signal pause_requested
-signal interaction_pressed
-signal skip_pressed
-
 var is_in_choice_menu: bool = false
 
 
@@ -18,20 +14,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Пауза работает во всех Game State
 	if event.is_action_pressed("pause"):
 		if event.is_action_pressed("pause"):
-			pause_requested.emit()
+			SignalBus.pause_requested.emit()
 			return
 
 	# Разделение Interact и Skip на разные Game State
-	var state = GameManager.current_game_state
+	var state: GameManager.GameState = GameManager.current_game_state
 	match state:
-			GameManager.GameState.DEFAULT:
-				if event.is_action_pressed("interact"):
-					interaction_pressed.emit()
-					
-			GameManager.GameState.DIALOGUE:
-				if event.is_action_pressed("skip") and is_in_choice_menu == false:
-					print('Жоска нажал потому что можна')
-					skip_pressed.emit()
+		GameManager.GameState.DEFAULT:
+			if event.is_action_pressed("interact"):
+				SignalBus.interaction_pressed.emit()
+
+		GameManager.GameState.DIALOGUE:
+			if event.is_action_pressed("skip") and is_in_choice_menu == false:
+				print('Жоска нажал потому что можна')
+				SignalBus.skip_pressed.emit()
 
 
 func set_input_enabled(enabled: bool):
@@ -41,6 +37,5 @@ func set_input_enabled(enabled: bool):
 func get_action_button_name(action_name: String) -> String:
 	var events: Array[InputEvent] = InputMap.action_get_events(action_name)
 	if events.size() > 0:
-		# as_text() вернет понятное название клавиши
 		return events[0].as_text().replace(" (Physical)", "") 
 	return "None"

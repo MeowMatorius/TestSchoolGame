@@ -30,7 +30,7 @@ func _ready() -> void:
 	current_game_state = GameState.DEFAULT
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	InputManager.pause_requested.connect(_on_pause_requested)
+	SignalBus.pause_requested.connect(_on_pause_requested)
 
 
 func _on_pause_requested() -> void:

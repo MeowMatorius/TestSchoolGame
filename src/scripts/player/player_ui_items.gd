@@ -4,7 +4,7 @@ var ui_item_slots: Array[Node] = []
 
 
 func _ready() -> void:
-	InventoryManager.update_inventory.connect(_on_inventory_updated)
+	SignalBus.update_inventory.connect(_on_inventory_updated)
 	ui_item_slots = self.get_children()
 	clear_inventory()
 
