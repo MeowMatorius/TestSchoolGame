@@ -17,13 +17,17 @@
 [ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://src/scripts/interface/settings/settings_menu.gd" id="9_c35mf"]
 [ext_resource type="Script" uid="uid://dy63qstgclb1l" path="res://src/scripts/interface/settings/fov_slider.gd" id="10_qmjc7"]
 [ext_resource type="Script" uid="uid://ds506bf8odr0k" path="res://src/scripts/player/player_ui_reticle.gd" id="14_kb6p2"]
-[ext_resource type="Texture2D" uid="uid://cpxtlr8qmqwao" path="res://src/assets/icons/pivo.png" id="15_s7qer"]
 [ext_resource type="Texture2D" uid="uid://bcawc20pqffrx" path="res://src/assets/icons/new/speech_bubble_normal.png" id="18_ybrxc"]
 [ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://src/scripts/player/player_ui_tooltip.gd" id="19_c35mf"]
 [ext_resource type="Script" uid="uid://na42o1gngcun" path="res://src/scripts/interface/item_use_menu_close.gd" id="19_fkrvq"]
 [ext_resource type="Script" uid="uid://dpjvef24mylqn" path="res://src/scripts/interface/item_use_menu.gd" id="19_ybrxc"]
 [ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://src/scripts/player/player_ui_quest.gd" id="21_x7c3f"]
+[ext_resource type="Texture2D" uid="uid://bjojttptbr1s" path="res://src/assets/icons/ui/backpack.svg" id="22_b6jla"]
+[ext_resource type="Texture2D" uid="uid://cop77gkx5dql8" path="res://src/assets/icons/ui/hand.svg" id="23_vwic4"]
 [ext_resource type="Texture2D" uid="uid://cspicebvhlmb8" path="res://src/assets/icons/new/coin.png" id="23_ybrxc"]
+[ext_resource type="Texture2D" uid="uid://tbo8gdqxbomq" path="res://src/assets/icons/ui/book.svg" id="24_epw4f"]
+[ext_resource type="Texture2D" uid="uid://cb1eui4td0hxr" path="res://src/assets/icons/ui/speech.svg" id="24_vwic4"]
+[ext_resource type="Texture2D" uid="uid://laxrbakcf4nr" path="res://src/assets/icons/ui/lock.svg" id="24_wu81v"]
 
 [sub_resource type="Resource" id="Resource_qmjc7"]
 script = ExtResource("3_yllr7")
@@ -166,7 +170,6 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/Player_UI" unique_id=634695021]
 process_mode = 3
-visible = false
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -195,15 +198,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
+theme_override_constants/icon_separation = 8
+theme_override_constants/icon_max_width = 16
 theme_override_font_sizes/font_size = 18
 tab_alignment = 1
-current_tab = 0
-tab_0/title = "🧊 Главная"
-tab_1/title = "🔬 Настройки"
-tab_2/title = "📘 Задания"
-tab_3/title = "🧳 Инвентарь"
+current_tab = 2
+tab_0/title = "Главная"
+tab_1/title = "Настройки"
+tab_2/title = "Задания"
+tab_3/title = "Инвентарь"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -211,7 +217,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 0
-metadata/_tab_name = "🧊 Главная"
+metadata/_tab_name = "Главная"
 
 [node name="GameMenu" type="VBoxContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/MainTab" unique_id=276443301]
 layout_mode = 2
@@ -242,7 +248,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 1
-metadata/_tab_name = "🔬 Настройки"
+metadata/_tab_name = "Настройки"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/SettingsTab" unique_id=1130737466]
 layout_mode = 2
@@ -409,14 +415,13 @@ emoji_menu_enabled = false
 caret_blink = true
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 2
-metadata/_tab_name = "📘 Задания"
+metadata/_tab_name = "Задания"
 
 [node name="QuestContainer" type="VBoxContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/TasksTab" unique_id=1414968909]
 layout_mode = 2
@@ -431,7 +436,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 metadata/_tab_index = 3
-metadata/_tab_name = "🧳 Инвентарь"
+metadata/_tab_name = "Инвентарь"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/InventoryTab" unique_id=1869870045]
 layout_mode = 2
@@ -445,8 +450,8 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/h_separation = 25
-theme_override_constants/v_separation = 25
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
 script = ExtResource("5_4fv23")
 
 [node name="ItemSlot1" type="Panel" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1665634812]
@@ -454,7 +459,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -466,7 +470,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -503,7 +507,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -515,7 +518,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -552,7 +555,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -564,7 +566,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -601,7 +603,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -613,7 +614,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -650,7 +651,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -662,7 +662,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -699,7 +699,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -711,7 +710,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -748,7 +747,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -760,7 +758,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -797,7 +795,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -809,7 +806,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -846,7 +843,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -858,7 +854,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -895,7 +891,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -907,7 +902,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -944,7 +939,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -956,7 +950,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -993,7 +987,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1005,7 +998,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1042,7 +1035,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1054,7 +1046,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1091,7 +1083,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1103,7 +1094,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1140,7 +1131,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1152,7 +1142,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1189,7 +1179,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1201,7 +1190,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1238,7 +1227,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1250,7 +1238,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1287,7 +1275,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1299,7 +1286,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1336,7 +1323,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1348,7 +1334,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1385,7 +1371,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1397,7 +1382,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1434,7 +1419,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1446,7 +1430,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1483,7 +1467,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1495,7 +1478,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1532,7 +1515,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1544,7 +1526,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1581,7 +1563,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1593,7 +1574,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1630,7 +1611,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1642,7 +1622,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1679,7 +1659,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1691,7 +1670,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1728,7 +1707,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1740,7 +1718,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1777,7 +1755,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1789,7 +1766,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1826,7 +1803,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1838,7 +1814,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1875,7 +1851,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1887,7 +1862,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1924,7 +1899,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1936,7 +1910,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1973,7 +1947,6 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_default_cursor_shape = 2
 theme_override_styles/panel = ExtResource("6_hg6s5")
 script = ExtResource("5_g6k8r")
 
@@ -1985,7 +1958,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_s7qer")
+texture = ExtResource("23_ybrxc")
 expand_mode = 1
 stretch_mode = 5
 
@@ -2360,6 +2333,14 @@ layout_mode = 2
 script = ExtResource("14_kb6p2")
 base_radius = 2.0
 expand_size = 2.5
+switch_icon = ExtResource("23_vwic4")
+pickup_icon = ExtResource("22_b6jla")
+talk_icon = ExtResource("24_vwic4")
+read_icon = ExtResource("24_epw4f")
+lock_icon = ExtResource("24_wu81v")
+broken_icon = ExtResource("24_wu81v")
+press_icon_in_duration = 0.08
+press_icon_out_duration = 0.12
 
 [node name="InteractPrompt" type="Label" parent="UserInterface/Player_UI/DefaultContainer" unique_id=2006208957]
 visible = false

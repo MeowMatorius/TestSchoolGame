@@ -51,6 +51,7 @@ func _update_target(new_target):
 	target_object_mesh = target_object.find_children("*", "MeshInstance3D", true, false)[0]
 	
 	if target_object_mesh: target_object_interact.set_shader_effect(target_object_mesh, true)
+	SignalBus.is_targeting_object.emit(target_object_interact)
 
 
 func _clear_target():
@@ -60,3 +61,4 @@ func _clear_target():
 		target_object = null
 		text_prompt.text = ''
 		text_prompt.visible = false
+		SignalBus.is_not_targeting_object.emit()

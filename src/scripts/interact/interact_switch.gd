@@ -9,6 +9,8 @@ signal is_activated
 
 
 func _ready() -> void:
+	object_type = ObjectType.SWITCH
+	
 	SignalBus.is_using_item.connect(unlock)
 	
 	match switch_data.object_state:

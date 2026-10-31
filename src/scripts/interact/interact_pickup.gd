@@ -5,6 +5,10 @@ extends Interact
 signal object_removed
 
 
+func _ready() -> void:
+	object_type = ObjectType.PICKUP
+
+
 func interact(_target_object):
 	trigger_command()
 	

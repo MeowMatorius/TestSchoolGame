@@ -2,29 +2,29 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpxtlr8qmqwao"
-path="res://.godot/imported/pivo.png-c29cd3cfcc712ad7b3b3ffd6542beed1.ctex"
+uid="uid://bjojttptbr1s"
+path="res://.godot/imported/backpack.svg-864d77fa8bf105db0de3df0ca75c29a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/icons/pivo.png"
-dest_files=["res://.godot/imported/pivo.png-c29cd3cfcc712ad7b3b3ffd6542beed1.ctex"]
+source_file="res://src/assets/icons/ui/backpack.svg"
+dest_files=["res://.godot/imported/backpack.svg-864d77fa8bf105db0de3df0ca75c29a8.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/high_quality_mode=0
-compress/lossy_quality=0.5
+compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 mipmaps/preserve_alpha_test_coverage=false
 mipmaps/alpha_test_threshold=0.5
@@ -41,3 +41,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=4.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

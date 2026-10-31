@@ -2,6 +2,10 @@ extends Node
 
 @warning_ignore_start("unused_signal")
 
+# PlayerRaycast
+signal is_targeting_object(target_object_interact) # Используется скриптом player_reticle для отображения иконки по типу объекта
+signal is_not_targeting_object()
+
 # Interact
 signal is_picking(object_name: String) 		  # interact_pickup
 signal is_item_needed(switch_data: SwitchData)# interact_switch

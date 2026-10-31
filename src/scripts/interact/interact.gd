@@ -1,6 +1,9 @@
 class_name Interact
 extends Node
 
+enum ObjectType { NONE, PICKUP, SWITCH, TALK, READ }
+@export var object_type: ObjectType = ObjectType.NONE
+
 var highlighted: bool = false
 @export var commands: Array[CommandData]
 
