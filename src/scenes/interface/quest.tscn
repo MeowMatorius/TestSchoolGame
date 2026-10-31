@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ftg5q3krips" path="res://src/assets/icons/ui/white_check.png" id="1_k8d5w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_epw4f"]
+font_size = 14
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -11,6 +12,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 30.0
 grow_horizontal = 2
+theme_override_constants/separation = 0
 
 [node name="Quest" type="HBoxContainer" parent="." unique_id=357486952]
 custom_minimum_size = Vector2(0, 30)
@@ -44,3 +46,4 @@ theme_override_constants/margin_bottom = 10
 
 [node name="SubQuestContainer" type="VBoxContainer" parent="MarginContainer" unique_id=205832321]
 layout_mode = 2
+theme_override_constants/separation = 0
