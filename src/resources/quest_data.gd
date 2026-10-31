@@ -28,7 +28,7 @@ func get_id() -> String:
 	# Вернет имя файла без расширения (например, "kill_rats_01")
 	return resource_path.get_file().get_basename()
 
-func is_complete(iii) -> bool:
+func is_complete(_iii) -> bool:
 	print(self.id, self.completed)
 	if self.completed == false:
 		self.completed = subquest.all(func(subq): return subq.completed)

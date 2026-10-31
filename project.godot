@@ -35,6 +35,7 @@ SignalBus="*uid://e8f4r2f4li5s"
 
 [display]
 
+window/hdr/request_hdr_output=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=3
@@ -309,7 +310,9 @@ textures/streaming/enabled=true
 rendering_device/driver.windows="d3d12"
 lights_and_shadows/contact_shadow/enabled=true
 lights_and_shadows/multi_bounce_occlusion/enabled=true
+viewport/hdr_2d=true
 anti_aliasing/quality/screen_space_aa=2
+anti_aliasing/quality/use_taa=true
 
 [shader_globals]
 

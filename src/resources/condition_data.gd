@@ -24,7 +24,7 @@ func _init() -> void:
 		InventoryManager.update_inventory.connect(_add_item)
 
 
-func _add_item(inventory_items) -> void:
+func _add_item(_inventory_items) -> void:
 
 	if InventoryManager.inventory_items.has(item.name):
 		if InventoryManager.inventory_items[item.name].quantity >= item_quantity:

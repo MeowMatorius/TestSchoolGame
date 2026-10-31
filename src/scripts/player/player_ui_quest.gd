@@ -33,7 +33,7 @@ func show_ui(quest):
 			sub_node.get_node("Label").text = sub_quest.description
 			sub_quest.is_complete()
 	
-func _clear_ui(quest):
+func _clear_ui(_quest):
 	pass
 #	for i in range(quests_list.size()):
 #		if quests_list[i].has_meta("quest_id") and quests_list[i].get_meta("quest_id") == quest.id:
