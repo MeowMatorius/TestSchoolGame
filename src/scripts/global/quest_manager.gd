@@ -20,6 +20,7 @@ func track_quest(quest: QuestData):
 	if not active_quests.has(quest):
 		active_quests.append(quest)
 		SignalBus.started_quest.emit(quest)
+		quest.is_complete()
 		print("Квест добавлен в список")
 		print(active_quests)
 		# Подписываемся на каждое условие этого квеста

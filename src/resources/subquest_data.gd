@@ -10,6 +10,7 @@ extends Resource
 @export var name: String = "Квест 1"
 @export_multiline var description: = "Описание"
 @export var condition: Array[ConditionData] = []
+@export var auto_complete: bool = false
 
 @export var completed: bool = false:
 	set(value):
@@ -34,15 +35,21 @@ func get_id() -> String:
 
 
 func is_complete() -> bool:
-#	for cond in condition:
-#		if not cond.completed:
-#			return false
-#	return true
-	self.completed = condition.all(func(cond): return cond.completed)
-	if self.completed == true:
-		SignalBus.changed_subquest_status.emit(self)
-	return self.completed
 
+#	self.completed = condition.all(func(cond): return cond.completed)
+#	if self.completed == true:
+#		SignalBus.changed_subquest_status.emit(self)
+#	return self.completed
+
+	if completed:
+			return true
+	if condition.is_empty():
+		completed = auto_complete
+		return completed
+	completed = condition.all(func(c): return c.completed)
+	if completed:
+		SignalBus.changed_subquest_status.emit(self)
+	return completed
 
 func _init() -> void:
 	# Подключаем глобальный сигнал к функции внутри этого ресурса
