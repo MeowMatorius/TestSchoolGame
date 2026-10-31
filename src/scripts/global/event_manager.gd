@@ -2,8 +2,6 @@ extends Node
 
 @export var global_events: Array[EventData]
 
-signal triggered_event(event_id)
-
 var index: int
 var global: bool
 

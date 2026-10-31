@@ -7,8 +7,8 @@ extends Control
 @onready var choices: Array[Node] = choice_ui.get_children()
 
 func _ready() -> void:
-	DialogueManager.started_talking.connect(show_ui)
-	DialogueManager.start_choosing.connect(show_choices)
+	SignalBus.started_talking.connect(show_ui)
+	SignalBus.start_choosing.connect(show_choices)
 
 
 func show_ui(speaker, line):

@@ -16,13 +16,18 @@ signal is_stopped_reading() 				  # interact_read
 
 # Dialogue
 signal entered_choice_menu(a)
+signal started_talking
+signal start_choosing
+signal start_quest
 
 # Event
-signal event_triggered
+signal triggered_event(event_id)
 
 # Quest
 signal quest_completed(quest)
 signal changed_quest_status(quest)
+signal started_quest
+signal finished_quest
 
 # SubQuest
 signal changed_subquest_status(subquest)

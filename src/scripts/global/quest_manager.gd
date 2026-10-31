@@ -2,12 +2,9 @@ extends Node
 var active_quests: Array[QuestData] = []
 var active_subquests: Array[SubquestData] = []
 
-signal started_quest
-signal finished_quest
-
 
 func _ready() -> void:
-	DialogueManager.start_quest.connect(start_quest)
+	SignalBus.start_quest.connect(start_quest)
 
 
 func start_quest(quest):
@@ -19,7 +16,7 @@ func start_quest(quest):
 func track_quest(quest: QuestData):
 	if not active_quests.has(quest):
 		active_quests.append(quest)
-		started_quest.emit(quest)
+		SignalBus.started_quest.emit(quest)
 		print("Квест добавлен в список")
 		print(active_quests)
 		# Подписываемся на каждое условие этого квеста

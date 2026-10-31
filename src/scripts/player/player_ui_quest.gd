@@ -9,8 +9,8 @@ var sub_quest_scene: PackedScene = preload("uid://b4paruxiqtp6x")
 
 func _ready() -> void:
 	quest_list = []
-	QuestManager.started_quest.connect(show_ui)
-	QuestManager.finished_quest.connect(_clear_ui)
+	SignalBus.started_quest.connect(show_ui)
+	SignalBus.finished_quest.connect(_clear_ui)
 #	SignalBus.quest_completed.connect(mark_done)
 	SignalBus.changed_subquest_status.connect(mark_done)
 	SignalBus.changed_quest_status.connect(mark_done)

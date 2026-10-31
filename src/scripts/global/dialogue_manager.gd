@@ -14,13 +14,9 @@ extends Node
 var event_bool: bool = false
 var event_id: String
 
-signal started_talking
-signal start_choosing
-signal start_quest
 
-
-func _ready() -> void: 
-	EventManager.triggered_event.connect(check_line_type)
+func _ready() -> void:
+	SignalBus.triggered_event.connect(check_line_type)
 	SignalBus.is_talking.connect(enter_dialogue_state)
 
 
@@ -43,14 +39,14 @@ func check_line_type(id):
 
 func display_line(dialogue_data, npc_data):
 	_on_option_button_pressed(dialogue_data)
-	started_talking.emit(dialogue_data.character_name, dialogue_data.text)
+	SignalBus.started_talking.emit(dialogue_data.character_name, dialogue_data.text)
 #	track_quest(dialogue_data.quest)
 	if dialogue_data.choices.size() == 0:
 		await InputManager.skip_pressed
 	if dialogue_data.next_dialogue != null:
 		display_line(dialogue_data.next_dialogue, npc_data)
 	elif dialogue_data.choices.size() != 0:
-		start_choosing.emit(dialogue_data, npc_data)
+		SignalBus.start_choosing.emit(dialogue_data, npc_data)
 	else:
 		end_dialogue()
 
