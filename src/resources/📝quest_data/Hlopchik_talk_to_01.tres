@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://cdiparw0ayo0h"]
+
+[ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="1_lg7ja"]
+[ext_resource type="Script" uid="uid://v0d70xqdxsh1" path="res://src/resources/subquest_data.gd" id="2_qadjw"]
+[ext_resource type="Resource" uid="uid://dlgyvnkitmtij" path="res://src/resources/📝quest_data/Hlopchik_talk_to_01_1.tres" id="3_qadjw"]
+
+[resource]
+script = ExtResource("1_lg7ja")
+id = "Hlopchik_talk_to_01"
+name = "Hlopchik_talk_to_01"
+description = "Поговорить с Хлопчиком"
+subquest = Array[ExtResource("2_qadjw")]([ExtResource("3_qadjw")])
+metadata/_custom_type_script = "uid://cb7b0e6porrqt"

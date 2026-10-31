@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CommandData" format=3 uid="uid://bigrxyhkftrrv"]
+
+[ext_resource type="Resource" uid="uid://cdiparw0ayo0h" path="res://src/resources/📝quest_data/Hlopchik_talk_to_01.tres" id="1_m6cf2"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="2_abc70"]
+
+[resource]
+script = ExtResource("2_abc70")
+command_name = "start_quest_talk_to_hlopchik"
+command_type = 2
+quest = ExtResource("1_m6cf2")
+metadata/_custom_type_script = "uid://d38aadoyy462o"

@@ -1,3 +1,6 @@
+#TODO 1. Если нет condition квест и сабквест сразу считают себя выполненными
+#TODO UI обновляется по разному? Во вкладке "задания" отображается корректно, в самой игре обновляется с задержкой
+
 extends Node
 var active_quests: Array[QuestData] = []
 var active_subquests: Array[SubquestData] = []
