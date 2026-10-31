@@ -59,9 +59,9 @@ func track_quest(quest: QuestData):
 #			if quest.is_complete():
 #				_complete_quest(quest)
 #
-#func _complete_quest(quest: QuestData):
-#	print("Квест выполнен: ", quest.name)
-#	quest.completed = true
+func _complete_quest(quest: QuestData):
+	print("Квест выполнен: ", quest.name)
+	quest.completed = true
 
 
 

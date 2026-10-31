@@ -11,7 +11,9 @@ extends Resource
 		# Сеттер сработает при изменении значения
 		completed = value
 		emit_changed() # Полезно для ресурсов, чтобы уведомить систему
-		SignalBus.quest_completed.emit(self)
+		if self.completed == true:
+			SignalBus.changed_quest_status.emit(self)
+
 
 @export var failed: bool = false:
 	set(value):
@@ -30,8 +32,6 @@ func is_complete(iii) -> bool:
 	print(self.id, self.completed)
 	if self.completed == false:
 		self.completed = subquest.all(func(subq): return subq.completed)
-		if self.completed == true:
-			SignalBus.changed_quest_status.emit(self)
 	return self.completed
 		
 	

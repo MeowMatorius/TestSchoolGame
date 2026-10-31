@@ -13,7 +13,9 @@ static func create_command(type: CommandType, data: Resource = null) -> Command:
 		CommandType.NONE:
 			pass
 		CommandType.END_QUEST:
-			pass
+			if data.quest is QuestData:
+				return CommandQuestComplete.new(data.quest)
+			push_error("Фабрика: Для команды END_QUEST нужен QuestResource!")
 		CommandType.GIVE_ITEM:
 			pass
 	#		CommandType.END_QUEST:

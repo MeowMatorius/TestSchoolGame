@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_icr6a")
-command_name = "start_side_Hlopchik_buyBeer_01"
+command_name = "start_quest_give_book_01"
 command_type = 1
 quest = ExtResource("1_srkk1")
 metadata/_custom_type_script = "uid://d38aadoyy462o"
