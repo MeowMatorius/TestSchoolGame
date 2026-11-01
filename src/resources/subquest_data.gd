@@ -36,11 +36,6 @@ func get_id() -> String:
 
 func is_complete() -> bool:
 
-#	self.completed = condition.all(func(cond): return cond.completed)
-#	if self.completed == true:
-#		SignalBus.changed_subquest_status.emit(self)
-#	return self.completed
-
 	if completed:
 			return true
 	if condition.is_empty():
