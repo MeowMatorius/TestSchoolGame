@@ -31,13 +31,6 @@ func _add_item(_inventory_items) -> void:
 		else:
 			self.completed = false
 
-#			# Проверяем тип внутри ресурса предмета
-#			if item.type == "Money":
-#				# Изменение этой переменной автоматически триггерит сеттер 'set(value)' выше
-#				coins += item.value 
-#			else:
-#				print("Ресурс проигнорирован. Это не монета, а: ", item.item_name)
-
 
 func is_met() -> bool:
 	var item_condition: Array[bool]

@@ -32,7 +32,7 @@ func get_id() -> String:
 	return resource_path.get_file().get_basename()
 
 
-func is_complete() -> bool:
+func is_complete(_sender: Variant = null) -> bool:
 #	print(self.id, self.completed)
 #	if self.completed == false:
 #		self.completed = subquest.all(func(subq): return subq.completed) and condition.all(func(c): return c.completed)		

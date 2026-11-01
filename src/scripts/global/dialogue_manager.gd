@@ -66,7 +66,7 @@ func _on_option_button_pressed(dialogue_data) -> void:
 
 func _on_choice_selected(next_node_id, condition, dialogue_line_1, npc_data):
 	_on_option_button_pressed(dialogue_line_1)
-	get_item(condition)
+#	get_item(condition)
 #	track_quest(quest)
 	if next_node_id != null:
 		display_line(next_node_id, npc_data)
@@ -80,11 +80,11 @@ func _on_choice_selected(next_node_id, condition, dialogue_line_1, npc_data):
 #			QuestManager.track_quest(quest)
 
 
-func get_item(condition):
-	for i in condition:
-		if i.item_given != null:
-			InventoryManager.add_item(i.item_given)
-			InventoryManager.remove_item(i.item, i.item_quantity)
+#func get_item(condition):
+#	for i in condition:
+#		if i.item_given != null:
+#			InventoryManager.add_item(i.item_given)
+#			InventoryManager.remove_item(i.item, i.item_quantity)
 
 
 func end_dialogue():
