@@ -8,6 +8,8 @@ func _ready() -> void:
 
 
 func interact(_target_object):
+	trigger_command()
+	
 	SignalBus.is_talking.emit(npc_data)
 
 

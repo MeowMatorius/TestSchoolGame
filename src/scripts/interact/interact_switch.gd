@@ -18,6 +18,8 @@ func _ready() -> void:
 
 
 func interact(object):
+	trigger_command()
+	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
 		GameManager.current_game_state = GameManager.GameState.USING_ITEM
 		SignalBus.is_item_needed.emit(switch_data)
@@ -25,8 +27,6 @@ func interact(object):
 		activate(object)
 	else:
 		switch(object)
-
-	trigger_command()
 
 
 func unlock(used_switch_data: SwitchData):
