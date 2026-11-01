@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsb3o0wml375t"]
 
-[ext_resource type="ArrayMesh" uid="uid://bmtynxjxtiuwm" path="res://src/assets/models/meshes/radio.res" id="1_srljc"]
+[ext_resource type="ArrayMesh" uid="uid://bmtynxjxtiuwm" path="res://src/assets/meshes/furniture/radio.res" id="1_srljc"]
 [ext_resource type="AudioStream" uid="uid://brovktqpjxhbg" path="res://src/assets/music/lisrim.mp3" id="2_pxlfp"]
 [ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://src/scripts/interact/interact_switch.gd" id="3_7h80l"]
 [ext_resource type="Texture2D" uid="uid://byh3vx8iu6quy" path="res://src/assets/icons/new/music_note.png" id="3_pxlfp"]
