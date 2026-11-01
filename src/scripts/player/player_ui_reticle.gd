@@ -7,24 +7,24 @@ extends Control
 var current_radius: float = 3.0
 var tween: Tween
 
-@export_category('Иконки')
+@export_category('Interact Иконки')
 @export var icon_size: Vector2 = Vector2(24, 24)
 
-@export var switch_icon: Texture2D
 @export var pickup_icon: Texture2D
 @export var talk_icon: Texture2D
 @export var read_icon: Texture2D
 
-@export_category('Дополнительно')
+@export_category('Interact Switch Иконки')
+@export var switch_icon: Texture2D
 @export var lock_icon: Texture2D
 @export var broken_icon: Texture2D
 
-@export_category('Анимация иконок')
+@export_category('Анимация Появления')
 @export var icon_pop_in_duration: float = 0.12
 @export var icon_pop_out_duration: float = 0.08
 @export var icon_pop_overshoot: float = 1.2
 
-@export_category('Анимация нажатия')
+@export_category('Анимация Нажатия')
 @export var press_icon_expand: float = 0.2
 @export var press_icon_in_duration: float = 0.06
 @export var press_icon_out_duration: float = 0.18
@@ -78,10 +78,17 @@ func _on_targeting_object(target_object_interact) -> void:
 	match target_object_interact.object_type:
 		1: new_icon = pickup_icon
 		2:
-			if target_object_interact.switch_data.lock_state == target_object_interact.switch_data.LockState.LOCKED:
+			var current_lock_state = target_object_interact.switch_data.lock_state
+			var lock_state = target_object_interact.switch_data.LockState
+			
+			if current_lock_state == lock_state.LOCKED:
 				new_icon = lock_icon
-			elif target_object_interact.switch_data.lock_state == target_object_interact.switch_data.LockState.BROKEN:
+			elif current_lock_state == lock_state.BROKEN:
 				new_icon = broken_icon
+			elif !lock_icon:
+				new_icon = switch_icon
+			elif !broken_icon:
+				new_icon = switch_icon
 			else:
 				new_icon = switch_icon
 		3: new_icon = talk_icon

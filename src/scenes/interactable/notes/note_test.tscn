@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://boqqsj7qhvgr2"]
 
+[ext_resource type="Texture2D" uid="uid://1r2h4jtu7y42" path="res://src/assets/textures/book_text.png" id="1_js5q7"]
 [ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/notes/close_note_button.gd" id="1_nrv8q"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pohmr"]
 
@@ -29,7 +23,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureRect" type="Panel" parent="." unique_id=411824334]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=621661368]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -42,7 +36,8 @@ offset_right = 234.0
 offset_bottom = 196.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nrv8q")
+texture = ExtResource("1_js5q7")
+expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect" unique_id=2079355823]
 layout_mode = 1
@@ -51,18 +46,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -195.0
-offset_top = -166.0
-offset_right = 195.0
+offset_left = -243.0
+offset_top = -173.0
+offset_right = -21.0
 offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[s][color=gray]Test[/color][/s]
-
-Test [color=red]test[/color] test"
+text = "[b]Список
+[s][color=gray]Покупок[/color][/s]"
 horizontal_alignment = 1
 vertical_alignment = 1
+resize_font_to_fit = true
+maximum_font_size = 24
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect" unique_id=2095092222]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -173.0
+offset_right = 236.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 12
+theme_override_font_sizes/bold_italics_font_size = 12
+theme_override_font_sizes/italics_font_size = 12
+theme_override_font_sizes/mono_font_size = 12
+bbcode_enabled = true
+text = "1. 20 киндеров по скидке (Не пингви)
+2. Хачу соса-солы (Но нельзя)
+3. ляляляляля ИИ-ЧКИ
+4. Падпеска на все футбольные каналы на тв (Кожаный мяч смотрец)"
 
 [node name="CloseButton" type="Button" parent="." unique_id=313448128]
 layout_mode = 1

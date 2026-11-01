@@ -19,9 +19,6 @@ signal changed_subquest_status(subquest)
 # Condition
 signal changed_condition_status()
 
-# Event
-signal triggered_event(event_id)
-
 
 # Inventory
 signal update_inventory(inventory_items: Dictionary)
@@ -36,7 +33,7 @@ signal skip_pressed
 
 
 # PlayerRaycast
-signal is_targeting_object(target_object_interact) # Используется скриптом player_reticle для отображения иконки по типу объекта
+signal is_targeting_object(target_object_interact)
 signal is_not_targeting_object()
 
 

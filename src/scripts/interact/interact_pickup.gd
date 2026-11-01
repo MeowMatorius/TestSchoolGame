@@ -1,37 +1,54 @@
 extends Interact
 
+# Данные предмета
 @export var item_data: ItemData
 
 
 func _ready() -> void:
-	object_type = ObjectType.PICKUP
+	super._ready()  # Только так работает _ready из основного Interact вместе с этим
+	object_type = ObjectType.PICKUP # Тип объекта для иконки прицела
 
 
-func interact(_target_object):
-	trigger_command()
-	
-	if InventoryManager.inventory_items.has(item_data.name):
-		if item_data.unique and InventoryManager.inventory_items[item_data.name].quantity > 0: pass
-		else: pick_up_item()
-	else: pick_up_item()
+# Игрок нажал кнопку взаимодействия и смотрим на объект с помощью raycast
+func interact(_target_object) -> void:
+	if item_data == null:
+		push_warning("InteractPickup: item_data не назначен у %s" % get_parent().name)
+		return
 
+	# Уникальный предмет повторно не подбираем
+	if item_data.unique and _is_owned():
+		return
 
-func pick_up_item():
 	SignalBus.is_picking.emit(item_data)
-	
-	get_parent().collision_layer = 0
+	trigger_commands()
+
+	var body := get_parent()
+
+	# Метка для игнора объекта PlayerRaycast'ом перед удалением
+	body.set_meta("is_being_removed", true)
+
+	# Отключает слой коллизии даже если метка не сработала
+	if body is CollisionObject3D:
+		body.set_collision_layer_value(1, false)
+
+	# Удаление объекта
 	SignalBus.object_removed.emit()
-	get_parent().queue_free()
+	body.queue_free()
 
 
+# Текст который PlayerRaycast показывает пока игрок смотрит на объект
 func get_prompt() -> String:
-	if !item_data.unique:
-		return "Взять: " + item_data.name + " x" + str(item_data.quantity)
-	else:
-		if InventoryManager.inventory_items.has(item_data.name):
-			if item_data.unique and InventoryManager.inventory_items[item_data.name].quantity > 0:
-				return "Уже есть: " + item_data.name
-			else: 
-				return "Взять: " + item_data.name
-		else:
-			return "Взять: " + item_data.name
+	if item_data == null:
+		return ""
+
+	if item_data.unique:
+		# Для уникального предмета не показываем количество
+		return ("Уже есть: " if _is_owned() else " ") + item_data.name
+
+	return "%s x%d" % [item_data.name, item_data.quantity]
+
+
+# Проверка что предмет уже есть в инвентаре и его количество > 0
+func _is_owned() -> bool:
+	var item = InventoryManager.inventory_items.get(item_data.name)
+	return item != null and item.quantity > 0

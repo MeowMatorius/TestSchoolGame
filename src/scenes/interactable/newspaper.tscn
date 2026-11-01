@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bh4iah8j25mra" path="res://src/scripts/interact/interact_read.gd" id="1_a6upq"]
 [ext_resource type="PackedScene" uid="uid://doqrcqi7i4t2l" path="res://src/scenes/interactable/notes/note_test_2.tscn" id="2_a6upq"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="3_vrvx6"]
+[ext_resource type="Resource" uid="uid://b312iit6cungn" path="res://src/resources/⚙️command_data/start_quest_buy_beer_01.tres" id="4_abkgw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlhjj"]
 resource_name = "carpetDarker"
@@ -151,5 +153,6 @@ libraries/ = SubResource("AnimationLibrary_gt2ij")
 
 [node name="InteractComponent" type="Node3D" parent="." unique_id=1144016549]
 script = ExtResource("1_a6upq")
-prompt_text = "Газета"
+prompt_text = "Записка (Важно)"
 noteScene = ExtResource("2_a6upq")
+commands = Array[ExtResource("3_vrvx6")]([ExtResource("4_abkgw")])

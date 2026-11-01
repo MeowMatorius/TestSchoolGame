@@ -4,13 +4,13 @@ extends Interact
 
 
 func _ready() -> void:
+	super._ready()
 	object_type = ObjectType.TALK
 
 
 func interact(_target_object):
-	trigger_command()
-	
 	SignalBus.is_talking.emit(npc_data)
+	trigger_commands()
 
 
 func get_prompt() -> String:

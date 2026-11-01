@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://doqrcqi7i4t2l"]
 
 [ext_resource type="Texture2D" uid="uid://b7ayahhlqo127" path="res://src/assets/icons/new/beer_new.png" id="1_qpbne"]
+[ext_resource type="Texture2D" uid="uid://bksr13mvuftn5" path="res://src/assets/textures/page.png" id="2_4baap"]
 [ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/notes/close_note_button.gd" id="4_norx0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
@@ -27,16 +28,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = -434.0
+offset_top = -243.0
+offset_right = 447.77777
+offset_bottom = 253.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="TextureRect" type="Panel" parent="." unique_id=411824334]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -94,6 +96,70 @@ layout_mode = 2
 texture = ExtResource("1_qpbne")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1792406467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1115975005]
+layout_mode = 2
+texture = ExtResource("2_4baap")
+expand_mode = 3
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect" unique_id=1553276433]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.202
+anchor_right = 0.46
+anchor_bottom = 0.37300003
+offset_left = 0.017997742
+offset_top = -0.19200134
+offset_right = 0.11999512
+offset_bottom = -0.008010864
+texture = ExtResource("1_qpbne")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/TextureRect" unique_id=302936670]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.21200001
+anchor_right = 0.88900006
+anchor_bottom = 0.37100002
+offset_left = -0.14801025
+offset_top = -0.15200806
+offset_right = -0.042022705
+offset_bottom = -0.01600647
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Пивандопало[/b]
+[color=red][b]АКЦИЯ[/b][/color]
+[s][color=gray]200₽[/color][/s] [color=red][b]100₽[/b][/color]"
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/TextureRect" unique_id=546470807]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.21200001
+anchor_right = 0.88900006
+anchor_bottom = 0.37100002
+offset_left = -105.14801
+offset_top = 133.84799
+offset_right = -7.0420227
+offset_bottom = 281.984
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[s][color=gray]Горк напиши очень глубокий и трогательный текст о пользе пива в стиле дарк фентези. Пиши без ошибок
+[/color][/s]"
 
 [node name="CloseButton" type="Button" parent="." unique_id=1369511274]
 layout_mode = 1

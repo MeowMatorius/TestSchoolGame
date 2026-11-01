@@ -25,7 +25,7 @@ buses/default_bus_layout="uid://cqq4qhl0el65u"
 
 PhantomCameraManager="*uid://duq6jhf6unyis"
 GameManager="*uid://b0x54nfyuh0d0"
-EventManager="*uid://5mw738vwqvba"
+EventManager="*uid://bnajtw5d4xyjq"
 DialogueManager="*uid://b18s8s6bvy714"
 InventoryManager="*uid://1gt7sdxlctdg"
 QuestManager="*uid://uun05o6kne3o"

@@ -6,6 +6,7 @@ extends Interact
 
 
 func _ready() -> void:
+	super._ready()
 	object_type = ObjectType.SWITCH
 	
 	SignalBus.is_using_item.connect(unlock)
@@ -18,7 +19,7 @@ func _ready() -> void:
 
 
 func interact(object):
-	trigger_command()
+	trigger_commands()
 	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
 		GameManager.current_game_state = GameManager.GameState.USING_ITEM
@@ -87,6 +88,6 @@ func get_prompt() -> String:
 		#return "Требуется: " + switch_data.item_needed_to_open.name if not has_item else "Открыть с помощью: " + switch_data.item_needed_to_open.name
 		return "Закрыто"
 	
-	if switch_data.lock_state == switch_data.LockState.BROKEN: return "Замок сломан"
+	if switch_data.lock_state == switch_data.LockState.BROKEN: return "Сломано"
 	
 	return switch_data.activate_prompt_message if switch_data.object_state == switch_data.ObjectState.OFF else switch_data.deactivate_prompt_message

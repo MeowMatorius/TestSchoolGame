@@ -5,18 +5,18 @@ extends Interact
 
 
 func _ready():
+	super._ready()
 	object_type = ObjectType.READ
 
 func interact(_target_object):
-	trigger_command()
-	
 	GameManager.current_game_state = GameManager.GameState.READING
 	load_note()
 
+	trigger_commands()
+
 
 func get_prompt() -> String:
-	return 'Прочесть: ' + prompt_text
-	#return 'Прочесть: ' + prompt_text
+	return ' ' + prompt_text
 
 
 func load_note() -> void:

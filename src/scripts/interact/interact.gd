@@ -8,15 +8,15 @@ var highlighted: bool = false
 @export var commands: Array[CommandData]
 
 
-func trigger_command():
-	for i in commands:
-		# Фабрика создает команду, используя тип из ресурса и прикрепленный квест
-		var command := CommandFactory.create_command(i.command_type,i)
-		if command: command.execute(get_tree())
-
-
 func _ready() -> void:
 	highlighted = false
+
+
+func trigger_commands():
+	for i in commands:
+		# Фабрика создает команду используя тип из ресурса и прикрепленного квеста
+		var command := CommandFactory.create_command(i.command_type,i)
+		if command: command.execute(get_tree())
 
 
 func set_shader_effect(mesh: MeshInstance3D, enabled: bool) -> void:

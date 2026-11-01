@@ -113,63 +113,79 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3864194, -0.049999952, -9.
 [node name="desk2" parent="Enviroment/Static" unique_id=442659103 instance=ExtResource("6_rvhfm")]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 1.0806615, -0.049999952, -9.425266)
 
-[node name="Interactables" type="Node" parent="." unique_id=1783892644]
+[node name="Interactable" type="Node" parent="." unique_id=1783892644]
 
-[node name="Radio" parent="Interactables" unique_id=1068241980 instance=ExtResource("7_wwywm")]
+[node name="Radio" parent="Interactable" unique_id=1068241980 instance=ExtResource("7_wwywm")]
 transform = Transform3D(0.44031727, 0, 0.2368981, 0, 0.5, 0, -0.2368981, 0, 0.44031727, -1.0613761, 1.353223, -9.67281)
 
-[node name="MeshInstance3D" parent="Interactables/Radio" index="0" unique_id=173539119]
+[node name="MeshInstance3D" parent="Interactable/Radio" index="0" unique_id=173539119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47022486, -0.5, 0.21758842)
 
-[node name="AudioStreamPlayer3D" parent="Interactables/Radio" index="2" unique_id=400099460]
+[node name="AudioStreamPlayer3D" parent="Interactable/Radio" index="2" unique_id=400099460]
 stream = ExtResource("8_wy25e")
 
-[node name="GPUParticles3D" parent="Interactables/Radio" index="3" unique_id=871601774]
+[node name="GPUParticles3D" parent="Interactable/Radio" index="3" unique_id=871601774]
 material_override = SubResource("StandardMaterial3D_pxlfp")
 
-[node name="InteractComponent" parent="Interactables/Radio" index="5" unique_id=1529388057]
+[node name="InteractComponent" parent="Interactable/Radio" index="5" unique_id=1529388057]
 switch_data = SubResource("Resource_i8p06")
 
-[node name="lampRoundFloor" parent="Interactables" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
+[node name="lampRoundFloor" parent="Interactable" unique_id=1717546705 instance=ExtResource("11_nq0i5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8961786, 0.01890564, -9.786154)
 
-[node name="Note" parent="Interactables" unique_id=1556637199 instance=ExtResource("12_tkjv7")]
+[node name="Book" parent="Interactable" unique_id=1556637199 instance=ExtResource("12_tkjv7")]
 transform = Transform3D(0.92650896, 0, -0.37627277, 0, 1, 0, 0.37627277, 0, 0.92650896, 0.17316654, 1.1032228, -9.644804)
 
-[node name="Newspaper" parent="Interactables" unique_id=475974563 instance=ExtResource("10_pohmr")]
+[node name="Note" parent="Interactable" unique_id=475974563 instance=ExtResource("10_pohmr")]
 transform = Transform3D(0.9979705, 0, 0.06367406, 0, 1, 0, -0.06367406, 0, 0.9979705, 0.23980787, 1.1032228, -10.081043)
 
-[node name="KeyRed" parent="Interactables" unique_id=243040129 instance=ExtResource("13_v2cc4")]
-transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 1.4016464, 1.2032229, -9.689892)
+[node name="Doors" type="Node" parent="Interactable" unique_id=554042363]
 
-[node name="KeyWhite" parent="Interactables" unique_id=2094718940 instance=ExtResource("18_xa12n")]
-transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.967088, 1.2032229, -9.646474)
+[node name="Door" parent="Interactable/Doors" unique_id=1458739684 instance=ExtResource("19_pohmr")]
 
-[node name="Money" parent="Interactables" unique_id=966525831 instance=ExtResource("14_pwwyv")]
-transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 1.7842615, 1.2032229, -10.136009)
-
-[node name="Money2" parent="Interactables" unique_id=797124229 instance=ExtResource("14_pwwyv")]
-transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.8474386, 1.2032229, -10.225143)
-
-[node name="Money3" parent="Interactables" unique_id=116772522 instance=ExtResource("14_pwwyv")]
-transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.380561, 1.2032229, -9.920092)
-
-[node name="Door" parent="Interactables" unique_id=1458739684 instance=ExtResource("19_pohmr")]
-
-[node name="DoorBroken" parent="Interactables" unique_id=1781524158 instance=ExtResource("13_idok3")]
+[node name="DoorBroken" parent="Interactable/Doors" unique_id=1781524158 instance=ExtResource("13_idok3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
-[node name="DoorLockedRed" parent="Interactables" unique_id=742594431 instance=ExtResource("15_rm1d6")]
+[node name="DoorLockedRed" parent="Interactable/Doors" unique_id=742594431 instance=ExtResource("15_rm1d6")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.1459227, 0, -9.177526)
 
-[node name="DoorLockedRed2" parent="Interactables" unique_id=220669067 instance=ExtResource("15_rm1d6")]
+[node name="DoorLockedRed2" parent="Interactable/Doors" unique_id=220669067 instance=ExtResource("15_rm1d6")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.1459227, 0, -7.300474)
 
-[node name="DoorLocedWhite" parent="Interactables" unique_id=1539340013 instance=ExtResource("19_i8p06")]
+[node name="DoorLocedWhite" parent="Interactable/Doors" unique_id=1539340013 instance=ExtResource("19_i8p06")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.115788, 0, -3)
 
-[node name="DoorLocedWhite2" parent="Interactables" unique_id=2432207 instance=ExtResource("19_i8p06")]
+[node name="DoorLocedWhite2" parent="Interactable/Doors" unique_id=2432207 instance=ExtResource("19_i8p06")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.115788, 0, -5)
+
+[node name="Collectable" type="Node" parent="Interactable" unique_id=865561652]
+
+[node name="KeyRed" parent="Interactable/Collectable" unique_id=243040129 instance=ExtResource("13_v2cc4")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 1.4016464, 1.2032229, -9.689892)
+
+[node name="KeyWhite" parent="Interactable/Collectable" unique_id=2094718940 instance=ExtResource("18_xa12n")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.967088, 1.2032229, -9.646474)
+
+[node name="Money" parent="Interactable/Collectable" unique_id=966525831 instance=ExtResource("14_pwwyv")]
+transform = Transform3D(0.04492739, 0, 0.19488852, 0, 0.2, 0, -0.19488852, 0, 0.04492739, 1.833643, 1.2032229, -9.961276)
+
+[node name="Money2" parent="Interactable/Collectable" unique_id=797124229 instance=ExtResource("14_pwwyv")]
+transform = Transform3D(0.04492739, 0, 0.19488852, 0, 0.2, 0, -0.19488852, 0, 0.04492739, 2.280672, 1.2032229, -10.229477)
+
+[node name="Money3" parent="Interactable/Collectable" unique_id=116772522 instance=ExtResource("14_pwwyv")]
+transform = Transform3D(0.04492739, 0, 0.19488852, 0, 0.2, 0, -0.19488852, 0, 0.04492739, 2.2327273, 1.2032229, -9.875933)
+
+[node name="Money4" parent="Interactable/Collectable" unique_id=1181732061 instance=ExtResource("14_pwwyv")]
+transform = Transform3D(-0.071347855, 0, 0.18684082, 0, 0.19999999, 0, -0.18684082, 0, -0.071347855, 1.8639566, 1.2032229, -10.371757)
+
+[node name="Money5" parent="Interactable/Collectable" unique_id=1108403993 instance=ExtResource("14_pwwyv")]
+transform = Transform3D(0.09875309, 0, 0.17391905, 0, 0.19999999, 0, -0.17391905, 0, 0.09875309, 2.9396014, 1.2032229, -10.365443)
+
+[node name="Money6" parent="Interactable/Collectable" unique_id=1490512035 instance=ExtResource("14_pwwyv")]
+transform = Transform3D(0.09875309, 0, 0.17391905, 0, 0.19999999, 0, -0.17391905, 0, 0.09875309, 2.6774976, 1.2032229, -10.08395)
+
+[node name="KeyWhite2" parent="Interactable/Collectable" unique_id=830455263 instance=ExtResource("18_xa12n")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 2.6145334, 1.203223, -9.551014)
 
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("16_fsgqr")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1, -0.47926712, -6)
@@ -180,4 +196,4 @@ transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49
 [node name="Hlopchik" parent="." unique_id=1769752881 instance=ExtResource("18_oh1fv")]
 transform = Transform3D(0.9998477, 0.00030458646, 0.017449748, 0, 0.9998477, -0.017452406, -0.017452406, 0.017449748, 0.9996954, -3.0617101, 0.9857122, -8.295948)
 
-[editable path="Interactables/Radio"]
+[editable path="Interactable/Radio"]

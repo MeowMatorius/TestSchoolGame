@@ -86,6 +86,7 @@ CEILING_CHECK = NodePath("CrouchCeilingDetection")
 FLASHLIGHT = NodePath("Head/PhantomCamera3D/SpotLight3D")
 mouse_sensitivity = 8.0
 backward_speed_mult = 0.8
+crouch_height = 2.0
 bob_freq = 1.5
 bob_amp_h = 0.04
 bob_amp_v = 0.04
@@ -170,7 +171,6 @@ mouse_behavior_recursive = 1
 
 [node name="PauseMenuContainer" type="Control" parent="UserInterface/Player_UI" unique_id=634695021]
 process_mode = 3
-visible = false
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -196,6 +196,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0517578e-05
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 2
@@ -203,14 +204,13 @@ theme_override_constants/icon_separation = 8
 theme_override_constants/icon_max_width = 16
 theme_override_font_sizes/font_size = 18
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tab_0/title = "Главная"
 tab_1/title = "Настройки"
 tab_2/title = "Задания"
 tab_3/title = "Инвентарь"
 
 [node name="MainTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1070878027]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 100
@@ -416,6 +416,7 @@ emoji_menu_enabled = false
 caret_blink = true
 
 [node name="TasksTab" type="MarginContainer" parent="UserInterface/Player_UI/PauseMenuContainer/TabBar" unique_id=1924078013]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 20
@@ -2346,10 +2347,10 @@ layout_mode = 2
 script = ExtResource("14_kb6p2")
 base_radius = 2.0
 expand_size = 2.5
-switch_icon = ExtResource("23_vwic4")
 pickup_icon = ExtResource("22_b6jla")
 talk_icon = ExtResource("24_vwic4")
 read_icon = ExtResource("24_epw4f")
+switch_icon = ExtResource("23_vwic4")
 lock_icon = ExtResource("24_wu81v")
 broken_icon = ExtResource("26_epw4f")
 icon_pop_in_duration = 0.3
