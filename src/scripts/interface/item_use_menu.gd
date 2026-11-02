@@ -1,9 +1,7 @@
 extends Control
 
 @export var close_item_menu_button: Button
-var item_scene: PackedScene = preload('uid://cwwxusyuudl6k')
-var item_icon: Texture2D = preload('uid://d1qxknlfg57ty')
-var item_name: String = 'item_name'
+@export var item_scene: PackedScene = preload('uid://cwwxusyuudl6k')
 
 var inventory_items: Dictionary[String, ItemData] = InventoryManager.inventory_items
 var use_item_slots: Array[Node] = []
@@ -30,7 +28,8 @@ func instantiate_items(switch_data: SwitchData) -> void:
 
 	if matching_items.is_empty():
 		GameManager.current_game_state = GameManager.GameState.DEFAULT
-
+		return
+	
 	fill_slots(switch_data, matching_items)
 
 

@@ -8,6 +8,7 @@ func _ready():
 	super._ready()
 	object_type = ObjectType.READ
 
+
 func interact(_target_object):
 	GameManager.current_game_state = GameManager.GameState.READING
 	load_note()
