@@ -131,6 +131,10 @@ const ACTION_CROUCH: String = "crouch"
 const ACTION_FLASHLIGHT: String = "flashlight"
 #endregion
 
+@export_group("Gamepad Settings")
+@export var gamepad_sensitivity: float = 2.0
+@export var gamepad_deadzone: float = 0.15
+
 #region State Variables
 var _camera_has_fov: bool = false
 var _base_fov: float = 75.0
@@ -139,6 +143,7 @@ var noise_time: float = 0.0
 var was_on_floor: bool = true
 var last_velocity_y: float = 0.0
 var mouse_input_x: float = 0.0
+var _gamepad_look: Vector2 = Vector2.ZERO
 var jump_tilt: float = 0.0
 var target_jump_tilt: float = 0.0
 var landing_offset: float = 0.0
@@ -194,8 +199,11 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Обработка движения мыши для поворота головы и камеры
-	if event is InputEventMouseMotion and not immobile:
+	if immobile:
+		return
+
+	# Поворот Мыши
+	if event is InputEventMouseMotion:
 		mouse_input_x = event.relative.x
 		if is_instance_valid(HEAD):
 			HEAD.rotate_y(deg_to_rad(-event.relative.x * (mouse_sensitivity / 100)))
@@ -203,11 +211,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		mouse_rotation_x -= event.relative.y * (mouse_sensitivity / 100)
 		mouse_rotation_x = clamp(mouse_rotation_x, -limit, limit)
 
-	# Переключение режима приседания при нажатии клавиши
+	# Правый стик геймпада
+	elif event is InputEventJoypadMotion:
+		if event.axis == JOY_AXIS_RIGHT_X:
+			_gamepad_look.x = event.axis_value if abs(event.axis_value) > gamepad_deadzone else 0.0
+		elif event.axis == JOY_AXIS_RIGHT_Y:
+			_gamepad_look.y = event.axis_value if abs(event.axis_value) > gamepad_deadzone else 0.0
+
+	# Присяд
 	if enable_crouching and toggle_crouch and event.is_action_pressed(ACTION_CROUCH):
 		crouch_toggled = not crouch_toggled
 
-	# Включение/выключение фонаря при нажатии клавиши
+	# Фонарик
 	if event.is_action_pressed(ACTION_FLASHLIGHT) and is_instance_valid(FLASHLIGHT):
 		FLASHLIGHT.visible = not FLASHLIGHT.visible
 
@@ -255,15 +270,34 @@ func _physics_process(delta: float) -> void:
 
 # боббинг, tilt, FOV + синхронизация камеры
 func _process(delta: float) -> void:
-	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target):
+	# Поворот камеры геймпадом
+	if not immobile:
+		apply_gamepad_look(delta)
+	else:
+		_gamepad_look = Vector2.ZERO
+
+	# 2. Camera sync + all visual effects must run every frame, unconditionally
+	if not is_instance_valid(HEAD) or not is_instance_valid(camera_target) or not is_instance_valid(CAMERA):
 		return
 
 	update_visual_effects(delta, _cached_input_dir, _cached_is_sprinting, is_crouching)
 
-	# Ручная синхронизация камеры с целью
-	if is_instance_valid(CAMERA):
-		CAMERA.global_position = camera_target.global_position
-		CAMERA.global_rotation = camera_target.global_rotation
+	CAMERA.global_position = camera_target.global_position
+	CAMERA.global_rotation = camera_target.global_rotation
+
+
+func apply_gamepad_look(delta: float) -> void:
+	if not is_instance_valid(HEAD):
+		return
+	var look := Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	if look == Vector2.ZERO:
+		return
+
+	var limit: float = crouch_look_limit_angle if (is_crouching and limit_crouch_look) else 89.0
+
+	HEAD.rotate_y(deg_to_rad(-look.x * gamepad_sensitivity * 100.0 * delta))
+	mouse_rotation_x -= look.y * gamepad_sensitivity * 100.0 * delta
+	mouse_rotation_x = clamp(mouse_rotation_x, -limit, limit)
 
 
 #region Physics sub-functions

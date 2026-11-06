@@ -8,23 +8,22 @@ var current_game_state: GameState = GameState.DEFAULT:
 		_on_game_state_changed()
 		print(current_game_state)
 
-var state_before_pause: GameState
-
+# Ссылки на игрока и его UI
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var player_ui: Control = get_tree().get_first_node_in_group("player_ui")
-@onready var player_ui_pause: Control = player_ui.get_node("PauseMenuContainer")
-@onready var player_ui_dialogue: Control = player_ui.get_node("DialoguesContainer")
-@onready var player_ui_default: Control = player_ui.get_node("DefaultContainer")
+@onready var player_ui_pause: Control = player_ui.get_node("PauseMode")
+@onready var player_ui_dialogue: Control = player_ui.get_node("DialoguesMode")
+@onready var player_ui_default: Control = player_ui.get_node("DefaultMode")
 
 
 func _ready() -> void:
 	current_game_state = GameState.DEFAULT
-	process_mode = Node.PROCESS_MODE_ALWAYS
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SignalBus.pause_requested.connect(_on_pause_requested)
 
 
 func _on_pause_requested() -> void:
+	var state_before_pause: GameState
+	
 	# Логика переключения состояния
 	if current_game_state == GameState.PAUSE:
 		current_game_state = state_before_pause

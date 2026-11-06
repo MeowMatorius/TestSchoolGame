@@ -8,18 +8,27 @@ var use_item_slots: Array[Node] = []
 
 
 func _ready() -> void:
-	SignalBus.is_item_needed.connect(instantiate_items)
-	SignalBus.is_using_item.connect(clear_slots)
+	SignalUtilities.connect_all(_signal_pairs())
 
 
-func instantiate_items(switch_data: SwitchData) -> void:
+func _exit_tree() -> void:
+	SignalUtilities.disconnect_all(_signal_pairs())
+
+
+func _signal_pairs() -> Array:
+	return [
+		[SignalBus.is_item_needed, _instantiate_items],
+		[SignalBus.is_using_item, _close],
+		[close_item_menu_button.pressed, _close],
+		[SignalBus.cancel_pressed, _close],
+	]
+
+
+func _instantiate_items(switch_data: SwitchData) -> void:
 	GameManager.current_game_state = GameManager.GameState.USING_ITEM
 
-	for child in get_children():
-		if child in use_item_slots or child.has_method("display"):
-			child.queue_free()
-	clear_slots()
-	
+	_clear_slots()
+
 	# Фильтр на подходящие предметы
 	var matching_items: Array[ItemData] = []
 	for item: ItemData in inventory_items.values():
@@ -27,16 +36,16 @@ func instantiate_items(switch_data: SwitchData) -> void:
 			matching_items.append(item)
 
 	if matching_items.is_empty():
+		visible = false
 		GameManager.current_game_state = GameManager.GameState.DEFAULT
 		return
-	
+
+	visible = true
 	fill_slots(switch_data, matching_items)
 
 
-# Создание слотов
 func fill_slots(switch_data: SwitchData, matching_items: Array[ItemData]) -> void:
-	if close_item_menu_button.visible: return
-	else: close_item_menu_button.visible = true
+	close_item_menu_button.visible = true
 	
 	for item: ItemData in matching_items:
 		var slot: Node = item_scene.instantiate()
@@ -45,11 +54,19 @@ func fill_slots(switch_data: SwitchData, matching_items: Array[ItemData]) -> voi
 		slot.display(item, switch_data)
 
 
-# Чистка слотов
-func clear_slots(_data = null) -> void:
-	if !close_item_menu_button.visible: return
-	else: close_item_menu_button.hide_button()
+func _close(_data = null) -> void:
+	if not visible: return
 	
+	visible = false
+	_clear_slots()
+	
+	if GameManager.current_game_state == GameManager.GameState.USING_ITEM:
+		GameManager.current_game_state = GameManager.GameState.DEFAULT
+
+
+func _clear_slots() -> void:
+	close_item_menu_button.visible = false
+
 	for slot: Node in use_item_slots:
 		if is_instance_valid(slot):
 			slot.queue_free()

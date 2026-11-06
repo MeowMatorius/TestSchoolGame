@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b7ayahhlqo127" path="res://src/assets/icons/new/beer_new.png" id="1_qpbne"]
 [ext_resource type="Texture2D" uid="uid://bksr13mvuftn5" path="res://src/assets/textures/page.png" id="2_4baap"]
-[ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/notes/close_note_button.gd" id="4_norx0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
 bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
@@ -174,6 +173,3 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_fkse0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_norx0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w3v0c")
 icon_alignment = 2
-script = ExtResource("4_norx0")
-
-[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
