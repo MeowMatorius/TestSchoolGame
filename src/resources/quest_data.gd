@@ -7,6 +7,7 @@ var id: String = get_id()
 @export var subquest: Array[SubquestData] = []
 @export var condition: Array[ConditionData] = []
 @export var auto_complete: bool = false
+@export var commands: Array[CommandData] = []
 
 @export var completed: bool = false:
 	set(value):
@@ -22,14 +23,13 @@ var id: String = get_id()
 	set(value):
 		# Сеттер сработает при изменении значения
 		failed = value
-		print("failed изменено на: ", failed)
+#		print("failed изменено на: ", failed)
 		emit_changed() # Полезно для ресурсов, чтобы уведомить систему
 		SignalBus.quest_completed.emit(self)
 
 
 func get_id() -> String:
-	# Вернет имя файла без расширения (например, "kill_rats_01")
-	return resource_path.get_file().get_basename()
+	return ResourceUID.id_to_text(ResourceLoader.get_resource_uid(resource_path))
 
 
 func is_complete(_sender: Variant = null) -> bool:

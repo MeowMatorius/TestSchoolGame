@@ -6,6 +6,7 @@ signal entered_choice_menu(a)
 signal started_talking
 signal start_choosing
 signal start_quest
+signal refresh_dialogue
 
 # Quest
 signal quest_completed(quest)

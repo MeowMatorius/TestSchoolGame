@@ -24,5 +24,17 @@ shape = SubResource("BoxShape3D_uyltb")
 script = ExtResource("2_gmw5h")
 npc_data = ExtResource("3_5yfcu")
 
+[node name="InteractComponent" type="Node3D" parent="InteractComponent" unique_id=89094793]
+script = ExtResource("2_gmw5h")
+npc_data = ExtResource("3_5yfcu")
+
+[node name="InteractComponent" type="Node3D" parent="InteractComponent/InteractComponent" unique_id=1767666044]
+script = ExtResource("2_gmw5h")
+npc_data = ExtResource("3_5yfcu")
+
+[node name="InteractComponent" type="Node3D" parent="InteractComponent/InteractComponent/InteractComponent" unique_id=680006091]
+script = ExtResource("2_gmw5h")
+npc_data = ExtResource("3_5yfcu")
+
 [node name="PlayerTeleportPoint" type="Node3D" parent="." unique_id=649458906]
 transform = Transform3D(1, 5.820766e-11, 0, 0, 1, 0, 0, 0, 1, -0.036, -1, 2.055)

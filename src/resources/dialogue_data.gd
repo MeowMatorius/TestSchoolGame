@@ -10,5 +10,5 @@ class_name DialogueData
 @export var next_dialogue: DialogueData # Ссылка на следующую фразу (линейный диалог)
 @export var choices: Array[DialogueData]
 @export var condition: Array[ConditionData]
-
+@export var npc: NpcData
 @export var commands: Array[CommandData]

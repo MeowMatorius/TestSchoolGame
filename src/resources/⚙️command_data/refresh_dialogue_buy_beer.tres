@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CommandData" format=3 uid="uid://cs3x033chwxwl"]
+
+[ext_resource type="Resource" uid="uid://fj4rqxvji8rm" path="res://src/resources/💬dialogue_data/Hlopchik/Hlopchik_buy_beer/Hlopchik_buy_beer_03.tres" id="1_4fhxx"]
+[ext_resource type="Resource" uid="uid://cdiparw0ayo0h" path="res://src/resources/📝quest_data/Hlopchik_talk_to_01.tres" id="2_jp3cr"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="3_n0ahu"]
+
+[resource]
+script = ExtResource("3_n0ahu")
+command_name = "refresh_dialogue_buy_beer"
+command_type = 6
+quest = ExtResource("2_jp3cr")
+dialogue = ExtResource("1_4fhxx")
+metadata/_custom_type_script = "uid://d38aadoyy462o"
