@@ -6,34 +6,24 @@ var current_game_state: GameState = GameState.DEFAULT:
 	set(value):
 		current_game_state = value
 		_on_game_state_changed()
+		print(current_game_state)
 
-var state_before_pause: GameState
-
+# Ссылки на игрока и его UI
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var player_ui: Control = get_tree().get_first_node_in_group("player_ui")
-@onready var player_ui_pause: Control = player_ui.get_node("PauseMenuContainer")
-@onready var player_ui_dialogue: Control = player_ui.get_node("DialoguesContainer")
-@onready var player_ui_default: Control = player_ui.get_node("DefaultContainer")
-
-# Смена игровой камеры
-#@onready var player_camera: PhantomCamera3D = player.get_node("Head").get_node("PhantomCamera3D")
-#var current_game_camera: PhantomCamera3D = player_camera:
-#	set(camera):
-#		previous_game_camera = current_game_camera
-#		current_game_camera = camera
-#		_on_switch_camera_smooth(current_game_camera, camera, 1)
-#
-#var previous_game_camera: PhantomCamera3D
+@onready var player_ui_pause: Control = player_ui.get_node("PauseMode")
+@onready var player_ui_dialogue: Control = player_ui.get_node("DialoguesMode")
+@onready var player_ui_default: Control = player_ui.get_node("DefaultMode")
 
 
 func _ready() -> void:
 	current_game_state = GameState.DEFAULT
-	process_mode = Node.PROCESS_MODE_ALWAYS
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SignalBus.pause_requested.connect(_on_pause_requested)
 
 
 func _on_pause_requested() -> void:
+	var state_before_pause: GameState
+	
 	# Логика переключения состояния
 	if current_game_state == GameState.PAUSE:
 		current_game_state = state_before_pause
@@ -79,7 +69,7 @@ func _on_game_state_changed() -> void:
 				Input.MOUSE_MODE_VISIBLE, 
 				false, 
 				false, 
-				0.0,
+				1.0,
 				false,
 				false,
 				false,
@@ -120,13 +110,3 @@ func _update_game_state(
 	# Обездвижить игрока
 	if player:
 		player.immobile = (current_game_state != GameState.DEFAULT)
-
-
-#func _on_switch_camera_smooth(p_cam_1: PhantomCamera3D, p_cam_2: PhantomCamera3D, duration: float):
-#	if p_cam_1.priority > p_cam_2.priority:
-#		p_cam_1.priority = 0
-#		p_cam_2.priority = 10
-#	else:
-#		p_cam_1.priority = 10
-#		p_cam_2.priority = 0
-#

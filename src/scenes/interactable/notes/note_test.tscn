@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://boqqsj7qhvgr2"]
 
 [ext_resource type="Texture2D" uid="uid://1r2h4jtu7y42" path="res://src/assets/textures/book_text.png" id="1_js5q7"]
-[ext_resource type="Script" uid="uid://bt58cht06hmk2" path="res://src/scripts/interface/notes/close_note_button.gd" id="1_nrv8q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pohmr"]
 
@@ -103,6 +102,3 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_xa12n")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i8p06")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rvhfm")
 icon_alignment = 2
-script = ExtResource("1_nrv8q")
-
-[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]

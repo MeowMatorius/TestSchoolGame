@@ -31,7 +31,7 @@ signal removed_from_inventory(item_data, quantity)
 signal pause_requested
 signal interaction_pressed
 signal skip_pressed
-
+signal cancel_pressed
 
 # PlayerRaycast
 signal is_targeting_object(target_object_interact)
@@ -50,6 +50,7 @@ signal object_removed
 
 # interact_talk
 signal is_talking(internal_name: String)
+
 
 # interact_read
 signal is_reading()

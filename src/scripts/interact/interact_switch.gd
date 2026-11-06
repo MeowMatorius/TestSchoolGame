@@ -1,8 +1,6 @@
 extends Interact
 
 @export var switch_data: SwitchData
-@export var event_data: EventData
-@export var quest_data: QuestData
 
 
 func _ready() -> void:
@@ -22,7 +20,6 @@ func interact(object):
 	trigger_commands()
 	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
-		GameManager.current_game_state = GameManager.GameState.USING_ITEM
 		SignalBus.is_item_needed.emit(switch_data)
 	elif switch_data.one_time_use:
 		activate(object)
