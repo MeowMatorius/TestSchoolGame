@@ -22,8 +22,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_action_skip(event)
 		GameManager.GameState.READING:
 			get_action_cancel(event)
-		GameManager.GameState.DOSSIER:
-			get_action_cancel(event)
 		GameManager.GameState.USING_ITEM:
 			get_action_cancel(event)
 		GameManager.GameState.PAUSE:
