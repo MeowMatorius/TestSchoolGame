@@ -1,6 +1,7 @@
 extends Interact
 
 @export var switch_data: SwitchData
+@export var commands: Array[CommandData]
 
 
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 
 func interact(object):
-	trigger_commands()
+	trigger_enter_commands(commands)
 	
 	if switch_data.lock_state == switch_data.LockState.LOCKED:
 		SignalBus.is_item_needed.emit(switch_data)
@@ -44,10 +45,8 @@ func switch(object) -> void:
 	if switch_data.lock_state == switch_data.LockState.BROKEN:
 		return;
 	if switch_data.object_state == switch_data.ObjectState.OFF:
-		SignalBus.is_switching.emit()
 		switch_on(object)
 	else:
-		SignalBus.is_switching.emit()
 		switch_off(object)
 
 

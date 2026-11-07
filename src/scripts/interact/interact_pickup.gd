@@ -2,6 +2,10 @@ extends Interact
 
 # Данные предмета
 @export var item_data: ItemData
+## Команды если была попытка поднять предмет
+@export var enter_commands: Array[CommandData]
+## Команды если предмет был успешно подобран
+@export var exit_commands: Array[CommandData]
 
 
 func _ready() -> void:
@@ -20,7 +24,7 @@ func interact(_target_object) -> void:
 		return
 
 	SignalBus.is_picking.emit(item_data)
-	trigger_commands()
+	trigger_enter_commands(enter_commands)
 
 	var body := get_parent()
 
@@ -33,6 +37,7 @@ func interact(_target_object) -> void:
 
 	# Удаление объекта
 	SignalBus.object_removed.emit()
+	trigger_exit_commands(exit_commands)
 	body.queue_free()
 
 

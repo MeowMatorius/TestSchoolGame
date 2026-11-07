@@ -5,14 +5,20 @@ enum ObjectType { NONE, PICKUP, SWITCH, TALK, READ }
 var object_type: ObjectType = ObjectType.NONE
 
 var highlighted: bool = false
-@export var commands: Array[CommandData]
 
 
 func _ready() -> void:
 	highlighted = false
 
 
-func trigger_commands():
+func trigger_enter_commands(commands: Array[CommandData]):
+	for i in commands:
+		# Фабрика создает команду используя тип из ресурса и прикрепленного квеста
+		var command := CommandFactory.create_command(i.command_type,i)
+		if command: command.execute(get_tree())
+
+
+func trigger_exit_commands(commands: Array[CommandData]):
 	for i in commands:
 		# Фабрика создает команду используя тип из ресурса и прикрепленного квеста
 		var command := CommandFactory.create_command(i.command_type,i)

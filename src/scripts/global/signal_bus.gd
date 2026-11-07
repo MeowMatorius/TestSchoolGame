@@ -2,7 +2,7 @@ extends Node
 @warning_ignore_start("unused_signal")
 
 # Dialogue
-signal entered_choice_menu(a)
+signal entered_choice_menu(state: bool)
 signal started_talking
 signal start_choosing
 signal start_quest
@@ -27,7 +27,7 @@ signal removed_from_inventory(item_data, quantity)
 
 
 # InputManager
-signal pause_requested
+signal pause_pressed
 signal interaction_pressed
 signal skip_pressed
 signal cancel_pressed
@@ -49,10 +49,5 @@ signal object_removed
 
 # interact_talk
 signal is_talking(internal_name: String)
-
-
-# interact_read
-signal is_reading()
-signal is_stopped_reading()
 
 @warning_ignore_restore("unused_signal")

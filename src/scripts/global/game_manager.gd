@@ -2,33 +2,32 @@ extends Node
 
 # Смена состояния игры 
 enum GameState {DEFAULT, DIALOGUE, PAUSE, READING, USING_ITEM}
-var current_game_state: GameState = GameState.DEFAULT:
+var current_game_state:
 	set(value):
+		if current_game_state == value: return
 		current_game_state = value
 		_on_game_state_changed()
-		print(current_game_state)
+
+var previous_game_state
 
 # Ссылки на игрока и его UI
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var player_ui: Control = get_tree().get_first_node_in_group("player_ui")
-@onready var player_ui_pause: Control = player_ui.get_node("PauseMode")
-@onready var player_ui_dialogue: Control = player_ui.get_node("DialoguesMode")
-@onready var player_ui_default: Control = player_ui.get_node("DefaultMode")
+@onready var player_ui_pause: Control = player_ui.get_node("%PauseMode")
+@onready var player_ui_dialogue: Control = player_ui.get_node("%DialoguesMode")
+@onready var player_ui_default: Control = player_ui.get_node("%DefaultMode")
 
 
 func _ready() -> void:
 	current_game_state = GameState.DEFAULT
-	SignalBus.pause_requested.connect(_on_pause_requested)
+	SignalBus.pause_pressed.connect(_on_pause_pressed)
 
 
-func _on_pause_requested() -> void:
-	var state_before_pause: GameState
-	
-	# Логика переключения состояния
+func _on_pause_pressed() -> void:
 	if current_game_state == GameState.PAUSE:
-		current_game_state = state_before_pause
-	else:
-		state_before_pause = current_game_state
+		current_game_state = previous_game_state
+	elif previous_game_state != GameState.PAUSE:
+		previous_game_state = current_game_state
 		current_game_state = GameState.PAUSE
 
 
@@ -38,8 +37,6 @@ func _on_game_state_changed() -> void:
 			_update_game_state(
 				Input.MOUSE_MODE_CAPTURED, 
 				false, 
-				false, 
-				1.0,
 				false,
 				false,
 				true,
@@ -49,8 +46,6 @@ func _on_game_state_changed() -> void:
 					Input.MOUSE_MODE_VISIBLE,
 					false,
 					false,
-					1.0,
-					false,
 					false,
 					true,
 					)
@@ -58,8 +53,6 @@ func _on_game_state_changed() -> void:
 			_update_game_state(
 				Input.MOUSE_MODE_VISIBLE, 
 				false, 
-				false, 
-				1.0,
 				false,
 				true,
 				false,
@@ -68,18 +61,14 @@ func _on_game_state_changed() -> void:
 			_update_game_state(
 				Input.MOUSE_MODE_VISIBLE, 
 				false, 
-				false, 
-				1.0,
 				false,
 				false,
-				false,
+				true,
 				)
 		GameState.PAUSE:
 			_update_game_state(
 				Input.MOUSE_MODE_VISIBLE, 
 				true, 
-				true, 
-				0.0,
 				true,
 				false,
 				false,
@@ -87,25 +76,21 @@ func _on_game_state_changed() -> void:
 
 
 func _update_game_state(
-		mouse_mode, 
-		show_menu, 
-		pause_tree, 
-		time_scale, 
-		ui_pause_flg,
-		ui_dialogue_flg,
-		ui_default_flg
+		mouse_mode,
+		pause_tree,
+		show_pause_menu_ui,
+		show_dialogue_ui,
+		show_default_ui
 		) -> void:
 	
 	# Базовые флаги
 	Input.mouse_mode = mouse_mode
-	player_ui_pause.visible = show_menu
 	get_tree().paused = pause_tree
-	Engine.time_scale = time_scale
 	
 	# Переключение интерфейса
-	player_ui_pause.visible = ui_pause_flg
-	player_ui_dialogue.visible = ui_dialogue_flg
-	player_ui_default.visible = ui_default_flg
+	player_ui_pause.visible = show_pause_menu_ui
+	player_ui_dialogue.visible = show_dialogue_ui
+	player_ui_default.visible = show_default_ui
 	
 	# Обездвижить игрока
 	if player:

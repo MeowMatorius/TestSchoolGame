@@ -1,11 +1,10 @@
 extends Node
 
 var is_in_choice_menu
-var _choice_menu_callback: Callable
+var _choice_menu_callback: Callable  = func(state: bool): is_in_choice_menu = state
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	_choice_menu_callback = func(state): is_in_choice_menu = state
 	SignalBus.entered_choice_menu.connect(_choice_menu_callback)
 
 
@@ -21,8 +20,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_action_pause(event)
 			get_action_skip(event)
 		GameManager.GameState.READING:
-			get_action_cancel(event)
-		GameManager.GameState.DOSSIER:
 			get_action_cancel(event)
 		GameManager.GameState.USING_ITEM:
 			get_action_cancel(event)
@@ -57,12 +54,12 @@ func get_action_skip(event: InputEvent):
 
 func get_action_pause(event: InputEvent):
 	if event.is_action_pressed("pause"):
-		SignalBus.pause_requested.emit()
+		SignalBus.pause_pressed.emit()
 		get_viewport().set_input_as_handled()
 
 
 func get_action_cancel(event: InputEvent):
-	if event.is_action_pressed("ui_close_dialog"):
+	if event.is_action_pressed("ui_close_dialog") or event.is_action_pressed("ui_cancel"):
 		SignalBus.cancel_pressed.emit()
 		get_viewport().set_input_as_handled()
 

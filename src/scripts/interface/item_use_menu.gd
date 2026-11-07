@@ -15,15 +15,6 @@ func _exit_tree() -> void:
 	SignalUtilities.disconnect_all(_signal_pairs())
 
 
-func _signal_pairs() -> Array:
-	return [
-		[SignalBus.is_item_needed, _instantiate_items],
-		[SignalBus.is_using_item, _close],
-		[close_item_menu_button.pressed, _close],
-		[SignalBus.cancel_pressed, _close],
-	]
-
-
 func _instantiate_items(switch_data: SwitchData) -> void:
 	GameManager.current_game_state = GameManager.GameState.USING_ITEM
 
@@ -71,3 +62,12 @@ func _clear_slots() -> void:
 		if is_instance_valid(slot):
 			slot.queue_free()
 	use_item_slots.clear()
+
+
+func _signal_pairs() -> Array:
+	return [
+		[SignalBus.is_item_needed, _instantiate_items],
+		[SignalBus.is_using_item, _close],
+		[close_item_menu_button.pressed, _close],
+		[SignalBus.cancel_pressed, _close],
+		]
