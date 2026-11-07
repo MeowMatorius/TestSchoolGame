@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SubquestData" format=3 uid="uid://bm368yrwdul3"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="1_espk3"]
+[ext_resource type="Resource" uid="uid://ci046nhp5e7ma" path="res://src/resources/📊condition_data/has_item_beer.tres" id="2_6fsx3"]
+[ext_resource type="Script" uid="uid://v0d70xqdxsh1" path="res://src/resources/subquest_data.gd" id="2_b27hj"]
+
+[resource]
+script = ExtResource("2_b27hj")
+name = "SideQuest_MoneyIssue_01_2"
+description = "Обменяй монеты у Хлопчика на ПИВО"
+condition = Array[ExtResource("1_espk3")]([ExtResource("2_6fsx3")])
+metadata/_custom_type_script = "uid://v0d70xqdxsh1"

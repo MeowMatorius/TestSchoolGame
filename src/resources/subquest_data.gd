@@ -6,7 +6,7 @@
 class_name SubquestData
 extends Resource
 
-@export var id: String = get_id()
+var id: String = get_id()
 @export var name: String = "Квест 1"
 @export_multiline var description: = "Описание"
 @export var condition: Array[ConditionData] = []
@@ -31,7 +31,7 @@ extends Resource
 
 func get_id() -> String:
 	# Вернет имя файла без расширения (например, "kill_rats_01")
-	return resource_path.get_file().get_basename()
+	return ResourceUID.id_to_text(ResourceLoader.get_resource_uid(resource_path))
 
 
 func is_complete() -> bool:

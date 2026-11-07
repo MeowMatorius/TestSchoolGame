@@ -189,6 +189,7 @@ mouse_behavior_recursive = 1
 [node name="PauseMode" type="Control" parent="UserInterface/Player_UI" unique_id=634695021]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -3137,7 +3138,7 @@ clip_text = true
 text_overrun_behavior = 1
 uppercase = true
 
-[node name="DialoguesMode" type="Control" parent="UserInterface/Player_UI" unique_id=1096310796 node_paths=PackedStringArray("speaker_name", "speaker_line", "choice_ui")]
+[node name="DialoguesMode" type="Control" parent="UserInterface/Player_UI" unique_id=1096310796 node_paths=PackedStringArray("speaker_name", "speaker_line")]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 0
@@ -3149,7 +3150,26 @@ mouse_filter = 2
 script = ExtResource("6_gql8a")
 speaker_name = NodePath("MarginContainer/Dialogue/SpeakerName")
 speaker_line = NodePath("MarginContainer/Dialogue/SpeakerLine")
-choice_ui = NodePath("MarginContainer2/ScrollContainer/ChoiceContainer")
+
+[node name="ChoiceForQuest" type="Button" parent="UserInterface/Player_UI/DialoguesMode" unique_id=220248387]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_left = 700.0
+offset_top = 169.0
+offset_right = 732.0
+offset_bottom = 209.0
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_65viv")
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
+theme_override_constants/icon_max_width = 18
+action_mode = 0
+text = "Выбор"
+icon = ExtResource("24_vwic4")
+alignment = 0
+autowrap_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="UserInterface/Player_UI/DialoguesMode" unique_id=1957835607]
 layout_mode = 1
@@ -3185,166 +3205,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 alignment = 1
-
-[node name="Choice_1" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=1426323502]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_2" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=2051956395]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_3" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=1673573521]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_4" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=1834274974]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_5" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=1293693684]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_6" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=572452302]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_7" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=267332607]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_8" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=1715901613]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_9" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=2138235518]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
-
-[node name="Choice_10" type="Button" parent="UserInterface/Player_UI/DialoguesMode/MarginContainer2/ScrollContainer/ChoiceContainer" unique_id=730252632]
-visible = false
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_default_cursor_shape = 2
-theme = SubResource("Theme_65viv")
-theme_override_constants/outline_size = 5
-theme_override_constants/h_separation = 6
-theme_override_constants/icon_max_width = 18
-action_mode = 0
-text = "Выбор"
-icon = ExtResource("24_vwic4")
-alignment = 0
-autowrap_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UserInterface/Player_UI/DialoguesMode" unique_id=2004521454]
 layout_mode = 1
@@ -3382,6 +3242,26 @@ size_flags_vertical = 2
 text = "Line"
 label_settings = SubResource("LabelSettings_8t03j")
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ChoiceDefault" type="Button" parent="UserInterface/Player_UI/DialoguesMode" unique_id=1232925927]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_left = 700.0
+offset_top = 169.0
+offset_right = 732.0
+offset_bottom = 209.0
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_65viv")
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
+theme_override_constants/icon_max_width = 18
+action_mode = 0
+text = "Выбор"
+icon = ExtResource("24_vwic4")
+alignment = 0
 autowrap_mode = 3
 
 [node name="DefaultMode" type="Control" parent="UserInterface/Player_UI" unique_id=122634425]

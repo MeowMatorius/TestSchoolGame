@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://bagv5uhmbmt17"]
 
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://src/resources/command_data.gd" id="1_3ft7b"]
 [ext_resource type="Script" uid="uid://v0d70xqdxsh1" path="res://src/resources/subquest_data.gd" id="2_8pxqs"]
 [ext_resource type="Script" uid="uid://cb7b0e6porrqt" path="res://src/resources/quest_data.gd" id="2_geh3e"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://src/resources/condition_data.gd" id="3_raic7"]
 
 [resource]
 script = ExtResource("2_geh3e")
-id = "side_Hlopchik_give_book_01"
 name = "side_Hlopchik_give_book_01"
 description = "Поговорить с товарищем хлопчика о книге"
 metadata/_custom_type_script = "uid://cb7b0e6porrqt"
