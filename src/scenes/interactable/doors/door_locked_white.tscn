@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d31qgwvirjr4y"]
 
-[ext_resource type="Material" uid="uid://16kb6ih4kwxl" path="res://src/assets/materials/white_mat.tres" id="1_2wvck"]
-[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://src/scripts/interact/interact_switch.gd" id="1_cchtt"]
-[ext_resource type="Resource" uid="uid://bl7bndxa4eg07" path="res://src/resources/🤚interact_data/items/key_white.tres" id="2_j038k"]
-[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="3_2wvck"]
+[ext_resource type="Material" uid="uid://16kb6ih4kwxl" path="res://src/assets/materials/white_mat.tres" id="1_rpyd6"]
+[ext_resource type="Script" uid="uid://0aqnywgxjn82" path="res://src/scripts/interact/interact_switch.gd" id="2_w0h30"]
+[ext_resource type="Resource" uid="uid://bl7bndxa4eg07" path="res://src/resources/🤚interact_data/items/key_white.tres" id="3_x5pkp"]
+[ext_resource type="Script" uid="uid://b00l74oqq5jru" path="res://src/resources/switch_data.gd" id="4_ioa8k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_1vxdn"]
 resource_local_to_scene = true
@@ -66,10 +66,10 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_2wvck"]
 resource_local_to_scene = true
-script = ExtResource("3_2wvck")
+script = ExtResource("4_ioa8k")
 one_time_use = true
 lock_state = 0
-item_needed_to_open = ExtResource("2_j038k")
+item_needed_to_open = ExtResource("3_x5pkp")
 metadata/_custom_type_script = "uid://b00l74oqq5jru"
 
 [node name="Door" type="Node3D" unique_id=1458739684]
@@ -81,7 +81,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, -0.75, 1.2, 0)
 collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot/Static" unique_id=1126159426]
-material_override = ExtResource("1_2wvck")
+material_override = ExtResource("1_rpyd6")
 mesh = SubResource("BoxMesh_1vxdn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/Static" unique_id=1813992751]
@@ -98,5 +98,5 @@ playback_default_blend_time = 1.0
 
 [node name="InteractComponent" type="Node3D" parent="Pivot/Static" unique_id=1162931946]
 transform = Transform3D(0.06666666, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.49933967, 0, 0)
-script = ExtResource("1_cchtt")
+script = ExtResource("2_w0h30")
 switch_data = SubResource("Resource_2wvck")
