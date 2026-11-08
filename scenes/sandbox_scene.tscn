@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://dgrjfjiv0mb6g" path="res://scenes/interactable/lamp_round_floor.tscn" id="15_1q8tq"]
 [ext_resource type="PackedScene" uid="uid://baf833tfftk3a" path="res://scenes/interactable/books.tscn" id="16_8vqvk"]
 [ext_resource type="PackedScene" uid="uid://cnc8nv7l7b55j" path="res://scenes/interactable/newspaper.tscn" id="17_easo0"]
-[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://scenes/entities/player.tscn" id="18_jnid7"]
 [ext_resource type="PackedScene" uid="uid://bgdy45i6nqrr5" path="res://scenes/entities/tamagoche.tscn" id="19_64ht6"]
 [ext_resource type="PackedScene" uid="uid://sabku4btyvak" path="res://scenes/entities/hlopchik.tscn" id="20_k4suh"]
 
@@ -62,7 +61,7 @@ add_uv2 = true
 
 [node name="SandboxScene" type="Node3D" unique_id=1210055575]
 
-[node name="Enviroment_day" type="Node" parent="." unique_id=1193407697]
+[node name="Enviroment_day" type="Node3D" parent="." unique_id=371612628]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment_day" unique_id=920292468]
 transform = Transform3D(0.89173436, 0.28480464, -0.35170448, 1.2970897e-08, 0.777146, 0.62932044, 0.45255914, -0.5611867, 0.6930078, 0, 0, 0)
@@ -72,7 +71,7 @@ shadow_enabled = true
 environment = SubResource("Environment_gqnfj")
 camera_attributes = SubResource("CameraAttributesPractical_q0kuf")
 
-[node name="Static" type="Node" parent="." unique_id=125066892]
+[node name="Static" type="Node3D" parent="." unique_id=558378177]
 
 [node name="Ground" type="StaticBody3D" parent="Static" unique_id=1528271684]
 transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
@@ -95,9 +94,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4019244, -0.049142074, -9.
 [node name="Table" parent="Static" unique_id=736825221 instance=ExtResource("6_pqvst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8981679, 0.05, -9.3696575)
 
-[node name="Interactable" type="Node" parent="." unique_id=1783892644]
+[node name="Interactable" type="Node3D" parent="." unique_id=1961397532]
 
-[node name="Doors" type="Node" parent="Interactable" unique_id=554042363]
+[node name="Doors" type="Node3D" parent="Interactable" unique_id=761892624]
 
 [node name="Door" parent="Interactable/Doors" unique_id=1458739684 instance=ExtResource("7_1c31b")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 2.230779)
@@ -117,7 +116,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.11
 [node name="DoorLocedWhite2" parent="Interactable/Doors" unique_id=2432207 instance=ExtResource("10_v1xut")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 4.115788, 0, -4)
 
-[node name="Collectable" type="Node" parent="Interactable" unique_id=865561652]
+[node name="Collectable" type="Node3D" parent="Interactable" unique_id=964778879]
 
 [node name="Money" parent="Interactable/Collectable" unique_id=492321245 instance=ExtResource("11_a8u78")]
 transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 1.7389644, 1.0388231, -9.677395)
@@ -181,9 +180,6 @@ transform = Transform3D(0.92650896, 0, -0.37627277, 0, 1, 0, 0.37627277, 0, 0.92
 
 [node name="Note" parent="Interactable" unique_id=475974563 instance=ExtResource("17_easo0")]
 transform = Transform3D(0.9979705, 0, 0.06367406, 0, 1, 0, -0.06367406, 0, 0.9979705, 0.23980787, 1.1032228, -10.081043)
-
-[node name="Player" parent="." unique_id=2031011971 instance=ExtResource("18_jnid7")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.20296597, -0.47926712, -6)
 
 [node name="Kuzya" parent="." unique_id=59066183 instance=ExtResource("19_64ht6")]
 transform = Transform3D(0.49683318, 0, 0.0561854, 0, 0.5, 0, -0.0561854, 0, 0.49683318, -0.36526898, 1.1032227, -10.128822)

@@ -1,97 +1,53 @@
 extends Node
 
-# Смена состояния игры 
-enum GameState {DEFAULT, DIALOGUE, PAUSE, READING, USING_ITEM}
-var current_game_state:
-	set(value):
-		if current_game_state == value: return
-		current_game_state = value
-		_on_game_state_changed()
-
-var previous_game_state
-
-# Ссылки на игрока и его UI
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
-@onready var player_ui: Control = get_tree().get_first_node_in_group("player_ui")
-@onready var player_ui_pause: Control = player_ui.get_node("%PauseMode")
-@onready var player_ui_dialogue: Control = player_ui.get_node("%DialoguesMode")
-@onready var player_ui_default: Control = player_ui.get_node("%DefaultMode")
+
+var is_game_paused: bool = false
+var is_player_immobile: bool = false
+var is_mouse_visible: bool = false
+
+var is_in_dialogue: bool = false:
+	set(value):
+		if is_in_dialogue == value: return
+		is_in_dialogue = value
+
+var is_choosing_dialogue: bool = false:
+	set(value):
+		if is_choosing_dialogue == value: return
+		is_choosing_dialogue = value
+
+var is_choosing_item: bool = false:
+	set(value):
+		if is_choosing_item == value: return
+		is_choosing_item = value
+
+var is_reading: bool = false:
+	set(value):
+		if is_reading == value: return
+		is_reading = value
 
 
 func _ready() -> void:
-	current_game_state = GameState.DEFAULT
 	SignalBus.pause_pressed.connect(_on_pause_pressed)
 
 
 func _on_pause_pressed() -> void:
-	if current_game_state == GameState.PAUSE:
-		current_game_state = previous_game_state
-	elif previous_game_state != GameState.PAUSE:
-		previous_game_state = current_game_state
-		current_game_state = GameState.PAUSE
+	is_game_paused = !is_game_paused
+	pause_tree(is_game_paused)
+	mouse_visible(is_game_paused)
+	SignalBus.game_paused.emit(is_game_paused)
 
 
-func _on_game_state_changed() -> void:
-	match current_game_state:
-		GameState.DEFAULT:
-			_update_game_state(
-				Input.MOUSE_MODE_CAPTURED, 
-				false, 
-				false,
-				false,
-				true,
-				)
-		GameState.USING_ITEM:
-			_update_game_state(
-					Input.MOUSE_MODE_VISIBLE,
-					false,
-					false,
-					false,
-					true,
-					)
-		GameState.DIALOGUE:
-			_update_game_state(
-				Input.MOUSE_MODE_VISIBLE, 
-				false, 
-				false,
-				true,
-				false,
-				)
-		GameState.READING:
-			_update_game_state(
-				Input.MOUSE_MODE_VISIBLE, 
-				false, 
-				false,
-				false,
-				true,
-				)
-		GameState.PAUSE:
-			_update_game_state(
-				Input.MOUSE_MODE_VISIBLE, 
-				true, 
-				true,
-				false,
-				false,
-				)
-
-
-func _update_game_state(
-		mouse_mode,
-		pause_tree,
-		show_pause_menu_ui,
-		show_dialogue_ui,
-		show_default_ui
-		) -> void:
+func pause_tree(flag: bool = false):
+	is_game_paused = flag
+	get_tree().paused = flag
 	
-	# Базовые флаги
-	Input.mouse_mode = mouse_mode
-	get_tree().paused = pause_tree
-	
-	# Переключение интерфейса
-	player_ui_pause.visible = show_pause_menu_ui
-	player_ui_dialogue.visible = show_dialogue_ui
-	player_ui_default.visible = show_default_ui
-	
-	# Обездвижить игрока
-	if player:
-		player.immobile = (current_game_state != GameState.DEFAULT)
+
+func mouse_visible(flag: bool = false):
+	is_mouse_visible = flag
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if flag else Input.MOUSE_MODE_CAPTURED
+
+
+func player_immobile(flag: bool = false):
+	is_player_immobile = flag
+	if player: player.immobile = flag

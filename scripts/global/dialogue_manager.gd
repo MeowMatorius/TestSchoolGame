@@ -2,13 +2,13 @@ extends Node
 
 var active_quest_dialogues: Dictionary = {}
 
+
 func _ready() -> void:
 	SignalBus.is_talking.connect(enter_dialogue_state)
 
 
-func enter_dialogue_state(npc_data):                                  
-	GameManager.current_game_state = GameManager.GameState.DIALOGUE
-	
+func enter_dialogue_state(npc_data):
+	_set_game_manager_state(true)
 	display_line(npc_data.dialogue_data, npc_data)
 	
 
@@ -51,7 +51,8 @@ func _on_option_button_pressed(dialogue_data) -> void:
 
 
 func end_dialogue():
-	GameManager.current_game_state = GameManager.GameState.DEFAULT
+	_set_game_manager_state(false)
+
 
 func refresh_active_quest_dialogues(dialogue_data):
 	print(dialogue_data)
@@ -59,3 +60,11 @@ func refresh_active_quest_dialogues(dialogue_data):
 		active_quest_dialogues[dialogue_data.npc] = []
 	active_quest_dialogues[dialogue_data.npc].append(dialogue_data)
 	print('Добавили квестовую фразу ', active_quest_dialogues)
+
+
+func _set_game_manager_state(flag: bool = false):
+	GameManager.is_choosing_dialogue = flag
+	GameManager.player_immobile(flag)
+	GameManager.mouse_visible(flag)
+	UiManager.show_dialogue_menu(flag)
+	GameManager.is_in_dialogue = flag

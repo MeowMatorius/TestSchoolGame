@@ -2,11 +2,12 @@ extends Node
 @warning_ignore_start("unused_signal")
 
 # Dialogue
-signal entered_choice_menu(state: bool)
+signal entered_choice_menu(flag: bool)
 signal started_talking
 signal start_choosing
 signal start_quest
 signal refresh_dialogue
+
 
 # Quest
 signal quest_completed(quest)
@@ -25,6 +26,10 @@ signal changed_condition_status()
 signal update_inventory(inventory_items: Dictionary)
 signal added_to_inventory(item_data)
 signal removed_from_inventory(item_data, quantity)
+
+
+# GameManager
+signal game_paused(flag: bool)
 
 
 # InputManager

@@ -1,0 +1,2232 @@
+[gd_scene format=3 uid="uid://xr1xedx6m68"]
+
+[ext_resource type="Theme" uid="uid://ccoy2xn0cucem" path="res://resources/editor/themes/pause_menu_theme.tres" id="1_yp1g2"]
+[ext_resource type="Texture2D" uid="uid://tbo8gdqxbomq" path="res://assets/icons/ui/book.svg" id="2_jwet1"]
+[ext_resource type="Texture2D" uid="uid://bjojttptbr1s" path="res://assets/icons/ui/backpack.svg" id="3_sgqpp"]
+[ext_resource type="Script" uid="uid://k0ay4bgxrais" path="res://scripts/interface/pause_menu/continue_button.gd" id="4_1oh46"]
+[ext_resource type="Script" uid="uid://8rbyfm6075b3" path="res://scripts/interface/pause_menu/exit_button.gd" id="5_6ghwh"]
+[ext_resource type="Script" uid="uid://wjjaekg16yqr" path="res://scripts/interface/settings/settings_menu.gd" id="6_m3nec"]
+[ext_resource type="Script" uid="uid://dy63qstgclb1l" path="res://scripts/interface/settings/fov_slider.gd" id="7_nwpxe"]
+[ext_resource type="Theme" uid="uid://bge2yclbe0qiw" path="res://resources/editor/themes/dossier_theme.tres" id="8_yywyx"]
+[ext_resource type="Texture2D" uid="uid://d1qxknlfg57ty" path="res://assets/icons/ui/godot_icon.svg" id="9_anb15"]
+[ext_resource type="Script" uid="uid://d1t7b4iibsa0r" path="res://scripts/interface/ui_quest_menu.gd" id="10_3mql3"]
+[ext_resource type="Script" uid="uid://bt1ktvxi6mt0m" path="res://scripts/interface/ui_inventory_menu.gd" id="11_7cks4"]
+[ext_resource type="StyleBox" uid="uid://ba0cbqsglev17" path="res://resources/editor/settings/ui/panel_style_box_flat.tres" id="12_pgmkp"]
+[ext_resource type="Script" uid="uid://qgq50dq2seym" path="res://scripts/interface/ui_inventory_slot.gd" id="13_rycaj"]
+[ext_resource type="Texture2D" uid="uid://cspicebvhlmb8" path="res://assets/icons/new/coin.png" id="14_bspha"]
+[ext_resource type="LabelSettings" uid="uid://cgcktd00cqwm4" path="res://resources/editor/settings/ui/items_label_settings.tres" id="15_kdujs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65viv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s7qer"]
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epw4f"]
+bg_color = Color(0.060530342, 0.060530365, 0.060530297, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mcioc"]
+font_size = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65viv"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+
+[node name="PauseMenu" type="Control" unique_id=1070805617]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="." unique_id=1806971493]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_65viv")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=164127954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 2
+theme = ExtResource("1_yp1g2")
+tab_alignment = 1
+tab_sizing = 3
+current_tab = 0
+tab_0/title = "Главная"
+tab_0/icon = ExtResource("2_jwet1")
+tab_1/title = "Настройки"
+tab_1/icon = ExtResource("2_jwet1")
+tab_2/title = "Досье"
+tab_2/icon = ExtResource("2_jwet1")
+tab_3/title = "Задания"
+tab_3/icon = ExtResource("2_jwet1")
+tab_4/title = "Инвентарь"
+tab_4/icon = ExtResource("3_sgqpp")
+
+[node name="MainTab" type="MarginContainer" parent="TabContainer" unique_id=1795800523]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+metadata/_tab_index = 0
+metadata/_tab_name = "Главная"
+
+[node name="GameMenu" type="VBoxContainer" parent="TabContainer/MainTab" unique_id=239435549]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+size_flags_stretch_ratio = 10.32
+alignment = 1
+
+[node name="Continue" type="Button" parent="TabContainer/MainTab/GameMenu" unique_id=1473475452]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Продолжить"
+script = ExtResource("4_1oh46")
+
+[node name="ExitGame" type="Button" parent="TabContainer/MainTab/GameMenu" unique_id=729219628]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Выйти из игры"
+script = ExtResource("5_6ghwh")
+
+[node name="SettingsTab" type="MarginContainer" parent="TabContainer" unique_id=1373942105]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+metadata/_tab_index = 1
+metadata/_tab_name = "Настройки"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/SettingsTab" unique_id=1544849660]
+layout_mode = 2
+theme_override_constants/scrollbar_h_separation = 10
+follow_focus = true
+draw_focus_border = true
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/SettingsTab/ScrollContainer" unique_id=1919625803]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 50
+columns = 2
+script = ExtResource("6_m3nec")
+
+[node name="VFXSettings" type="VBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer" unique_id=151158273]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings" unique_id=488519862]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Визуальные Эффекты"
+label_settings = SubResource("LabelSettings_s7qer")
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings" unique_id=2141932317]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AllButton" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=403954343]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="AllButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/AllButton" unique_id=1569059370]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/AllButton" unique_id=1614089638]
+layout_mode = 2
+text = "Переключить все"
+
+[node name="SDFGI" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=1632997961]
+layout_mode = 2
+
+[node name="SDFGIButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SDFGI" unique_id=594416303]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SDFGI" unique_id=2030887349]
+layout_mode = 2
+text = "SDFGI (Динамическое освещение)"
+
+[node name="VolumetricFog" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=1408089186]
+layout_mode = 2
+
+[node name="VolumetricFogButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/VolumetricFog" unique_id=1675909687]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/VolumetricFog" unique_id=2141303193]
+layout_mode = 2
+text = "Объемный туман"
+
+[node name="SSR" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=382344733]
+layout_mode = 2
+
+[node name="SSRButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SSR" unique_id=1825854761]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SSR" unique_id=1811610697]
+layout_mode = 2
+text = "SSR (Отражения)"
+
+[node name="SSAO" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=848692728]
+layout_mode = 2
+
+[node name="SSAOButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SSAO" unique_id=2037386806]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SSAO" unique_id=1669007526]
+layout_mode = 2
+text = "SSAO (Затенение)"
+
+[node name="SSIL" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=1676054674]
+layout_mode = 2
+
+[node name="SSILButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SSIL" unique_id=234036689]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/SSIL" unique_id=2044811150]
+layout_mode = 2
+text = "SSIL (Непрямой свет)"
+
+[node name="Bloom" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2" unique_id=519769829]
+layout_mode = 2
+
+[node name="BloomButton" type="CheckButton" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/Bloom" unique_id=903498368]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/VFXSettings/VBoxContainer2/Bloom" unique_id=964707706]
+layout_mode = 2
+text = "Bloom (Свечение)"
+
+[node name="GameplaySettings" type="VBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer" unique_id=1514094997]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings" unique_id=1050171533]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Геймплей"
+label_settings = SubResource("LabelSettings_s7qer")
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings" unique_id=67671216]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Fov" type="HBoxContainer" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2" unique_id=811460078 node_paths=PackedStringArray("slider", "line_edit")]
+layout_mode = 2
+script = ExtResource("7_nwpxe")
+slider = NodePath("FovSlider")
+line_edit = NodePath("FovEdit")
+min_fov = 60
+
+[node name="Label" type="Label" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" unique_id=697097988]
+layout_mode = 2
+text = "FOV (Угол обзора)"
+
+[node name="FovSlider" type="HSlider" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" unique_id=125529438]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 75.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="FovEdit" type="LineEdit" parent="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" unique_id=778434984]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "50"
+alignment = 1
+max_length = 3
+context_menu_enabled = false
+emoji_menu_enabled = false
+caret_blink = true
+
+[node name="DossierTab" type="TabContainer" parent="TabContainer" unique_id=313314859]
+visible = false
+layout_mode = 2
+mouse_filter = 0
+mouse_behavior_recursive = 2
+theme = ExtResource("1_yp1g2")
+tab_alignment = 1
+current_tab = 0
+tabs_position = 1
+tab_0/title = "Объект C-036-1"
+tab_0/icon = ExtResource("2_jwet1")
+metadata/_tab_index = 2
+metadata/_tab_name = "Досье"
+
+[node name="Object_000" type="ScrollContainer" parent="TabContainer/DossierTab" unique_id=914858315]
+layout_mode = 2
+theme_override_constants/scrollbar_margin_top = 30
+theme_override_constants/scrollbar_margin_bottom = 30
+horizontal_scroll_mode = 0
+metadata/_tab_index = 0
+metadata/_tab_name = "Объект C-036-1"
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/DossierTab/Object_000" unique_id=18342704]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer" unique_id=1505060122]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_constants/separation = 80
+
+[node name="Info" type="VBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer" unique_id=1537208532]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label2" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info" unique_id=506353695]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Основная информация"
+
+[node name="HboxContainer" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info" unique_id=849789450]
+layout_mode = 2
+size_flags_horizontal = 17
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer" unique_id=174928374]
+layout_mode = 2
+size_flags_horizontal = 17
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer" unique_id=15690875]
+layout_mode = 2
+text = "Имя"
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer" unique_id=189928695]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_epw4f")
+placeholder_text = "Сраный Дырник"
+alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer" unique_id=121921561]
+layout_mode = 2
+text = "Дата рождения"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer" unique_id=2124999165]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Spinbox" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer2" unique_id=942454390]
+custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+min_value = 1.0
+max_value = 31.0
+value = 31.0
+rounded = true
+alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer2" unique_id=1656890686]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+text = "День"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="Spinbox2" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer2" unique_id=113895762]
+custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+min_value = 1.0
+max_value = 12.0
+value = 12.0
+rounded = true
+alignment = 1
+
+[node name="Label3" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer2" unique_id=1759180556]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+text = "Месяц"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="Spinbox3" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer2" unique_id=1026736992]
+custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+min_value = 1900.0
+max_value = 2000.0
+value = 1900.0
+rounded = true
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer2" unique_id=2095874594]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+text = "Год"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer" unique_id=1915485819]
+layout_mode = 2
+text = "Общая информация"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer" unique_id=1351399394]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Spinbox" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer3" unique_id=1106366498]
+custom_minimum_size = Vector2(50, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+max_value = 300.0
+rounded = true
+alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer3" unique_id=1537031429]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+text = "Вес"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="Spinbox2" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer3" unique_id=1755394043]
+custom_minimum_size = Vector2(50, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+max_value = 300.0
+rounded = true
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer3" unique_id=892585202]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+text = "Рост"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="Spinbox3" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer3" unique_id=1524907977]
+custom_minimum_size = Vector2(50, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+rounded = true
+alignment = 1
+
+[node name="Label3" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer/VBoxContainer/HBoxContainer3" unique_id=1577640992]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+text = "Возраст"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/HboxContainer" unique_id=118720421]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 17
+texture = ExtResource("9_anb15")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info" unique_id=1284191361]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 19
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3" unique_id=638795578]
+layout_mode = 2
+text = "Доп информация"
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3" unique_id=731039982]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer" unique_id=1556414686]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer3" unique_id=752024466]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Идентификация"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer3" unique_id=746389033]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+theme_override_font_sizes/font_size = 12
+placeholder_text = "wpo-01-exp"
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer" unique_id=1841710443]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer" unique_id=132415406]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Диагноз"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer" unique_id=1053106267]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+theme_override_font_sizes/font_size = 12
+placeholder_text = "Ponos"
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer" unique_id=121371559]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer2" unique_id=76289158]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Время поступления"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="LineEdit3" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer2" unique_id=1555510499]
+custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 17
+theme = ExtResource("8_yywyx")
+max_value = 23.0
+value = 12.0
+rounded = true
+alignment = 1
+
+[node name="LineEdit4" type="SpinBox" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer2" unique_id=458380609]
+custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 17
+theme = ExtResource("8_yywyx")
+max_value = 59.0
+value = 31.0
+rounded = true
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer" unique_id=547616674]
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 19
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer4" unique_id=75713470]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Результат"
+label_settings = SubResource("LabelSettings_mcioc")
+vertical_alignment = 1
+
+[node name="MenuSelect" type="OptionButton" parent="TabContainer/DossierTab/Object_000/MarginContainer/VBoxContainer/Info/VBoxContainer3/GridContainer/HBoxContainer4" unique_id=480578417]
+custom_minimum_size = Vector2(150, 30)
+custom_maximum_size = Vector2(-1, 30)
+layout_mode = 2
+size_flags_horizontal = 19
+size_flags_vertical = 20
+theme = ExtResource("8_yywyx")
+theme_override_font_sizes/font_size = 12
+alignment = 1
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Успех"
+popup/item_0/id = 0
+popup/item_1/text = "Провал"
+popup/item_1/id = 1
+popup/item_2/text = "Не испытывался"
+popup/item_2/id = 2
+
+[node name="TasksTab" type="MarginContainer" parent="TabContainer" unique_id=319176946]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+metadata/_tab_index = 3
+metadata/_tab_name = "Задания"
+
+[node name="QuestContainer" type="VBoxContainer" parent="TabContainer/TasksTab" unique_id=1412977066]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_3mql3")
+
+[node name="InventoryTab" type="MarginContainer" parent="TabContainer" unique_id=676581593]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+metadata/_tab_index = 4
+metadata/_tab_name = "Инвентарь"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/InventoryTab" unique_id=1107077157]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_65viv")
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
+
+[node name="ItemsContainer" type="FlowContainer" parent="TabContainer/InventoryTab/ScrollContainer" unique_id=85360013]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+script = ExtResource("11_7cks4")
+
+[node name="ItemSlot1" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=414502724]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=801432583]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=1319698856]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot1" unique_id=2021989114]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot2" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1489178471]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=1744670833]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=160568174]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot2" unique_id=2129663861]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot3" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1058192892]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=827827686]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=246532838]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot3" unique_id=1167832785]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot4" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1816568353]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1713383709]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1142698274]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot4" unique_id=1590855316]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot5" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=227874158]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1466596429]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1147618116]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot5" unique_id=1671755078]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot6" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=2138397419]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=755055525]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=17576660]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot6" unique_id=493118678]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot7" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=2018097763]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=1083323913]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=1428123652]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot7" unique_id=623398034]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot8" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1454125957]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=750511219]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=1150970295]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot8" unique_id=2082695100]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot9" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1957550693]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=755083328]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=1533291460]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot9" unique_id=2130151970]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot10" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1466736458]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=767770336]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1081320044]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot10" unique_id=1721339883]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot11" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1539393411]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=316739515]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=2070447130]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot11" unique_id=1496221493]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot12" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=666684651]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=1197678962]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=2053861665]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot12" unique_id=1676433798]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot13" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=2031847728]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=316393137]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=979897682]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot13" unique_id=1734752531]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot14" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1408667469]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1130192097]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1007332277]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot14" unique_id=1595662726]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot15" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1133295599]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=1177913484]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=1480816407]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot15" unique_id=206112827]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot16" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1183911405]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1700741542]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=878542626]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot16" unique_id=1469044657]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot17" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1440258239]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=449751426]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=693112821]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot17" unique_id=253727108]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot18" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=2123534607]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=170284966]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=1893673163]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot18" unique_id=1315449669]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot19" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=944027981]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=457440944]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=519008969]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot19" unique_id=1327527261]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot20" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=349306860]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=1189803051]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=601000307]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot20" unique_id=311968698]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot21" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1792266360]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=133755600]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=955855420]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot21" unique_id=714101182]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot22" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=697926595]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=2120095296]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=1501098142]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot22" unique_id=2024878416]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot23" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=686686490]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=1296104886]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=680271713]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot23" unique_id=212423354]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot24" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=276891900]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=1699873540]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=1741478412]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot24" unique_id=2110970213]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot25" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=881395100]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=577514870]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=1838629192]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot25" unique_id=1697621818]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot26" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=973197297]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=80379793]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=1624470359]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot26" unique_id=237836681]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot27" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=2077154644]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=1100371304]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=72465158]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot27" unique_id=844997182]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot28" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=367031181]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=1289324010]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=587919556]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot28" unique_id=2049126507]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot29" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=428691306]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=721292084]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=1284176352]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot29" unique_id=1306779991]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot30" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1242353245]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=39472378]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=1789544338]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot30" unique_id=1463250520]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot31" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=621882233]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=1448495498]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=1800288945]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot31" unique_id=732884545]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[node name="ItemSlot32" type="Panel" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer" unique_id=1483317879]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("12_pgmkp")
+script = ExtResource("13_rycaj")
+
+[node name="Icon" type="TextureRect" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=1760795412]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_bspha")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=1767900794]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "Деньги"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quantity" type="Label" parent="TabContainer/InventoryTab/ScrollContainer/ItemsContainer/ItemSlot32" unique_id=288538785]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000"
+label_settings = ExtResource("15_kdujs")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+uppercase = true
+
+[connection signal="pressed" from="TabContainer/MainTab/GameMenu/Continue" to="TabContainer/MainTab/GameMenu/Continue" method="_on_pressed"]
+[connection signal="pressed" from="TabContainer/MainTab/GameMenu/ExitGame" to="TabContainer/MainTab/GameMenu/ExitGame" method="_on_pressed"]
+[connection signal="drag_ended" from="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_drag_ended"]
+[connection signal="drag_started" from="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_drag_started"]
+[connection signal="value_changed" from="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovSlider" to="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_slider_value_changed"]
+[connection signal="text_submitted" from="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov/FovEdit" to="TabContainer/SettingsTab/ScrollContainer/GridContainer/GameplaySettings/VBoxContainer2/Fov" method="_on_fov_edit_text_submitted"]

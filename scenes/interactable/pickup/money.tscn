@@ -5,16 +5,10 @@
 [ext_resource type="Script" uid="uid://bv7k47qfnu1q4" path="res://scripts/interact/interact_pickup.gd" id="2_x8uqp"]
 [ext_resource type="Resource" uid="uid://bt2werxjn26vd" path="res://resources/🤚interact_data/items/money.tres" id="3_qr5ap"]
 [ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://resources/command_data.gd" id="4_s61js"]
-[ext_resource type="Resource" uid="uid://b082ncx8wv3fp" path="res://resources/📝quest_data/SideQuest_MoneyIssue_01.tres" id="5_wxw8r"]
+[ext_resource type="Resource" uid="uid://b312iit6cungn" path="res://resources/⚙️command_data/start_quest_buy_beer_01.tres" id="6_ju84h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
 size = Vector3(0.44177246, 0.45611572, 0.17993164)
-
-[sub_resource type="Resource" id="Resource_o343k"]
-script = ExtResource("4_s61js")
-command_type = 1
-quest = ExtResource("5_wxw8r")
-metadata/_custom_type_script = "uid://d38aadoyy462o"
 
 [node name="Money" type="StaticBody3D" unique_id=492321245 groups=["collectable"]]
 transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0, 0)
@@ -36,4 +30,4 @@ shape = SubResource("BoxShape3D_cguwc")
 [node name="InteractComponent" type="Node3D" parent="." unique_id=104121503]
 script = ExtResource("2_x8uqp")
 item_data = ExtResource("3_qr5ap")
-commands = Array[ExtResource("4_s61js")]([SubResource("Resource_o343k")])
+exit_commands = Array[ExtResource("4_s61js")]([ExtResource("6_ju84h")])

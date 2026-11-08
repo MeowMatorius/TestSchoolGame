@@ -16,7 +16,7 @@ func _exit_tree() -> void:
 
 
 func _instantiate_items(switch_data: SwitchData) -> void:
-	GameManager.current_game_state = GameManager.GameState.USING_ITEM
+	_set_game_manager_state(true)
 
 	_clear_slots()
 
@@ -28,7 +28,7 @@ func _instantiate_items(switch_data: SwitchData) -> void:
 
 	if matching_items.is_empty():
 		visible = false
-		GameManager.current_game_state = GameManager.GameState.DEFAULT
+		_set_game_manager_state(false)
 		return
 
 	visible = true
@@ -50,9 +50,8 @@ func _close(_data = null) -> void:
 	
 	visible = false
 	_clear_slots()
-	
-	if GameManager.current_game_state == GameManager.GameState.USING_ITEM:
-		GameManager.current_game_state = GameManager.GameState.DEFAULT
+
+	_set_game_manager_state(false)
 
 
 func _clear_slots() -> void:
@@ -71,3 +70,10 @@ func _signal_pairs() -> Array:
 		[close_item_menu_button.pressed, _close],
 		[SignalBus.cancel_pressed, _close],
 		]
+
+
+func _set_game_manager_state(flag: bool = false):
+	GameManager.is_choosing_item = flag
+	GameManager.player_immobile(flag)
+	GameManager.mouse_visible(flag)
+	UiManager.show_item_use_menu(flag)

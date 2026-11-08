@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://cxb34tqa7gjr6"]
+
+[ext_resource type="Script" uid="uid://dy3dka5toipem" path="res://scripts/interface/ui_inventory_tooltip.gd" id="1_ijbmd"]
+[ext_resource type="Texture2D" uid="uid://cspicebvhlmb8" path="res://assets/icons/new/coin.png" id="2_f1e22"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_65viv"]
+font_size = 14
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ItemsTooltip" type="VBoxContainer" unique_id=12196815]
+z_index = -100
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("1_ijbmd")
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemTooltip" type="HBoxContainer" parent="." unique_id=1241457248]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="ItemTooltip" unique_id=1435725316]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("2_f1e22")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="ItemTooltip" unique_id=1560923482]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = SubResource("LabelSettings_65viv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip2" type="HBoxContainer" parent="." unique_id=1113972346]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="ItemTooltip2" unique_id=1142062821]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("2_f1e22")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="ItemTooltip2" unique_id=2087767382]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = SubResource("LabelSettings_65viv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip3" type="HBoxContainer" parent="." unique_id=797341020]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="ItemTooltip3" unique_id=497006523]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("2_f1e22")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="ItemTooltip3" unique_id=538472371]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = SubResource("LabelSettings_65viv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip4" type="HBoxContainer" parent="." unique_id=1203448850]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="ItemTooltip4" unique_id=1490704567]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("2_f1e22")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="ItemTooltip4" unique_id=1780213868]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = SubResource("LabelSettings_65viv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip5" type="HBoxContainer" parent="." unique_id=1042140519]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="ItemTooltip5" unique_id=581566015]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("2_f1e22")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="ItemTooltip5" unique_id=1328647084]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = SubResource("LabelSettings_65viv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemTooltip6" type="HBoxContainer" parent="." unique_id=1904757882]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="ItemTooltip6" unique_id=2041824268]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+texture = ExtResource("2_f1e22")
+expand_mode = 2
+
+[node name="ToolpitText" type="Label" parent="ItemTooltip6" unique_id=1915957564]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_behavior_recursive = 2
+text = "TooltipText"
+label_settings = SubResource("LabelSettings_65viv")
+horizontal_alignment = 1
+vertical_alignment = 1

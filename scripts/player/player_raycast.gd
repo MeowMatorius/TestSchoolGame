@@ -1,10 +1,11 @@
 extends RayCast3D
 
-# Подсказка взаимодействия по умолчанию
-@export var text_prompt: Label
+@onready var ui_group: Array[Node] = get_tree().get_nodes_in_group('ui')
 # Флаг видимости prompt
 @export var show_prompt: bool = true
 
+# Подсказка взаимодействия по умолчанию
+var text_prompt: Label
 # Информация о текущей цели
 var target_object: Node3D = null       # Объект/коллайдер
 var target_mesh: MeshInstance3D = null # Меш объекта для шейдеров
@@ -12,6 +13,8 @@ var target_interact: Node = null       # InteractComponent объекта для
 
 
 func _ready() -> void:
+	text_prompt = ArrayUtilities.find_in_group(ui_group, 'InteractPrompt').get_child(0)
+	
 	_clear_target()
 	SignalBus.interaction_pressed.connect(_on_interaction_pressed)
 	SignalBus.object_removed.connect(_clear_target)
@@ -27,9 +30,9 @@ func _physics_process(_delta: float) -> void:
 	# Получение коллайдера
 	var collider := get_collider() if is_colliding() else null
 
-	# Подхват InteractComponent только при game_state = DEFAULT и только если есть коллайдер
+	# Подхват InteractComponent только если есть коллайдер
 	var interact := _find_interact(collider) \
-		if collider and GameManager.current_game_state == GameManager.GameState.DEFAULT \
+		if collider \
 		else null
 
 	# Сброс при отсутствии цели

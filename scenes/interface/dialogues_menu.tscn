@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://c7nqbkc6do6vl"]
+
+[ext_resource type="Script" uid="uid://7iafiigyg44d" path="res://scripts/interface/ui_dialogues.gd" id="1_qlyo1"]
+[ext_resource type="Texture2D" uid="uid://cb1eui4td0hxr" path="res://assets/icons/ui/speech.svg" id="2_gnv7w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hg6s5"]
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8t03j"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_65viv"]
+
+[node name="DialoguesMenu" type="Control" unique_id=1755643768 node_paths=PackedStringArray("speaker_name", "speaker_line")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qlyo1")
+speaker_name = NodePath("MarginContainer/Dialogue/SpeakerName")
+speaker_line = NodePath("MarginContainer/Dialogue/SpeakerLine")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=369667613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 124.0
+offset_top = -155.0
+offset_right = 463.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer2" unique_id=1556857989]
+layout_mode = 2
+mouse_filter = 2
+mouse_behavior_recursive = 2
+follow_focus = true
+draw_focus_border = true
+scroll_hint_mode = 1
+tile_scroll_hint = true
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="MarginContainer2/ScrollContainer" unique_id=1223847335]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=674187307]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="Dialogue" type="VBoxContainer" parent="MarginContainer" unique_id=714019587]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme_override_constants/separation = 24
+
+[node name="SpeakerName" type="Label" parent="MarginContainer/Dialogue" unique_id=1588874717]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "NPC"
+label_settings = SubResource("LabelSettings_hg6s5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeakerLine" type="Label" parent="MarginContainer/Dialogue" unique_id=965653144]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Line"
+label_settings = SubResource("LabelSettings_8t03j")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ChoiceDefault" type="Button" parent="." unique_id=358167846]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_left = 700.0
+offset_top = 169.0
+offset_right = 732.0
+offset_bottom = 209.0
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_65viv")
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
+theme_override_constants/icon_max_width = 18
+action_mode = 0
+text = "Выбор"
+icon = ExtResource("2_gnv7w")
+alignment = 0
+autowrap_mode = 3
+
+[node name="ChoiceForQuest" type="Button" parent="." unique_id=1739075170]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_left = 700.0
+offset_top = 169.0
+offset_right = 732.0
+offset_bottom = 209.0
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_65viv")
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 6
+theme_override_constants/icon_max_width = 18
+action_mode = 0
+text = "Выбор"
+icon = ExtResource("2_gnv7w")
+alignment = 0
+autowrap_mode = 3
