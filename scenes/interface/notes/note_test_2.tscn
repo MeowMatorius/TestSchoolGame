@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://doqrcqi7i4t2l"]
+
+[ext_resource type="Texture2D" uid="uid://b7ayahhlqo127" path="res://assets/icons/new/beer_new.png" id="1_qpbne"]
+[ext_resource type="Texture2D" uid="uid://bksr13mvuftn5" path="res://assets/textures/page.png" id="2_4baap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrv8q"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5eof8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26u2o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fkse0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_norx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3v0c"]
+
+[node name="NoteTest2" type="Control" unique_id=47941084]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -243.0
+offset_right = 447.77777
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="Panel" parent="." unique_id=411824334]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -270.0
+offset_right = 448.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrv8q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=846271432]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.051000003
+anchor_top = 0.074
+anchor_right = 0.94900006
+anchor_bottom = 0.92600006
+offset_left = 0.30399704
+offset_top = 0.040000916
+offset_right = -0.30407715
+offset_bottom = -0.040039063
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="TextureRect/VBoxContainer" unique_id=2079355823]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "[b]Title[/b]"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer" unique_id=1997045513]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=523019000]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Test text"
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/VBoxContainer/HBoxContainer" unique_id=1056762811]
+custom_minimum_size = Vector2(300, 300)
+custom_maximum_size = Vector2(300, 500)
+layout_mode = 2
+texture = ExtResource("1_qpbne")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1792406467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1115975005]
+layout_mode = 2
+texture = ExtResource("2_4baap")
+expand_mode = 3
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/TextureRect" unique_id=1553276433]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.202
+anchor_right = 0.46
+anchor_bottom = 0.37300003
+offset_left = 0.017997742
+offset_top = -0.19200134
+offset_right = 0.11999512
+offset_bottom = -0.008010864
+texture = ExtResource("1_qpbne")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/TextureRect" unique_id=302936670]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.21200001
+anchor_right = 0.88900006
+anchor_bottom = 0.37100002
+offset_left = -0.14801025
+offset_top = -0.15200806
+offset_right = -0.042022705
+offset_bottom = -0.01600647
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[b]Пивандопало[/b]
+[color=red][b]АКЦИЯ[/b][/color]
+[s][color=gray]200₽[/color][/s] [color=red][b]100₽[/b][/color]"
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/TextureRect" unique_id=546470807]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46600002
+anchor_top = 0.21200001
+anchor_right = 0.88900006
+anchor_bottom = 0.37100002
+offset_left = -105.14801
+offset_top = 133.84799
+offset_right = -7.0420227
+offset_bottom = 281.984
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[s][color=gray]Горк напиши очень глубокий и трогательный текст о пользе пива в стиле дарк фентези. Пиши без ошибок
+[/color][/s]"
+
+[node name="CloseButton" type="Button" parent="." unique_id=1369511274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5eof8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_26u2o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fkse0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_norx0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w3v0c")
+icon_alignment = 2

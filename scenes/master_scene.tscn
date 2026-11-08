@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bty0j27jipmnb"]
+
+[ext_resource type="PackedScene" uid="uid://cfullnp5cxo2d" path="res://scenes/sandbox_scene.tscn" id="1_rn33l"]
+
+[node name="MasterScene" type="Node3D" unique_id=1982929258]
+
+[node name="SandboxScene" parent="." unique_id=1210055575 instance=ExtResource("1_rn33l")]

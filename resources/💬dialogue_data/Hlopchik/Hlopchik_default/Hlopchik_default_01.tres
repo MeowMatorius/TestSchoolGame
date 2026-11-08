@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://o4vggharr70n"]
+
+[ext_resource type="Script" uid="uid://c2uc01bjiw2hw" path="res://resources/dialogue_data.gd" id="1_efjcu"]
+[ext_resource type="Script" uid="uid://d38aadoyy462o" path="res://resources/command_data.gd" id="2_uysxc"]
+[ext_resource type="Resource" uid="uid://dy2t66a5k5kq0" path="res://resources/💬dialogue_data/Hlopchik/Hlopchik_default/Hlopchik_default_01_1.tres" id="2_wg2n1"]
+[ext_resource type="Resource" uid="uid://byqrhcnumsy7v" path="res://resources/💬dialogue_data/Hlopchik/Hlopchik_default/Hlopchik_default_01_2.tres" id="3_pv4e8"]
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resources/condition_data.gd" id="3_wg2n1"]
+
+[resource]
+script = ExtResource("1_efjcu")
+character_name = "Хлопчик"
+text = "Привет"
+choices = Array[ExtResource("1_efjcu")]([ExtResource("2_wg2n1"), ExtResource("3_pv4e8")])
+metadata/_custom_type_script = "uid://c2uc01bjiw2hw"

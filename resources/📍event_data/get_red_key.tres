@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EventData" format=3 uid="uid://b5ebe6dqa8ofl"]
+
+[ext_resource type="Script" uid="uid://cp032c8l2hpry" path="res://resources/condition_data.gd" id="1_tk5ks"]
+[ext_resource type="Script" uid="uid://78dunhvnphhq" path="res://resources/event_data.gd" id="2_v26qy"]
+[ext_resource type="Resource" uid="uid://d0wuggxwncqas" path="res://resources/📊condition_data/has_item_red_key_1.tres" id="2_xq8rd"]
+
+[resource]
+script = ExtResource("2_v26qy")
+event_name = "get_red_key"
+condition = Array[ExtResource("1_tk5ks")]([ExtResource("2_xq8rd")])
+metadata/_custom_type_script = "uid://78dunhvnphhq"
