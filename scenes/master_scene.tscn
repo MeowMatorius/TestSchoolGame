@@ -2384,8 +2384,21 @@ icon = ExtResource("6_ygsfy")
 alignment = 0
 autowrap_mode = 3
 
+[node name="ReadContainer" type="Control" parent="UserInterface" unique_id=1234702635 groups=["ui"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
 [node name="ItemUseMenu" type="Control" parent="UserInterface" unique_id=608924711 groups=["ui"]]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -2787,17 +2800,6 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_behavior_recursive = 2
 theme_override_styles/panel = ExtResource("12_o1qok")
-
-[node name="ReadContainer" type="Control" parent="UserInterface" unique_id=1234702635 groups=["ui"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
 
 [node name="Player" parent="." unique_id=2031011971 instance=ExtResource("25_f66wc")]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.20296597, -0.47926712, -6)
